@@ -1,0 +1,3 @@
+vhdtdtfi -lib work I2S_TO_PARALLEL.vhd -prj Projet -o I2S_TO_PARALLEL.spl -module I2S_TO_PARALLEL -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 I2S_TO_PARALLEL.spl C:/Users/e1538867/Desktop/Projet/Projet/I2S_TO_PARALLEL.sym 
+vhdtdtfi -prj Projet -o C:/Users/e1538867/Desktop/Projet/Projet/I2S_TO_PARALLEL.vhi -module I2S_TO_PARALLEL -template C:/Xilinx/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work I2S_TO_PARALLEL.vhd 

@@ -1,0 +1,2 @@
+vhdl work "I2S_TO_PARALLEL.vhd"
+vhdl work "TOP.vhd"

@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\e1538867\Desktop\Projet\Projet\TOP.ncd
+OUTFILE=C:\Users\e1538867\Desktop\Projet\Projet\TOP.bit
+FAMILY=Spartan6
+PART=xc6slx9-3tqg144
+WORKINGDIR=C:\Users\e1538867\Desktop\Projet\Projet
+LICENSE=WebPack
+USER_INFO=211299554_0_0_874
