@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total CPU time to Xst completion: 0.36 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total CPU time to Xst completion: 0.37 secs
  
 --> Reading design: TOP.prj
 
@@ -105,10 +105,10 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Parsing VHDL file "C:\Users\e1538867\Desktop\Projet\Projet\I2S_TO_PARALLEL.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\I2S_TO_PARALLEL.vhd" into library work
 Parsing entity <I2S_TO_PARALLEL>.
-Parsing architecture <rtl> of entity <i2s_to_parallel>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\Projet\Projet\TOP.vhd" into library work
+Parsing architecture <Behavioral> of entity <i2s_to_parallel>.
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\TOP.vhd" into library work
 Parsing entity <TOP>.
 Parsing architecture <Behavioral> of entity <top>.
 
@@ -118,33 +118,33 @@ Parsing architecture <Behavioral> of entity <top>.
 
 Elaborating entity <TOP> (architecture <Behavioral>) from library <work>.
 
-Elaborating entity <I2S_TO_PARALLEL> (architecture <rtl>) with generics from library <work>.
+Elaborating entity <I2S_TO_PARALLEL> (architecture <Behavioral>) with generics from library <work>.
 
 =========================================================================
 *                           HDL Synthesis                               *
 =========================================================================
 
 Synthesizing Unit <TOP>.
-    Related source file is "C:\Users\e1538867\Desktop\Projet\Projet\TOP.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\TOP.vhd".
 WARNING:Xst:647 - Input <CLK> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-INFO:Xst:3210 - "C:\Users\e1538867\Desktop\Projet\Projet\TOP.vhd" line 60: Output port <DATA_READY> of the instance <I2S_INTERFACE> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\TOP.vhd" line 60: Output port <DATA_READY> of the instance <I2S_INTERFACE> is unconnected or connected to loadless signal.
     Summary:
 	no macro.
 Unit <TOP> synthesized.
 
 Synthesizing Unit <I2S_TO_PARALLEL>.
-    Related source file is "C:\Users\e1538867\Desktop\Projet\Projet\I2S_TO_PARALLEL.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\I2S_TO_PARALLEL.vhd".
         DATA_WIDTH = 24
     Found 1-bit register for signal <DATA_READY>.
+    Found 24-bit register for signal <DATA_ADC_R>.
     Found 24-bit register for signal <Shift_Reg_Out>.
     Found 24-bit register for signal <Shift_Reg_In>.
+    Found 24-bit register for signal <DATA_ADC_L>.
     Found 5-bit register for signal <Data_Shift_Counter>.
     Found 1-bit register for signal <Current_LRCK>.
     Found 1-bit register for signal <SDTO>.
-    Found 24-bit register for signal <DATA_ADC_L>.
-    Found 24-bit register for signal <DATA_ADC_R>.
-    Found 5-bit subtractor for signal <GND_5_o_GND_5_o_sub_6_OUT<4:0>> created at line 83.
-    Found 1-bit 24-to-1 multiplexer for signal <GND_5_o_X_5_o_Mux_6_o> created at line 83.
+    Found 5-bit subtractor for signal <GND_4_o_GND_4_o_sub_6_OUT<4:0>> created at line 81.
+    Found 1-bit 24-to-1 multiplexer for signal <GND_4_o_X_4_o_Mux_6_o> created at line 81.
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred 104 D-type flip-flop(s).
@@ -206,8 +206,11 @@ WARNING:Xst:2677 - Node <I2S_INTERFACE/DATA_READY> of sequential type is unconne
 Mapping all equations...
 Building and optimizing final netlist ...
 Found area constraint ratio of 100 (+ 5) on block TOP, actual ratio is 2.
+FlipFlop I2S_INTERFACE/Current_LRCK has been replicated 2 time(s)
+INFO:Xst:1843 - HDL ADVISOR - FlipFlop I2S_INTERFACE/Current_LRCK connected to a primary input has been replicated
 FlipFlop I2S_INTERFACE/Data_Shift_Counter_0 has been replicated 1 time(s)
-FlipFlop I2S_INTERFACE/Data_Shift_Counter_1 has been replicated 1 time(s)
+FlipFlop I2S_INTERFACE/Data_Shift_Counter_1 has been replicated 2 time(s)
+FlipFlop I2S_INTERFACE/Data_Shift_Counter_2 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -215,8 +218,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 105
- Flip-Flops                                            : 105
+# Registers                                            : 109
+ Flip-Flops                                            : 109
 
 =========================================================================
 
@@ -239,18 +242,18 @@ Top Level Output File Name         : TOP.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 132
-#      INV                         : 1
+# BELS                             : 134
+#      INV                         : 2
 #      LUT2                        : 2
-#      LUT3                        : 35
-#      LUT4                        : 2
-#      LUT5                        : 53
+#      LUT3                        : 33
+#      LUT4                        : 29
+#      LUT5                        : 29
 #      LUT6                        : 35
 #      MUXF7                       : 3
 #      VCC                         : 1
-# FlipFlops/Latches                : 105
-#      FDCE_1                      : 53
-#      FDE_1                       : 50
+# FlipFlops/Latches                : 109
+#      FDCE_1                      : 103
+#      FDE_1                       : 4
 #      FDPE_1                      : 2
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
@@ -265,16 +268,16 @@ Selected Device : 6slx9tqg144-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             105  out of  11440     0%  
- Number of Slice LUTs:                  128  out of   5720     2%  
-    Number used as Logic:               128  out of   5720     2%  
+ Number of Slice Registers:             109  out of  11440     0%  
+ Number of Slice LUTs:                  130  out of   5720     2%  
+    Number used as Logic:               130  out of   5720     2%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    129
-   Number with an unused Flip Flop:      24  out of    129    18%  
-   Number with an unused LUT:             1  out of    129     0%  
-   Number of fully used LUT-FF pairs:   104  out of    129    80%  
-   Number of unique control sets:         6
+ Number of LUT Flip Flop pairs used:    135
+   Number with an unused Flip Flop:      26  out of    135    19%  
+   Number with an unused LUT:             5  out of    135     3%  
+   Number of fully used LUT-FF pairs:   104  out of    135    77%  
+   Number of unique control sets:         7
 
 IO Utilization: 
  Number of IOs:                           7
@@ -304,7 +307,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-BCLK                               | BUFGP                  | 105   |
+BCLK                               | BUFGP                  | 109   |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -315,9 +318,9 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 4.714ns (Maximum Frequency: 212.121MHz)
-   Minimum input arrival time before clock: 5.440ns
-   Maximum output required time after clock: 3.634ns
+   Minimum period: 3.548ns (Maximum Frequency: 281.829MHz)
+   Minimum input arrival time before clock: 5.611ns
+   Maximum output required time after clock: 3.597ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -326,32 +329,32 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'BCLK'
-  Clock period: 4.714ns (frequency: 212.121MHz)
-  Total number of paths / destination ports: 1021 / 209
+  Clock period: 3.548ns (frequency: 281.829MHz)
+  Total number of paths / destination ports: 1017 / 215
 -------------------------------------------------------------------------
-Delay:               4.714ns (Levels of Logic = 2)
-  Source:            I2S_INTERFACE/Current_LRCK (FF)
+Delay:               3.548ns (Levels of Logic = 2)
+  Source:            I2S_INTERFACE/Current_LRCK_1 (FF)
   Destination:       I2S_INTERFACE/Shift_Reg_In_23 (FF)
   Source Clock:      BCLK falling
   Destination Clock: BCLK falling
 
-  Data Path: I2S_INTERFACE/Current_LRCK to I2S_INTERFACE/Shift_Reg_In_23
+  Data Path: I2S_INTERFACE/Current_LRCK_1 to I2S_INTERFACE/Shift_Reg_In_23
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE_1:C->Q           80   0.447   1.746  I2S_INTERFACE/Current_LRCK (I2S_INTERFACE/Current_LRCK)
+     FDE_1:C->Q            1   0.447   0.580  I2S_INTERFACE/Current_LRCK_1 (I2S_INTERFACE/Current_LRCK_1)
      LUT2:I1->O            2   0.205   0.617  I2S_INTERFACE/Mxor_LRCK_Current_LRCK_XOR_1_o_xo<0>1_1 (I2S_INTERFACE/Mxor_LRCK_Current_LRCK_XOR_1_o_xo<0>1)
-     LUT6:I5->O           24   0.205   1.172  I2S_INTERFACE/_n0125_inv1 (I2S_INTERFACE/_n0125_inv)
+     LUT6:I5->O           24   0.205   1.172  I2S_INTERFACE/_n0134_inv1 (I2S_INTERFACE/_n0134_inv)
      FDCE_1:CE                 0.322          I2S_INTERFACE/Shift_Reg_In_0
     ----------------------------------------
-    Total                      4.714ns (1.179ns logic, 3.535ns route)
-                                       (25.0% logic, 75.0% route)
+    Total                      3.548ns (1.179ns logic, 2.369ns route)
+                                       (33.2% logic, 66.8% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'BCLK'
-  Total number of paths / destination ports: 266 / 192
+  Total number of paths / destination ports: 302 / 274
 -------------------------------------------------------------------------
-Offset:              5.440ns (Levels of Logic = 3)
+Offset:              5.611ns (Levels of Logic = 3)
   Source:            LRCK (PAD)
   Destination:       I2S_INTERFACE/Shift_Reg_In_23 (FF)
   Destination Clock: BCLK falling
@@ -360,19 +363,19 @@ Offset:              5.440ns (Levels of Logic = 3)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            57   1.222   1.698  LRCK_IBUF (LRCK_IBUF)
+     IBUF:I->O            83   1.222   1.870  LRCK_IBUF (LRCK_IBUF)
      LUT2:I0->O            2   0.203   0.617  I2S_INTERFACE/Mxor_LRCK_Current_LRCK_XOR_1_o_xo<0>1_1 (I2S_INTERFACE/Mxor_LRCK_Current_LRCK_XOR_1_o_xo<0>1)
-     LUT6:I5->O           24   0.205   1.172  I2S_INTERFACE/_n0125_inv1 (I2S_INTERFACE/_n0125_inv)
+     LUT6:I5->O           24   0.205   1.172  I2S_INTERFACE/_n0134_inv1 (I2S_INTERFACE/_n0134_inv)
      FDCE_1:CE                 0.322          I2S_INTERFACE/Shift_Reg_In_0
     ----------------------------------------
-    Total                      5.440ns (1.952ns logic, 3.488ns route)
-                                       (35.9% logic, 64.1% route)
+    Total                      5.611ns (1.952ns logic, 3.659ns route)
+                                       (34.8% logic, 65.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'BCLK'
   Total number of paths / destination ports: 1 / 1
 -------------------------------------------------------------------------
-Offset:              3.634ns (Levels of Logic = 1)
+Offset:              3.597ns (Levels of Logic = 1)
   Source:            I2S_INTERFACE/SDTO (FF)
   Destination:       SDTO (PAD)
   Source Clock:      BCLK falling
@@ -381,11 +384,11 @@ Offset:              3.634ns (Levels of Logic = 1)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE_1:C->Q            2   0.447   0.616  I2S_INTERFACE/SDTO (I2S_INTERFACE/SDTO)
+     FDE_1:C->Q            1   0.447   0.579  I2S_INTERFACE/SDTO (I2S_INTERFACE/SDTO)
      OBUF:I->O                 2.571          SDTO_OBUF (SDTO)
     ----------------------------------------
-    Total                      3.634ns (3.018ns logic, 0.616ns route)
-                                       (83.0% logic, 17.0% route)
+    Total                      3.597ns (3.018ns logic, 0.579ns route)
+                                       (83.9% logic, 16.1% route)
 
 =========================================================================
 
@@ -397,20 +400,20 @@ Clock to Setup on destination clock BCLK
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-BCLK           |         |         |    4.714|         |
+BCLK           |         |         |    3.548|         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 4.38 secs
+Total REAL time to Xst completion: 10.00 secs
+Total CPU time to Xst completion: 10.02 secs
  
 --> 
 
-Total memory usage is 261448 kilobytes
+Total memory usage is 317344 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    2 (   0 filtered)
-Number of infos    :    1 (   0 filtered)
+Number of infos    :    2 (   0 filtered)
 

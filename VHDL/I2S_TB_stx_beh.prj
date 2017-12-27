@@ -1,0 +1,2 @@
+vhdl isim_temp "I2S_TO_PARALLEL.vhd"
+vhdl isim_temp "I2S_TB.vhd"

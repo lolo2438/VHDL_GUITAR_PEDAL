@@ -1,22 +1,12 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date:    15:04:21 11/27/2017 
--- Design Name: 
--- Module Name:    TOP - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
-----------------------------------------------------------------------------------
+-------------------------------------
+--	Name: Laurent Tremblay			  --
+--	Project: Numeric guitar pedal	  --
+--	Module: TOP							  --
+-- Version:								  --
+-- Comments: Main module			  --
+--											  --
+-------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -57,11 +47,8 @@ signal Data_Ready : STD_LOGIC;
 begin
 
 -- PORT MAP
-I2S_INTERFACE: entity work.I2S_TO_PARALLEL(RTL)
-port map(  -- FPGA CLOCK
-			 -- CLK => CLK,
-				
-			  -- I2S PORTS
+I2S_INTERFACE: entity work.I2S_TO_PARALLEL(Behavioral)
+port map(  -- I2S PORTS
 			  SDTI => SDTI,
 			  BCLK => BCLK,
            LRCK => LRCK,
@@ -78,6 +65,7 @@ port map(  -- FPGA CLOCK
 			  -- OTHERS
 			  RESET => RESET,
            DATA_READY => Data_Ready);
+
 
 -- LOGIQUE DE SORTIE
 Audio_Out_R <= Audio_In_R;

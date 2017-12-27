@@ -41,12 +41,10 @@ ARCHITECTURE behavior OF I2S_TB IS
  
     COMPONENT I2S_TO_PARALLEL
     PORT(
-         CLK : IN  std_logic;
          SDTI : IN  std_logic;
          BCLK : IN  std_logic;
          LRCK : IN  std_logic;
          SDTO : OUT  std_logic;
-         MCLK : OUT  std_logic;
          DATA_ADC_L : OUT  std_logic_vector(23 downto 0);
          DATA_ADC_R : OUT  std_logic_vector(23 downto 0);
          DATA_DAC_L : IN  std_logic_vector(23 downto 0);
@@ -58,7 +56,6 @@ ARCHITECTURE behavior OF I2S_TB IS
     
 
    --Inputs
-   signal CLK : std_logic := '0';
    signal SDTI : std_logic := '0';
    signal BCLK : std_logic := '0';
    signal LRCK : std_logic := '0';
@@ -68,26 +65,21 @@ ARCHITECTURE behavior OF I2S_TB IS
 
  	--Outputs
    signal SDTO : std_logic;
-   signal MCLK : std_logic;
    signal DATA_ADC_L : std_logic_vector(23 downto 0);
    signal DATA_ADC_R : std_logic_vector(23 downto 0);
    signal DATA_READY : std_logic;
 
    -- Clock period definitions
-   constant CLK_period : time := 20 ns;
    constant BCLK_period : time := 80 ns;
- --  constant MCLK_period : time := 40 ns;
  
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
    uut: I2S_TO_PARALLEL PORT MAP (
-          CLK => CLK,
           SDTI => SDTI,
           BCLK => BCLK,
           LRCK => LRCK,
           SDTO => SDTO,
-          MCLK => MCLK,
           DATA_ADC_L => DATA_ADC_L,
           DATA_ADC_R => DATA_ADC_R,
           DATA_DAC_L => DATA_DAC_L,
@@ -96,15 +88,6 @@ BEGIN
           DATA_READY => DATA_READY
         );
 
-   -- Clock process definitions
-   CLK_process :process
-   begin
-		CLK <= '0';
-		wait for CLK_period/2;
-		CLK <= '1';
-		wait for CLK_period/2;
-   end process;
- 
    BCLK_process :process
    begin
 		BCLK <= '0';
@@ -113,22 +96,17 @@ BEGIN
 		wait for BCLK_period/2;
    end process;
  
-  -- MCLK_process :process
-  -- begin
-	--	MCLK <= '0';
-	--	wait for MCLK_period/2;
-	--	MCLK <= '1';
-	--	wait for MCLK_period/2;
---   end process;
- 
 
    -- Stimulus process
    stim_proc: process
    begin	
-		RESET <= '1';
+		RESET <= '0';
       -- hold reset state for 100 ns.
       wait for 100 ns;	
-		RESET <= '0';
+		RESET <= '1';
+		
+		DATA_DAC_L <= b"001100110011001100110011";
+		DATA_DAC_R <= b"110011001100110011001100";
 		
 		-- RIGHT CHANNEL
 		LRCK <= '1';
