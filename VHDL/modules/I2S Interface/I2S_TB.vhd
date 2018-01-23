@@ -105,8 +105,8 @@ BEGIN
       wait for 100 ns;	
 		RESET <= '1';
 		
-		DATA_DAC_L <= b"001100110011001100110011";
-		DATA_DAC_R <= b"110011001100110011001100";
+		DATA_DAC_L <= b"101100110011001100110011";
+		DATA_DAC_R <= b"101010101010101010101010";
 		
 		-- RIGHT CHANNEL
 		LRCK <= '1';
@@ -160,9 +160,9 @@ BEGIN
 		wait for BCLK_period*1; --22
 		SDTI <= '1';
 		wait for BCLK_period*1; --23
-		SDTI <= '0';
+		SDTI <= '1';
 		wait for BCLK_period*1; --24
-		
+		SDTI <= '0';
 		wait for BCLK_period*5;
 		
 		-- LEFT CHANNEL
@@ -217,9 +217,126 @@ BEGIN
 		wait for BCLK_period*1; --22
 		SDTI <= '1';
 		wait for BCLK_period*1; --23
-		SDTI <= '0';
+		SDTI <= '1';
 		wait for BCLK_period*1; --24
+		SDTI <= '0';
 		
+		DATA_DAC_R <= b"101100110011001100110011";
+		DATA_DAC_L <= b"101010101010101010101010";
+		wait for BCLK_period*5; 
+		
+		-- RIGHT CHANNEL
+		LRCK <= '1';
+		
+		-- 24 Bits IN
+		SDTI <= '1';
+		wait for BCLK_period*1; --SKIPPED
+		SDTI <= '0';
+		wait for BCLK_period*1; --1
+		SDTI <= '1';
+		wait for BCLK_period*1; --2
+		SDTI <= '0';
+		wait for BCLK_period*1; --3
+		SDTI <= '1';
+		wait for BCLK_period*1; --4
+		SDTI <= '0';
+		wait for BCLK_period*1; --5
+		SDTI <= '1';
+		wait for BCLK_period*1; --6
+		SDTI <= '0';
+		wait for BCLK_period*1; --7 
+		SDTI <= '1';
+		wait for BCLK_period*1; --8 
+		SDTI <= '0';
+		wait for BCLK_period*1; --9 
+		SDTI <= '1';
+		wait for BCLK_period*1; --10
+		SDTI <= '0';
+		wait for BCLK_period*1; --11
+		SDTI <= '1';
+		wait for BCLK_period*1; --12
+		SDTI <= '0';
+		wait for BCLK_period*1; --13
+		SDTI <= '1';
+		wait for BCLK_period*1; --14
+		SDTI <= '0';
+		wait for BCLK_period*1; --15
+		SDTI <= '1';
+		wait for BCLK_period*1; --16
+		SDTI <= '0';
+		wait for BCLK_period*1; --17
+		SDTI <= '1';
+		wait for BCLK_period*1; --18
+		SDTI <= '1';
+		wait for BCLK_period*1; --19
+		SDTI <= '0';
+		wait for BCLK_period*1; --20
+		SDTI <= '1';
+		wait for BCLK_period*1; --21
+		SDTI <= '0';
+		wait for BCLK_period*1; --22
+		SDTI <= '1';
+		wait for BCLK_period*1; --23
+		SDTI <= '1';
+		wait for BCLK_period*1; --24
+		SDTI <= '0';
+		wait for BCLK_period*5;
+		
+		-- LEFT CHANNEL
+		LRCK <= '0';
+		
+		-- 24 Bits IN AND OUT
+		SDTI <= '0';
+		wait for BCLK_period*1; --SKIPPED
+		SDTI <= '1';
+		wait for BCLK_period*1; --1
+		SDTI <= '1';
+		wait for BCLK_period*1; --2
+		SDTI <= '1';
+		wait for BCLK_period*1; --3
+		SDTI <= '1';
+		wait for BCLK_period*1; --4
+		SDTI <= '0';
+		wait for BCLK_period*1; --5
+		SDTI <= '0';
+		wait for BCLK_period*1; --6
+		SDTI <= '0';
+		wait for BCLK_period*1; --7 
+		SDTI <= '0';
+		wait for BCLK_period*1; --8 
+		SDTI <= '1';
+		wait for BCLK_period*1; --9 
+		SDTI <= '1';
+		wait for BCLK_period*1; --10
+		SDTI <= '1';
+		wait for BCLK_period*1; --11
+		SDTI <= '1';
+		wait for BCLK_period*1; --12
+		SDTI <= '0';
+		wait for BCLK_period*1; --13
+		SDTI <= '0';
+		wait for BCLK_period*1; --14
+		SDTI <= '0';
+		wait for BCLK_period*1; --15
+		SDTI <= '0';
+		wait for BCLK_period*1; --16
+		SDTI <= '1';
+		wait for BCLK_period*1; --17
+		SDTI <= '1';
+		wait for BCLK_period*1; --18
+		SDTI <= '1';
+		wait for BCLK_period*1; --19
+		SDTI <= '1';
+		wait for BCLK_period*1; --20
+		SDTI <= '0';
+		wait for BCLK_period*1; --21
+		SDTI <= '0';
+		wait for BCLK_period*1; --22
+		SDTI <= '0';
+		wait for BCLK_period*1; --23
+		SDTI <= '1';
+		wait for BCLK_period*1; --24
+		SDTI <= '0';
       -- insert stimulus here 
 
       wait;

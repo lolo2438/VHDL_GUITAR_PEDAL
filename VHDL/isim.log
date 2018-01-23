@@ -1,7 +1,10 @@
 ISim log file
-Running: F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\I2S_TB_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/I2S_TB_isim_beh.wdb 
+Running: C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL\I2S_TB_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL/I2S_TB_isim_beh.wdb 
 ISim P.20131013 (signature 0x7708f090)
-This is a Full version of ISim.
+WARNING: A WEBPACK license was found.
+WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
+WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
+This is a Lite version of ISim.
 Time resolution is 1 ps
 # onerror resume
 # wave add /
@@ -9,11 +12,6 @@ Time resolution is 1 ps
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
 # restart
-# run all
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-Stopped at time : 143302960 ns : File "F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/I2S_TO_PARALLEL.vhd" Line 56
-# restart
-# run 10us
+# run 15us
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.

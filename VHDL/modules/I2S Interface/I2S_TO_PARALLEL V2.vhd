@@ -43,7 +43,6 @@ end I2S_TO_PARALLEL;
 
 architecture Behavioral of I2S_TO_PARALLEL is
 
-Signal Master_Clock_Counter : STD_LOGIC := '0';--integer range 0 to 2 := 0;
 Signal Shift_Reg_In: STD_LOGIC_VECTOR(DATA_WIDTH - 1 downto 0) := (others => '0');
 Signal Shift_Reg_Out: STD_LOGIC_VECTOR(DATA_WIDTH - 1 downto 0) := (others => '0');
 Signal Data_Shift_Counter : integer range 0 to DATA_WIDTH := DATA_WIDTH;
@@ -51,7 +50,7 @@ Signal Current_LRCK : STD_LOGIC := '0';
 
 begin
 
-Data_Handler:process(RESET,BCLK,LRCK,SDTI)
+Data_Handler:process(RESET,BCLK)
 	begin
 		if(RESET = '0') then
 			-- Reset everything when received a logical '0', asynchronous
@@ -89,12 +88,13 @@ Data_Handler:process(RESET,BCLK,LRCK,SDTI)
 			elsif Data_Shift_Counter = 0 then
 				-- All input bits have been put in the Shift register and all output bits have been outputted
 				DATA_READY <= '1';
+				SDTO <= '0';
 				-- Selects which channel should receive the bits depending on LRCK
-				if Current_LRCK = '0' then
-					DATA_ADC_L <= Shift_Reg_In;
-				elsif Current_LRCK = '1' then
-					DATA_ADC_R <= Shift_Reg_In;
-				end if;
+					if Current_LRCK = '0' then
+						DATA_ADC_L <= Shift_Reg_In;
+					elsif Current_LRCK = '1' then
+						DATA_ADC_R <= Shift_Reg_In;
+					end if;
 			end if;
 		end if;
 	end process;
