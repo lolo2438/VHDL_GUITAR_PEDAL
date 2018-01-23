@@ -1,0 +1,2 @@
+vhdl isim_temp "modules/I2S Interface/I2S_TO_PARALLEL.vhd"
+vhdl isim_temp "modules/I2S Interface/I2STB2.vhd"

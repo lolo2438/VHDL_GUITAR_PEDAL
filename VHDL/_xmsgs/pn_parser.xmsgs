@@ -11,8 +11,5 @@
 <msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL/modules/I2S Interface/I2S_TO_PARALLEL.vhd&quot; into library work</arg>
 </msg>
 
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL/modules/TOP/TOP.vhd&quot; into library work</arg>
-</msg>
-
 </messages>
 

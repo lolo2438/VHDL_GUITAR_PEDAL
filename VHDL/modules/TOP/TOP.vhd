@@ -63,7 +63,9 @@ port map(  -- I2S PORTS
 			  
 			  -- OTHERS
 			  RESET => RESET,
-			  DATA_READY => Data_Ready);
+			  DATA_READY => Data_Ready,
+			  CLK => CLK
+			  );
 
 
 -- LOGIQUE DE SORTIE
