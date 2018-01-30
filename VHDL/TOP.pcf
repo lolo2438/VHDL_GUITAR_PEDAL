@@ -1,0 +1,13 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Tue Jan 30 13:36:03 2018
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "BCLK" LOCATE = SITE "P133" LEVEL 1;
+COMP "LRCK" LOCATE = SITE "P131" LEVEL 1;
+COMP "SDTI" LOCATE = SITE "P123" LEVEL 1;
+COMP "SDTO" LOCATE = SITE "P126" LEVEL 1;
+COMP "CLK" LOCATE = SITE "P56" LEVEL 1;
+COMP "RESET" LOCATE = SITE "P38" LEVEL 1;
+SCHEMATIC END;
+
