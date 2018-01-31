@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   11:29:12 12/06/2017
+-- Create Date:   20:08:04 01/30/2018
 -- Design Name:   
--- Module Name:   C:/Users/e1538867/Desktop/Projet/Projet/I2S_TB.vhd
+-- Module Name:   F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/I2S_TO_PARALLE3.vhd
 -- Project Name:  Projet
 -- Target Device:  
 -- Tool versions:  
@@ -32,10 +32,10 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY I2S_TB IS
-END I2S_TB;
+ENTITY I2S_TO_PARALLE3 IS
+END I2S_TO_PARALLE3;
  
-ARCHITECTURE behavior OF I2S_TB IS 
+ARCHITECTURE behavior OF I2S_TO_PARALLE3 IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
@@ -88,6 +88,7 @@ BEGIN
           DATA_READY => DATA_READY
         );
 
+   -- Clock process definitions
    BCLK_process :process
    begin
 		BCLK <= '0';
@@ -99,20 +100,16 @@ BEGIN
 
    -- Stimulus process
    stim_proc: process
-   begin	
-		RESET <= '0';
-      -- hold reset state for 100 ns.
-      wait for 100 ns;	
-		
+   begin		
+     RESET <= '0';
+      wait for BCLK_period*1;	
 		
 		DATA_DAC_L <= b"101100110011001100110011";
 		DATA_DAC_R <= b"101010101010101010101010";
 		
 		RESET <= '1';
 		-- RIGHT CHANNEL
-		
 		LRCK <= '1';
-		wait for BCLK_period*1;
 		-- 24 Bits IN
 		SDTI <= '1';
 		wait for BCLK_period*1; --SKIPPED
@@ -169,7 +166,6 @@ BEGIN
 		
 		-- LEFT CHANNEL
 		LRCK <= '0';
-		wait for BCLK_period*1;
 		-- 24 Bits IN AND OUT
 		SDTI <= '0';
 		wait for BCLK_period*1; --SKIPPED
@@ -229,7 +225,6 @@ BEGIN
 		
 		-- RIGHT CHANNEL
 		LRCK <= '1';
-		wait for BCLK_period*1;
 		-- 24 Bits IN
 		SDTI <= '1';
 		wait for BCLK_period*1; --SKIPPED
@@ -286,7 +281,7 @@ BEGIN
 		
 		-- LEFT CHANNEL
 		LRCK <= '0';
-		wait for BCLK_period*1;
+		
 		-- 24 Bits IN AND OUT
 		SDTI <= '0';
 		wait for BCLK_period*1; --SKIPPED
@@ -340,7 +335,6 @@ BEGIN
 		wait for BCLK_period*1; --24
 		SDTI <= '1';
       -- insert stimulus here 
-
       wait;
    end process;
 
