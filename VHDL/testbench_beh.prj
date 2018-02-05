@@ -1,0 +1,3 @@
+vhdl work "modules/I2S Interface/I2S_TO_PARALLEL.vhd"
+vhdl work "modules/TOP/TOP.vhd"
+vhdl work "test_i2s_top.vhd"

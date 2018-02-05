@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "secureip" -o "F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/I2S_TO_PARALLE3_isim_beh.exe" -prj "F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/I2S_TO_PARALLE3_beh.prj" "work.I2S_TO_PARALLE3" 
+-intstyle "ise" -incremental -lib "secureip" -o "C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL/testbench_isim_beh.exe" -prj "C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL/testbench_beh.prj" "work.testbench" 

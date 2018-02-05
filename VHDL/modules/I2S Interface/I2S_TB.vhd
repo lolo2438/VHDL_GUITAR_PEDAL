@@ -102,7 +102,7 @@ BEGIN
    begin	
 		RESET <= '0';
       -- hold reset state for 100 ns.
-      wait for 100 ns;	
+      wait for BCLK_period*1;
 		
 		
 		DATA_DAC_L <= b"101100110011001100110011";
