@@ -1,22 +1,13 @@
 -------------------------------------
 --	Name: Laurent Tremblay			  --
 --	Project: Numeric guitar pedal	  --
---	Module: I2S_INTERFACE			  --
--- Version:	4.0						  --
+--	Module: parallelToI2S			  --
+-- Version:	1.0						  --
 -- Comments: Designed for the 	  --
 --	Akashi AK4556 audio Codec       --
 -------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
-use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity PARALLEL_TO_I2S is
 	 Generic ( DATA_WIDTH : integer range 16 to 32 := 24);
@@ -32,21 +23,39 @@ entity PARALLEL_TO_I2S is
 			  
 			  -- OTHERS
 			  RESET : in STD_LOGIC;
-           DATA_READY : out  STD_LOGIC);
+           DONE : out  STD_LOGIC);
 			  
 end PARALLEL_TO_I2S;
 
 architecture Behavioral of PARALLEL_TO_I2S is
 
 Type i2s_Tx is (Tx, Waiting);
-
 Signal i2sTx : i2s_Tx := Waiting;
 
+Signal selectedChannel : STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0) := (others => '0');
 Signal shiftRegOut: STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0) := (others => '0');
-Signal lastLRCK : STD_LOGIC := '0';
 
+Signal lastLRCK : STD_LOGIC := '0';
+Signal LRCK_Flag : STD_LOGIC := '0';
+Signal LRCK_Changed : STD_LOGIC := '0';
 
 begin
+
+-- Detecting changes in LRCK
+detectLRCK: process(BCLK)
+	begin
+		if rising_edge(BCLK) then
+			if(lastLRCK /= LRCK) then
+				lastLRCK <= LRCK;
+				LRCK_Flag <= '1';
+			else
+				LRCK_Flag <= '0';
+			end if;
+		end if;
+	end process;
+	
+-- Cross process signal
+LRCK_Changed <= LRCK_Flag;
 
 -- TRANSMIT
 Transmit:process(RESET,BCLK)
@@ -54,34 +63,42 @@ Transmit:process(RESET,BCLK)
 	begin
 		if (RESET = '0') then
 			dataShift := DATA_WIDTH;
-			shiftRegOut <= (others => '0');
 			SDTO <= '0';
-			
 		elsif falling_edge(BCLK) then
 			case i2sTx is
 				when Tx =>
 					dataShift := dataShift - 1;
-					SDTO <= shiftRegOut(dataShift);
+					
+					if LRCK = '1' then
+						SDTO <= DATA_DAC_R(dataShift);
+					elsif LRCK = '0' then
+						SDTO <= DATA_DAC_L(dataShift);
+					end if;
 					
 					if dataShift = 0 then
 						i2sTx <= Waiting;
 					end if;
-						
+					
 				when Waiting =>
+					DONE <= '1';
+					dataShift := DATA_WIDTH;
 					SDTO <= '0';
-					if(lastLRCK /= LRCK) then									-- Change in LRCK indicates new data
-						lastLRCK <= LRCK;
+					
+					if LRCK_CHANGED = '1' then
+						DONE <= '0';
+						-- Send first bit
+						dataShift := dataShift - 1;
 						
-						dataShift := DATA_WIDTH;
-						if LRCK = '0' then
-							shiftRegOut <= DATA_DAC_L;
-						elsif LRCK = '1' then
-							shiftRegOut <= DATA_DAC_R;
+						if LRCK = '1' then
+							SDTO <= DATA_DAC_R(dataShift);
+						elsif LRCK = '0' then
+							SDTO <= DATA_DAC_L(dataShift);
 						end if;
 						
 						i2sTx <= Tx;
+						
 					end if;
-			end case;
+				end case;
 		end if;
 	end process;
 end Behavioral;

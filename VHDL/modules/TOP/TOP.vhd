@@ -21,7 +21,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity TOP is
     Port (  -- FPGA CLOCK 50MHZ
-			--CLK : in  STD_LOGIC;
+			CLK : in  STD_LOGIC;
 			
 			  -- I2S PINS
 			SDTI : in STD_LOGIC;
@@ -41,8 +41,9 @@ signal Audio_Out_L : STD_LOGIC_VECTOR(23 downto 0):= (others => '0');
 signal Audio_In_R : STD_LOGIC_VECTOR(23 downto 0):= (others => '0');
 signal Audio_Out_R : STD_LOGIC_VECTOR(23 downto 0):= (others => '0');
 
-signal Data_Ready : STD_LOGIC;
-
+signal dataReady : STD_LOGIC;
+signal doneSending : STD_LOGIC;
+signal CLK_DIV : STD_LOGIC := '0';
 begin
 
 -- PORT MAP
@@ -58,7 +59,7 @@ port map(  -- I2S PORTS
 			  
 			  -- OTHERS
 			  RESET => RESET,
-			  DATA_READY => Data_Ready
+			  DATA_READY => dataReady
 			 -- CLK => CLK
 			  );
 			  
@@ -73,9 +74,9 @@ port map (-- I2S PORTS
 			  DATA_DAC_R => Audio_Out_R,
 			  
 			  -- OTHERS
-			  RESET => RESET
+			  RESET => RESET,
+			  DONE => doneSending
 			  );
-
 
 
 -- LOGIQUE DE SORTIE

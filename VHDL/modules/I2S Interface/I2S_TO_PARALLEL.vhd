@@ -1,22 +1,13 @@
 -------------------------------------
 --	Name: Laurent Tremblay			  --
 --	Project: Numeric guitar pedal	  --
---	Module: I2S_INTERFACE			  --
--- Version:	4.0						  --
+--	Module: I2SToParallel			  --
+-- Version:	1.0						  --
 -- Comments: Designed for the 	  --
 --	Akashi AK4556 audio Codec       --
 -------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
-use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity I2S_TO_PARALLEL is
 	 Generic ( DATA_WIDTH : integer range 16 to 32 := 24);
@@ -68,16 +59,16 @@ Receive:process(RESET,BCLK)
 				
 				when Rdy =>
 					if LRCK = '0' then
-							DATA_ADC_L <= shiftRegIn;
+						DATA_ADC_L <= shiftRegIn;
 					elsif LRCK = '1' then
-							DATA_ADC_R <= shiftRegIn;
+						DATA_ADC_R <= shiftRegIn;
 					end if;
 					
 					DATA_READY <= '1';
 					i2sRx <= Waiting;
 				
 				when Waiting =>
-					if(lastLRCK /= LRCK) then									-- Change in LRCK indicates new data
+					if(lastLRCK /= LRCK) then
 						lastLRCK <= LRCK;
 						
 						dataShift := DATA_WIDTH;
