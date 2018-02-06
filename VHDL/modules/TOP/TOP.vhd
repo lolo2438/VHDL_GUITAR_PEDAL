@@ -21,7 +21,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity TOP is
     Port (  -- FPGA CLOCK 50MHZ
-			CLK : in  STD_LOGIC;
+			--CLK : in  STD_LOGIC;
 			
 			  -- I2S PINS
 			SDTI : in STD_LOGIC;
@@ -36,36 +36,46 @@ end TOP;
 
 architecture Behavioral of TOP is
 
-signal Audio_In_L : STD_LOGIC_VECTOR(23 downto 0);
-signal Audio_Out_L : STD_LOGIC_VECTOR(23 downto 0);
-signal Audio_In_R : STD_LOGIC_VECTOR(23 downto 0);
-signal Audio_Out_R : STD_LOGIC_VECTOR(23 downto 0);
+signal Audio_In_L : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
+signal Audio_Out_L : STD_LOGIC_VECTOR(23 downto 0):= (others => '0');
+signal Audio_In_R : STD_LOGIC_VECTOR(23 downto 0):= (others => '0');
+signal Audio_Out_R : STD_LOGIC_VECTOR(23 downto 0):= (others => '0');
 
 signal Data_Ready : STD_LOGIC;
 
 begin
 
 -- PORT MAP
-I2S_INTERFACE: entity work.I2S_TO_PARALLEL(Behavioral)
+I2SToParallel: entity work.I2S_TO_PARALLEL(Behavioral)
 port map(  -- I2S PORTS
 			  SDTI => SDTI,
 			  BCLK => BCLK,
 			  LRCK => LRCK,
-			  SDTO => SDTO,
 			  
 			  -- PARALLEL DATA FROM ADC
 			  DATA_ADC_L => Audio_In_L,
 			  DATA_ADC_R => Audio_In_R,
-			  
-			  -- PARALLEL DATA TO DAC
-			  DATA_DAC_L => Audio_Out_L,
-			  DATA_DAC_R => Audio_Out_R,
 			  
 			  -- OTHERS
 			  RESET => RESET,
 			  DATA_READY => Data_Ready
 			 -- CLK => CLK
 			  );
+			  
+parallelToI2S : entity work.PARALLEL_TO_I2S(Behavioral)
+port map (-- I2S PORTS
+			  BCLK => BCLK,
+			  LRCK => LRCK,
+			  SDTO => SDTO,
+			  
+			   -- PARALLEL DATA TO DAC
+			  DATA_DAC_L => Audio_Out_L,
+			  DATA_DAC_R => Audio_Out_R,
+			  
+			  -- OTHERS
+			  RESET => RESET
+			  );
+
 
 
 -- LOGIQUE DE SORTIE

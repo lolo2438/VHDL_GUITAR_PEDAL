@@ -18,76 +18,68 @@ use IEEE.NUMERIC_STD.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity I2S_TO_PARALLEL is
+entity PARALLEL_TO_I2S is
 	 Generic ( DATA_WIDTH : integer range 16 to 32 := 24);
 	 
     Port ( -- I2S PORTS
-			  SDTI : in STD_LOGIC;
 			  BCLK : in  STD_LOGIC;
            LRCK : in  STD_LOGIC;
+			  SDTO : out  STD_LOGIC;
 			  
-			  -- PARALLEL DATA FROM ADC
-           DATA_ADC_L : out STD_LOGIC_VECTOR (DATA_WIDTH-1 downto 0);
-           DATA_ADC_R : out  STD_LOGIC_VECTOR (DATA_WIDTH-1 downto 0);
+			  -- PARALLEL DATA TO DAC
+			  DATA_DAC_L : in STD_LOGIC_VECTOR (DATA_WIDTH-1 downto 0);
+           DATA_DAC_R : in  STD_LOGIC_VECTOR (DATA_WIDTH-1 downto 0);
 			  
 			  -- OTHERS
 			  RESET : in STD_LOGIC;
            DATA_READY : out  STD_LOGIC);
 			  
-end I2S_TO_PARALLEL;
+end PARALLEL_TO_I2S;
 
-architecture Behavioral of I2S_TO_PARALLEL is
+architecture Behavioral of PARALLEL_TO_I2S is
 
-Type i2s_Rx is (Rx, Rdy, Waiting);
+Type i2s_Tx is (Tx, Waiting);
 
-Signal i2sRx : i2s_Rx := Waiting;
+Signal i2sTx : i2s_Tx := Waiting;
 
-Signal shiftRegIn: STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0) := (others => '0');
+Signal shiftRegOut: STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0) := (others => '0');
 Signal lastLRCK : STD_LOGIC := '0';
+
 
 begin
 
--- RECEIVE
-Receive:process(RESET,BCLK)
+-- TRANSMIT
+Transmit:process(RESET,BCLK)
 	variable dataShift : integer range 0 to DATA_WIDTH := DATA_WIDTH;
 	begin
 		if (RESET = '0') then
 			dataShift := DATA_WIDTH;
-			shiftRegIn <= (others => '0');
-			DATA_READY <= '0';
+			shiftRegOut <= (others => '0');
+			SDTO <= '0';
 			
-		elsif rising_edge(BCLK) then
-			case i2sRx is				
-				when Rx =>
+		elsif falling_edge(BCLK) then
+			case i2sTx is
+				when Tx =>
 					dataShift := dataShift - 1;
-					shiftRegIn(dataShift) <= SDTI;
-										
-					if dataShift = 0 then
-						i2sRx <= Rdy;
-					end if;
-				
-				when Rdy =>
-					if LRCK = '0' then
-							DATA_ADC_L <= shiftRegIn;
-					elsif LRCK = '1' then
-							DATA_ADC_R <= shiftRegIn;
-					end if;
+					SDTO <= shiftRegOut(dataShift);
 					
-					DATA_READY <= '1';
-					i2sRx <= Waiting;
-				
+					if dataShift = 0 then
+						i2sTx <= Waiting;
+					end if;
+						
 				when Waiting =>
+					SDTO <= '0';
 					if(lastLRCK /= LRCK) then									-- Change in LRCK indicates new data
 						lastLRCK <= LRCK;
 						
 						dataShift := DATA_WIDTH;
-						shiftRegIn <= (others => '0');
+						if LRCK = '0' then
+							shiftRegOut <= DATA_DAC_L;
+						elsif LRCK = '1' then
+							shiftRegOut <= DATA_DAC_R;
+						end if;
 						
-						i2sRx <= Rx;
-						
-						DATA_READY <= '0';
-						
-						i2sRx <= Rx;
+						i2sTx <= Tx;
 					end if;
 			end case;
 		end if;

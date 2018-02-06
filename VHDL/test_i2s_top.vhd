@@ -12,7 +12,7 @@
   -- Component Declaration
           COMPONENT TOP
           PORT(
-                  CLK : in  STD_LOGIC;
+          --        CLK : in  STD_LOGIC;
 						
 						  -- I2S PINS
 						SDTI : in STD_LOGIC;
@@ -50,7 +50,7 @@
 
  	-- Instantiate the Unit Under Test (UUT)
    uut: TOP PORT MAP (
-			 CLK  => CLK,
+		--	 CLK  => CLK,
           SDTI => SDTI,
           BCLK => BCLK,
           LRCK => LRCK,

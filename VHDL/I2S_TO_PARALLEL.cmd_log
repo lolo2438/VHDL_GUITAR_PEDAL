@@ -1,0 +1,2 @@
+vhdtdtfi -lib work {modules/I2S Interface/I2S_TO_PARALLEL.vhd} -prj Projet -o I2S_TO_PARALLEL.spl -module I2S_TO_PARALLEL -template F:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 I2S_TO_PARALLEL.spl F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/I2S_TO_PARALLEL.sym 
