@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 1.02 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.06 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 1.02 secs
  
 --> Reading design: TOP.prj
 
@@ -105,28 +105,28 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\spi_slave.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\spi_slave.vhd" into library work
 Parsing entity <spi_slave>.
 Parsing architecture <RTL> of entity <spi_slave>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_tx.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_tx.vhd" into library work
 Parsing entity <serial_tx>.
 Parsing architecture <RTL> of entity <serial_tx>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_rx.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_rx.vhd" into library work
 Parsing entity <serial_rx>.
 Parsing architecture <RTL> of entity <serial_rx>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\cclk_detector.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\cclk_detector.vhd" into library work
 Parsing entity <cclk_detector>.
 Parsing architecture <RTL> of entity <cclk_detector>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\I2S Interface\PARALLEL_TO_I2S.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\I2S Interface\PARALLEL_TO_I2S.vhd" into library work
 Parsing entity <PARALLEL_TO_I2S>.
 Parsing architecture <Behavioral> of entity <parallel_to_i2s>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\I2S Interface\I2S_TO_PARALLEL.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\I2S Interface\I2S_TO_PARALLEL.vhd" into library work
 Parsing entity <I2S_TO_PARALLEL>.
 Parsing architecture <Behavioral> of entity <i2s_to_parallel>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\avr_interface.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\avr_interface.vhd" into library work
 Parsing entity <avr_interface>.
 Parsing architecture <RTL> of entity <avr_interface>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" into library work
 Parsing entity <TOP>.
 Parsing architecture <Behavioral> of entity <top>.
 
@@ -147,28 +147,28 @@ Elaborating entity <cclk_detector> (architecture <RTL>) from library <work>.
 Elaborating entity <spi_slave> (architecture <RTL>) from library <work>.
 
 Elaborating entity <serial_rx> (architecture <RTL>) with generics from library <work>.
-INFO:HDLCompiler:679 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_rx.vhd" Line 80. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_rx.vhd" Line 80. Case statement is complete. others clause is never selected
 
 Elaborating entity <serial_tx> (architecture <RTL>) with generics from library <work>.
-INFO:HDLCompiler:679 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_tx.vhd" Line 96. Case statement is complete. others clause is never selected
-WARNING:HDLCompiler:634 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" Line 58: Net <channel[3]> does not have a driver.
-WARNING:HDLCompiler:634 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" Line 63: Net <txData[7]> does not have a driver.
-WARNING:HDLCompiler:634 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" Line 65: Net <newTxData> does not have a driver.
+INFO:HDLCompiler:679 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_tx.vhd" Line 96. Case statement is complete. others clause is never selected
+WARNING:HDLCompiler:634 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" Line 58: Net <channel[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" Line 63: Net <txData[7]> does not have a driver.
+WARNING:HDLCompiler:634 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" Line 65: Net <newTxData> does not have a driver.
 
 =========================================================================
 *                           HDL Synthesis                               *
 =========================================================================
 
 Synthesizing Unit <TOP>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd".
-INFO:Xst:3210 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 72: Output port <DATA_READY> of the instance <I2SToParallel> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 87: Output port <DONE> of the instance <parallelToI2S> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 102: Output port <sample> of the instance <avr_interface> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 102: Output port <sample_channel> of the instance <avr_interface> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 102: Output port <rx_data> of the instance <avr_interface> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 102: Output port <new_sample> of the instance <avr_interface> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 102: Output port <tx_busy> of the instance <avr_interface> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 102: Output port <new_rx_data> of the instance <avr_interface> is unconnected or connected to loadless signal.
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd".
+INFO:Xst:3210 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 72: Output port <DATA_READY> of the instance <I2SToParallel> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 87: Output port <DONE> of the instance <parallelToI2S> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 102: Output port <sample> of the instance <avr_interface> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 102: Output port <sample_channel> of the instance <avr_interface> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 102: Output port <rx_data> of the instance <avr_interface> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 102: Output port <new_sample> of the instance <avr_interface> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 102: Output port <tx_busy> of the instance <avr_interface> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 102: Output port <new_rx_data> of the instance <avr_interface> is unconnected or connected to loadless signal.
 WARNING:Xst:653 - Signal <channel> is used but never assigned. This sourceless signal will be automatically connected to value GND.
 WARNING:Xst:653 - Signal <txData> is used but never assigned. This sourceless signal will be automatically connected to value GND.
 WARNING:Xst:653 - Signal <newTxData> is used but never assigned. This sourceless signal will be automatically connected to value GND.
@@ -177,7 +177,7 @@ WARNING:Xst:653 - Signal <newTxData> is used but never assigned. This sourceless
 Unit <TOP> synthesized.
 
 Synthesizing Unit <I2S_TO_PARALLEL>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\I2S Interface\I2S_TO_PARALLEL.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\I2S Interface\I2S_TO_PARALLEL.vhd".
         DATA_WIDTH = 24
     Found 1-bit register for signal <DATA_READY>.
     Found 24-bit register for signal <shiftRegIn>.
@@ -206,7 +206,7 @@ Synthesizing Unit <I2S_TO_PARALLEL>.
 Unit <I2S_TO_PARALLEL> synthesized.
 
 Synthesizing Unit <PARALLEL_TO_I2S>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\I2S Interface\PARALLEL_TO_I2S.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\I2S Interface\PARALLEL_TO_I2S.vhd".
         DATA_WIDTH = 24
     Found 1-bit register for signal <SDTO>.
     Found 5-bit register for signal <Transmit.dataShift>.
@@ -224,7 +224,7 @@ Synthesizing Unit <PARALLEL_TO_I2S>.
 Unit <PARALLEL_TO_I2S> synthesized.
 
 Synthesizing Unit <avr_interface>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\avr_interface.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\avr_interface.vhd".
     Found 10-bit register for signal <sample_q>.
     Found 1-bit register for signal <new_sample_q>.
     Found 1-bit register for signal <byte_ct_q>.
@@ -242,7 +242,7 @@ Synthesizing Unit <avr_interface>.
 Unit <avr_interface> synthesized.
 
 Synthesizing Unit <cclk_detector>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\cclk_detector.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\cclk_detector.vhd".
     Found 9-bit register for signal <ctr_q>.
     Found 1-bit register for signal <ready_q>.
     Found 9-bit adder for signal <ctr_q[8]_GND_10_o_add_1_OUT> created at line 1241.
@@ -253,7 +253,7 @@ Synthesizing Unit <cclk_detector>.
 Unit <cclk_detector> synthesized.
 
 Synthesizing Unit <spi_slave>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\spi_slave.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\spi_slave.vhd".
     Found 1-bit register for signal <miso_q>.
     Found 3-bit register for signal <bit_ct_q>.
     Found 8-bit register for signal <dout_q>.
@@ -271,7 +271,7 @@ Synthesizing Unit <spi_slave>.
 Unit <spi_slave> synthesized.
 
 Synthesizing Unit <serial_rx>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_rx.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_rx.vhd".
         CLK_PER_BIT = 100
         CTR_SIZE = 7
     Found 3-bit register for signal <bit_ctr_q>.
@@ -304,7 +304,7 @@ Synthesizing Unit <serial_rx>.
 Unit <serial_rx> synthesized.
 
 Synthesizing Unit <serial_tx>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_tx.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_tx.vhd".
         CLK_PER_BIT = 100
         CTR_SIZE = 7
     Found 2-bit register for signal <state_q>.
@@ -764,12 +764,12 @@ CLK            |    3.584|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 4.00 secs
-Total CPU time to Xst completion: 4.37 secs
+Total REAL time to Xst completion: 10.00 secs
+Total CPU time to Xst completion: 9.85 secs
  
 --> 
 
-Total memory usage is 263624 kilobytes
+Total memory usage is 333600 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   36 (   0 filtered)
