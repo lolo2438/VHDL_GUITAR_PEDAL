@@ -32,14 +32,17 @@ architecture Behavioral of PARALLEL_TO_I2S is
 Type i2s_Tx is (Tx, Waiting);
 Signal i2sTx : i2s_Tx := Waiting;
 
-Signal selectedChannel : STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0) := (others => '0');
-Signal shiftRegOut: STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0) := (others => '0');
+Signal shiftRegOutL : STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0) := (others => '0');
+Signal shiftRegOutR: STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0) := (others => '0');
 
 Signal lastLRCK : STD_LOGIC := '0';
 Signal LRCK_Flag : STD_LOGIC := '0';
 Signal LRCK_Changed : STD_LOGIC := '0';
 
 begin
+
+shiftRegOutL <= DATA_DAC_L;
+shiftRegOutR <= DATA_DAC_R;
 
 -- Detecting changes in LRCK
 detectLRCK: process(BCLK)
@@ -70,9 +73,9 @@ Transmit:process(RESET,BCLK)
 					dataShift := dataShift - 1;
 					
 					if LRCK = '1' then
-						SDTO <= DATA_DAC_R(dataShift);
+						SDTO <= shiftRegOutR(dataShift);
 					elsif LRCK = '0' then
-						SDTO <= DATA_DAC_L(dataShift);
+						SDTO <= shiftRegOutL(dataShift);
 					end if;
 					
 					if dataShift = 0 then
@@ -90,9 +93,9 @@ Transmit:process(RESET,BCLK)
 						dataShift := dataShift - 1;
 						
 						if LRCK = '1' then
-							SDTO <= DATA_DAC_R(dataShift);
+							SDTO <= shiftRegOutR(dataShift);
 						elsif LRCK = '0' then
-							SDTO <= DATA_DAC_L(dataShift);
+							SDTO <= shiftRegOutL(dataShift);
 						end if;
 						
 						i2sTx <= Tx;

@@ -39,8 +39,13 @@ entity TOP is
 				AVR_TX : in STD_LOGIC;
 				AVR_RX : out STD_LOGIC;
 				AVR_RX_BUSY : in STD_LOGIC;
-				-- OTHERS
-				  
+				
+				--Guitar effect chain pins
+				LOCK : in STD_LOGIC;
+				LAST_EFFECT : in STD_LOGIC;
+				NEXT_EFFECT : in STD_LOGIC;
+				
+				-- OTHERS  
 				RESET : in STD_LOGIC);
 end TOP;
 
@@ -66,9 +71,19 @@ signal newTxData : STD_LOGIC;
 signal newRxData : STD_LOGIC;
 signal txBusy : STD_LOGIC;
 
+signal adc0 : STD_LOGIC_VECTOR(9 downto 0);
+signal adc1 : STD_LOGIC_VECTOR(9 downto 0);
+signal adc4 : STD_LOGIC_VECTOR(9 downto 0);
+
+-- Guitar effect chain signals
+signal SMVolume : STD_LOGIC;
+signal volumeLocked : STD_LOGIC;
+
 begin
 
 -- PORT MAP
+
+-- I2S INTERFACE
 I2SToParallel: entity work.I2S_TO_PARALLEL(Behavioral)
 port map(  -- I2S PORTS
 			  SDTI => SDTI,
@@ -99,6 +114,7 @@ port map (-- I2S PORTS
 			  DONE => doneSending
 			  );
 
+-- AVR INTERFACE
 avr_interface : entity work.avr_interface(RTL)
 port map (	-- Clocks and Reset
 				clk => CLK,
@@ -129,6 +145,20 @@ port map (	-- Clocks and Reset
 				new_rx_data	=> newRxData
 			);
 
+-- GUITAR EFFECT CHAIN
+moduleVolume: entity work.volumeControl(Behavioral)
+port map( CLK => CLK,
+			 RESET => RESET,
+			 audioIn => (others => '0'), -- temp
+          audioOut => open,
+          SM => SMVolume, -- TO ADD: back/next mux
+          lock => LOCK,	-- TO MOD: lock pulse detect + anti rebond		
+			 locked => volumeLocked,
+          volumeGain => adc0,
+          TBD1 => adc1,							
+			 TBD2 => adc4
+			);
+			
 -- LOGIQUE DE SORTIE
 audioOutR <= AudioInR;
 
