@@ -41,9 +41,9 @@ entity TOP is
 				AVR_RX_BUSY : in STD_LOGIC;
 				
 				--Guitar effect chain pins
-				LOCK : in STD_LOGIC;
-				LAST_EFFECT : in STD_LOGIC;
-				NEXT_EFFECT : in STD_LOGIC;
+			--	LOCK : in STD_LOGIC;
+			--	LAST_EFFECT : in STD_LOGIC;
+			--	NEXT_EFFECT : in STD_LOGIC;
 				
 				-- OTHERS  
 				RESET : in STD_LOGIC);
@@ -152,15 +152,15 @@ port map( CLK => CLK,
 			 audioIn => (others => '0'), -- temp
           audioOut => open,
           SM => SMVolume, -- TO ADD: back/next mux
-          lock => LOCK,	-- TO MOD: lock pulse detect + anti rebond		
-			 locked => volumeLocked,
+          lock =>LOCK,	-- TO MOD: lock pulse detect + anti rebond		
+			 locked => open,--volumeLocked,
           volumeGain => adc0,
           TBD1 => adc1,							
 			 TBD2 => adc4
 			);
 			
 -- LOGIQUE DE SORTIE
-audioOutR <= AudioInR;
+--audioOutR <= AudioInR;
 
 end Behavioral;
 

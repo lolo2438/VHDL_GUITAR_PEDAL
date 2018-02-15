@@ -68,20 +68,15 @@ Signal savedTBD2 : STD_LOGIC_VECTOR (9 downto 0);
 Signal isLocked : STD_LOGIC := '0';
 
 Signal calAudioIn : SIGNED(23 downto 0) := x"000000";
---Signal calAudioOut : SIGNED(23 downto 0) := (others => '0');
+Signal calAudioOut : SIGNED(39 downto 0) := (others => '0');
 
-constant gain : integer := 16;					-- Volume Gain constant
-constant adcRes : integer := 1023;				-- Adc resolution - 1
-
+constant gain : signed(4 downto 0) := b"01111";					      -- Volume Gain constant - 15
+constant adcRes : integer := 10;
 begin
 
 calAudioIn <= signed(audioIn);
 
 process(CLK,RESET)
-
-	variable valAdc :integer range 0 to 1023 := 0;
-	variable calAudioOut : integer;
-	
 	begin
 		if RESET = '0' then
 			volumeState <= stateNormal;
@@ -96,20 +91,22 @@ process(CLK,RESET)
 						
 					-- Selected module = 1 and lock = 0 => Normal operation
 					elsif SM = '1' and lock = '0' then
-						valAdc := to_integer(unsigned(volumeGain));
-						calAudioOut := (to_integer(calAudioIn) * gain / adcRes) * valAdc;				-- calAudioIn * a * adc/1024
-						
+					
+						calAudioOut <= calAudioIn * gain * (signed('0' & volumeGain));
+					
+					
+					
 						-- If value gets over positive peak
-						if calAudioOut > 8_388_607 then
+						if calAudioOut(39 downto adcRes) > 8_388_607 then
 							audioOut <= x"7FFFFF";
 							
 						--If value gets over negative peak
-						elsif calAudioOut < -8_388_608 then
+						elsif calAudioOut(39 downto adcRes) < -8_388_608 then
 							audioOut <= x"800000";
 						
 						-- If value is in range
 						else
-							audioOut <= std_logic_vector(to_signed(calAudioOut,24));
+							audioOut <= std_logic_vector(calAudioOut(33 downto 10));
 						end if;
 					
 					-- Selected module = '1' and lock = '1' => Lock the module
@@ -121,26 +118,26 @@ process(CLK,RESET)
 					end if;
 					
 				when stateLocked =>
-					valAdc := to_integer(unsigned(savedVolumeGain));
-					calAudioOut := (to_integer(calAudioIn) * gain / adcRes) * valAdc;
-					
-					-- If value gets over positive peak
-					if calAudioOut > 8_388_607 then
-						AudioOut <= x"7FFFFF";
-						
-					--If value gets over negative peak
-					elsif calAudioOut < -8_388_608 then
-						audioOut <= x"800000";
-					
-					-- If value is in range
-					else
-						audioOut <= std_logic_vector(to_signed(calAudioOut,24));
-					end if;
-						
-					if lock = '1' then
-						islocked <= '0';
-						volumeState <= stateNormal;
-					end if;
+--	--				valAdc := to_integer(unsigned(savedVolumeGain));
+--	--				calAudioOut := (to_integer(calAudioIn) * gain / adcRes) * valAdc;
+--					
+--					-- If value gets over positive peak
+--					if calAudioOut > 8_388_607 then
+--						AudioOut <= x"7FFFFF";
+--						
+--					--If value gets over negative peak
+--					elsif calAudioOut < -8_388_608 then
+--						audioOut <= x"800000";
+--					
+--					-- If value is in range
+--					else
+--				--		audioOut <= std_logic_vector(to_signed(calAudioOut,24));
+--					end if;
+--						
+--					if lock = '1' then
+--						islocked <= '0';
+--						volumeState <= stateNormal;
+--					end if;
 					
 			end case;
 		end if;
