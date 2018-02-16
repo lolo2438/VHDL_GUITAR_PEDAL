@@ -1,2 +1,0 @@
-vhdl work "modules/Volume/volumeControl.vhd"
-vhdl work "modules/Volume/volumeControlTB.vhd"

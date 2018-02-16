@@ -30,18 +30,23 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity volumeControl is
+	 Generic (adcRes : integer range 8 to 12 := 10);
     Port ( -- System Clock (50 MHz)
 			  CLK : in  STD_LOGIC;
 			  
 			  -- System global reset
 			  RESET : in STD_LOGIC;											-- logical '0' indicates us that reset button was pressed
 			  
+			  -- PEDAL
+			  Pedal : in STD_LOGIC;
+			  
 			  -- Audio signals
 			  audioIn : in  STD_LOGIC_VECTOR (23 downto 0);
            audioOut : out  STD_LOGIC_VECTOR (23 downto 0);
 			  
 			  -- Select Module
-           SM : in  STD_LOGIC;											-- Constant '1' indicates us that module is selected	
+           SM : in STD_LOGIC;												-- Constant '1' indicates us that module is selected	
+			  AC : in STD_LOGIC;												-- Activate chain, Constant '1' indicates that chain is activated
 			  
 			  -- Lock Module
            lock : in  STD_LOGIC;											-- goes high for 1 clock cycle, when detected switch between locked and normal mode
@@ -71,7 +76,7 @@ Signal calAudioIn : SIGNED(23 downto 0) := x"000000";
 Signal calAudioOut : SIGNED(39 downto 0) := (others => '0');
 
 constant gain : signed(4 downto 0) := b"01111";					      -- Volume Gain constant - 15
-constant adcRes : integer := 10;
+
 begin
 
 calAudioIn <= signed(audioIn);
@@ -85,16 +90,13 @@ process(CLK,RESET)
 		elsif rising_edge(CLK) then
 			case volumeState is
 				when stateNormal =>
-					-- Select Module and Lock = 0 => Foward input to output
-					if SM = '0' and lock = '0' then
+					-- Select Module => Foward input to output
+					if SM = '0' or Pedal = '0' then
 						audioOut <= audioIn;
 						
-					-- Selected module = 1 and lock = 0 => Normal operation
-					elsif SM = '1' and lock = '0' then
-					
+					-- Selected module = 1 and pedal was activated => Normal operation
+					elsif SM = '1' and Pedal = '1'  then
 						calAudioOut <= calAudioIn * gain * (signed('0' & volumeGain));
-					
-					
 					
 						-- If value gets over positive peak
 						if calAudioOut(39 downto adcRes) > 8_388_607 then
@@ -117,27 +119,34 @@ process(CLK,RESET)
 						islocked <= '1';
 					end if;
 					
-				when stateLocked =>
---	--				valAdc := to_integer(unsigned(savedVolumeGain));
---	--				calAudioOut := (to_integer(calAudioIn) * gain / adcRes) * valAdc;
---					
---					-- If value gets over positive peak
---					if calAudioOut > 8_388_607 then
---						AudioOut <= x"7FFFFF";
---						
---					--If value gets over negative peak
---					elsif calAudioOut < -8_388_608 then
---						audioOut <= x"800000";
---					
---					-- If value is in range
---					else
---				--		audioOut <= std_logic_vector(to_signed(calAudioOut,24));
---					end if;
---						
---					if lock = '1' then
---						islocked <= '0';
---						volumeState <= stateNormal;
---					end if;
+				when stateLocked =>						
+					-- If module is selected or chain effect is activated
+					if (SM = '1' or AC = '1') and Pedal = '1' then
+						calAudioOut <= calAudioIn * gain * (signed('0' & savedVolumeGain));
+						
+						-- If value gets over positive peak
+						if calAudioOut > 8_388_607 then
+							AudioOut <= x"7FFFFF";
+							
+						--If value gets over negative peak
+						elsif calAudioOut < -8_388_608 then
+							audioOut <= x"800000";
+					
+						-- If value is in range
+						else
+							audioOut <= std_logic_vector(calAudioOut(33 downto 10));
+						end if;
+					
+					-- If condition not met, foward signal
+					else
+						audioOut <= audioIn;
+					end if;
+					
+					-- If module is selected and we unlock
+					if SM = '1' and lock = '1' then
+						islocked <= '0';
+						volumeState <= stateNormal;
+					end if;
 					
 			end case;
 		end if;

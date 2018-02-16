@@ -41,9 +41,10 @@ entity TOP is
 				AVR_RX_BUSY : in STD_LOGIC;
 				
 				--Guitar effect chain pins
-			--	LOCK : in STD_LOGIC;
-			--	LAST_EFFECT : in STD_LOGIC;
-			--	NEXT_EFFECT : in STD_LOGIC;
+				PEDAL : in STD_LOGIC;
+				LOCK : in STD_LOGIC;
+				LAST_EFFECT : in STD_LOGIC;
+				NEXT_EFFECT : in STD_LOGIC;
 				
 				-- OTHERS  
 				RESET : in STD_LOGIC);
@@ -53,8 +54,8 @@ architecture Behavioral of TOP is
 
 -- I2S Signals
 signal audioL : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
-signal audioInR : STD_LOGIC_VECTOR(23 downto 0):= (others => '0');
-signal audioOutR : STD_LOGIC_VECTOR(23 downto 0):= (others => '0');
+signal audioIn : STD_LOGIC_VECTOR(23 downto 0):= (others => '0');
+signal audioOut : STD_LOGIC_VECTOR(23 downto 0):= (others => '0');
 
 signal dataReady : STD_LOGIC;
 signal doneSending : STD_LOGIC;
@@ -71,13 +72,13 @@ signal newTxData : STD_LOGIC;
 signal newRxData : STD_LOGIC;
 signal txBusy : STD_LOGIC;
 
+-- ADC READ signals
 signal adc0 : STD_LOGIC_VECTOR(9 downto 0);
 signal adc1 : STD_LOGIC_VECTOR(9 downto 0);
 signal adc4 : STD_LOGIC_VECTOR(9 downto 0);
 
 -- Guitar effect chain signals
-signal SMVolume : STD_LOGIC;
-signal volumeLocked : STD_LOGIC;
+signal lockedData : STD_LOGIC_VECTOR(2 downto 0);
 
 begin
 
@@ -92,7 +93,7 @@ port map(  -- I2S PORTS
 			  
 			  -- PARALLEL DATA FROM ADC
 			  DATA_ADC_L => audioL,
-			  DATA_ADC_R => audioInR,
+			  DATA_ADC_R => audioIn,
 			  
 			  -- OTHERS
 			  RESET => RESET,
@@ -107,7 +108,7 @@ port map (-- I2S PORTS
 			  
 			   -- PARALLEL DATA TO DAC
 			  DATA_DAC_L => audioL,
-			  DATA_DAC_R => audioOutR,
+			  DATA_DAC_R => audioOut,
 			  
 			  -- OTHERS
 			  RESET => RESET,
@@ -146,21 +147,49 @@ port map (	-- Clocks and Reset
 			);
 
 -- GUITAR EFFECT CHAIN
-moduleVolume: entity work.volumeControl(Behavioral)
-port map( CLK => CLK,
-			 RESET => RESET,
-			 audioIn => (others => '0'), -- temp
-          audioOut => open,
-          SM => SMVolume, -- TO ADD: back/next mux
-          lock =>LOCK,	-- TO MOD: lock pulse detect + anti rebond		
-			 locked => open,--volumeLocked,
-          volumeGain => adc0,
-          TBD1 => adc1,							
-			 TBD2 => adc4
+effectChain : entity work.effectChain(Behavioral)
+Port map ( -- FPGA 50 MHZ
+			  CLK => CLK,
+			  
+			  -- Audio signals
+			  AUDIO_IN => audioIn,
+           AUDIO_OUT => audioOut,
+			  
+			  READY => dataReady,
+			  DONE => doneSending,
+			  
+			  -- Pedal
+			  PEDAL => PEDAL,
+			  
+			  -- Lock
+			  LOCK => LOCK,
+			  LOCKED => lockedData,
+			  
+			  -- Effect control
+			  LAST_EFFECT => LAST_EFFECT,
+			  NEXT_EFFECT => NEXT_EFFECT,
+			  
+			  -- Reset
+			  RESET => RESET,
+			  
+			  -- Control ADC
+			  ADC0 => adc0,
+			  ADC1 => adc1,
+			  ADC4 => adc4
 			);
-			
+
+-- ADC READ MODULE
+
+-- NO REBOUND
+-- Pedal, lock, back, next
+
+-- PULSE BUTTON
+-- lock back next
+
+-- PEDAL CONTROLS
+-- 1 press => activate, 2 presses => lock module, press for 2 seconds => activate chain.
+
 -- LOGIQUE DE SORTIE
---audioOutR <= AudioInR;
 
 end Behavioral;
 
