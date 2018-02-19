@@ -37,16 +37,14 @@ entity volumeControl is
 			  -- System global reset
 			  RESET : in STD_LOGIC;											-- logical '0' indicates us that reset button was pressed
 			  
-			  -- PEDAL
-			  Pedal : in STD_LOGIC;
-			  
 			  -- Audio signals
 			  audioIn : in  STD_LOGIC_VECTOR (23 downto 0);
            audioOut : out  STD_LOGIC_VECTOR (23 downto 0);
 			  
 			  -- Select Module
+			  Pedal : in STD_LOGIC;
            SM : in STD_LOGIC;												-- Constant '1' indicates us that module is selected	
-			  AC : in STD_LOGIC;												-- Activate chain, Constant '1' indicates that chain is activated
+			  AA : in STD_LOGIC;												-- Activate all, Constant '1' indicates that chain is activated
 			  
 			  -- Lock Module
            lock : in  STD_LOGIC;											-- goes high for 1 clock cycle, when detected switch between locked and normal mode
@@ -116,12 +114,12 @@ process(CLK,RESET)
 						-- Save External controls
 						savedVolumeGain <= volumeGain;
 						volumeState <= stateLocked;
-						islocked <= '1';
+						locked <= '1';
 					end if;
 					
 				when stateLocked =>						
 					-- If module is selected or chain effect is activated
-					if (SM = '1' or AC = '1') and Pedal = '1' then
+					if (SM = '1' or AA = '1') and Pedal = '1' then
 						calAudioOut <= calAudioIn * gain * (signed('0' & savedVolumeGain));
 						
 						-- If value gets over positive peak
@@ -144,7 +142,7 @@ process(CLK,RESET)
 					
 					-- If module is selected and we unlock
 					if SM = '1' and lock = '1' then
-						islocked <= '0';
+						locked <= '0';
 						volumeState <= stateNormal;
 					end if;
 					

@@ -42,7 +42,6 @@ entity TOP is
 				
 				--Guitar effect chain pins
 				PEDAL : in STD_LOGIC;
-				LOCK : in STD_LOGIC;
 				LAST_EFFECT : in STD_LOGIC;
 				NEXT_EFFECT : in STD_LOGIC;
 				
@@ -79,6 +78,13 @@ signal adc4 : STD_LOGIC_VECTOR(9 downto 0);
 
 -- Guitar effect chain signals
 signal lockedData : STD_LOGIC_VECTOR(2 downto 0);
+
+-- Button processing
+signal sPedal : STD_LOGIC;
+signal sLock : STD_LOGIC;
+signal sNextE : STD_LOGIC;
+signal sLastE : STD_LOGIC;
+signal sAA : STD_LOGIC;
 
 begin
 
@@ -159,15 +165,16 @@ Port map ( -- FPGA 50 MHZ
 			  DONE => doneSending,
 			  
 			  -- Pedal
-			  PEDAL => PEDAL,
+			  PEDAL => sPedal,
 			  
 			  -- Lock
-			  LOCK => LOCK,
+			  LOCK => sLock,
 			  LOCKED => lockedData,
+			  ACTIVATE_ALL => sAA,
 			  
 			  -- Effect control
-			  LAST_EFFECT => LAST_EFFECT,
-			  NEXT_EFFECT => NEXT_EFFECT,
+			  LAST_EFFECT => sLastE,
+			  NEXT_EFFECT => sNextE,
 			  
 			  -- Reset
 			  RESET => RESET,
@@ -180,11 +187,20 @@ Port map ( -- FPGA 50 MHZ
 
 -- ADC READ MODULE
 
--- NO REBOUND
--- Pedal, lock, back, next
-
--- PULSE BUTTON
--- lock back next
+-- Input buttons Signal processing
+Buttton_Process : entity work.Button_Processing(Behavioral)
+Port map(
+			CLK => CLK,
+         PEDAL_IN => PEDAL,
+         NEXT_EFFECT_IN => NEXT_EFFECT,
+         LAST_EFFECT_IN => LAST_EFFECT,
+         PEDAL_OUT => sPedal,
+         LOCK=> sLock,
+			ACTIVATE_ALL => sAA,
+         NEXT_EFFECT_OUT => sNextE,
+         LAST_EFFECT_OUT => sLastE
+		  );
+-- add pulse module internally to i2s interfaces
 
 -- PEDAL CONTROLS
 -- 1 press => activate, 2 presses => lock module, press for 2 seconds => activate chain.

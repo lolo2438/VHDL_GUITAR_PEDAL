@@ -46,6 +46,7 @@ entity effectChain is
 			  -- Lock
 			  LOCK : in STD_LOGIC;
 			  LOCKED : out STD_LOGIC_VECTOR(2 downto 0);
+			  ACTIVATE_ALL : in STD_LOGIC;
 			  
 			  -- Effect control
 			  LAST_EFFECT: in STD_LOGIC;
@@ -66,7 +67,6 @@ architecture Behavioral of effectChain is
 Signal selectModule : STD_LOGIC_VECTOR(2 downto 0) := (others => '0');
 Signal effectSelector: integer range 0 to 2 := 0;
 
-Signal activateChain : STD_LOGIC;
 begin
 
 -- Select Module
@@ -86,7 +86,6 @@ with effectSelector select
 						 "000" when others;
 
 
-
 --PortMap
 Volume: entity work.volumeControl(Behavioral)
 port map( CLK => CLK,
@@ -94,9 +93,9 @@ port map( CLK => CLK,
 			 audioIn => AUDIO_IN,
           audioOut => AUDIO_OUT,
 			 Pedal => PEDAL,
-			 AC => activateChain,
-          SM => selectModule(2), -- TO ADD: back/next mux
-          lock => LOCK,				-- TO MOD: lock pulse detect + anti rebond		
+			 AA => ACTIVATE_ALL,
+          SM => selectModule(2), 
+          lock => LOCK,					
 			 locked => LOCKED(2),
           volumeGain => ADC0,
           TBD1 => ADC1,							
