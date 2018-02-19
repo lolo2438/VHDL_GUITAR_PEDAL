@@ -30,15 +30,22 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity Button_Processing is
-    Port ( CLK : in  STD_LOGIC;
-           PEDAL_IN : in  STD_LOGIC;
-           NEXT_EFFECT_IN : in  STD_LOGIC;
-           LAST_EFFECT_IN : in  STD_LOGIC;
-           PEDAL_OUT : out  STD_LOGIC;
-           LOCK : out  STD_LOGIC;
-			  ACTIVATE_ALL : out STD_LOGIC;
-           NEXT_EFFECT_OUT : out  STD_LOGIC;
-           LAST_EFFECT_OUT : out  STD_LOGIC);
+    Port ( CLK : in  STD_LOGIC;							-- FPGA CLOCK
+	 
+           PEDAL_IN : in  STD_LOGIC;					-- PEDAL IN
+			  PEDAL_OUT : out  STD_LOGIC;					-- PEDAL OUT
+			  
+           NEXT_EFFECT_IN : in  STD_LOGIC;			-- NEXT EFFECT IN
+           NEXT_EFFECT_OUT : out  STD_LOGIC;			-- NEXT EFFECT OUT
+           
+           
+           LAST_EFFECT_IN : in  STD_LOGIC;			-- LAST EFFECT IN
+           LAST_EFFECT_OUT : out  STD_LOGIC;			-- LAST EFFECT OUT
+			  
+			  LOCK : out  STD_LOGIC;						-- LOCK PULSE
+			  RESET : in STD_LOGIC							-- RESET SIGNAL
+			 );
+			 
 end Button_Processing;
 
 architecture Behavioral of Button_Processing is
@@ -62,8 +69,8 @@ Port map(
 			 CLK => CLK,		
           PEDAL_IN => arPedal,	
 			 PEDAL_OUT => PEDAL_OUT,  
-			 LOCK => LOCK,			
-			 AA => ACTIVATE_ALL		
+			 LOCK => LOCK,
+			 RESET => RESET
 			);
 
 -- Step 1: Remove rebound	  

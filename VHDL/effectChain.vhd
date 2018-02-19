@@ -46,7 +46,6 @@ entity effectChain is
 			  -- Lock
 			  LOCK : in STD_LOGIC;
 			  LOCKED : out STD_LOGIC_VECTOR(2 downto 0);
-			  ACTIVATE_ALL : in STD_LOGIC;
 			  
 			  -- Effect control
 			  LAST_EFFECT: in STD_LOGIC;
@@ -70,12 +69,17 @@ Signal effectSelector: integer range 0 to 2 := 0;
 begin
 
 -- Select Module
-ChooseEffect:process(CLK)
+ChooseEffect:process(RESET,CLK)
 	begin
-		if NEXT_EFFECT = '1' and LAST_EFFECT = '0' then
-			effectSelector <= effectSelector + 1;
-		elsif LAST_EFFECT = '1' and NEXT_EFFECT = '0' then
-			effectSelector <= effectSelector - 1;
+		if RESET = '0' then
+			effectSelector <= 0;
+		
+		elsif rising_edge(CLK) then
+			if NEXT_EFFECT = '1' and LAST_EFFECT = '0' then
+				effectSelector <= effectSelector + 1;
+			elsif LAST_EFFECT = '1' and NEXT_EFFECT = '0' then
+				effectSelector <= effectSelector - 1;
+			end if;
 		end if;
 	end process;
 
@@ -93,7 +97,6 @@ port map( CLK => CLK,
 			 audioIn => AUDIO_IN,
           audioOut => AUDIO_OUT,
 			 Pedal => PEDAL,
-			 AA => ACTIVATE_ALL,
           SM => selectModule(2), 
           lock => LOCK,					
 			 locked => LOCKED(2),

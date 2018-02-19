@@ -12,7 +12,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity PARALLEL_TO_I2S is
 	 Generic ( DATA_WIDTH : integer range 16 to 32 := 24);
 	 
-    Port ( -- I2S PORTS
+    Port ( --FPGA CLOCK
+			  CLK : in STD_LOGIC;
+			  
+			  -- I2S PORTS
 			  BCLK : in  STD_LOGIC;
            LRCK : in  STD_LOGIC;
 			  SDTO : out  STD_LOGIC;
@@ -38,6 +41,8 @@ Signal shiftRegOutR: STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0) := (others => '0');
 Signal lastLRCK : STD_LOGIC := '0';
 Signal LRCK_Flag : STD_LOGIC := '0';
 Signal LRCK_Changed : STD_LOGIC := '0';
+Signal sDone : STD_LOGIC := '0';
+Signal lastDone : STD_LOGIC := '0';
 
 begin
 
@@ -83,12 +88,12 @@ Transmit:process(RESET,BCLK)
 					end if;
 					
 				when Waiting =>
-					DONE <= '1';
+					sDone <= '1';
 					dataShift := DATA_WIDTH;
 					SDTO <= '0';
 					
 					if LRCK_CHANGED = '1' then
-						DONE <= '0';
+						sDone <= '0';
 						-- Send first bit
 						dataShift := dataShift - 1;
 						
@@ -104,5 +109,19 @@ Transmit:process(RESET,BCLK)
 				end case;
 		end if;
 	end process;
+	
+DetectDone: process(CLK,RESET)
+	begin
+		if RESET = '0' then
+			lastDone <= '0';
+		elsif rising_edge(CLK) then
+			if sDone = '1' and lastDone = '0' then
+				DONE <= '1';
+			else
+				DONE <= '0';
+			end if;
+		end if;
+	end process;
+	
 end Behavioral;
 

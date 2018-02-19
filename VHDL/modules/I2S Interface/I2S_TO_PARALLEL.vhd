@@ -12,7 +12,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity I2S_TO_PARALLEL is
 	 Generic ( DATA_WIDTH : integer range 16 to 32 := 24);
 	 
-    Port ( -- I2S PORTS
+    Port ( -- FPGA CLOCK
+			  CLK : in STD_LOGIC;
+			  
+			  -- I2S PORTS
 			  SDTI : in STD_LOGIC;
 			  BCLK : in  STD_LOGIC;
            LRCK : in  STD_LOGIC;
@@ -35,6 +38,8 @@ Signal i2sRx : i2s_Rx := Waiting;
 
 Signal shiftRegIn: STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0) := (others => '0');
 Signal lastLRCK : STD_LOGIC := '0';
+Signal dataReady : STD_LOGIC := '0';
+Signal lastDataReady : STD_LOGIC := '0';
 
 begin
 
@@ -45,7 +50,7 @@ Receive:process(RESET,BCLK)
 		if (RESET = '0') then
 			dataShift := DATA_WIDTH;
 			shiftRegIn <= (others => '0');
-			DATA_READY <= '0';
+			dataReady <= '0';
 			
 		elsif rising_edge(BCLK) then
 			case i2sRx is				
@@ -64,7 +69,7 @@ Receive:process(RESET,BCLK)
 						DATA_ADC_R <= shiftRegIn;
 					end if;
 					
-					DATA_READY <= '1';
+					dataReady <= '1';
 					i2sRx <= Waiting;
 				
 				when Waiting =>
@@ -76,12 +81,26 @@ Receive:process(RESET,BCLK)
 						
 						i2sRx <= Rx;
 						
-						DATA_READY <= '0';
+						dataReady <= '0';
 						
 						i2sRx <= Rx;
 					end if;
 			end case;
 		end if;
 	end process;
+	
+DetectDataRdy: process(CLK,RESET)
+	begin
+		if RESET = '0' then
+			lastDataReady <= '0';
+		elsif rising_edge(CLK) then
+			if dataReady = '1' and lastDataReady = '0' then
+				DATA_READY <= '1';
+			else
+				DATA_READY <= '0';
+			end if;
+		end if;
+	end process;
+	
 end Behavioral;
 

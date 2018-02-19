@@ -44,7 +44,6 @@ entity volumeControl is
 			  -- Select Module
 			  Pedal : in STD_LOGIC;
            SM : in STD_LOGIC;												-- Constant '1' indicates us that module is selected	
-			  AA : in STD_LOGIC;												-- Activate all, Constant '1' indicates that chain is activated
 			  
 			  -- Lock Module
            lock : in  STD_LOGIC;											-- goes high for 1 clock cycle, when detected switch between locked and normal mode
@@ -119,7 +118,7 @@ process(CLK,RESET)
 					
 				when stateLocked =>						
 					-- If module is selected or chain effect is activated
-					if (SM = '1' or AA = '1') and Pedal = '1' then
+					if SM = '1' and Pedal = '1' then
 						calAudioOut <= calAudioIn * gain * (signed('0' & savedVolumeGain));
 						
 						-- If value gets over positive peak

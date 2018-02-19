@@ -45,7 +45,7 @@ entity TOP is
 				LAST_EFFECT : in STD_LOGIC;
 				NEXT_EFFECT : in STD_LOGIC;
 				
-				-- OTHERS  
+				-- OTHERS 
 				RESET : in STD_LOGIC);
 end TOP;
 
@@ -60,11 +60,15 @@ signal dataReady : STD_LOGIC;
 signal doneSending : STD_LOGIC;
 
 -- AVR Interface signals
+
+	-- ADC signals
 signal channel : STD_LOGIC_VECTOR(3 downto 0);
 signal sample : STD_LOGIC_VECTOR(9 downto 0);
 signal sampleChannel : STD_LOGIC_VECTOR(3 downto 0);
 signal newSample : STD_LOGIC;
 signal lastSample : STD_LOGIC_VECTOR(9 downto 0);
+
+	-- Serial port signals
 signal txData : STD_LOGIC_VECTOR(7 downto 0);
 signal rxData : STD_LOGIC_VECTOR(7 downto 0);
 signal newTxData : STD_LOGIC;
@@ -84,7 +88,6 @@ signal sPedal : STD_LOGIC;
 signal sLock : STD_LOGIC;
 signal sNextE : STD_LOGIC;
 signal sLastE : STD_LOGIC;
-signal sAA : STD_LOGIC;
 
 begin
 
@@ -92,7 +95,10 @@ begin
 
 -- I2S INTERFACE
 I2SToParallel: entity work.I2S_TO_PARALLEL(Behavioral)
-port map(  -- I2S PORTS
+port map(  -- FPGA CLOCK
+			  CLK => CLK,
+			  
+			  -- I2S PORTS
 			  SDTI => SDTI,
 			  BCLK => BCLK,
 			  LRCK => LRCK,
@@ -107,7 +113,10 @@ port map(  -- I2S PORTS
 			  );
 			  
 parallelToI2S : entity work.PARALLEL_TO_I2S(Behavioral)
-port map (-- I2S PORTS
+port map ( -- FPGA CLOCK
+			  CLK => CLK,
+			  
+			  -- I2S PORTS
 			  BCLK => BCLK,
 			  LRCK => LRCK,
 			  SDTO => SDTO,
@@ -170,7 +179,6 @@ Port map ( -- FPGA 50 MHZ
 			  -- Lock
 			  LOCK => sLock,
 			  LOCKED => lockedData,
-			  ACTIVATE_ALL => sAA,
 			  
 			  -- Effect control
 			  LAST_EFFECT => sLastE,
@@ -191,19 +199,22 @@ Port map ( -- FPGA 50 MHZ
 Buttton_Process : entity work.Button_Processing(Behavioral)
 Port map(
 			CLK => CLK,
+			
          PEDAL_IN => PEDAL,
+			PEDAL_OUT => sPedal,
+			
          NEXT_EFFECT_IN => NEXT_EFFECT,
          LAST_EFFECT_IN => LAST_EFFECT,
-         PEDAL_OUT => sPedal,
+     
          LOCK=> sLock,
-			ACTIVATE_ALL => sAA,
+			
          NEXT_EFFECT_OUT => sNextE,
-         LAST_EFFECT_OUT => sLastE
+         LAST_EFFECT_OUT => sLastE,
+			
+			RESET => RESET
 		  );
--- add pulse module internally to i2s interfaces
 
--- PEDAL CONTROLS
--- 1 press => activate, 2 presses => lock module, press for 2 seconds => activate chain.
+-- Graphic interface signals
 
 -- LOGIQUE DE SORTIE
 
