@@ -42,16 +42,16 @@ signal audioBuffer : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
 
 begin
 
+audioBuffer <= audioIn;
+
 process(CLK)
 	begin
 		if rising_edge(CLK) then
 			if done = '1' then
-				audioBuffer <= audioIn;
+				audioOut <= audioBuffer;
 			end if;
 		end if;
 	end process;
-
-audioOut <= audioBuffer;
 
 end Behavioral;
 

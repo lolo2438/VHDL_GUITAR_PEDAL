@@ -1,0 +1,2 @@
+vhdl work "modules/Effect Chain/Volume/volumeControl.vhd"
+vhdl work "modules/Effect Chain/Volume/volumeControlTB.vhd"

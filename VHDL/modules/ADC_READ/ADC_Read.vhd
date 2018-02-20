@@ -44,6 +44,9 @@ entity ADC_Read is
 			  -- To AVR Interface
            REQUESTED_CHANNEL : out  STD_LOGIC_VECTOR(3 downto 0);
 			  
+			  --test led
+			  LED : out STD_LOGIC;
+			  
 			  -- To guitar effect
 			  ADC0 : out STD_LOGIC_VECTOR(9 downto 0);
 			  ADC1 : out STD_LOGIC_VECTOR(9 downto 0);
@@ -53,21 +56,19 @@ end ADC_Read;
 
 architecture Behavioral of ADC_Read is
 
-type adcState is (readSample, changeChannel);
-Signal adcSeq : adcState := readSample;
-
 Signal sADC0 : STD_LOGIC_VECTOR(9 downto 0) := (Others => '0');
 Signal sADC1 : STD_LOGIC_VECTOR(9 downto 0) := (Others => '0');
 Signal sADC4 : STD_LOGIC_VECTOR(9 downto 0) := (Others => '0');
+Signal tempSample : STD_LOGIC_VECTOR(9 downto 0) := (Others => '0');
 
 Signal requestedChannel : STD_LOGIC_VECTOR(3 downto 0) := x"0";
-
+Signal tempChannel : STD_LOGIC_VECTOR(3 downto 0) := x"0";
+Signal lastNewSample : STD_LOGIC := '0';
 begin
 
 ADC0 <= sADC0;
 ADC1 <= sADC1;
 ADC4 <= sADC4;
-
 REQUESTED_CHANNEL <= requestedChannel;
 
 ADC_Read:process(CLK,RESET)
@@ -77,38 +78,29 @@ ADC_Read:process(CLK,RESET)
 			sADC1 <= (Others => '0');
 			sADC4 <= (Others => '0');
 			
+			tempSample <= (others => '0');
+			tempChannel <= x"0";
 			requestedChannel <= x"0";
 			
 		elsif rising_edge(CLK) then
-			case adcSeq is
-				when readSample =>
-					if NEW_SAMPLE = '1' then
-						if SAMPLE_CHANNEL = x"0" then
-							sADC0 <= SAMPLE;
-						elsif SAMPLE_CHANNEL = x"1" then
-							sADC1 <= SAMPLE;
-						elsif SAMPLE_CHANNEL = x"4" then
-							sADC4 <= SAMPLE;
-						end if;
-						
-						adcSeq <= changeChannel;
-					end if;
-				
-				when changeChannel =>
-					-- Rotation of channels
-					if requestedChannel = x"0" then
-						requestedChannel <= x"1";
-						
-					elsif requestedChannel = x"1" then
-						requestedChannel <= x"4";
-						
-					elsif requestedChannel = x"4" then
-						requestedChannel <= x"0";
-						
-					end if;
-				
-					adcSeq <= readSample;
-				end case;
+			if NEW_SAMPLE = '1' then
+				tempSample <= SAMPLE;
+				tempChannel <= SAMPLE_CHANNEL;
+			else
+				if tempChannel = x"0" then
+					sADC0 <= tempSample; 
+					requestedChannel <= x"1";
+					LED <= tempSample(5);
+					
+				elsif tempChannel = x"1" then
+					sADC1 <= tempSample;
+					requestedChannel <= x"4";
+					
+				elsif tempChannel = x"4" then
+					sADC4 <= tempSample;
+					requestedChannel <= x"0";
+				end if;
+			end if;
 		end if;
 	end process;
 end Behavioral;

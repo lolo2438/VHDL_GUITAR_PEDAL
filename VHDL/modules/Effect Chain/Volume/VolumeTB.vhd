@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   10:43:05 02/13/2018
+-- Create Date:   09:55:06 02/20/2018
 -- Design Name:   
--- Module Name:   F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/Volume/volumeControlTB.vhd
+-- Module Name:   C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL/modules/Effect Chain/Volume/VolumeTB.vhd
 -- Project Name:  Projet
 -- Target Device:  
 -- Tool versions:  
@@ -32,10 +32,10 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY volumeControlTB IS
-END volumeControlTB;
+ENTITY VolumeTB IS
+END VolumeTB;
  
-ARCHITECTURE behavior OF volumeControlTB IS 
+ARCHITECTURE behavior OF VolumeTB IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
@@ -45,6 +45,7 @@ ARCHITECTURE behavior OF volumeControlTB IS
          RESET : IN  std_logic;
          audioIn : IN  std_logic_vector(23 downto 0);
          audioOut : OUT  std_logic_vector(23 downto 0);
+         Pedal : IN  std_logic;
          SM : IN  std_logic;
          lock : IN  std_logic;
          locked : OUT  std_logic;
@@ -59,6 +60,7 @@ ARCHITECTURE behavior OF volumeControlTB IS
    signal CLK : std_logic := '0';
    signal RESET : std_logic := '0';
    signal audioIn : std_logic_vector(23 downto 0) := (others => '0');
+   signal Pedal : std_logic := '0';
    signal SM : std_logic := '0';
    signal lock : std_logic := '0';
    signal volumeGain : std_logic_vector(9 downto 0) := (others => '0');
@@ -70,7 +72,7 @@ ARCHITECTURE behavior OF volumeControlTB IS
    signal locked : std_logic;
 
    -- Clock period definitions
-   constant CLK_period : time := 10 ns;
+   constant CLK_period : time := 20 ns;
  
 BEGIN
  
@@ -80,6 +82,7 @@ BEGIN
           RESET => RESET,
           audioIn => audioIn,
           audioOut => audioOut,
+          Pedal => Pedal,
           SM => SM,
           lock => lock,
           locked => locked,
@@ -100,28 +103,29 @@ BEGIN
 
    -- Stimulus process
    stim_proc: process
-   begin
-		RESET <= '0';
+   begin		
+    		RESET <= '0';
       -- hold reset state for 100 ns.
       wait for 100 ns;
 		RESET <= '1';
 		
-		volumeGain <= b"1111111111";
+		volumeGain <= b"0101010101";
 		
 		audioIn <= x"FF00FF";
 		wait for 1 us;
 		audioIn <= x"7F00FF";
 		wait for 1 us;
-		audioIn <= x"00FF00";
+		audioIn <= x"00FFFF";
 		wait for 1 us;
 		
 		SM <= '1';
+		PEDAL <= '1';
 		
 		audioIn <= x"FF00FF";
 		wait for 1 us;
 		audioIn <= x"7F00FF";
 		wait for 1 us;
-		audioIn <= x"00FF00";
+		audioIn <= x"00FFFF";
 		wait for 1 us;
 		
 		volumeGain <= b"0000000000";
@@ -130,7 +134,7 @@ BEGIN
 		wait for 1 us;
 		audioIn <= x"7F00FF";
 		wait for 1 us;
-		audioIn <= x"00FF00";
+		audioIn <= x"00FFFF";
 		wait for 1 us;
 		
 		volumeGain <= b"0110110110";
@@ -139,7 +143,7 @@ BEGIN
 		wait for 1 us;
 		audioIn <= x"7F00FF";
 		wait for 1 us;
-		audioIn <= x"00FF00";
+		audioIn <= x"00FFFF";
 		wait for 1 us;
 
       wait;

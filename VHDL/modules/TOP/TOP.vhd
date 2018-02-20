@@ -45,7 +45,10 @@ entity TOP is
 				LAST_EFFECT : in STD_LOGIC;
 				NEXT_EFFECT : in STD_LOGIC;
 				
-				-- OTHERS 
+				-- OTHERS
+				LED : out STD_LOGIC;
+				LED2 : out STD_LOGIC;
+				LED3 : out STD_LOGIC;
 				RESET : in STD_LOGIC);
 end TOP;
 
@@ -90,6 +93,8 @@ signal sLastE : STD_LOGIC;
 
 begin
 
+LED2 <= sPedal;
+
 -- PORT MAP
 
 -- I2S INTERFACE
@@ -133,7 +138,7 @@ port map ( -- FPGA CLOCK
 avr_interface : entity work.avr_interface(RTL)
 port map (	-- Clocks and Reset
 				clk => CLK,
-				rst => RESET,
+				rst => not RESET,
 				cclk => CCLK,
 				
 				-- Hardward SPI pins
@@ -159,6 +164,31 @@ port map (	-- Clocks and Reset
 				rx_data => rxData,
 				new_rx_data	=> newRxData
 			);
+			
+-- ADC READ MODULE
+ADC_READ : entity work.ADC_Read(Behavioral)
+Port map ( -- FPGA CLOCK
+			  CLK => CLK,
+			  
+			  -- RESET
+			  RESET => RESET,
+			  
+			  -- From AVR Interface
+			  NEW_SAMPLE => newSample,
+			  SAMPLE => sample,
+			  SAMPLE_CHANNEL => sampleChannel,
+			  
+			  -- To AVR Interface
+           REQUESTED_CHANNEL => channel,
+			  
+			  -- test LED
+			  LED => LED3,
+			  
+			  -- To guitar effect
+			  ADC0 => adc0,
+			  ADC1 => adc1,
+			  ADC4 => adc4
+			 );
 
 -- GUITAR EFFECT CHAIN
 effectChain : entity work.effectChain(Behavioral)
@@ -186,33 +216,15 @@ Port map ( -- FPGA 50 MHZ
 			  -- Reset
 			  RESET => RESET,
 			  
+			  --test led
+			  LED => LED,
+			  
 			  -- Control ADC
 			  ADC0 => adc0,
 			  ADC1 => adc1,
 			  ADC4 => adc4
 			);
 
--- ADC READ MODULE
-ADC_READ : entity work.ADC_Read(Behavioral)
-Port map ( -- FPGA CLOCK
-			  CLK => CLK,
-			  
-			  -- RESET
-			  RESET => RESET,
-			  
-			  -- From AVR Interface
-			  NEW_SAMPLE => newSample,
-			  SAMPLE => sample,
-			  SAMPLE_CHANNEL => sampleChannel,
-			  
-			  -- To AVR Interface
-           REQUESTED_CHANNEL => channel,
-			  
-			  -- To guitar effect
-			  ADC0 => adc0,
-			  ADC1 => adc1,
-			  ADC4 => adc4
-			 );
 -- Input buttons Signal processing
 Buttton_Process : entity work.Button_Processing(Behavioral)
 Port map(

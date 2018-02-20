@@ -22,7 +22,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx primitives in this code.
@@ -54,6 +54,9 @@ entity effectChain is
 			  -- Reset
 			  RESET : in STD_LOGIC;
 			  
+			  -- test led
+			  LED : out STD_LOGIC;
+			  
 			  -- Control ADC
 			  ADC0 : in STD_LOGIC_VECTOR(9 downto 0);
 			  ADC1 : in STD_LOGIC_VECTOR(9 downto 0);
@@ -63,8 +66,8 @@ end effectChain;
 
 architecture Behavioral of effectChain is
 
-Signal selectModule : STD_LOGIC_VECTOR(2 downto 0) := (others => '0');
-Signal effectSelector: integer range 0 to 2 := 0;
+Signal selectModule : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
+Signal effectSelector: unsigned(2 downto 0) := (others => '0');
 
 -- AUDIO SIGNAL
 signal audioOutBuffer : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
@@ -72,11 +75,13 @@ signal audioOutVolume : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
 
 begin
 
+LED <= selectModule(2);
+
 -- Select Module
 ChooseEffect:process(RESET,CLK)
 	begin
 		if RESET = '0' then
-			effectSelector <= 0;
+			effectSelector <= (others => '0');
 		
 		elsif rising_edge(CLK) then
 			if NEXT_EFFECT = '1' and LAST_EFFECT = '0' then
@@ -88,10 +93,15 @@ ChooseEffect:process(RESET,CLK)
 	end process;
 
 with effectSelector select
-	selectModule <= "001" when 0,
-						 "010" when 1,
-						 "100" when 2,
-						 "000" when others;
+	selectModule <= b"00000001" when b"000",
+						 b"00000010" when b"001",
+						 b"00000100" when b"010",
+						 b"00001000" when b"011",
+						 b"00010000" when b"100",
+						 b"00100000" when b"101",
+						 b"01000000" when b"110",
+						 b"10000000" when b"111",
+						 b"00000000" when others;
 
 
 --PortMap
