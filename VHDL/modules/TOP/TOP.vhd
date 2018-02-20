@@ -66,7 +66,6 @@ signal channel : STD_LOGIC_VECTOR(3 downto 0);
 signal sample : STD_LOGIC_VECTOR(9 downto 0);
 signal sampleChannel : STD_LOGIC_VECTOR(3 downto 0);
 signal newSample : STD_LOGIC;
-signal lastSample : STD_LOGIC_VECTOR(9 downto 0);
 
 	-- Serial port signals
 signal txData : STD_LOGIC_VECTOR(7 downto 0);
@@ -194,7 +193,26 @@ Port map ( -- FPGA 50 MHZ
 			);
 
 -- ADC READ MODULE
-
+ADC_READ : entity work.ADC_Read(Behavioral)
+Port map ( -- FPGA CLOCK
+			  CLK => CLK,
+			  
+			  -- RESET
+			  RESET => RESET,
+			  
+			  -- From AVR Interface
+			  NEW_SAMPLE => newSample,
+			  SAMPLE => sample,
+			  SAMPLE_CHANNEL => sampleChannel,
+			  
+			  -- To AVR Interface
+           REQUESTED_CHANNEL => channel,
+			  
+			  -- To guitar effect
+			  ADC0 => adc0,
+			  ADC1 => adc1,
+			  ADC4 => adc4
+			 );
 -- Input buttons Signal processing
 Buttton_Process : entity work.Button_Processing(Behavioral)
 Port map(

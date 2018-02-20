@@ -43,7 +43,7 @@ architecture Behavioral of PedalControl is
 type PedalState is (Waiting, Analyzing);
 Signal machinePedal : PedalState := Waiting;
 
-signal compteur : unsigned(27 downto 0) := (others => '0');
+signal compteur : unsigned(25 downto 0) := (others => '0');
 
 signal lastPedal : STD_LOGIC := '0';
 signal PedalStateOut : STD_LOGIC := '0';

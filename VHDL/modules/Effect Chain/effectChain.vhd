@@ -66,6 +66,10 @@ architecture Behavioral of effectChain is
 Signal selectModule : STD_LOGIC_VECTOR(2 downto 0) := (others => '0');
 Signal effectSelector: integer range 0 to 2 := 0;
 
+-- AUDIO SIGNAL
+signal audioOutBuffer : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
+signal audioOutVolume : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
+
 begin
 
 -- Select Module
@@ -91,11 +95,19 @@ with effectSelector select
 
 
 --PortMap
+BufferIn: entity work.Buffer_In(Behavioral)
+port map( CLK => CLK,
+			 audioIn => AUDIO_IN,
+			 audioOut => audioOutBuffer,
+			 dataReady => READY
+			);
+
+
 Volume: entity work.volumeControl(Behavioral)
 port map( CLK => CLK,
 			 RESET => RESET,
-			 audioIn => AUDIO_IN,
-          audioOut => AUDIO_OUT,
+			 audioIn => audioOutBuffer,
+          audioOut => audioOutVolume,
 			 Pedal => PEDAL,
           SM => selectModule(2), 
           lock => LOCK,					
@@ -105,5 +117,11 @@ port map( CLK => CLK,
 			 TBD2 => ADC4
 			);
 
+BufferOut: entity work.Buffer_Out(Behavioral)
+port map( CLK => CLK,
+			 audioIn => audioOutVolume,
+			 audioOut => AUDIO_OUT,
+			 done => DONE
+			);
 end Behavioral;
 
