@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    20:25:26 02/12/2018 
+-- Create Date:    14:33:55 02/23/2018 
 -- Design Name: 
--- Module Name:    Distortion - Behavioral 
+-- Module Name:    Tremolo - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,8 +29,8 @@ use IEEE.NUMERIC_STD.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Distortion is
-    Port (-- System Clock (50 MHz)
+entity Tremolo is
+	Port(-- System Clock (50 MHz)
 			  CLK : in  STD_LOGIC;
 			  
 			  -- System global reset
@@ -49,113 +49,122 @@ entity Distortion is
 			  locked : out STD_LOGIC;										-- indicated that the module is locked
 			  
 			  -- External control
-           Dist : in  STD_LOGIC_VECTOR (9 downto 0);
-           Tone : in  STD_LOGIC_VECTOR (9 downto 0);				-- To be determined
-			  Cut : in STD_LOGIC_VECTOR (9 downto 0)
+           Rate  : in  STD_LOGIC_VECTOR (9 downto 0);
+           Wave  : in  STD_LOGIC_VECTOR (9 downto 0);				
+			  Depth : in STD_LOGIC_VECTOR (9 downto 0)
 			);
-end Distortion;
+end Tremolo;
 
-architecture Behavioral of Distortion is
+architecture Behavioral of Tremolo is
 
 Type effectState is (stateNormal,stateLocked);
-Signal distState : effectState := stateNormal;
+Signal tremState : effectState := stateNormal;
 
 -- Saved signals for locked mode
-Signal savedDist : STD_LOGIC_VECTOR (9 downto 0);
-Signal savedTone : STD_LOGIC_VECTOR (9 downto 0);
-Signal savedCut : STD_LOGIC_VECTOR (9 downto 0);
+Signal savedRate  : STD_LOGIC_VECTOR (9 downto 0);
+Signal savedWave  : STD_LOGIC_VECTOR (9 downto 0);
+Signal savedDepth : STD_LOGIC_VECTOR (9 downto 0);
 
 Signal isLocked : STD_LOGIC := '0';
 
 Signal calAudio : SIGNED(23 downto 0) := (others => '0');
 
-signal limitpos : SIGNED(26 downto 0);
-signal limitneg : SIGNED(26 downto 0);
+Signal waveDelay : signed(11 downto 0) := (others => '0');
+Signal genWave : signed(11 downto 0) := (others => '0');
+Signal waveOut : signed(11 downto 0) := (others => '0');
+Signal direction : STD_LOGIC := '0';
 
 begin
--- https://en.wikipedia.org/wiki/Distortion
 
-calAudioIn <= signed(audioIn);
-limitPos <= x"1CCC" * ('0' & signed(cut)) + (b"000" & x"0CCCCC"); -- (2^23 - (10% de 2^23)) * 1024 + (10% de 2^23)
-limitNeg <= x"1CCC" * ('0' & signed(cut)) - (b"000" & x"0CCCCC"); -- (2^23 - (10% de 2^23)) * 1024 - (10% de 2^23)
-
---limitPosL <= x"1CCC" * ('0' & savedCut) + (b"000" & x"0CCCCC");
---limitNegL <= x"1CCC" * ('0' & savedCut) + (b"000" & x"0CCCCC");
-
-process(CLK)
+ClkDiv:process(CLK,RESET)
 	begin
-		if rising_edge(CLK) then
-			
-		end if;
-		
 	end process;
 
 
-
-
-process(CLK,RESET)
+-- CLK DIV => 50MHz / 1024 steps -> bouger a 6
+WaveGen:process(CLK,RESET)
 	begin
 		if RESET = '0' then
-			distState <= stateNormal;
+			waveOut <= (others => '0');
+		elsif rising_edge(CLK) then												-- Wave  : Triangle -> square      := 0 -> 1 sample, -> 1023 -> 1024 sample
+			if direction = '0' then  												-- Going up
+				if waveDelay < signed('0' & Wave) and waveDelay < 1024 then				-- count delay
+					waveDelay <= waveDelay + ((b"00" & signed(Rate)) + 1);
+				else																		-- add delay to wave
+					genWave <= waveDelay;
+	
+					if genWave >= 1024 then											-- If we go above 1024, max value, need to go down
+						genWave <= x"400";
+						direction <= '1';
+						waveDelay <= x"400";
+					end if;
+					
+				end if;
+			else																			-- Going down
+				if waveDelay > (x"400" - signed('0' & Wave)) and waveDelay > 0 then		-- count delay
+					waveDelay <= waveDelay - ((b"00" & signed(Rate)) + 1);
+				else																		-- add delay to wave
+					genWave <= waveDelay;
+					
+					if genWave <= 0 then												-- If we go under 0, min value, need to go up
+						genWave <= x"000";
+						direction <= '0';
+						waveDelay <= x"000";
+					end if;
+
+				end if;
+			end if;
+			
+			-- Depth : gain amplitude  -----> waveOut <= genWave * Depth
+			waveOut <= genWave * signed('0' & Depth);
+			-- TODO : divide wave out by adc res
+		end if;
+	end process;
+
+
+MachSeq:process(CLK,RESET)
+	begin
+		if RESET = '0' then
+			tremState <= stateNormal;
 			locked <= '0';
 			
-		elsif rising_edge(CLK) then
-			case distState is
+		elsif rising_edge(CLK) then													
+			case tremState is
 				when stateNormal =>						
 					if SM = '1' and Pedal = '1'  then								-- Selected module = 1 and pedal was activated => Normal operation
-						-- 1Multiplier calAudio par gain (voir volume)
-						
-						--2 verifier limite
-						if audioIn(23) = '0' then
-							if calAudioIn > limitPos then
-								calAudioIn <= limitePos;
-							else
-								audioOut <= calAudioIn;
-							end if;
-							
-						else
-							if calAudioIn < limitNeg then
-								calAudioIn <= limiteNeg;
-							else
-								audioOut <= calAudioIn;
-							end if;
-						end if;
-						
-						-- passer dans le filtre
-						
-						--3 changer le ton
-					
+						audioOut <= std_logic_vector(calAudio * waveOut);
 					else																	   -- Otherwise foward signal
 						audioOut <= std_logic_vector(calAudio);
 					end if;
 					
 					if SM = '1' and lock = '1' then							      -- Selected module = '1' and lock = '1' => Lock the module
 						-- Save External controls
-						savedDist <= Dist;
-						savedTone <= Tone;
-						savedCut <= Cut;
-						distState <= stateLocked;
+						savedRate <= Rate;
+						savedWave <= Wave;
+						savedDepth <= Depth;
+						tremState <= stateLocked;
 						locked <= '1';
 					end if;
 					
 				when stateLocked =>						
 					-- If module is selected or chain effect is activated
 					if Pedal = '1' then
-					
+			--			audioOut <= std_logic_vector(calAudio * savedWaveOut);
 					-- If condition not met, foward signal
 					else
-						audioOut <= std_logic_vector(calAudioIn);
+						audioOut <= std_logic_vector(calAudio);
 					end if;
 					
 					-- If module is selected and we unlock
 					if SM = '1' and lock = '1' then
 						locked <= '0';
-						distState <= stateNormal;
+						tremState <= stateNormal;
 					end if;
 					
 			end case;
 		end if;
 	end process;
+
 
 end Behavioral;
 
