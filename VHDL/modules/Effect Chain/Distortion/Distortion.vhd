@@ -30,28 +30,46 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity Distortion is
-    Port ( -- 50MHz Clock
+    Port (-- System Clock (50 MHz)
 			  CLK : in  STD_LOGIC;
 			  
-			  -- Audio input and audio output
+			  -- System global reset
+			  RESET : in STD_LOGIC;											-- logical '0' indicates us that reset button was pressed
+			  
+			  -- Audio signals
 			  audioIn : in  STD_LOGIC_VECTOR (23 downto 0);
            audioOut : out  STD_LOGIC_VECTOR (23 downto 0);
 			  
 			  -- Select Module
-			  SM : in STD_LOGIC;
+			  Pedal : in STD_LOGIC;											-- Constant '1' indicates that pedal is activated
+           SM : in STD_LOGIC;												-- Constant '1' indicates us that module is selected	
 			  
 			  -- Lock Module
-           LM : in  STD_LOGIC;
-			  Locked : out STD_LOGIC;
+           lock : in  STD_LOGIC;											-- goes high for 1 clock cycle, when detected switch between locked and normal mode
+			  locked : out STD_LOGIC;										-- indicated that the module is locked
 			  
-			  -- External Controls
-           Tone : in  STD_LOGIC_VECTOR (9 downto 0);
-           Drive : in  STD_LOGIC_VECTOR (9 downto 0);
-			  TBD : in STD_LOGIC_VECTOR (9 downto 0)
+			  -- External control
+           Dist : in  STD_LOGIC_VECTOR (9 downto 0);
+           Tone : in  STD_LOGIC_VECTOR (9 downto 0);				-- To be determined
+			  Level : in STD_LOGIC_VECTOR (9 downto 0)
 			);
 end Distortion;
 
 architecture Behavioral of Distortion is
+
+-- State machine
+Type effectState is (stateNormal,stateLocked);
+Signal distState : effectState := stateNormal;
+
+-- Saved signals for locked mode
+Signal savedDist : STD_LOGIC_VECTOR (9 downto 0);
+Signal savedTone : STD_LOGIC_VECTOR (9 downto 0);
+Signal savedLevel : STD_LOGIC_VECTOR (9 downto 0);
+
+Signal isLocked : STD_LOGIC := '0';
+
+Signal calAudioIn : SIGNED(23 downto 0) := (others => '0');
+Signal calAudioOut : SIGNED(39 downto 0) := (others => '0');
 
 begin
 
@@ -74,6 +92,59 @@ begin
 --
 --k = 2*a/(1-a);
 --x = (1+k)*(x)./(1+k*abs(x));
+
+calAudioIn <= signed(audioIn);
+
+process(CLK,RESET)
+	begin
+		if RESET = '0' then
+			distState <= stateNormal;
+			locked <= '0';
+			
+		elsif rising_edge(CLK) then
+			case distState is
+				when stateNormal =>						
+					-- Selected module = 1 and pedal was activated => Normal operation
+					if SM = '1' and Pedal = '1'  then
+						--FORMULE: k = 2*a/(1-a);
+						--TRANSLATE: k <= 2 * signed(Dist) / (adcRes/2) - signed(Dist);
+						
+						--FORMULE : x = (1+k)*(x)./(1+k*abs(x));
+						-- TRANSLATE : calAudioOut <= (1 + k) * calAudioIn / ( 1 + k * abs(calAudioIn))
+						
+					--Otherwise foward signal
+					else
+						audioOut <= std_logic_vector(calAudioIn);
+					end if;
+					
+					-- Selected module = '1' and lock = '1' => Lock the module
+					if SM = '1' and lock = '1' then
+						-- Save External controls
+						savedDist <= Dist;
+						savedTone <= Tone;
+						savedLevel <= Level;
+						distState <= stateLocked;
+						locked <= '1';
+					end if;
+					
+				when stateLocked =>						
+					-- If module is selected or chain effect is activated
+					if Pedal = '1' then
+					
+					-- If condition not met, foward signal
+					else
+						audioOut <= std_logic_vector(calAudioIn);
+					end if;
+					
+					-- If module is selected and we unlock
+					if SM = '1' and lock = '1' then
+						locked <= '0';
+						distState <= stateNormal;
+					end if;
+					
+			end case;
+		end if;
+	end process;
 
 end Behavioral;
 

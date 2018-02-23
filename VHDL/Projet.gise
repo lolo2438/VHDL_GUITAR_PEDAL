@@ -22,8 +22,13 @@
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="Projet.xise"/>
 
   <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Distortion.prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="Distortion.stx"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="Distortion.xst"/>
     <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="I2S_TO_PARALLEL.sym" xil_pn:origination="imported"/>
     <file xil_pn:fileType="FILE_NCD" xil_pn:name="TOP_guide.ncd" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
   </files>
 
   <transforms xmlns="http://www.xilinx.com/XMLSchema"/>
