@@ -49,9 +49,9 @@ entity Distortion is
 			  locked : out STD_LOGIC;										-- indicated that the module is locked
 			  
 			  -- External control
-           Dist : in  STD_LOGIC_VECTOR (9 downto 0);
-           Tone : in  STD_LOGIC_VECTOR (9 downto 0);				-- To be determined
-			  Cut : in STD_LOGIC_VECTOR (9 downto 0)
+           Dist : in  STD_LOGIC_VECTOR (9 downto 0);				-- Ammount of distortion 	  -> Gain of the pre-cut signal
+           Tone : in  STD_LOGIC_VECTOR (9 downto 0);				-- Tone of the signal		  -> Filtre passe bas
+			  Level : in STD_LOGIC_VECTOR (9 downto 0)				-- Ammount of gain of volume -> gain of the post-processed signal
 			);
 end Distortion;
 
@@ -67,31 +67,15 @@ Signal savedCut : STD_LOGIC_VECTOR (9 downto 0);
 
 Signal isLocked : STD_LOGIC := '0';
 
-Signal calAudio : SIGNED(23 downto 0) := (others => '0');
+Signal calAudioIn : SIGNED(23 downto 0) := (others => '0');
 
-signal limitpos : SIGNED(26 downto 0);
-signal limitneg : SIGNED(26 downto 0);
+constant limitpos : SIGNED(26 downto 0);
+constant limitneg : SIGNED(26 downto 0);
 
 begin
 -- https://en.wikipedia.org/wiki/Distortion
 
 calAudioIn <= signed(audioIn);
-limitPos <= x"1CCC" * ('0' & signed(cut)) + (b"000" & x"0CCCCC"); -- (2^23 - (10% de 2^23)) * 1024 + (10% de 2^23)
-limitNeg <= x"1CCC" * ('0' & signed(cut)) - (b"000" & x"0CCCCC"); -- (2^23 - (10% de 2^23)) * 1024 - (10% de 2^23)
-
---limitPosL <= x"1CCC" * ('0' & savedCut) + (b"000" & x"0CCCCC");
---limitNegL <= x"1CCC" * ('0' & savedCut) + (b"000" & x"0CCCCC");
-
-process(CLK)
-	begin
-		if rising_edge(CLK) then
-			
-		end if;
-		
-	end process;
-
-
-
 
 process(CLK,RESET)
 	begin
@@ -103,30 +87,9 @@ process(CLK,RESET)
 			case distState is
 				when stateNormal =>						
 					if SM = '1' and Pedal = '1'  then								-- Selected module = 1 and pedal was activated => Normal operation
-						-- 1Multiplier calAudio par gain (voir volume)
 						
-						--2 verifier limite
-						if audioIn(23) = '0' then
-							if calAudioIn > limitPos then
-								calAudioIn <= limitePos;
-							else
-								audioOut <= calAudioIn;
-							end if;
-							
-						else
-							if calAudioIn < limitNeg then
-								calAudioIn <= limiteNeg;
-							else
-								audioOut <= calAudioIn;
-							end if;
-						end if;
-						
-						-- passer dans le filtre
-						
-						--3 changer le ton
-					
 					else																	   -- Otherwise foward signal
-						audioOut <= std_logic_vector(calAudio);
+						audioOut <= std_logic_vector(calAudioIn);
 					end if;
 					
 					if SM = '1' and lock = '1' then							      -- Selected module = '1' and lock = '1' => Lock the module

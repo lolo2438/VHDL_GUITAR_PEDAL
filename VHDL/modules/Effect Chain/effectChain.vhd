@@ -72,6 +72,7 @@ Signal effectSelector: unsigned(2 downto 0) := (others => '0');
 -- AUDIO SIGNAL
 signal audioOutBuffer : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
 signal audioOutVolume : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
+signal audioOutTremolo: STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
 
 begin
 
@@ -112,11 +113,35 @@ port map( CLK => CLK,
 			 dataReady => READY
 			);
 
+Tremolo: entity work.Tremolo(Behavioral)
+port map(-- System Clock (50 MHz)
+			  CLK => CLK,
+			  
+			  -- System global reset
+			  RESET => RESET,										-- logical '0' indicates us that reset button was pressed
+			  
+			  -- Audio signals
+			  audioIn => audioOutBuffer,
+           audioOut => audioOutTremolo,
+			  
+			  -- Select Module
+			  Pedal => PEDAL,										-- Constant '1' indicates that pedal is activated
+           SM => selectModule(1),											-- Constant '1' indicates us that module is selected	
+			  
+			  -- Lock Module
+           lock => LOCK,											-- goes high for 1 clock cycle, when detected switch between locked and normal mode
+			  locked => LOCKED(1),									-- indicated that the module is locked
+			  
+			  -- External control
+           Rate  => ADC0,
+           Wave  => ADC1,		
+			  Depth => ADC4
+			);
 
 Volume: entity work.volumeControl(Behavioral)
 port map( CLK => CLK,
 			 RESET => RESET,
-			 audioIn => audioOutBuffer,
+			 audioIn => audioOutTremolo,
           audioOut => audioOutVolume,
 			 Pedal => PEDAL,
           SM => selectModule(2), 

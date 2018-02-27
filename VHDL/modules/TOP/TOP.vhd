@@ -54,6 +54,9 @@ end TOP;
 
 architecture Behavioral of TOP is
 
+-- Others
+signal NOT_RESET : STD_LOGIC;
+
 -- I2S Signals
 signal audioL : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
 signal audioIn : STD_LOGIC_VECTOR(23 downto 0):= (others => '0');
@@ -92,6 +95,8 @@ signal sNextE : STD_LOGIC;
 signal sLastE : STD_LOGIC;
 
 begin
+
+NOT_RESET <= not RESET;
 
 LED2 <= sPedal;
 
@@ -138,7 +143,7 @@ port map ( -- FPGA CLOCK
 avr_interface : entity work.avr_interface(RTL)
 port map (	-- Clocks and Reset
 				clk => CLK,
-				rst => not RESET,
+				rst => NOT_RESET,
 				cclk => CCLK,
 				
 				-- Hardward SPI pins

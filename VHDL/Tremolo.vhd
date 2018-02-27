@@ -49,9 +49,9 @@ entity Tremolo is
 			  locked : out STD_LOGIC;										-- indicated that the module is locked
 			  
 			  -- External control
-           Rate  : in  STD_LOGIC_VECTOR (9 downto 0);
-           Wave  : in  STD_LOGIC_VECTOR (9 downto 0);				
-			  Depth : in STD_LOGIC_VECTOR (9 downto 0)
+           Rate  : in  STD_LOGIC_VECTOR (9 downto 0);				-- Frequency of the tremolo
+           Wave  : in  STD_LOGIC_VECTOR (9 downto 0);				-- Wave shape of the tremolo
+			  Depth : in STD_LOGIC_VECTOR (9 downto 0)				-- Amplitude of the tremolo
 			);
 end Tremolo;
 
@@ -67,61 +67,105 @@ Signal savedDepth : STD_LOGIC_VECTOR (9 downto 0);
 
 Signal isLocked : STD_LOGIC := '0';
 
-Signal calAudio : SIGNED(23 downto 0) := (others => '0');
+-- Signal for audio effect calculation
+Signal calAudioIn : SIGNED(23 downto 0) := (others => '0');
+Signal calAudioOut : SIGNED(33 downto 0) := (others => '0');
 
-Signal waveDelay : signed(11 downto 0) := (others => '0');
-Signal genWave : signed(11 downto 0) := (others => '0');
-Signal waveOut : signed(11 downto 0) := (others => '0');
+-- Signals for tremolo wave generation
+Signal genWave : unsigned(10 downto 0) := (others => '0');
+Signal waveOut : signed(22 downto 0) := (others => '0');
 Signal direction : STD_LOGIC := '0';
+
+Signal sRate : unsigned(9 downto 0);
+Signal sWave : unsigned(9 downto 0);
+Signal sDepth: signed(10 downto 0);
+
+signal prescaler : unsigned(10 downto 0);
+signal lastPrescaler : unsigned(10 downto 0);
+
+--Wave generation clock
+Signal WCLK : STD_LOGIC := '0';
+Signal compteur : unsigned(26 downto 0) := (others => '0');
 
 begin
 
+-- Signal assignations
+
+sRate <= unsigned(Rate);
+sWave <= unsigned(Wave);
+sDepth <= signed('0' & Depth);
+
+calAudioIn <= signed(audioIn);
+
+prescaler <= b"00000000001" when sWave >= 0 and sWave < 93 else	--1
+				 b"00000000010" when sWave >= 93 and sWave < 186 else	--2
+				 b"00000000100" when sWave >= 186 and sWave < 279 else	--4
+				 b"00000001000" when sWave >= 279 and sWave < 372 else	--8
+				 b"00000010000" when sWave >= 372 and sWave < 465 else	--16
+				 b"00000100000" when sWave >= 465 and sWave < 558 else	--32
+				 b"00001000000" when sWave >= 558 and sWave < 651 else	--64
+				 b"00010000000" when sWave >= 651 and sWave < 744 else	--128
+				 b"00100000000" when sWave >= 744 and sWave < 837 else	--256
+				 b"01000000000" when sWave >= 837 and sWave < 930 else	--512
+				 b"10000000000" when sWave >= 930 and sWave <= 1023 else	--1024
+				 b"00000000000";
+
+
+-- Tremolo clock
 ClkDiv:process(CLK,RESET)
 	begin
-	end process;
-
-
--- CLK DIV => 50MHz / 1024 steps -> bouger a 6
-WaveGen:process(CLK,RESET)
-	begin
 		if RESET = '0' then
-			waveOut <= (others => '0');
-		elsif rising_edge(CLK) then												-- Wave  : Triangle -> square      := 0 -> 1 sample, -> 1023 -> 1024 sample
-			if direction = '0' then  												-- Going up
-				if waveDelay < signed('0' & Wave) and waveDelay < 1024 then				-- count delay
-					waveDelay <= waveDelay + ((b"00" & signed(Rate)) + 1);
-				else																		-- add delay to wave
-					genWave <= waveDelay;
-	
-					if genWave >= 1024 then											-- If we go above 1024, max value, need to go down
-						genWave <= x"400";
-						direction <= '1';
-						waveDelay <= x"400";
-					end if;
-					
-				end if;
-			else																			-- Going down
-				if waveDelay > (x"400" - signed('0' & Wave)) and waveDelay > 0 then		-- count delay
-					waveDelay <= waveDelay - ((b"00" & signed(Rate)) + 1);
-				else																		-- add delay to wave
-					genWave <= waveDelay;
-					
-					if genWave <= 0 then												-- If we go under 0, min value, need to go up
-						genWave <= x"000";
-						direction <= '0';
-						waveDelay <= x"000";
-					end if;
-
-				end if;
+			compteur <= (others => '0');
+		elsif rising_edge(CLK) then
+			if compteur < (b"00" & x"5F5E100") - (x"16A75" * sRate)   then 						-- 100_000_000 - (92773 * (0 à 1023)) -> 0 = 0.5hz : 1023 = 10Hz
+				compteur <= compteur + 1;
+			else
+				compteur <= (others => '0');
+				WCLK <= not WCLK;
 			end if;
-			
-			-- Depth : gain amplitude  -----> waveOut <= genWave * Depth
-			waveOut <= genWave * signed('0' & Depth);
-			-- TODO : divide wave out by adc res
 		end if;
 	end process;
 
 
+-- Triangle and square wave generator
+WaveGen:process(WCLK,RESET)
+	begin
+		if RESET = '0' then
+			genWave <= (others => '0');
+			direction <= '0';
+			
+		elsif rising_edge(WCLK) then
+			
+			-- Safety if we change prescaler whilst generating the wave
+			if prescaler /= lastPrescaler then
+				direction <= '0';
+				genWave <= (others => '0');
+				lastPrescaler <= prescaler;
+			end if;
+			
+			
+			if direction = '0' then  											-- Going up													
+				genWave <= genWave + prescaler;
+				
+				if genWave = 1024 then														
+					direction <= '1';
+				end if;
+					
+			else																		-- Going down
+				genWave <= genWave - prescaler;
+	
+				if genWave = 0 then												-- If we go under 0, min value, need to go up
+					direction <= '0';		
+				end if;
+			end if;
+						
+		end if;
+	end process;
+
+-- Depth : gain amplitude  -----> waveOut <= genWave * Depth 
+waveOut <= signed('0' & genWave) * sDepth;
+
+-- Main sequencial machine
 MachSeq:process(CLK,RESET)
 	begin
 		if RESET = '0' then
@@ -132,9 +176,10 @@ MachSeq:process(CLK,RESET)
 			case tremState is
 				when stateNormal =>						
 					if SM = '1' and Pedal = '1'  then								-- Selected module = 1 and pedal was activated => Normal operation
-						audioOut <= std_logic_vector(calAudio * waveOut);
+						calAudioOut <= calAudioIn * waveOut(19 downto 10);
+						audioOut <= std_logic_vector(calAudioOut(23 downto 0));
 					else																	   -- Otherwise foward signal
-						audioOut <= std_logic_vector(calAudio);
+						audioOut <= std_logic_vector(calAudioIn(23 downto 0));
 					end if;
 					
 					if SM = '1' and lock = '1' then							      -- Selected module = '1' and lock = '1' => Lock the module
@@ -149,10 +194,10 @@ MachSeq:process(CLK,RESET)
 				when stateLocked =>						
 					-- If module is selected or chain effect is activated
 					if Pedal = '1' then
-			--			audioOut <= std_logic_vector(calAudio * savedWaveOut);
-					-- If condition not met, foward signal
+					--	audioOut <= std_logic_vector(calAudio * savedWaveOut);
+
 					else
-						audioOut <= std_logic_vector(calAudio);
+						audioOut <= std_logic_vector(calAudioIn(23 downto 0));
 					end if;
 					
 					-- If module is selected and we unlock

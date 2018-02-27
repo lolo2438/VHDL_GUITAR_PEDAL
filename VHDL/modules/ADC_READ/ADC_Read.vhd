@@ -61,15 +61,14 @@ Signal sADC1 : STD_LOGIC_VECTOR(9 downto 0) := (Others => '0');
 Signal sADC4 : STD_LOGIC_VECTOR(9 downto 0) := (Others => '0');
 Signal tempSample : STD_LOGIC_VECTOR(9 downto 0) := (Others => '0');
 
-Signal requestedChannel : STD_LOGIC_VECTOR(3 downto 0) := x"0";
 Signal tempChannel : STD_LOGIC_VECTOR(3 downto 0) := x"0";
 Signal lastNewSample : STD_LOGIC := '0';
+
 begin
 
 ADC0 <= sADC0;
 ADC1 <= sADC1;
 ADC4 <= sADC4;
-REQUESTED_CHANNEL <= requestedChannel;
 
 ADC_Read:process(CLK,RESET)
 	begin
@@ -79,27 +78,27 @@ ADC_Read:process(CLK,RESET)
 			sADC4 <= (Others => '0');
 			
 			tempSample <= (others => '0');
-			tempChannel <= x"0";
-			requestedChannel <= x"0";
+			REQUESTED_CHANNEL <= x"0";
 			
 		elsif rising_edge(CLK) then
 			if NEW_SAMPLE = '1' then
 				tempSample <= SAMPLE;
 				tempChannel <= SAMPLE_CHANNEL;
-			else
-				if tempChannel = x"0" then
+				
+				if tempChannel = b"0000" then
 					sADC0 <= tempSample; 
-					requestedChannel <= x"1";
+					REQUESTED_CHANNEL <= x"1";
 					LED <= tempSample(5);
 					
-				elsif tempChannel = x"1" then
+				elsif tempChannel = b"0001" then
 					sADC1 <= tempSample;
-					requestedChannel <= x"4";
+					REQUESTED_CHANNEL <= x"4";
 					
-				elsif tempChannel = x"4" then
+				elsif tempChannel = b"0100" then
 					sADC4 <= tempSample;
-					requestedChannel <= x"0";
+					REQUESTED_CHANNEL <= x"0";
 				end if;
+				
 			end if;
 		end if;
 	end process;
