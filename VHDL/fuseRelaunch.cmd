@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "secureip" -o "C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL/ADC_READ_TB_isim_beh.exe" -prj "C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL/ADC_READ_TB_beh.prj" "work.ADC_READ_TB" 
+-intstyle "ise" -incremental -lib "secureip" -o "C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL/tremol_tb_isim_beh.exe" -prj "C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL/tremol_tb_beh.prj" "work.tremol_tb" 

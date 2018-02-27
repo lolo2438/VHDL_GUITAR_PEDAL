@@ -69,23 +69,24 @@ Signal isLocked : STD_LOGIC := '0';
 
 -- Signal for audio effect calculation
 Signal calAudioIn : SIGNED(23 downto 0) := (others => '0');
-Signal calAudioOut : SIGNED(33 downto 0) := (others => '0');
+Signal calAudioOut : SIGNED(47 downto 0) := (others => '0');
 
 -- Signals for tremolo wave generation
-Signal genWave : unsigned(10 downto 0) := (others => '0');
-Signal waveOut : signed(22 downto 0) := (others => '0');
+Signal genWave : integer := 1;
+Signal waveOut : signed(11 downto 0) := (others => '0');
 Signal direction : STD_LOGIC := '0';
 
 Signal sRate : unsigned(9 downto 0);
 Signal sWave : unsigned(9 downto 0);
-Signal sDepth: signed(10 downto 0);
+Signal sDepth: unsigned(9 downto 0);
 
-signal prescaler : unsigned(10 downto 0);
-signal lastPrescaler : unsigned(10 downto 0);
+signal prescaler : integer range 1 to 1024 := 1;
+signal postScaler : integer range 0 to 10 := 0;
 
 --Wave generation clock
 Signal WCLK : STD_LOGIC := '0';
 Signal compteur : unsigned(26 downto 0) := (others => '0');
+Signal TremClkMax: unsigned(29 downto 0) := (others => '0');
 
 begin
 
@@ -93,31 +94,103 @@ begin
 
 sRate <= unsigned(Rate);
 sWave <= unsigned(Wave);
-sDepth <= signed('0' & Depth);
+sDepth <= unsigned(Depth);
 
 calAudioIn <= signed(audioIn);
 
-prescaler <= b"00000000001" when sWave >= 0 and sWave < 93 else	--1
-				 b"00000000010" when sWave >= 93 and sWave < 186 else	--2
-				 b"00000000100" when sWave >= 186 and sWave < 279 else	--4
-				 b"00000001000" when sWave >= 279 and sWave < 372 else	--8
-				 b"00000010000" when sWave >= 372 and sWave < 465 else	--16
-				 b"00000100000" when sWave >= 465 and sWave < 558 else	--32
-				 b"00001000000" when sWave >= 558 and sWave < 651 else	--64
-				 b"00010000000" when sWave >= 651 and sWave < 744 else	--128
-				 b"00100000000" when sWave >= 744 and sWave < 837 else	--256
-				 b"01000000000" when sWave >= 837 and sWave < 930 else	--512
-				 b"10000000000" when sWave >= 930 and sWave <= 1023 else	--1024
-				 b"00000000000";
+TremClkMax <= (b"00" & x"5F5E100") - (x"16A75" * sRate);
 
+Choose_prescale:process(CLK)
+	begin
+		if rising_edge(CLK) then
+			if ((sWave >= 0) and (sWave < 93)) then	--1
+				prescaler <= 1;
+				
+			elsif ((sWave >= 93) and (sWave < 186)) then	--2
+				prescaler <= 2;
+			
+			elsif ((sWave >= 186) and (sWave < 279)) then --4
+				prescaler <= 4;
+			
+			elsif ((sWave >= 279) and (sWave < 372)) then --8
+				prescaler <= 8;
+			
+			elsif ((sWave >= 372) and (sWave < 465)) then --16
+				prescaler <= 16;
+			
+			elsif ((sWave >= 465) and (sWave < 558)) then --32
+				prescaler <= 31;
+			
+			elsif ((sWave >= 558) and (sWave < 651)) then --64
+				prescaler <=  64;
+			
+			elsif ((sWave >= 651) and (sWave < 744)) then --128
+				prescaler <=  128;
+			
+			elsif ((sWave >= 744) and (sWave < 837)) then --256
+				prescaler <= 256;
+				
+			elsif ((sWave >= 837) and (sWave < 930)) then --512
+				prescaler <=  512;
+			
+			elsif ((sWave >= 930) and (sWave <= 1023)) then --1024
+				prescaler <=  1024;
+			
+			else
+				prescaler <=  1;
+			end if;
+		end if;
+	end process;
 
+Choose_postScaler:process(CLK)
+	begin
+		if rising_edge(CLK) then
+			if ((sDepth >= 0) and (sDepth < 93)) then	--1
+				postscaler <= 1;
+				
+			elsif ((sDepth >= 93) and (sDepth < 186)) then	--2
+				postscaler <= 1;
+			
+			elsif ((sDepth >= 186) and (sDepth < 279)) then --4
+				postscaler <= 2;
+			
+			elsif ((sDepth >= 279) and (sDepth < 372)) then --8
+				postscaler <= 3;
+			
+			elsif ((sDepth >= 372) and (sDepth < 465)) then --16
+				postscaler <= 4;
+			
+			elsif ((sDepth >= 465) and (sDepth < 558)) then --32
+				postscaler <= 5;
+			
+			elsif ((sDepth >= 558) and (sDepth < 651)) then --64
+				postscaler <=  6;
+			
+			elsif ((sDepth >= 651) and (sDepth < 744)) then --128
+				postscaler <=  7;
+			
+			elsif ((sDepth >= 744) and (sDepth < 837)) then --256
+				postscaler <=  8;
+				
+			elsif ((sDepth >= 837) and (sDepth < 930)) then --512
+				postscaler <=  9;
+			
+			elsif ((sDepth >= 930) and (sDepth <= 1023)) then --1024
+				postscaler <=  10;
+			
+			else
+				postscaler <= 0;
+			end if;
+		end if;
+	end process;
+	
 -- Tremolo clock
 ClkDiv:process(CLK,RESET)
 	begin
 		if RESET = '0' then
 			compteur <= (others => '0');
 		elsif rising_edge(CLK) then
-			if compteur < (b"00" & x"5F5E100") - (x"16A75" * sRate)   then 						-- 100_000_000 - (92773 * (0 à 1023)) -> 0 = 0.5hz : 1023 = 10Hz
+			if compteur < TremClkMax then 						-- 100_000_000 - (92773 * (0 à 1023)) -> 0 = 0.5hz : 1023 = 10Hz
 				compteur <= compteur + 1;
 			else
 				compteur <= (others => '0');
@@ -128,42 +201,32 @@ ClkDiv:process(CLK,RESET)
 
 
 -- Triangle and square wave generator
-WaveGen:process(WCLK,RESET)
+WaveGen:process(CLK,RESET)
 	begin
 		if RESET = '0' then
-			genWave <= (others => '0');
+			genWave <= 1;
 			direction <= '0';
 			
-		elsif rising_edge(WCLK) then
-			
-			-- Safety if we change prescaler whilst generating the wave
-			if prescaler /= lastPrescaler then
-				direction <= '0';
-				genWave <= (others => '0');
-				lastPrescaler <= prescaler;
-			end if;
-			
-			
+		elsif rising_edge(CLK) then
 			if direction = '0' then  											-- Going up													
 				genWave <= genWave + prescaler;
 				
-				if genWave = 1024 then														
+				if genWave >= 1024 then														
 					direction <= '1';
+					genWave <= 1024;
 				end if;
 					
-			else																		-- Going down
+			elsif direction = '1' then																		-- Going down
 				genWave <= genWave - prescaler;
 	
-				if genWave = 0 then												-- If we go under 0, min value, need to go up
-					direction <= '0';		
+				if genWave <= 1 then												
+					direction <= '0';
+					genWave <= 1;
 				end if;
 			end if;
 						
 		end if;
 	end process;
-
--- Depth : gain amplitude  -----> waveOut <= genWave * Depth 
-waveOut <= signed('0' & genWave) * sDepth;
 
 -- Main sequencial machine
 MachSeq:process(CLK,RESET)
@@ -176,8 +239,10 @@ MachSeq:process(CLK,RESET)
 			case tremState is
 				when stateNormal =>						
 					if SM = '1' and Pedal = '1'  then								-- Selected module = 1 and pedal was activated => Normal operation
-						calAudioOut <= calAudioIn * waveOut(19 downto 10);
-						audioOut <= std_logic_vector(calAudioOut(23 downto 0));
+						calAudioOut <= (calAudioIn * genWave);
+						
+						audioOut <= std_logic_vector(calAudioOut(33 downto 10));
+						
 					else																	   -- Otherwise foward signal
 						audioOut <= std_logic_vector(calAudioIn(23 downto 0));
 					end if;

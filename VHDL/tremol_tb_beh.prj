@@ -1,0 +1,2 @@
+vhdl work "Tremolo.vhd"
+vhdl work "tremol_tb.vhd"
