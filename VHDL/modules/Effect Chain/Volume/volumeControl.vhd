@@ -30,7 +30,6 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity volumeControl is
-	 Generic (adcRes : integer range 8 to 12 := 10);
     Port ( -- System Clock (50 MHz)
 			  CLK : in  STD_LOGIC;
 			  
@@ -69,14 +68,11 @@ Signal savedTBD2 : STD_LOGIC_VECTOR (9 downto 0);
 
 Signal isLocked : STD_LOGIC := '0';
 
-Signal calAudioIn : SIGNED(23 downto 0) := (others => '0');
-Signal calAudioOut : SIGNED(39 downto 0) := (others => '0');
+signal tempCal : signed(37 downto 0) := (others => '0');
 
-constant gain : signed(4 downto 0) := b"01111";					      -- Volume Gain constant - 15
+constant gain : signed(2 downto 0) := b"010";					      -- Volume Gain constant - 2
 
 begin
-
-calAudioIn <= signed(audioIn);
 
 process(CLK,RESET)
 	begin
@@ -89,24 +85,24 @@ process(CLK,RESET)
 				when stateNormal =>						
 					-- Selected module = 1 and pedal was activated => Normal operation
 					if SM = '1' and Pedal = '1'  then
-						calAudioOut <= calAudioIn * gain * (signed('0' & volumeGain));
+						tempCal <= signed(audioIn) * gain * (signed('0' & volumeGain));
 					
 						-- If value gets over positive peak
-						if calAudioOut(39 downto adcRes) >= 8_388_607 then
+						if tempCal(37 downto 10) >= 8_388_607 then
 							audioOut <= x"7FFFFF";
 							
 						--If value gets over negative peak
-						elsif calAudioOut(39 downto adcRes) <= -8_388_608 then
+						elsif tempCal(37 downto 10) <= -8_388_608 then
 							audioOut <= x"800000";
 						
 						-- If value is in range
 						else
-							audioOut <= std_logic_vector(calAudioOut(33 downto 10));
+							audioOut <= std_logic_vector(tempCal(33 downto 10));
 						end if;
 						
 					--Otherwise foward signal
 					else
-						audioOut <= std_logic_vector(calAudioIn);
+						audioOut <= audioIn;
 					end if;
 					
 					-- Selected module = '1' and lock = '1' => Lock the module
@@ -120,24 +116,24 @@ process(CLK,RESET)
 				when stateLocked =>						
 					-- If module is selected or chain effect is activated
 					if Pedal = '1' then
-						calAudioOut <= calAudioIn * gain * (signed('0' & savedVolumeGain));
+						tempCal <= signed(audioIn) * gain * (signed('0' & savedVolumeGain));
 						
 						-- If value gets over positive peak
-						if calAudioOut >= 8_388_607 then
+						if tempCal(36 downto 10) >= 8_388_607 then
 							AudioOut <= x"7FFFFF";
 							
 						--If value gets over negative peak
-						elsif calAudioOut <= -8_388_608 then
+						elsif tempCal(36 downto 10) <= -8_388_608 then
 							audioOut <= x"800000";
 					
 						-- If value is in range
 						else
-							audioOut <= std_logic_vector(calAudioOut(33 downto 10));
+							audioOut <= std_logic_vector(tempCal(33 downto 10));
 						end if;
 					
 					-- If condition not met, foward signal
 					else
-						audioOut <= std_logic_vector(calAudioIn);
+						audioOut <= audioIn;
 					end if;
 					
 					-- If module is selected and we unlock

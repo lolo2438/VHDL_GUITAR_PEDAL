@@ -67,15 +67,12 @@ Signal savedCut : STD_LOGIC_VECTOR (9 downto 0);
 
 Signal isLocked : STD_LOGIC := '0';
 
-Signal calAudioIn : SIGNED(23 downto 0) := (others => '0');
-
 constant limitpos : SIGNED(26 downto 0);
 constant limitneg : SIGNED(26 downto 0);
 
 begin
 -- https://en.wikipedia.org/wiki/Distortion
 
-calAudioIn <= signed(audioIn);
 
 process(CLK,RESET)
 	begin
@@ -87,9 +84,12 @@ process(CLK,RESET)
 			case distState is
 				when stateNormal =>						
 					if SM = '1' and Pedal = '1'  then								-- Selected module = 1 and pedal was activated => Normal operation
+						-- pre amp signal => volume gain * dist / 1024
+						-- post amp signal = > preampresult * gain * level/1024
+						-- FFT for tone -> more tone = more higher frequencies
 						
 					else																	   -- Otherwise foward signal
-						audioOut <= std_logic_vector(calAudioIn);
+						audioOut <= audioIn;
 					end if;
 					
 					if SM = '1' and lock = '1' then							      -- Selected module = '1' and lock = '1' => Lock the module
@@ -101,13 +101,11 @@ process(CLK,RESET)
 						locked <= '1';
 					end if;
 					
-				when stateLocked =>						
-					-- If module is selected or chain effect is activated
+				when stateLocked =>
 					if Pedal = '1' then
 					
-					-- If condition not met, foward signal
 					else
-						audioOut <= std_logic_vector(calAudioIn);
+						audioOut <= audioIn;
 					end if;
 					
 					-- If module is selected and we unlock
