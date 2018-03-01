@@ -15,13 +15,13 @@
          <ClosedNode>/TOP - Behavioral F:|Laurent|Documents|GitHub|VHDL_GUITAR_PEDAL|VHDL|modules|TOP|TOP.vhd/avr_interface - avr_interface - RTL</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>Distortion - Behavioral (F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/Effect Chain/Distortion/Distortion.vhd)</SelectedItem>
+         <SelectedItem>Volume - volumeControl - Behavioral (F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/Effect Chain/Volume/volumeControl.vhd)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001e0000000020000000000000000000000000200000064ffffffff000000810000000300000002000001e00000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>Distortion - Behavioral (F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/Effect Chain/Distortion/Distortion.vhd)</CurrentItem>
+      <CurrentItem>Volume - volumeControl - Behavioral (F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/Effect Chain/Volume/volumeControl.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
       <ClosedNodes>

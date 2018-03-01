@@ -67,12 +67,24 @@ Signal savedCut : STD_LOGIC_VECTOR (9 downto 0);
 
 Signal isLocked : STD_LOGIC := '0';
 
-constant limitpos : SIGNED(26 downto 0);
-constant limitneg : SIGNED(26 downto 0);
+
+signal tempVector1 : std_logic_vector(23 downto 0) := (others => '0');
+
+signal tempCal1 : signed(39 downto 0) := (others => '0');
+signal tempCal2 : signed(37 downto 0) := (others => '0');
+
+
+constant limitPos : SIGNED(26 downto 0);
+constant limitNeg : SIGNED(26 downto 0);
+
+constant distGain : signed(4 downto 0) := b"01111";				-- Temp gain: 15
+constant levelGain : signed(2 downto 0) := b"010";					-- Temp gain: 2
 
 begin
 -- https://en.wikipedia.org/wiki/Distortion
 
+-- limitPos <=
+-- limitNeg <= 
 
 process(CLK,RESET)
 	begin
@@ -85,9 +97,25 @@ process(CLK,RESET)
 				when stateNormal =>						
 					if SM = '1' and Pedal = '1'  then								-- Selected module = 1 and pedal was activated => Normal operation
 						-- pre amp signal => volume gain * dist / 1024
-						-- post amp signal = > preampresult * gain * level/1024
+						tempCal1 <= signed(audioIn) * distGain * signed('0' & Dist);
+						
+						if tempCal1(37 downto 10) > limitPos then
+							tempVector1 <= std_logic_vector(limitPos(23 downto 0));
+						elsif tempCal1(37 downto 10) < limitNeg then
+							tempVector1 <= std_logic_vector(limitNeg(23 downto 0));
+						else
+							tempVector1 <= std_logic_vector(tempCal1(33 downto 10);
+						end if;
+						
+						tempCal2 <= signed(tempVector1) * levelGain * signed('0' & Level);
+						
+						
 						-- FFT for tone -> more tone = more higher frequencies
 						
+						-- post amp signal = > preampresult * gain * level/1024
+						audioOut <= std_logic_vector(tempCal2(33 downto 10));
+						
+	
 					else																	   -- Otherwise foward signal
 						audioOut <= audioIn;
 					end if;
