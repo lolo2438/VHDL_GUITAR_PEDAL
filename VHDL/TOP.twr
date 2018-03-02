@@ -1,0 +1,121 @@
+--------------------------------------------------------------------------------
+Release 14.7 Trace  (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise -v 3 -s 3
+-n 3 -fastpaths -xml TOP.twx TOP.ncd -o TOP.twr TOP.pcf
+
+Design file:              TOP.ncd
+Physical constraint file: TOP.pcf
+Device,package,speed:     xc6slx9,tqg144,C,-3 (PRODUCTION 1.23 2013-10-13)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock BCLK
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+LRCK        |    4.955(R)|      SLOW  |   -0.527(R)|      SLOW  |BCLK_BUFGP        |   0.000|
+            |    4.123(F)|      SLOW  |   -1.008(F)|      FAST  |BCLK_BUFGP        |   0.000|
+RESET       |    7.855(R)|      SLOW  |   -3.165(R)|      FAST  |BCLK_BUFGP        |   0.000|
+            |    6.470(F)|      SLOW  |   -3.064(F)|      FAST  |BCLK_BUFGP        |   0.000|
+SDTI        |    3.858(R)|      SLOW  |   -0.559(R)|      SLOW  |BCLK_BUFGP        |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Setup/Hold to clock CLK
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+CCLK        |    2.201(R)|      SLOW  |    0.085(R)|      SLOW  |CLK_BUFGP         |   0.000|
+LAST_EFFECT |    2.410(R)|      SLOW  |   -0.415(R)|      SLOW  |CLK_BUFGP         |   0.000|
+NEXT_EFFECT |    2.795(R)|      SLOW  |   -0.963(R)|      SLOW  |CLK_BUFGP         |   0.000|
+PEDAL       |    3.250(R)|      SLOW  |   -1.239(R)|      FAST  |CLK_BUFGP         |   0.000|
+RESET       |    8.419(R)|      SLOW  |   -1.501(R)|      FAST  |CLK_BUFGP         |   0.000|
+SPI_MOSI    |    1.179(R)|      SLOW  |   -0.305(R)|      SLOW  |CLK_BUFGP         |   0.000|
+SPI_SCK     |    1.234(R)|      SLOW  |   -0.359(R)|      SLOW  |CLK_BUFGP         |   0.000|
+SPI_SS      |    1.564(R)|      SLOW  |    0.027(R)|      SLOW  |CLK_BUFGP         |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Clock BCLK to Pad
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+SDTO        |         8.189(F)|      SLOW  |         4.237(F)|      FAST  |BCLK_BUFGP        |   0.000|
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock CLK to Pad
+--------------+-----------------+------------+-----------------+------------+------------------+--------+
+              |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination   |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+--------------+-----------------+------------+-----------------+------------+------------------+--------+
+AVR_RX        |         8.098(R)|      SLOW  |         4.191(R)|      FAST  |CLK_BUFGP         |   0.000|
+LED           |        12.094(R)|      SLOW  |         6.701(R)|      FAST  |CLK_BUFGP         |   0.000|
+LED2          |         8.374(R)|      SLOW  |         4.620(R)|      FAST  |CLK_BUFGP         |   0.000|
+LED3          |        10.424(R)|      SLOW  |         5.811(R)|      FAST  |CLK_BUFGP         |   0.000|
+SPI_CHANNEL<0>|         8.776(R)|      SLOW  |         4.042(R)|      FAST  |CLK_BUFGP         |   0.000|
+SPI_CHANNEL<1>|         8.733(R)|      SLOW  |         4.644(R)|      FAST  |CLK_BUFGP         |   0.000|
+SPI_CHANNEL<2>|         8.733(R)|      SLOW  |         3.890(R)|      FAST  |CLK_BUFGP         |   0.000|
+SPI_CHANNEL<3>|         8.472(R)|      SLOW  |         4.480(R)|      FAST  |CLK_BUFGP         |   0.000|
+SPI_MISO      |         8.911(R)|      SLOW  |         4.291(R)|      FAST  |CLK_BUFGP         |   0.000|
+--------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock to Setup on destination clock BCLK
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+BCLK           |    4.053|         |    3.486|    5.815|
+CLK            |         |         |    5.904|         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock CLK
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+BCLK           |    3.268|    2.253|         |         |
+CLK            |   10.130|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Pad to Pad
+---------------+---------------+---------+
+Source Pad     |Destination Pad|  Delay  |
+---------------+---------------+---------+
+SPI_SS         |SPI_MISO       |    7.540|
+---------------+---------------+---------+
+
+
+Analysis completed Fri Mar 02 18:08:40 2018 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 224 MB
+
+
+

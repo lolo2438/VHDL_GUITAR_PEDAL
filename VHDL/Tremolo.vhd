@@ -68,20 +68,22 @@ Signal savedDepth : STD_LOGIC_VECTOR (9 downto 0);
 Signal isLocked : STD_LOGIC := '0';
 
 -- Signal for audio effect calculation
-signal tempVector : STD_LOGIC_VECTOR(35 downto 0);
+signal tempVector : STD_LOGIC_VECTOR(34 downto 0);
 
 Signal sRate : unsigned(9 downto 0);
 Signal sWave : unsigned(9 downto 0);
-Signal sDepth: unsigned(10 downto 0);
+Signal sDepth: unsigned(9 downto 0);
+
+signal depthCal : unsigned(9 downto 0);
 
 -- Signals for tremolo wave generation
-Signal genWave : unsigned(10 downto 0);
-signal slope : unsigned(10 downto 0);
-signal waveOut : signed(11 downto 0);
+Signal genWave : unsigned(9 downto 0) := b"0000000000";
 Signal direction : STD_LOGIC := '0';
 
 --Wave generation clock
 Signal WCLK : STD_LOGIC := '0';
+Signal lastWCLK : STD_LOGIC := '0';
+
 Signal compteur : unsigned(26 downto 0) := (others => '0');
 Signal TremClkMax: unsigned(29 downto 0) := (others => '0');
 
@@ -91,7 +93,7 @@ begin
 
 sRate <= unsigned(Rate);
 sWave <= unsigned(Wave);
-sDepth <= unsigned('0' & Depth);
+sDepth <= unsigned(Depth);
 
 TremClkMax <= (b"00" & x"5F5E100") - (x"16A75" * sRate);
 
@@ -112,75 +114,78 @@ ClkDiv:process(CLK,RESET)
 
 
 -- Slope selector ( /\/ -> |¯|_| )
-WaveSlope:process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if ((sWave >= 0) and (sWave < 93)) then	--1
-				slope <= b"00000000001";
-				
-			elsif ((sWave >= 93) and (sWave < 186)) then	--2
-				slope <= b"00000000010";
-			
-			elsif ((sWave >= 186) and (sWave < 279)) then --4
-				slope <= b"00000000100";
-			
-			elsif ((sWave >= 279) and (sWave < 372)) then --8
-				slope <= b"00000001000";
-			
-			elsif ((sWave >= 372) and (sWave < 465)) then --16
-				slope <= b"00000010000";
-			
-			elsif ((sWave >= 465) and (sWave < 558)) then --32
-				slope <= b"00000100000";
-			
-			elsif ((sWave >= 558) and (sWave < 651)) then --64
-				slope <= b"00001000000";
-			
-			elsif ((sWave >= 651) and (sWave < 744)) then --128
-				slope <= b"00010000000";
-			
-			elsif ((sWave >= 744) and (sWave < 837)) then --256
-				slope <= b"00100000000";
-				
-			elsif ((sWave >= 837) and (sWave < 930)) then --512
-				slope <= b"01000000000";
-			
-			elsif ((sWave >= 930) and (sWave <= 1023)) then --1024
-				slope <= b"10000000000";
-			
-			else
-				slope <= b"00000000001";
-			end if;
-		end if;
-	end process;
-	
-
+--WaveSlope:process(CLK)
+--	begin
+--		if rising_edge(CLK) then
+--			if ((sWave >= 0) and (sWave < 93)) then	--1
+--				slope <= b"00000000001";
+--				
+--			elsif ((sWave >= 93) and (sWave < 186)) then	--2
+--				slope <= b"00000000010";
+--			
+--			elsif ((sWave >= 186) and (sWave < 279)) then --4
+--				slope <= b"00000000100";
+--			
+--			elsif ((sWave >= 279) and (sWave < 372)) then --8
+--				slope <= b"00000001000";
+--			
+--			elsif ((sWave >= 372) and (sWave < 465)) then --16
+--				slope <= b"00000010000";
+--			
+--			elsif ((sWave >= 465) and (sWave < 558)) then --32
+--				slope <= b"00000100000";
+--			
+--			elsif ((sWave >= 558) and (sWave < 651)) then --64
+--				slope <= b"00001000000";
+--			
+--			elsif ((sWave >= 651) and (sWave < 744)) then --128
+--				slope <= b"00010000000";
+--			
+--			elsif ((sWave >= 744) and (sWave < 837)) then --256
+--				slope <= b"00100000000";
+--				
+--			elsif ((sWave >= 837) and (sWave < 930)) then --512
+--				slope <= b"01000000000";
+--			
+--			elsif ((sWave >= 930) and (sWave <= 1023)) then --1024
+--				slope <= b"10000000000";
+--			
+--			else
+--				slope <= b"00000000001";
+--			end if;
+--		end if;
+--	end process;
 
 -- Triangle and square wave generator
-WaveGen:process(WCLK,RESET)
+WaveGen:process(CLK,RESET)
 	begin
 		if RESET = '0' then
-			genWave <= b"00000000000";
+			genWave <= b"0000000000";
 			direction <= '0';
 			
-		elsif rising_edge(WCLK) then
-			if direction = '0' then  			-- Going up																
-				if genWave + slope >= 1024 then														
-					direction <= '1';
-					genWave <= b"10000000000";
-				else
-					genWave <= genWave + slope;
-				end if;
-					
-			elsif direction = '1' then			-- Going down
+		elsif rising_edge(CLK) then
+			--if WCLK = '1' and lastWCLK = '0' then
+				--lastWCLK <= '1';
 				
-				if genWave - slope <= (b"01111111111" - sDepth) then												
-					direction <= '0';
-					genWave <= (b"01111111111" - sDepth);
-				else
-					genWave <= genWave - slope;
+				if direction = '0' then  			-- Going up						
+					if genWave = b"1111111111" then														
+						direction <= '1';	
+					else
+						genWave <= genWave + 1;
+					end if;
+						
+				elsif direction = '1' then			-- Going down
+					if genWave = 0 then												
+						direction <= '0';
+					else
+						genWave <= genWave - 1;
+					end if;
 				end if;
-			end if;
+			
+			--elsif WCLK = '0' and lastWCLK = '1' then
+			--	lastWCLK <= '0';
+		--		depthCal <= (b"1111111111" - sDepth);
+			--end if;
 		end if;
 end process;
 
@@ -196,7 +201,7 @@ MachSeq:process(CLK,RESET)
 			case tremState is
 				when stateNormal =>						
 					if SM = '1' and Pedal = '1'  then								-- Selected module = 1 and pedal was activated => Normal operation
-						tempVector <= std_logic_vector(signed(audioIn) * ('0' & (signed(genWave))));
+						tempVector <= std_logic_vector(signed(audioIn) * ('0' & signed(genWave)));
 						
 						audioOut <= tempVector(33 downto 10);
 						
