@@ -2,14 +2,14 @@ Command line:
    tremol_tb_isim_beh.exe
      -simmode  gui
      -simrunnum  0
-     -socket  58118
+     -socket  50042
 
-Sun Mar 04 16:07:00 2018
+Mon Mar 05 18:08:09 2018
 
 
- Elaboration Time: 0.09375 sec
+ Elaboration Time: 0.0312 sec
 
- Current Memory Usage: 885.354 Meg
+ Current Memory Usage: 667.558 Meg
 
  Total Signals          : 42
  Total Nets             : 302
@@ -19,10 +19,11 @@ Sun Mar 04 16:07:00 2018
  Total Processes        : 11
  Total Traceable Variables  : 14
  Total Scalar Nets and Variables : 786
+Total Line Count : 94
 
- Total Simulation Time: 0.21875 sec
+ Total Simulation Time: 0.499203 sec
 
- Current Memory Usage: 728.068 Meg
+ Current Memory Usage: 667.558 Meg
 
-Sun Mar 04 16:08:27 2018
+Mon Mar 05 18:12:54 2018
 

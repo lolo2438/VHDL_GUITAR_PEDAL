@@ -8,61 +8,7 @@
 <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.    -->
 
 <messages>
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/Tremolo.vhd&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/ADC_READ/ADC_Read.vhd&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/AVR_Interface/avr_interface.vhd&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/AVR_Interface/cclk_detector.vhd&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/AVR_Interface/serial_rx.vhd&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/AVR_Interface/serial_tx.vhd&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/AVR_Interface/spi_slave.vhd&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/Effect Chain/BufferIn/Buffer_In.vhd&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/Effect Chain/BufferOut/Buffer_Out.vhd&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/Effect Chain/Distortion/Distortion.vhd&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/Effect Chain/Volume/volumeControl.vhd&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/Effect Chain/effectChain.vhd&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/I2S Interface/I2S_TO_PARALLEL.vhd&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/I2S Interface/PARALLEL_TO_I2S.vhd&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/Input buttons/Anti_Rebond.vhd&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/Input buttons/Button_Processing.vhd&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/Input buttons/Detecteur_Front.vhd&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/Input buttons/PedalControl.vhd&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/TOP/TOP.vhd&quot; into library work</arg>
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL/Tremolo.vhd&quot; into library work</arg>
 </msg>
 
 </messages>

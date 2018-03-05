@@ -74,7 +74,7 @@ Signal direction : STD_LOGIC := '0';
 signal slope : signed(10 downto 0) := (others => '0');
 signal shapeScale : signed(10 downto 0) := (others => '0');
 signal waveMin : signed(11 downto 0) := (others => '0');
-signal newWave : STD_LOGIC := '0';
+signal newWave : STD_LOGIC;
 
 --Wave generation clock
 Signal WCLK : STD_LOGIC := '0';
@@ -228,7 +228,7 @@ WaveGen:process(CLK,RESET)
 			genWave <= x"400";
 			direction <= '0';
 			tempWave <= x"000";
-			newWave <= '1';
+			direction <= '0';
 			
 		elsif rising_edge(CLK) then
 				if direction = '0' then  			-- Going up	
