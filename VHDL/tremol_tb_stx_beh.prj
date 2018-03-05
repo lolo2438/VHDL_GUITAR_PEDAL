@@ -1,0 +1,2 @@
+vhdl isim_temp "Tremolo.vhd"
+vhdl isim_temp "tremol_tb.vhd"

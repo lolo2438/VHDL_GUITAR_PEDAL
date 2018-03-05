@@ -15,13 +15,13 @@
          <ClosedNode>/TOP - Behavioral F:|Laurent|Documents|GitHub|VHDL_GUITAR_PEDAL|VHDL|modules|TOP|TOP.vhd/avr_interface - avr_interface - RTL</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>Volume - volumeControl - Behavioral (F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/Effect Chain/Volume/volumeControl.vhd)</SelectedItem>
+         <SelectedItem>Distortion - Behavioral (F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/Effect Chain/Distortion/Distortion.vhd)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001e0000000020000000000000000000000000200000064ffffffff000000810000000300000002000001e00000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>Volume - volumeControl - Behavioral (F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/Effect Chain/Volume/volumeControl.vhd)</CurrentItem>
+      <CurrentItem>Distortion - Behavioral (F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/Effect Chain/Distortion/Distortion.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -72,13 +72,13 @@
          <ClosedNode>User Constraints</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem></SelectedItem>
+         <SelectedItem>Check Syntax</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000f8000000010000000100000000000000000000000064ffffffff000000810000000000000001000000f80000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem></CurrentItem>
+      <CurrentItem>Check Syntax</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="DESUT_UCF" guiview="Process" >
       <ClosedNodes>
@@ -112,6 +112,8 @@
          <ClosedNode>/testbench - behavior C:|Users|e1538867|Desktop|VHDL_GUITAR_PEDAL|VHDL_GUITAR_PEDAL|VHDL|modules|I2S Interface|test_i2s_top.vhd/uut - TOP - Behavioral</ClosedNode>
          <ClosedNode>/testbench - behavior C:|Users|e1538867|Desktop|VHDL_GUITAR_PEDAL|VHDL|modules|I2S Interface|test_i2s_top.vhd</ClosedNode>
          <ClosedNode>/testbench - behavior F:|Laurent|Documents|GitHub|VHDL_GUITAR_PEDAL|VHDL|modules|I2S Interface|test_i2s_top.vhd</ClosedNode>
+         <ClosedNode>/testbench - behavior F:|Laurent|Documents|GitHub|VHDL_GUITAR_PEDAL|VHDL|modules|I2S Interface|test_i2s_top.vhd/uut - TOP - Behavioral/Buttton_Process - Button_Processing - Behavioral</ClosedNode>
+         <ClosedNode>/testbench - behavior F:|Laurent|Documents|GitHub|VHDL_GUITAR_PEDAL|VHDL|modules|I2S Interface|test_i2s_top.vhd/uut - TOP - Behavioral/avr_interface - avr_interface - RTL</ClosedNode>
          <ClosedNode>/volumeControlTB - behavior C:|Users|e1538867|Desktop|VHDL_GUITAR_PEDAL|VHDL_GUITAR_PEDAL|VHDL|modules|Effect Chain|Volume|volumeControlTB.vhd</ClosedNode>
          <ClosedNode>/volumeControlTB - behavior F:|Laurent|Documents|GitHub|VHDL_GUITAR_PEDAL|VHDL|modules|Effect Chain|Volume|volumeControlTB.vhd</ClosedNode>
       </ClosedNodes>

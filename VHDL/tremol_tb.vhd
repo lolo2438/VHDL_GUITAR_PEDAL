@@ -105,20 +105,25 @@ BEGIN
    stim_proc: process
    begin	
 		RESET <= '0';
-      -- hold reset state for 100 ns.
+      
+		Depth <= b"0100000000";
+		Rate <= b"0100000000";
+		Wave <= b"0100000000";
+		
       wait for 100 ns;	
 		
 		RESET <= '1';
 		
 		audioIn <= x"00FFFF";
 		
-		Depth <= b"0100000000";
-		Rate <= b"0100000000";
-		Wave <= b"0100000000";
+		
 		
 		Pedal <= '1';
 		SM <= '1';
 		
+		wait for 80 ns;
+		
+		Wave <= b"0111000000";
       -- insert stimulus here 
 
       wait;

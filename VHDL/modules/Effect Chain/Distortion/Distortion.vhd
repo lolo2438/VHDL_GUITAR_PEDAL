@@ -63,7 +63,7 @@ Signal distState : effectState := stateNormal;
 -- Saved signals for locked mode
 Signal savedDist : STD_LOGIC_VECTOR (9 downto 0);
 Signal savedTone : STD_LOGIC_VECTOR (9 downto 0);
-Signal savedCut : STD_LOGIC_VECTOR (9 downto 0);
+Signal savedLevel : STD_LOGIC_VECTOR (9 downto 0);
 
 Signal isLocked : STD_LOGIC := '0';
 
@@ -73,9 +73,7 @@ signal tempVector1 : std_logic_vector(23 downto 0) := (others => '0');
 signal tempCal1 : signed(39 downto 0) := (others => '0');
 signal tempCal2 : signed(37 downto 0) := (others => '0');
 
-
-constant limitPos : SIGNED(26 downto 0);
-constant limitNeg : SIGNED(26 downto 0);
+signal limit : SIGNED(26 downto 0);
 
 constant distGain : signed(4 downto 0) := b"01111";				-- Temp gain: 15
 constant levelGain : signed(2 downto 0) := b"010";					-- Temp gain: 2
@@ -99,18 +97,21 @@ process(CLK,RESET)
 						-- pre amp signal => volume gain * dist / 1024
 						tempCal1 <= signed(audioIn) * distGain * signed('0' & Dist);
 						
-						if tempCal1(37 downto 10) > limitPos then
-							tempVector1 <= std_logic_vector(limitPos(23 downto 0));
-						elsif tempCal1(37 downto 10) < limitNeg then
-							tempVector1 <= std_logic_vector(limitNeg(23 downto 0));
+						-- Add distortion by cutting the pre-amp'ed signal
+						if tempCal1(37 downto 10) > limit then
+							tempVector1 <= std_logic_vector(limit(23 downto 0));
+							
+						elsif tempCal1(37 downto 10) < (0 - limit) then
+							tempVector1 <= std_logic_vector(0 - limit(23 downto 0));
+							
 						else
-							tempVector1 <= std_logic_vector(tempCal1(33 downto 10);
+							tempVector1 <= std_logic_vector(tempCal1(33 downto 10));
 						end if;
 						
+						-- add low pass filter here for tone -> more tone = more higher frequencies
+						
+						-- Post-distortion amplification
 						tempCal2 <= signed(tempVector1) * levelGain * signed('0' & Level);
-						
-						
-						-- FFT for tone -> more tone = more higher frequencies
 						
 						-- post amp signal = > preampresult * gain * level/1024
 						audioOut <= std_logic_vector(tempCal2(33 downto 10));
@@ -124,7 +125,7 @@ process(CLK,RESET)
 						-- Save External controls
 						savedDist <= Dist;
 						savedTone <= Tone;
-						savedCut <= Cut;
+						savedLevel <= Level;
 						distState <= stateLocked;
 						locked <= '1';
 					end if;
