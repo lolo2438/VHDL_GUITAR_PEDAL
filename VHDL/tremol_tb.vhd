@@ -106,9 +106,9 @@ BEGIN
    begin	
 		RESET <= '0';
       
-		Depth <= b"0100000000";
+		Depth <= b"1111111111";
 		Rate <= b"0100000000";
-		Wave <= b"0100000000";
+		Wave <= b"0000000001";
 		
       wait for 100 ns;	
 		
@@ -120,10 +120,7 @@ BEGIN
 		
 		Pedal <= '1';
 		SM <= '1';
-		
-		wait for 80 ns;
-		
-		Wave <= b"0111000000";
+	
       -- insert stimulus here 
 
       wait;

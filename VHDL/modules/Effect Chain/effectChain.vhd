@@ -71,8 +71,9 @@ Signal effectSelector: unsigned(2 downto 0) := (others => '0');
 
 -- AUDIO SIGNAL
 signal audioOutBuffer : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
-signal audioOutVolume : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
+signal audioOutDistortion : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
 signal audioOutTremolo: STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
+signal audioOutVolume : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
 
 begin
 
@@ -113,6 +114,31 @@ port map( CLK => CLK,
 			 dataReady => READY
 			);
 
+Distortion: entity work.Distortion(Behavioral)
+port map(  -- System Clock (50 MHz)
+			  CLK => CLK,
+			  
+			  -- System global reset
+			  RESET => RESET,											-- logical '0' indicates us that reset button was pressed
+			  
+			  -- Audio signals
+			  audioIn => audioOutBuffer,
+           audioOut => audioOutDistortion,
+			  
+			  -- Select Module
+			  Pedal => PEDAL,											-- Constant '1' indicates that pedal is activated
+           SM => selectModule(0),												-- Constant '1' indicates us that module is selected	
+			  
+			  -- Lock Module
+           lock => LOCK,											-- goes high for 1 clock cycle, when detected switch between locked and normal mode
+			  locked => LOCKED(0),										-- indicated that the module is locked
+			  
+			  -- External control
+           Dist => ADC0,				-- Ammount of distortion 	  -> Gain of the pre-cut signal
+           Tone => ADC1,				-- Tone of the signal		  -> Filtre passe bas
+			  Level => ADC4				-- Ammount of gain of volume -> gain of the post-processed signal
+			 );
+
 Tremolo: entity work.Tremolo(Behavioral)
 port map(-- System Clock (50 MHz)
 			  CLK => CLK,
@@ -121,7 +147,7 @@ port map(-- System Clock (50 MHz)
 			  RESET => RESET,										-- logical '0' indicates us that reset button was pressed
 			  
 			  -- Audio signals
-			  audioIn => audioOutBuffer,
+			  audioIn => audioOutDistortion,
            audioOut => audioOutTremolo,
 			  
 			  -- Select Module

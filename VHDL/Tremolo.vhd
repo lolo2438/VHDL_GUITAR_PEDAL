@@ -63,10 +63,6 @@ Signal isLocked : STD_LOGIC := '0';
 -- Signal for audio effect calculation
 signal tempVector : STD_LOGIC_VECTOR(35 downto 0);
 
-Signal sRate : unsigned(9 downto 0);
-Signal sWave : unsigned(9 downto 0);
-Signal sDepth: STD_LOGIC_VECTOR(9 downto 0);
-
 -- Signals for tremolo wave generation
 Signal genWave : signed(11 downto 0) := x"400";
 Signal tempWave : signed(11 downto 0) := x"000";
@@ -78,18 +74,19 @@ signal newWave : STD_LOGIC;
 
 --Wave generation clock
 Signal WCLK : STD_LOGIC := '0';
-Signal lastWCLK : STD_LOGIC := '0';
 
-Signal compteur : unsigned(26 downto 0) := (others => '0');
-Signal TremClkMax: unsigned(29 downto 0) := (others => '0');
+Signal compteur : unsigned(14 downto 0) := (others => '0');
+Signal TremClkMax: unsigned(17 downto 0) := (others => '0');
 
 begin
 
--- Signal assignations
-sRate <= unsigned(Rate);
-sWave <= unsigned(Wave);
-sDepth <= Depth;
+-- à améliorer:
+-- LUT pour choisir une frequence spécifique représentant des BPM avec RATE https://www.convertworld.com/fr/frequence/battements-par-minute.html
+-- Trouver un moyen de bypass l'attente avant de changer les valeurs d'onde
+-- ajustement automatique de la frequence lorsqu'on change depth et rate
 
+
+-- Signal assignations
 Locked <= isLocked;
 
 -- Main sequencial machine
@@ -146,7 +143,7 @@ begin
 	if RESET = '0' then
 		compteur <= (others => '0');
 	elsif rising_edge(CLK) then
-		if compteur < TremClkMax then 						-- 100_000_000 - (92773 * (0 à 1023)) -> 0 = 0.5hz : 1023 = 10Hz
+		if compteur < TremClkMax then 						-- 30_000 - ((20*x) + 5k), ,5k = 10hz , 25k = 0,5hz = 0.5hz : 1023 = 10Hz
 			compteur <= compteur + 1;
 		else
 			compteur <= (others => '0');
@@ -160,37 +157,37 @@ end process;
 WaveSlope:process(CLK)
 begin
 	if rising_edge(CLK) then
-		if ((sWave >= 0) and (sWave < 93)) then	--1
+		if ((unsigned(Wave) >= 0) and (unsigned(Wave) < 93)) then	--1
 			slope <= b"00000000001";
 			
-		elsif ((sWave >= 93) and (sWave < 186)) then	--2
+		elsif ((unsigned(Wave) >= 93) and (unsigned(Wave) < 186)) then	--2
 			slope <= b"00000000010";
 		
-		elsif ((sWave >= 186) and (sWave < 279)) then --4
+		elsif ((unsigned(Wave) >= 186) and (unsigned(Wave) < 279)) then --4
 			slope <= b"00000000100";
 		
-		elsif ((sWave >= 279) and (sWave < 372)) then --8
+		elsif ((unsigned(Wave) >= 279) and (unsigned(Wave) < 372)) then --8
 			slope <= b"00000001000";
 		
-		elsif ((sWave >= 372) and (sWave < 465)) then --16
+		elsif ((unsigned(Wave) >= 372) and (unsigned(Wave) < 465)) then --16
 			slope <= b"00000010000";
 		
-		elsif ((sWave >= 465) and (sWave < 558)) then --32
+		elsif ((unsigned(Wave) >= 465) and (unsigned(Wave) < 558)) then --32
 			slope <= b"00000100000";
 		
-		elsif ((sWave >= 558) and (sWave < 651)) then --64
+		elsif ((unsigned(Wave) >= 558) and (unsigned(Wave) < 651)) then --64
 			slope <= b"00001000000";
 		
-		elsif ((sWave >= 651) and (sWave < 744)) then --128
+		elsif ((unsigned(Wave) >= 651) and (unsigned(Wave) < 744)) then --128
 			slope <= b"00010000000";
 		
-		elsif ((sWave >= 744) and (sWave < 837)) then --256
+		elsif ((unsigned(Wave) >= 744) and (unsigned(Wave) < 837)) then --256
 			slope <= b"00100000000";
 			
-		elsif ((sWave >= 837) and (sWave < 930)) then --512
+		elsif ((unsigned(Wave) >= 837) and (unsigned(Wave) < 930)) then --512
 			slope <= b"01000000000";
 		
-		elsif ((sWave >= 930) and (sWave <= 1023)) then --1024
+		elsif ((unsigned(Wave) >= 930) and (unsigned(Wave) <= 1023)) then --1024
 			slope <= b"10000000000";
 		
 		else
@@ -207,12 +204,12 @@ detectNewWave:process(CLK)
 			if newWave = '1' then
 				
 				if isLocked <= '0' then
-					TremClkMax <= (b"00" & x"5F5E100") - (x"16A75" * sRate);
+					TremClkMax <= x"7530" - ((x"14" *(unsigned(Rate))) + x"1338");-- todo multiplier par 2 ici
 					shapeScale <= slope;
-					waveMin <= x"400" - signed(b"00" & sDepth);
+					waveMin <= x"400" - signed(b"0" & Depth);
 				
 				elsif isLocked <= '1' then
-					TremClkMax <= (b"00" & x"5F5E100") - (x"16A75" * unsigned(savedRate));
+					TremClkMax <= x"7530" - ((x"14" *(unsigned(savedRate))) + x"1338");
 					shapeScale <= savedSlope;
 					waveMin <= x"400" - signed(b"00" & savedDepth);
 				end if;
@@ -222,15 +219,14 @@ detectNewWave:process(CLK)
 
 
 -- Wave generator
-WaveGen:process(CLK,RESET)
+WaveGen:process(WCLK,RESET)
 	begin
 		if RESET = '0' then
 			genWave <= x"400";
 			direction <= '0';
 			tempWave <= x"000";
-			direction <= '0';
 			
-		elsif rising_edge(CLK) then
+		elsif rising_edge(WCLK) then
 				if direction = '0' then  			-- Going up	
 					if genWave >= x"400" then			-- if it went above 1024														
 						direction <= '1';	
@@ -263,10 +259,7 @@ WaveGen:process(CLK,RESET)
 					end if;
 				end if;
 		end if;
-end process;
-
--- note: si ça marche pas => ISE trim waveMin(11)
-
+	end process;
 
 end Behavioral;
 

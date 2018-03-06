@@ -73,12 +73,17 @@ signal tempVector1 : std_logic_vector(23 downto 0) := (others => '0');
 signal tempCal1 : signed(39 downto 0) := (others => '0');
 signal tempCal2 : signed(37 downto 0) := (others => '0');
 
-signal limit : SIGNED(26 downto 0);
+constant limit : SIGNED(26 downto 0) := ; -- 1 volt
 
 constant distGain : signed(4 downto 0) := b"01111";				-- Temp gain: 15
 constant levelGain : signed(2 downto 0) := b"010";					-- Temp gain: 2
 
 begin
+
+-- à améliorer
+-- add low pass filter here for tone -> more tone = higher cut off
+--
+
 -- https://en.wikipedia.org/wiki/Distortion
 
 -- limitPos <=
@@ -93,7 +98,8 @@ process(CLK,RESET)
 		elsif rising_edge(CLK) then
 			case distState is
 				when stateNormal =>						
-					if SM = '1' and Pedal = '1'  then								-- Selected module = 1 and pedal was activated => Normal operation
+					if SM = '1' and Pedal = '1'  then					-- Selected module = 1 and pedal was activated => Normal operation
+						
 						-- pre amp signal => volume gain * dist / 1024
 						tempCal1 <= signed(audioIn) * distGain * signed('0' & Dist);
 						
@@ -108,10 +114,10 @@ process(CLK,RESET)
 							tempVector1 <= std_logic_vector(tempCal1(33 downto 10));
 						end if;
 						
-						-- add low pass filter here for tone -> more tone = more higher frequencies
-						
 						-- Post-distortion amplification
 						tempCal2 <= signed(tempVector1) * levelGain * signed('0' & Level);
+						
+						-- tone should go here
 						
 						-- post amp signal = > preampresult * gain * level/1024
 						audioOut <= std_logic_vector(tempCal2(33 downto 10));
