@@ -30,7 +30,7 @@ USE ieee.std_logic_1164.ALL;
  
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---USE ieee.numeric_std.ALL;
+USE ieee.numeric_std.ALL;
  
 ENTITY VolumeTB IS
 END VolumeTB;
@@ -103,48 +103,56 @@ BEGIN
 
    -- Stimulus process
    stim_proc: process
+	variable compteur : integer := 8_380_000;
    begin		
     		RESET <= '0';
       -- hold reset state for 100 ns.
-      wait for 100 ns;
+      wait for 80 ns;
 		RESET <= '1';
 		
-		volumeGain <= b"0101010101";
-		
-		audioIn <= x"FF00FF";
-		wait for 1 us;
-		audioIn <= x"7F00FF";
-		wait for 1 us;
-		audioIn <= x"00FFFF";
-		wait for 1 us;
-		
+		volumeGain <= b"0011111111";
+		audioIn <= x"7FDE60";
+--		wait for 1 us;
+--		audioIn <= x"7F00FF";
+--		wait for 1 us;
+--		audioIn <= x"00FFFF";
+--		wait for 1 us;
+--		
 		SM <= '1';
 		PEDAL <= '1';
+		wait for 20 ns;
 		
-		audioIn <= x"FF00FF";
-		wait for 1 us;
-		audioIn <= x"7F00FF";
-		wait for 1 us;
-		audioIn <= x"00FFFF";
-		wait for 1 us;
+		while compteur < 8_388_606 loop
+			compteur := compteur + 1;
+			audioIn <= std_logic_vector(signed(audioIn) + 1);
+			wait for 20 ns;
+		end loop;
 		
-		volumeGain <= b"0000000000";
 		
-		audioIn <= x"FF00FF";
-		wait for 1 us;
-		audioIn <= x"7F00FF";
-		wait for 1 us;
-		audioIn <= x"00FFFF";
-		wait for 1 us;
-		
-		volumeGain <= b"0110110110";
-		
-		audioIn <= x"FF00FF";
-		wait for 1 us;
-		audioIn <= x"7F00FF";
-		wait for 1 us;
-		audioIn <= x"00FFFF";
-		wait for 1 us;
+--		audioIn <= x"FF00FF";
+--		wait for 1 us;
+--		audioIn <= x"7F00FF";
+--		wait for 1 us;
+--		audioIn <= x"00FFFF";
+--		wait for 1 us;
+--		
+--		volumeGain <= b"0000000000";
+--		
+--		audioIn <= x"FF00FF";
+--		wait for 1 us;
+--		audioIn <= x"7F00FF";
+--		wait for 1 us;
+--		audioIn <= x"00FFFF";
+--		wait for 1 us;
+--		
+--		volumeGain <= b"0110110110";
+--		
+--		audioIn <= x"FF00FF";
+--		wait for 1 us;
+--		audioIn <= x"7F00FF";
+--		wait for 1 us;
+--		audioIn <= x"00FFFF";
+--		wait for 1 us;
 
       wait;
    end process;

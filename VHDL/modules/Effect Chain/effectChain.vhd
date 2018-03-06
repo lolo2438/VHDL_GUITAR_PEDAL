@@ -173,8 +173,8 @@ port map( CLK => CLK,
           SM => selectModule(2), 
           lock => LOCK,					
 			 locked => LOCKED(2),
-          volumeGain => ADC0,
-          TBD1 => ADC1,							
+          TBD1 => ADC0,
+          vol => ADC1,							
 			 TBD2 => ADC4
 			);
 

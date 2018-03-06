@@ -49,7 +49,7 @@ entity volumeControl is
 			  locked : out STD_LOGIC;										-- indicated that the module is locked
 			  
 			  -- External control
-           volumeGain : in  STD_LOGIC_VECTOR (9 downto 0);
+           vol : in  STD_LOGIC_VECTOR (9 downto 0);
            TBD1 : in  STD_LOGIC_VECTOR (9 downto 0);				-- To be determined
 			  TBD2 : in STD_LOGIC_VECTOR (9 downto 0)
 			);
@@ -65,40 +65,43 @@ Signal volumeState : effectState := stateNormal;
 Signal savedVolumeGain : STD_LOGIC_VECTOR (9 downto 0);
 Signal savedTBD1 : STD_LOGIC_VECTOR (9 downto 0);
 Signal savedTBD2 : STD_LOGIC_VECTOR (9 downto 0);
-
+Signal sVolume : signed(10 downto 0) := (others => '0');
 Signal isLocked : STD_LOGIC := '0';
 
-signal tempCal : signed(37 downto 0) := (others => '0');
+signal tempVector : STD_LOGIC_VECTOR(37 downto 0) := (others => '0');
+--signal tempVector1 : STD_LOGIC_VECTOR(26 downto 0) := (others => '0');
 
 constant gain : signed(2 downto 0) := b"010";					      -- Volume Gain constant - 2
 
 begin
 
+locked <= isLocked;
+
 process(CLK,RESET)
 	begin
 		if RESET = '0' then
 			volumeState <= stateNormal;
-			locked <= '0';
+			islocked <= '0';
 			
 		elsif rising_edge(CLK) then
 			case volumeState is
 				when stateNormal =>						
-					-- Selected module = 1 and pedal was activated => Normal operation
+					-- Selected module = 1 and pedal was activated => Normal operation				
 					if SM = '1' and Pedal = '1'  then
-						tempCal <= signed(audioIn) * gain * (signed('0' & volumeGain));
-					
+						tempVector <= std_logic_vector(signed(audioIn) * signed('0' & Vol)); 
+						
 						-- If value gets over positive peak
-						if tempCal(37 downto 10) >= 8_388_607 then
-							audioOut <= x"7FFFFF";
+					--	if signed(tempVector1(25 downto 0)) > x"7FFFFF" then
+						--	audioOut <= x"7FFFFF";
 							
 						--If value gets over negative peak
-						elsif tempCal(37 downto 10) <= -8_388_608 then
-							audioOut <= x"800000";
+					--	elsif signed(tempVector1(25 downto 0)) < x"800000" then
+						--	audioOut <= x"800000";
 						
 						-- If value is in range
-						else
-							audioOut <= std_logic_vector(tempCal(33 downto 10));
-						end if;
+					--	else
+							audioOut <= tempVector(32 downto 9);
+					--	end if;
 						
 					--Otherwise foward signal
 					else
@@ -108,28 +111,28 @@ process(CLK,RESET)
 					-- Selected module = '1' and lock = '1' => Lock the module
 					if SM = '1' and lock = '1' then
 						-- Save External controls
-						savedVolumeGain <= volumeGain;
+--						savedVolumeGain <= volumeGain;
 						volumeState <= stateLocked;
-						locked <= '1';
+						islocked <= '1';
 					end if;
 					
 				when stateLocked =>						
 					-- If module is selected or chain effect is activated
 					if Pedal = '1' then
-						tempCal <= signed(audioIn) * gain * (signed('0' & savedVolumeGain));
+--						tempCal <= signed(audioIn) * gain * (signed('0' & savedVolumeGain));
 						
 						-- If value gets over positive peak
-						if tempCal(36 downto 10) >= 8_388_607 then
-							AudioOut <= x"7FFFFF";
-							
+			--			if tempCal(36 downto 10) >= 8_388_607 then
+			-- AudioOut <= x"7FFFFF";
+		--					
 						--If value gets over negative peak
-						elsif tempCal(36 downto 10) <= -8_388_608 then
-							audioOut <= x"800000";
+--						elsif tempCal(36 downto 10) <= -8_388_608 then
+		--					audioOut <= x"800000";
 					
 						-- If value is in range
-						else
-							audioOut <= std_logic_vector(tempCal(33 downto 10));
-						end if;
+				--		else
+			--				audioOut <= std_logic_vector(tempCal(33 downto 10));
+				--		end if;
 					
 					-- If condition not met, foward signal
 					else
@@ -138,7 +141,7 @@ process(CLK,RESET)
 					
 					-- If module is selected and we unlock
 					if SM = '1' and lock = '1' then
-						locked <= '0';
+						islocked <= '0';
 						volumeState <= stateNormal;
 					end if;
 					
