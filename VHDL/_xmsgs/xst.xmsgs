@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Distortion\Distortion.vhd" Line 88: Assignment to <arg fmt="%s" index="1">saveddist</arg> ignored, since the identifier is never used
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="634" delta="new" >"F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" Line 78: Net &lt;<arg fmt="%s" index="1">txData[7]</arg>&gt; does not have a driver.
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="634" delta="new" >"F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" Line 80: Net &lt;<arg fmt="%s" index="1">newTxData</arg>&gt; does not have a driver.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd</arg>&quot; line <arg fmt="%s" index="2">145</arg>: Output port &lt;<arg fmt="%s" index="3">rx_data</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">avr_interface</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd</arg>&quot; line <arg fmt="%s" index="2">145</arg>: Output port &lt;<arg fmt="%s" index="3">tx_busy</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">avr_interface</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd</arg>&quot; line <arg fmt="%s" index="2">145</arg>: Output port &lt;<arg fmt="%s" index="3">new_rx_data</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">avr_interface</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">txData</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">newTxData</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">SM</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">Tone</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">TBD1</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">TBD2</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">LM</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">SM</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">ADC0</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">ADC1</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">ADC4</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+</msg>
+
+<msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">lcdScreen_7</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">lcdScreen_6</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">lcdScreen_5</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">lcdScreen_4</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">lcdScreen_3</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">lcdScreen_2</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">lcdScreen_1</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">lcdScreen_0</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
+</msg>
+
+<msg type="info" file="Xst" num="1767" delta="new" >HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+</msg>
+
+<msg type="warning" file="Xst" num="1290" delta="new" >Hierarchical block &lt;<arg fmt="%s" index="1">serial_rx</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">avr_interface</arg>&gt;.
+It will be removed from the design.
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">tremState</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;isLocked&gt; </arg>
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">GLCD_RW</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">GLCD</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_8</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_9</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_34</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_35</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_36</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_37</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_8</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_9</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_34</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_35</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Volume</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Volume</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Volume</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Volume</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Volume</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Volume</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Volume</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Volume</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_8</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Volume</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_33</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Volume</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_34</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Volume</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_35</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Volume</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_36</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Volume</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_37</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Volume</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2404" delta="new" > FFs/Latches &lt;<arg fmt="%s" index="1">REQUESTED_CHANNEL</arg>&lt;<arg fmt="%d" index="2">3</arg>:<arg fmt="%d" index="3">3</arg>&gt;&gt; (without init value) have a constant value of <arg fmt="%c" index="4">0</arg> in block &lt;<arg fmt="%s" index="5">ADC_Read</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="2385" delta="new" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_tempVector1[23]_GND_27_o_MuLt_8_OUT</arg> by adding <arg fmt="%d" index="2">3</arg> register level(s).
+</msg>
+
+<msg type="info" file="Xst" num="3218" delta="new" >HDL ADVISOR - The RAM &lt;<arg fmt="%s" index="1">Mram_lcdScreen_0</arg>&gt; will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+</msg>
+
+<msg type="info" file="Xst" num="3218" delta="new" >HDL ADVISOR - The RAM &lt;<arg fmt="%s" index="1">Mram_lcdScreen_01</arg>&gt; will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+</msg>
+
+<msg type="info" file="Xst" num="3218" delta="new" >HDL ADVISOR - The RAM &lt;<arg fmt="%s" index="1">Mram_lcdScreen_02</arg>&gt; will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+</msg>
+
+<msg type="info" file="Xst" num="3218" delta="new" >HDL ADVISOR - The RAM &lt;<arg fmt="%s" index="1">Mram_lcdScreen_03</arg>&gt; will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+</msg>
+
+<msg type="info" file="Xst" num="3218" delta="new" >HDL ADVISOR - The RAM &lt;<arg fmt="%s" index="1">Mram_lcdScreen_04</arg>&gt; will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+</msg>
+
+<msg type="info" file="Xst" num="3218" delta="new" >HDL ADVISOR - The RAM &lt;<arg fmt="%s" index="1">Mram_lcdScreen_05</arg>&gt; will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+</msg>
+
+<msg type="info" file="Xst" num="3218" delta="new" >HDL ADVISOR - The RAM &lt;<arg fmt="%s" index="1">Mram_lcdScreen_06</arg>&gt; will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+</msg>
+
+<msg type="info" file="Xst" num="3218" delta="new" >HDL ADVISOR - The RAM &lt;<arg fmt="%s" index="1">Mram_lcdScreen_07</arg>&gt; will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+</msg>
+
+<msg type="info" file="Xst" num="3218" delta="new" >HDL ADVISOR - The RAM &lt;<arg fmt="%s" index="1">Mram_lcdScreen_08</arg>&gt; will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+</msg>
+
+<msg type="info" file="Xst" num="2385" delta="new" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_audioIn[23]_genWave[11]_MuLt_6_OUT</arg> by adding <arg fmt="%d" index="2">3</arg> register level(s).
+</msg>
+
+<msg type="info" file="Xst" num="3218" delta="new" >HDL ADVISOR - The RAM &lt;<arg fmt="%s" index="1">Mram_selectModule</arg>&gt; will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+</msg>
+
+<msg type="info" file="Xst" num="2385" delta="new" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_audioIn[23]_GND_34_o_MuLt_0_OUT</arg> by adding <arg fmt="%d" index="2">3</arg> register level(s).
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">REQUESTED_CHANNEL_1</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ADC_Read</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">GLCD_RW</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">LCD_Controler</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">distState</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">Distortion</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;locked&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">isLocked</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;tremState&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">isLocked</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">volumeControl</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;volumeState&gt; </arg>
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_GND_27_o_MuLt_8_OUT2_16</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_GND_27_o_MuLt_8_OUT2_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_GND_27_o_MuLt_8_OUT2_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_GND_27_o_MuLt_8_OUT2_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_GND_27_o_MuLt_8_OUT2_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_GND_27_o_MuLt_8_OUT2_11</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_GND_27_o_MuLt_8_OUT2_10</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_GND_27_o_MuLt_8_OUT2_9</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_GND_27_o_MuLt_8_OUT2_8</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_GND_27_o_MuLt_8_OUT2_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1293" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">waveMin_11</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">Tremolo</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">TremClkMax_0</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">Tremolo</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">TremClkMax_1</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">Tremolo</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_audioIn[23]_genWave[11]_MuLt_6_OUT2_16</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_audioIn[23]_genWave[11]_MuLt_6_OUT2_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_audioIn[23]_genWave[11]_MuLt_6_OUT2_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_audioIn[23]_genWave[11]_MuLt_6_OUT2_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_audioIn[23]_genWave[11]_MuLt_6_OUT2_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_audioIn[23]_genWave[11]_MuLt_6_OUT2_11</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_audioIn[23]_genWave[11]_MuLt_6_OUT2_10</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_audioIn[23]_genWave[11]_MuLt_6_OUT2_9</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_audioIn[23]_genWave[11]_MuLt_6_OUT2_8</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_audioIn[23]_genWave[11]_MuLt_6_OUT2_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_audioIn[23]_GND_34_o_MuLt_0_OUT2_16</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">volumeControl</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_audioIn[23]_GND_34_o_MuLt_0_OUT2_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">volumeControl</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_audioIn[23]_GND_34_o_MuLt_0_OUT2_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">volumeControl</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_audioIn[23]_GND_34_o_MuLt_0_OUT2_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">volumeControl</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_audioIn[23]_GND_34_o_MuLt_0_OUT2_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">volumeControl</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_audioIn[23]_GND_34_o_MuLt_0_OUT2_11</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">volumeControl</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_audioIn[23]_GND_34_o_MuLt_0_OUT2_10</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">volumeControl</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_audioIn[23]_GND_34_o_MuLt_0_OUT2_9</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">volumeControl</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_audioIn[23]_GND_34_o_MuLt_0_OUT2_8</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">volumeControl</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">avr_interface/serial_tx/block_q</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">TOP</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2973" delta="new" >All outputs of instance &lt;<arg fmt="%s" index="1">avr_interface/serial_rx</arg>&gt; of block &lt;<arg fmt="%s" index="2">serial_rx</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="3">TOP</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_021</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_022</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_024</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_025</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_026</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_027</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_028</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_013</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_014</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_017</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_015</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_016</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_018</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_019</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_0110</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_033</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_034</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_035</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_038</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_036</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_037</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_039</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_0310</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_043</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_044</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_045</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_046</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_049</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_047</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_048</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_0410</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_053</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_054</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_055</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_056</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_057</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_0510</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_058</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_059</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_063</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_064</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_065</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_066</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_067</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_068</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_073</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_069</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_0610</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_074</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_075</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_076</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_077</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_078</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_079</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="new" >RAMs &lt;<arg fmt="%s" index="1">Mram_lcdScreen_023</arg>&gt;, &lt;<arg fmt="%s" index="2">Mram_lcdScreen_0710</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="warning" file="Xst" num="1293" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">effectChain/Tremolo/TremClkMax_17</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">TOP</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">effectChain/Tremolo/TremClkMax_16</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">TOP</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">effectChain/Tremolo/TremClkMax_15</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">TOP</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="info" file="Xst" num="2169" delta="new" >HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+</msg>
+
+</messages>

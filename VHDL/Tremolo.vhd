@@ -82,7 +82,6 @@ begin
 
 -- à améliorer:
 -- LUT pour choisir une frequence spécifique représentant des BPM avec RATE https://www.convertworld.com/fr/frequence/battements-par-minute.html
--- Trouver un moyen de bypass l'attente avant de changer les valeurs d'onde
 -- ajustement automatique de la frequence lorsqu'on change depth et rate
 
 

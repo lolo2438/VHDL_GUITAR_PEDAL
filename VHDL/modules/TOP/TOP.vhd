@@ -1,33 +1,22 @@
--------------------------------------
---	Name: Laurent Tremblay		   --
---	Project: Numeric guitar pedal  --
---	Module: TOP					   --
---  Version:					   --
---  Comments: Main module		   --
---								   --
--------------------------------------
+-----------------------------------
+--	Name: Laurent Tremblay			--
+--	Project: Numeric guitar pedal	--
+--	Module: TOP							--
+--	Version:								--
+--	Comments: Main module			--
+-----------------------------------
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
-use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
 entity TOP is
-    Port (  -- Mojo 50 MHz clock
-				CLK : in  STD_LOGIC;
+    Port (  CLK : in  STD_LOGIC;							-- Mojo 50 MHz clock
 			
 				-- I2S pins
-				SDTI : in STD_LOGIC;							-- Data from codec
- 				SDTO : out  STD_LOGIC;						-- Data to codec
-				BCLK : in  STD_LOGIC;						-- Bit clock from codec
-				LRCK : in  STD_LOGIC;						-- Left right clock from codec
+				SDTI : in STD_LOGIC;										-- Data from codec
+ 				SDTO : out  STD_LOGIC;									-- Data to codec
+				BCLK : in  STD_LOGIC;									-- Bit clock from codec
+				LRCK : in  STD_LOGIC;									-- Left right clock from codec
 				
 				-- AVR Interface pins
 				CCLK : in STD_LOGIC;										-- Configuration clock from AVR to detect when ready
@@ -45,6 +34,14 @@ entity TOP is
 				LAST_EFFECT : in STD_LOGIC;
 				NEXT_EFFECT : in STD_LOGIC;
 				
+				-- LCD Signals
+				GLCD_DATA : out  STD_LOGIC_VECTOR (7 downto 0);
+				GLCD_E : out  STD_LOGIC;
+				GLCD_RW : out  STD_LOGIC;
+				GLCD_RS : out  STD_LOGIC;
+				GLCD_CS : out  STD_LOGIC_VECTOR (2 downto 1);
+				GLCD_RST : out STD_LOGIC;
+				
 				-- OTHERS
 				LED : out STD_LOGIC;
 				LED2 : out STD_LOGIC;
@@ -53,9 +50,6 @@ entity TOP is
 end TOP;
 
 architecture Behavioral of TOP is
-
--- Others
-signal NOT_RESET : STD_LOGIC;
 
 -- I2S Signals
 signal audioL : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
@@ -80,13 +74,17 @@ signal newTxData : STD_LOGIC;
 signal newRxData : STD_LOGIC;
 signal txBusy : STD_LOGIC;
 
+	-- Others
+signal NOT_RESET : STD_LOGIC;
+
 -- ADC READ signals
 signal adc0 : STD_LOGIC_VECTOR(9 downto 0);
 signal adc1 : STD_LOGIC_VECTOR(9 downto 0);
 signal adc4 : STD_LOGIC_VECTOR(9 downto 0);
 
 -- Guitar effect chain signals
-signal lockedData : STD_LOGIC_VECTOR(2 downto 0);
+signal lockedModules : STD_LOGIC_VECTOR(2 downto 0);
+signal selectedModule : STD_LOGIC_VECTOR(7 downto 0);
 
 -- Button processing
 signal sPedal : STD_LOGIC;
@@ -212,7 +210,10 @@ Port map ( -- FPGA 50 MHZ
 			  
 			  -- Lock
 			  LOCK => sLock,
-			  LOCKED => lockedData,
+			  LOCKED => lockedModules,
+			  
+			  -- Selected module
+			  SM => selectedModule,
 			  
 			  -- Effect control
 			  LAST_EFFECT => sLastE,
@@ -250,6 +251,32 @@ Port map(
 		  );
 
 -- Graphic interface signals
+GLCD: entity work.LCD_Controler(Behavioral)
+Port map( -- FPGA CLOCK
+			  CLK => CLK,
+			  
+			  -- LOCKED MODULES
+           LM => lockedModules,
+			  
+			  -- SELECTED MODULE
+           SM => selectedModule,
+			  
+			  -- RESET
+           RESET => RESET,
+			  
+			  -- ADC DATA
+           ADC0 => adc0,
+           ADC1 => adc1,
+           ADC4 => adc4,
+			  
+			  -- GLCD Hardware signal
+           GLCD_DATA => GLCD_DATA,				-- LCD DATA OUT
+           GLCD_E => GLCD_E,						-- LCD OPERATION ENABLE , FALLING EDGE TRIGGERED
+           GLCD_RW => GLCD_RW,					-- LCD READ=1 , WRITE =0
+           GLCD_RS => GLCD_RS,					-- LCD REGISTER SELECT: RS=1 select DATA, RS=0 select INSTRUCTIONS
+           GLCD_CS => GLCD_CS,					-- CHIP SELECT FOR LCD SIDE: 10 = SELECT LEFT, 01 = SELECT RIGHT
+			  GLCD_RST => GLCD_RST);				-- RESET FOR LCD, 0 = reset
+
 
 -- LOGIQUE DE SORTIE
 

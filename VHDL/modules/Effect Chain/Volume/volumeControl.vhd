@@ -88,7 +88,7 @@ process(CLK,RESET)
 				when stateNormal =>						
 					-- Selected module = 1 and pedal was activated => Normal operation				
 					if SM = '1' and Pedal = '1'  then
-						tempVector <= std_logic_vector(signed(audioIn) * signed('0' & Vol)); 
+						tempVector <= std_logic_vector(signed(audioIn) *gain* signed('0' & Vol)); -- quand on fait * vol il y a du bruit à des endroits etrange
 						
 						-- If value gets over positive peak
 					--	if signed(tempVector1(25 downto 0)) > x"7FFFFF" then

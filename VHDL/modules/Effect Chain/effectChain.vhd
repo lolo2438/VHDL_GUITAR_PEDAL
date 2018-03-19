@@ -20,14 +20,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
 use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity effectChain is
     Port ( -- FPGA 50 MHZ
@@ -46,6 +39,9 @@ entity effectChain is
 			  -- Lock
 			  LOCK : in STD_LOGIC;
 			  LOCKED : out STD_LOGIC_VECTOR(2 downto 0);
+			  
+			  -- Selected module
+			  SM : out STD_LOGIC_VECTOR(7 downto 0);
 			  
 			  -- Effect control
 			  LAST_EFFECT: in STD_LOGIC;

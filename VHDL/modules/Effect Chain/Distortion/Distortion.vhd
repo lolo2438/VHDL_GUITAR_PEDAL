@@ -83,7 +83,7 @@ begin
 
 -- https://en.wikipedia.org/wiki/Distortion 
 
--- dépassement a qqpart
+-- dépassement a *dist
 
 process(CLK,RESET)
 	begin
