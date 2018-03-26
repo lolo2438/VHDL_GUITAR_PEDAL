@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "secureip" -o "C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL/VolumeTB_isim_beh.exe" -prj "C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL/VolumeTB_beh.prj" "work.VolumeTB" 
+-intstyle "ise" -incremental -lib "secureip" -o "F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/LCD_CONTROLLER_TB_isim_beh.exe" -prj "F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/LCD_CONTROLLER_TB_beh.prj" "work.LCD_CONTROLLER_TB" 

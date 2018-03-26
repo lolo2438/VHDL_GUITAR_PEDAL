@@ -93,23 +93,30 @@ BEGIN
 
       -- insert stimulus here 
 		
+		-- Normal
 		PEDAL_IN <= '0';
 		
 		wait for 250 ms;
 		
 		PEDAL_IN <= '1';
 		
-		wait for 250 ms;
+		wait for 750 ms;
+		
+		PEDAL_IN <= '0';
+		
+		wait for 750 ms;
+		
+		PEDAL_IN <= '1';
+		
+		wait for 750 ms;
+		
+		-- Lock
 		
 		PEDAL_IN <= '0';
 		
 		wait for 250 ms;
 		
 		PEDAL_IN <= '1';
-		
-		wait for 2200 ms;
-		
-		PEDAL_IN <= '0';		
 		
       wait;
    end process;

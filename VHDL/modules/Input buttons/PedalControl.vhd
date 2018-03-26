@@ -1,33 +1,16 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date:    23:06:58 02/18/2018 
--- Design Name: 
--- Module Name:    PedalControl - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
-----------------------------------------------------------------------------------
+--------------------------------------------
+--	Name: Laurent Tremblay
+--	Project: Guitar effect processor
+--	Module name: PedalControl 
+--	Description: This module analyses
+--					 the input of the pedal
+--					 button and acts accordingly.
+-- 1 press => Activate/deactivate, 2 press => lock.
+--------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
 use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity PedalControl is
     Port ( CLK : in  STD_LOGIC;			-- System clock
@@ -46,13 +29,10 @@ Signal machinePedal : PedalState := Waiting;
 signal compteur : unsigned(25 downto 0) := (others => '0');
 
 signal lastPedal : STD_LOGIC := '0';
-signal PedalStateOut : STD_LOGIC := '0';
 
 begin
--- PEDAL CONTROLS
--- 1 press => Activate, press for 2 seconds => lock.
 
-PEDAL_OUT <= PedalStateOut;
+PEDAL_OUT <= PEDAL_IN;
 
 PedalAnalyze : process(CLK,RESET)
 	begin
@@ -67,34 +47,29 @@ PedalAnalyze : process(CLK,RESET)
 					
 					LOCK <= '0';
 					
-					-- Detected a rising edge => pushed pedal button and need to analyze what user wants
-					if PEDAL_IN = '1' and lastPedal = '0' then
+					-- Detected a rising edge/falling edge => pushed pedal button and need to analyze what user wants
+					if PEDAL_IN /= lastPedal then
+						lastPedal <= PEDAL_IN;
 						machinePedal <= Analyzing;
 						compteur <= (others => '0');
 					end if;
 					
 				when Analyzing =>
-				
-					-- If we release the pedal before 2 seconds, then it means that we only want to activate
-					if PEDAL_IN = '0' and lastPedal = '1' then
-						PedalStateOut <= not PedalStateOut;
+					
+					-- If we push the pedal button again -> lock the module
+					if PEDAL_IN /= lastPedal then
+						lastPedal <= PEDAL_IN;
+						LOCK <= '1';
 						machinePedal <= Waiting;
 					
-					-- While we keep holding the pedal In, check to see if we overflowed the counter
-					elsif PEDAL_IN = '1' and lastPedal = '1' then
-						
-						if compteur >= 50_000_000 then
-							LOCK <= '1';
+					-- If nothing happens for 500 miliseconds (time to lock the module), go back to waiting
+					elsif compteur >= 25_000_000 then
 							machinePedal <= Waiting;
-						else
-							compteur <= compteur + 1;
-						end if;
-						
+					else
+						compteur <= compteur + 1;
 					end if;
+						
 			end case;
-			
-			lastPedal <= PEDAL_IN;
-
 		end if;
 	end process;
 

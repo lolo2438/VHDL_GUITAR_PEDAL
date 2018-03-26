@@ -1,10 +1,11 @@
--------------------------------------------------------
---	Fait par Laurent Tremblay 
---
--- Détecte un front montant (Bouton pousoir ou signal)
--- et envoit une impulsion d'une durée de l'horloge
---
--------------------------------------------------------
+--------------------------------------------
+--	Name: Laurent Tremblay
+--	Project: Guitar effect processor
+--	Module name: Decteur_Front
+--	Description: This module checks if there
+--					 was a rising edge and sends
+--					 a pulse.
+--------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 

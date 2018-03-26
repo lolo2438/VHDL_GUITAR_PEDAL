@@ -1,22 +1,10 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date:    21:50:45 02/15/2018 
--- Design Name: 
--- Module Name:    effectChain - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
-----------------------------------------------------------------------------------
+--------------------------------------------
+--	Name: Laurent Tremblay
+--	Project: Guitar effect processor
+--	Module name: effectChain
+--	Description: This module povides an interface
+--					 for the guitar effects.
+--------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 

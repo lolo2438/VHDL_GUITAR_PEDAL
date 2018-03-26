@@ -60,8 +60,8 @@ Signal glcdControlerState : glcdControler := init;
 -- Dynamic array
 type pagedArray is array (0 to 127) of STD_LOGIC_VECTOR(7 downto 0);			-- Une page
 
-type totalArray is array (0 to 7) of pagedArray;									-- 8 pages
-signal lcdScreen : totalArray;															-- lcdScreen(Page)(address)(Data)				
+type lcdArray is array (0 to 7) of pagedArray;									-- 8 pages
+signal lcdScreen : lcdArray := (others => (others => (others => '0')));															-- lcdScreen(Page)(address)(Data)				
 
 -- Commands for GLCD_RW
 constant glcdWrite : STD_LOGIC := '0';
@@ -90,12 +90,11 @@ signal compteur : UNSIGNED(10 downto 0) := (others => '0');
 signal enableOE : STD_LOGIC := '0';	
 
 begin
-
 -- Signal asignment 
 GLCD_E <= OE;
 
 -- Generate 30 images per second
--- 1024 clock tick = 1 img -> 30_720 = 30 img; 50_000_000 / 30_720 = 1627 ~= 32uS (65B)
+-- 1024 clock tick = 1 img -> 30_720 = 30 img; 50_000_000 / 30_720 = 1627 ~= 32uS (0x65B)
 WriteDataClk:process(RESET,CLK) 
 	begin
 		if RESET = '0' then
@@ -175,13 +174,13 @@ Controler:process(RESET,CLK)
 						if address = 127 then
 							address := 0;
 							glcdControlerState <= changePage;
-							GLCD_CS <= noSide;
 						else
 							address := address + 1;
 						end if;
 					end if;
 					
 				when changePage =>
+					GLCD_CS <= noSide;
 					if OE = '1' and lastOE = '0' then		-- Rising edge => Setup values
 						lastOE <= OE;
 						GLCD_RS <= glcdSendCmd;
@@ -201,8 +200,6 @@ Controler:process(RESET,CLK)
 			end case;
 		end if;
 	end process;
-	
--- Dynamic Data array for LCD
 
 end Behavioral;
 
