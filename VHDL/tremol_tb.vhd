@@ -107,7 +107,7 @@ BEGIN
 		RESET <= '0';
       
 		Depth <= b"1111111111";
-		Rate <= b"0100000000";
+		Rate <= b"0000000000";
 		Wave <= b"0000000001";
 		
       wait for 100 ns;	

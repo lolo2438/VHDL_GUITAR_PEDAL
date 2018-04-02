@@ -108,10 +108,10 @@ process(CLK,RESET)
 							tempVector1 <= audioIn;
 						end if;
 						
+						-- tone should go here
+						
 						-- Post-distortion amplification
 						tempCal1 <= signed(tempVector1) * levelGain * signed('0' & Level);
-						
-						-- tone should go here
 						
 						-- post amp signal = > preampresult * gain * level/1024
 						audioOut <= std_logic_vector(tempCal1(33 downto 10));

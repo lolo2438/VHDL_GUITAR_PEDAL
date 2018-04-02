@@ -68,6 +68,7 @@ Signal savedTBD2 : STD_LOGIC_VECTOR (9 downto 0);
 Signal sVolume : signed(10 downto 0) := (others => '0');
 Signal isLocked : STD_LOGIC := '0';
 
+Signal lastAudioIn23 : STD_LOGIC := '0';
 signal tempVector : STD_LOGIC_VECTOR(37 downto 0) := (others => '0');
 --signal tempVector1 : STD_LOGIC_VECTOR(26 downto 0) := (others => '0');
 
@@ -76,6 +77,17 @@ constant gain : signed(2 downto 0) := b"010";					      -- Volume Gain constant 
 begin
 
 locked <= isLocked;
+
+detectNewWave: process(CLK)	--A tester: est ce que le fait de garder le volume fixe le temps d'une wave repare le bruit etrange
+begin
+	if rising_edge(CLK) then
+		if audioIn(23) = '0' and lastAudioIn23 = '1' then	--when the audio signal goes from negative -> positive
+			sVolume <= ('0' & signed(Vol));
+		end if;
+		
+		lastAudioIn23 <= audioIn(23);
+	end if;
+end process;
 
 process(CLK,RESET)
 	begin
@@ -88,7 +100,7 @@ process(CLK,RESET)
 				when stateNormal =>						
 					-- Selected module = 1 and pedal was activated => Normal operation				
 					if SM = '1' and Pedal = '1'  then
-						tempVector <= std_logic_vector(signed(audioIn) *gain* signed('0' & Vol)); -- quand on fait * vol il y a du bruit à des endroits etrange
+						tempVector <= std_logic_vector(signed(audioIn) *gain* sVolume); -- quand on fait * vol il y a du bruit à des endroits etrange
 						
 						-- If value gets over positive peak
 					--	if signed(tempVector1(25 downto 0)) > x"7FFFFF" then
