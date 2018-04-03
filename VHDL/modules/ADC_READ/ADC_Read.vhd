@@ -23,9 +23,6 @@ entity ADC_Read is
 			  -- To AVR Interface
            REQUESTED_CHANNEL : out  STD_LOGIC_VECTOR(3 downto 0);
 			  
-			  --test led
-			  LED : out STD_LOGIC;
-			  
 			  -- To guitar effect
 			  ADC0 : out STD_LOGIC_VECTOR(9 downto 0);
 			  ADC1 : out STD_LOGIC_VECTOR(9 downto 0);
@@ -67,7 +64,6 @@ ADC_Read:process(CLK,RESET)
 				if tempChannel = b"0000" then
 					sADC0 <= tempSample; 
 					REQUESTED_CHANNEL <= x"1";
-					LED <= tempSample(5);
 					
 				elsif tempChannel = b"0001" then
 					sADC1 <= tempSample;

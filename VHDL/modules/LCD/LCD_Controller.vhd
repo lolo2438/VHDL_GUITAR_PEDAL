@@ -28,7 +28,7 @@ entity LCD_Controler is
 			  CLK : in  STD_LOGIC;
 			  
 			  -- LOCKED MODULES
-           LM : in  STD_LOGIC_VECTOR (2 downto 0);
+           LM : in  STD_LOGIC_VECTOR (7 downto 0);
 			  
 			  -- SELECTED MODULE
            SM : in  STD_LOGIC_VECTOR (7 downto 0);
@@ -58,10 +58,13 @@ Type glcdControler is (init,writeDataLeft,writeDataRight,changePage);
 Signal glcdControlerState : glcdControler := init;
 
 -- Dynamic array
-type pagedArray is array (0 to 127) of STD_LOGIC_VECTOR(7 downto 0);			-- Une page
+type pagedArray is array (0 to 127) of STD_LOGIC_VECTOR(0 to 7);			-- Une page
 
 type lcdArray is array (0 to 7) of pagedArray;									-- 8 pages
 signal lcdScreen : lcdArray := (others => (others => (others => '0')));															-- lcdScreen(Page)(address)(Data)				
+
+type userInterfaceforLCD is array (0 to 127) of STD_LOGIC_VECTOR(0 to 63);
+signal userInterface : userInterfaceforLCD;
 
 -- Commands for GLCD_RW
 constant glcdWrite : STD_LOGIC := '0';
@@ -201,5 +204,23 @@ Controler:process(RESET,CLK)
 		end if;
 	end process;
 
+----
+-- Selected Module Image
+----
+
+----
+-- Lock icon
+----
+
+----
+-- ADC Bars
+----
+
+----
+-- Static images
+----
+
+-- Page
+-- ADC bars contour
 end Behavioral;
 

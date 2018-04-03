@@ -26,7 +26,7 @@ entity effectChain is
 			  
 			  -- Lock
 			  LOCK : in STD_LOGIC;
-			  LOCKED : out STD_LOGIC_VECTOR(2 downto 0);
+			  LOCKED : out STD_LOGIC_VECTOR(7 downto 0);
 			  
 			  -- Selected module
 			  SM : out STD_LOGIC_VECTOR(7 downto 0);
@@ -61,7 +61,7 @@ signal audioOutVolume : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
 
 begin
 
-LED <= selectModule(2);
+SM <= selectModule;
 
 -- Select Module
 ChooseEffect:process(RESET,CLK)

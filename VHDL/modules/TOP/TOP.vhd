@@ -43,9 +43,6 @@ entity TOP is
 				GLCD_RST : out STD_LOGIC;
 				
 				-- OTHERS
-				LED : out STD_LOGIC;
-				LED2 : out STD_LOGIC;
-				LED3 : out STD_LOGIC;
 				RESET : in STD_LOGIC);
 end TOP;
 
@@ -83,7 +80,7 @@ signal adc1 : STD_LOGIC_VECTOR(9 downto 0);
 signal adc4 : STD_LOGIC_VECTOR(9 downto 0);
 
 -- Guitar effect chain signals
-signal lockedModules : STD_LOGIC_VECTOR(2 downto 0);
+signal lockedModules : STD_LOGIC_VECTOR(7 downto 0);
 signal selectedModule : STD_LOGIC_VECTOR(7 downto 0);
 
 -- Button processing
@@ -95,8 +92,6 @@ signal sLastE : STD_LOGIC;
 begin
 
 NOT_RESET <= not RESET;
-
-LED2 <= sPedal;
 
 -- PORT MAP
 
@@ -184,9 +179,6 @@ Port map ( -- FPGA CLOCK
 			  -- To AVR Interface
            REQUESTED_CHANNEL => channel,
 			  
-			  -- test LED
-			  LED => LED3,
-			  
 			  -- To guitar effect
 			  ADC0 => adc0,
 			  ADC1 => adc1,
@@ -221,9 +213,6 @@ Port map ( -- FPGA 50 MHZ
 			  
 			  -- Reset
 			  RESET => RESET,
-			  
-			  --test led
-			  LED => LED,
 			  
 			  -- Control ADC
 			  ADC0 => adc0,
