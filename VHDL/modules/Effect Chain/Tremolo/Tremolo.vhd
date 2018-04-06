@@ -50,6 +50,21 @@ end Tremolo;
 
 architecture Behavioral of Tremolo is
 
+
+COMPONENT Diviseur
+  PORT (
+    aclk : IN STD_LOGIC;
+    aresetn : IN STD_LOGIC;
+    s_axis_divisor_tvalid : IN STD_LOGIC;
+    s_axis_divisor_tdata : IN STD_LOGIC_VECTOR(23 DOWNTO 0);
+    s_axis_dividend_tvalid : IN STD_LOGIC;
+    s_axis_dividend_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    m_axis_dout_tvalid : OUT STD_LOGIC;
+    m_axis_dout_tdata : OUT STD_LOGIC_VECTOR(55 DOWNTO 0)
+  );
+END COMPONENT;
+
+
 Type effectState is (stateNormal,stateLocked);
 Signal tremState : effectState := stateNormal;
 
@@ -76,7 +91,15 @@ signal newWave : STD_LOGIC;
 Signal WCLK : STD_LOGIC := '0';
 
 Signal compteur : unsigned(14 downto 0) := (others => '0');
-Signal TremClkMax: unsigned(17 downto 0) := (others => '0');
+Signal TremClkMax: unsigned(31 downto 0) := (others => '0');
+
+
+-- Signal for divisor
+Signal loadToDivisor : STD_LOGIC := '0';
+Signal DepthXBpm : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
+Signal divisionDone : STD_LOGIC := '0';
+Signal dataOutDiviser : STD_LOGIC_VECTOR(55 downto 0) := (others => '0');
+
 
 begin
 
@@ -87,6 +110,7 @@ begin
 
 -- Signal assignations
 Locked <= isLocked;
+DepthXBpm <= std_logic_vector( (('0' & unsigned(Depth))+ b"1") * b"10" * (('0' &unsigned(Rate)) + x"3C"));
 
 -- Main sequencial machine
 MachSeq:process(CLK,RESET)
@@ -202,17 +226,18 @@ detectNewWave:process(CLK)
 	begin
 		if rising_edge(CLK) then
 			if newWave = '1' then
-				
+				loadToDivisor <= '1';
 				if isLocked <= '0' then
-					TremClkMax <= x"7530" - ((x"14" *(unsigned(Rate))) + x"1338");-- todo multiplier par 2 ici
+				--	TremClkMax <= x"7530" - ((x"14" *(unsigned(Rate))) + x"1338");-- todo multiplier par 2 ici
 					shapeScale <= slope;
 					waveMin <= x"400" - signed(b"0" & Depth);
-				
 				elsif isLocked <= '1' then
-					TremClkMax <= x"7530" - ((x"14" *(unsigned(savedRate))) + x"1338");
+				--	TremClkMax <= x"7530" - ((x"14" *(unsigned(savedRate))) + x"1338");
 					shapeScale <= savedSlope;
 					waveMin <= x"400" - signed(b"00" & savedDepth);
 				end if;
+			else
+				loadToDivisor <= '0';
 			end if;
 		end if;
 	end process;
@@ -260,6 +285,28 @@ WaveGen:process(WCLK,RESET)
 				end if;
 		end if;
 	end process;
+
+
+detectDivisorDone:process(CLK)
+begin
+	if rising_edge(CLK) then
+		if divisionDone = '1' then
+			TremClkMax <= unsigned(dataOutDiviser(55 downto 24));
+		end if;
+	end if;
+end process;
+
+TREMCLKVALUE: Diviseur
+  PORT MAP (
+    aclk => CLK,
+    aresetn => RESET,
+    s_axis_divisor_tvalid => loadToDivisor,
+    s_axis_divisor_tdata => DepthXBpm,
+    s_axis_dividend_tvalid => loadToDivisor,
+    s_axis_dividend_tdata => x"B2D05E00",	--3_000_000_000
+    m_axis_dout_tvalid => divisionDone,
+    m_axis_dout_tdata => dataOutDiviser
+  );
 
 end Behavioral;
 
