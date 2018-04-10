@@ -1,0 +1,30 @@
+Command line:
+   LCD_CONTROLLER_TB_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  52279
+
+Mon Apr 09 21:42:23 2018
+
+
+ Elaboration Time: 0.0312 sec
+
+ Current Memory Usage: 680.137 Meg
+
+ Total Signals          : 38
+ Total Nets             : 16470
+ Total Signal Drivers   : 19
+ Total Blocks           : 4
+ Total Primitive Blocks : 3
+ Total Processes        : 6
+ Total Traceable Variables  : 23
+ Total Scalar Nets and Variables : 16971
+Total Line Count : 75
+Total Line Count : 75
+
+ Total Simulation Time: 11.3725 sec
+
+ Current Memory Usage: 680.137 Meg
+
+Mon Apr 09 21:45:49 2018
+

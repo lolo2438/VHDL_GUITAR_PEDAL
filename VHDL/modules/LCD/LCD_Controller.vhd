@@ -51,6 +51,7 @@ entity LCD_Controler is
 			  
 end LCD_Controler;
 
+
 architecture Behavioral of LCD_Controler is
 
 -- State machine
@@ -75,8 +76,8 @@ constant glcdSetLine : STD_LOGIC_VECTOR(1 downto 0) := b"01";			-- Most signific
 constant glcdSetPage : STD_LOGIC_VECTOR(4 downto 0) := b"10111";		-- Most significative data byte
 
 -- Command for display ON
-
-
+signal setDisplayOn : STD_LOGIC := '0';
+signal setDisplayRisingEdge : STD_LOGIC := '0';
 -- Commands for GLCD_CS
 constant leftSide : STD_LOGIC_VECTOR(1 downto 0) := b"01";
 constant rightSide : STD_LOGIC_VECTOR(1 downto 0) := b"10";
@@ -89,12 +90,18 @@ constant glcdSendCmd : STD_LOGIC := '0';
 -- OPERATION ENABLE SIGNAL
 signal OE : STD_LOGIC := '0';
 signal lastOE : STD_LOGIC := '0';
-signal compteur : UNSIGNED(10 downto 0) := (others => '0');
+signal compteur : UNSIGNED(14 downto 0) := (others => '0');
 signal enableOE : STD_LOGIC := '0';	
+
+signal reset_compteur : integer := 0;
+signal address : integer := 0;
+signal page : integer := 0;
 
 begin
 -- Signal asignment 
 GLCD_E <= OE;
+
+lcdScreen <= (others => (others => (others => '1')));
 
 -- Generate 30 images per second
 -- 1024 clock tick = 1 img -> 30_720 = 30 img; 50_000_000 / 30_720 = 1627 ~= 32uS (0x65B)
@@ -104,7 +111,7 @@ WriteDataClk:process(RESET,CLK)
 			compteur <= (others => '0');
 		elsif rising_edge(CLK) then
 			if enableOE <= '1' then
-				if compteur < x"65B" then
+				if compteur < x"7800" then
 					compteur <= compteur + 1;
 				else
 					compteur <= (others => '0');
@@ -117,53 +124,67 @@ WriteDataClk:process(RESET,CLK)
 
 -- Main sequential machine
 Controler:process(RESET,CLK)
-	variable reset_compteur : integer range 0 to 127 := 0;
-	variable address : integer range 0 to 127 := 0;
-	variable page : integer range 0 to 7 := 0;
+--	variable reset_compteur : integer := 0;
+--	variable address : integer := 0;
+--	variable page : integer := 0;
 	begin
 		if RESET = '0' then
 			GLCD_RST <= '0';
 			glcdControlerState <= init;
+			GLCD_DATA <= x"00";
 			enableOE <= '0';
 			-- Variable reset
-			reset_compteur := 0;
-			address := 0;
-			page := 0;
-			
+			reset_compteur <= 0;
+			address <= 0;
+			page <= 0;
+			setDisplayOn <= '0';
+			GLCD_RW <= glcdWrite;
+			setDisplayRisingEdge <= '0';
 		elsif rising_edge(CLK) then
 			case glcdControlerState is
 				when init =>
 					if reset_compteur < 100 then			-- Hold reset for 2uS
 						GLCD_RST <= '0';						-- Reset
 						GLCD_CS <= noSide;					-- Init to no side
-						reset_compteur := reset_compteur + 1;
+						reset_compteur <= reset_compteur + 1;
 						
 					elsif reset_compteur < 120 then		-- Wait 400 ns for reset rise time
 						GLCD_RST <= '1';						-- Re-enable
-						reset_compteur := reset_compteur + 1;
+						reset_compteur <= reset_compteur + 1;
+						enableOE <= '1';								-- Enable data writing	
 						
+					elsif setDisplayOn = '0' then
+						if setDisplayRisingEdge = '0' then
+							if OE = '1' and lastOE = '0' then		-- Rising edge => Setup values
+								GLCD_RS <= glcdSendCmd;
+								GLCD_DATA <= b"00111111";
+								setDisplayRisingEdge <= '1';
+							end if;
+						elsif setDisplayRisingEdge = '1' then
+							if OE = '0' and lastOE = '1' then
+								setDisplayOn <= '1';
+							end if;
+						end if;
 					else
 						GLCD_CS <= leftSide;							-- Select left side
-						GLCD_RW <= glcdWrite;							-- Set to write data
+						GLCD_RW <= glcdWrite;						-- Set to write data
 						GLCD_RS <= glcdSendData;					-- Set lcd to receive data
 						GLCD_DATA <= x"00";							-- Start with empty data
-						glcdControlerState <= writeDataLeft;	-- Go in writing mode
-						enableOE <= '1';								-- Enable data writing		
+						glcdControlerState <= writeDataLeft;	-- Go in writing mode	
 					end if;
 					
 				when writeDataLeft =>
-					GLCD_RS <= glcdSendData;
 					if OE = '1' and lastOE = '0' then		-- Rising edge => Setup values
+						GLCD_RS <= glcdSendData;
 						lastOE <= OE;
 						GLCD_DATA <= lcdScreen(page)(address);
 						
 					elsif OE = '0' and lastOE = '1' then	-- Falling edge => LCD is reading the data
 						lastOE <= OE;
-						if address = 63 then
+						address <= address + 1;
+						if address = 64 then
 							glcdControlerState <= writeDataRight;
 							GLCD_CS <= rightSide;
-						else
-							address := address + 1;
 						end if;
 					end if;
 
@@ -175,24 +196,24 @@ Controler:process(RESET,CLK)
 					elsif OE = '0' and lastOE = '1' then	-- Falling edge => LCD is reading the data
 						lastOE <= OE;
 						if address = 127 then
-							address := 0;
+							address <= 0;
 							glcdControlerState <= changePage;
 						else
-							address := address + 1;
+							address <= address + 1;
 						end if;
 					end if;
 					
 				when changePage =>
-					GLCD_CS <= noSide;
+				--	GLCD_CS <= noSide;
 					if OE = '1' and lastOE = '0' then		-- Rising edge => Setup values
 						lastOE <= OE;
 						GLCD_RS <= glcdSendCmd;
 						
 						if page = 7 then
-							page := 0;
+							page <= 0;
 							GLCD_DATA <= glcdSetPage & std_logic_vector(to_unsigned(page,3));
 						else
-							page := page + 1;
+							page <= page + 1;
 							GLCD_DATA <= glcdSetPage & std_logic_vector(to_unsigned(page,3));
 						end if;
 					

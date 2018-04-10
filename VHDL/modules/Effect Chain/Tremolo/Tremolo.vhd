@@ -50,7 +50,6 @@ end Tremolo;
 
 architecture Behavioral of Tremolo is
 
-
 COMPONENT Diviseur
   PORT (
     aclk : IN STD_LOGIC;

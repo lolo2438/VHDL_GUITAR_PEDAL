@@ -42,7 +42,7 @@ ARCHITECTURE behavior OF LCD_CONTROLLER_TB IS
     COMPONENT LCD_Controler
     PORT(
          CLK : IN  std_logic;
-         LM : IN  std_logic_vector(2 downto 0);
+         LM : IN  std_logic_vector(7 downto 0);
          SM : IN  std_logic_vector(7 downto 0);
          RESET : IN  std_logic;
          ADC0 : IN  std_logic_vector(9 downto 0);
@@ -60,7 +60,7 @@ ARCHITECTURE behavior OF LCD_CONTROLLER_TB IS
 
    --Inputs
    signal CLK : std_logic := '0';
-   signal LM : std_logic_vector(2 downto 0) := (others => '0');
+   signal LM : std_logic_vector(7 downto 0) := (others => '0');
    signal SM : std_logic_vector(7 downto 0) := (others => '0');
    signal RESET : std_logic := '0';
    signal ADC0 : std_logic_vector(9 downto 0) := (others => '0');
@@ -76,7 +76,7 @@ ARCHITECTURE behavior OF LCD_CONTROLLER_TB IS
    signal GLCD_RST : std_logic;
 
    -- Clock period definitions
-   constant CLK_period : time := 10 ns;
+   constant CLK_period : time := 20 ns;
  
 BEGIN
  
@@ -109,7 +109,8 @@ BEGIN
 
    -- Stimulus process
    stim_proc: process
-   begin		
+   begin	
+		RESET <= '0';
       -- hold reset state for 100 ns.
       wait for 100 ns;	
 
