@@ -63,7 +63,6 @@ COMPONENT Diviseur
   );
 END COMPONENT;
 
-
 Type effectState is (stateNormal,stateLocked);
 Signal tremState : effectState := stateNormal;
 
