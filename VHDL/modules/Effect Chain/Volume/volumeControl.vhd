@@ -70,7 +70,6 @@ Signal isLocked : STD_LOGIC := '0';
 
 Signal lastAudioIn23 : STD_LOGIC := '0';
 signal tempVector : STD_LOGIC_VECTOR(37 downto 0) := (others => '0');
-signal tempVector1 : STD_LOGIC_VECTOR(26 downto 0) := (others => '0');
 
 constant gain : signed(2 downto 0) := b"010";					      -- Volume Gain constant - 2
 
@@ -100,19 +99,19 @@ process(CLK,RESET)
 				when stateNormal =>						
 					-- Selected module = 1 and pedal was activated => Normal operation				
 					if SM = '1' and Pedal = '1'  then
-						tempVector <= std_logic_vector(signed(audioIn) *gain* sVolume); -- quand on fait * vol il y a du bruit à des endroits etrange
+						tempVector <= std_logic_vector(signed(audioIn) * gain* sVolume); -- quand on fait * vol il y a du bruit à des endroits etrange
 						
 						-- If value gets over positive peak
-						if signed(tempVector1(25 downto 0)) > x"7FFFFF" then
+						if signed(tempVector(34 downto 10)) > x"7FFFFF" then
 							audioOut <= x"7FFFFF";
 							
 						--If value gets over negative peak
-							elsif signed(tempVector1(25 downto 0)) < x"800000" then
+							elsif signed(tempVector(34 downto 10)) < x"800000" then
 							audioOut <= x"800000";
 						
 						-- If value is in range
 						else
-							audioOut <= tempVector(32 downto 9);
+							audioOut <= tempVector(33 downto 10);
 						end if;
 						
 					--Otherwise foward signal

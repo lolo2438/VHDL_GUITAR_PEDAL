@@ -38,9 +38,6 @@ entity effectChain is
 			  -- Reset
 			  RESET : in STD_LOGIC;
 			  
-			  -- test led
-			  LED : out STD_LOGIC;
-			  
 			  -- Control ADC
 			  ADC0 : in STD_LOGIC_VECTOR(9 downto 0);
 			  ADC1 : in STD_LOGIC_VECTOR(9 downto 0);

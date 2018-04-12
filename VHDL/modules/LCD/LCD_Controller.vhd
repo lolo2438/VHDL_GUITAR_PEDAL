@@ -58,12 +58,12 @@ Type glcdControler is (init,sendDisplayOn,writeDataLeft,writeDataRight,changePag
 Signal glcdControlerState : glcdControler := init;
 
 -- Dynamic array
-type pagedArray is array (0 to 127) of STD_LOGIC_VECTOR(0 to 7);				-- Une page
+type pagedArray is array (0 to 127) of STD_LOGIC_VECTOR(0 to 7);				-- One page for Ez Glcd Data Transfer Array
 
-type lcdArray is array (0 to 7) of pagedArray;										-- 8 pages
+type lcdArray is array (0 to 7) of pagedArray;										-- EGDTA 
 signal lcdScreen : lcdArray := (others => (others => (others => '0')));		-- lcdScreen(Page)(address)(Data)				
 
-type userInterfaceforLCD is array (0 to 63) of STD_LOGIC_VECTOR(0 to 127);
+type userInterfaceforLCD is array (0 to 63) of STD_LOGIC_VECTOR(0 to 127); -- Ez User interface for data placement
 signal userInterface : userInterfaceforLCD;
 
 -- Commands for GLCD_RW
@@ -75,7 +75,7 @@ constant glcdSetLine : STD_LOGIC_VECTOR(1 downto 0) := b"01";					-- Most signif
 constant glcdSetPage : STD_LOGIC_VECTOR(4 downto 0) := b"10111";				-- Most significative data byte
 
 -- Command for display ON
-
+constant setDisplayOn : STD_LOGIC_VECTOR(7 downto 0) := b"00111111";
 
 -- Commands for GLCD_CS
 constant leftSide : STD_LOGIC_VECTOR(1 downto 0) := b"01";
@@ -87,47 +87,87 @@ constant glcdSendData : STD_LOGIC := '1';
 constant glcdSendCmd : STD_LOGIC := '0';
 
 -- OPERATION ENABLE SIGNAL
-signal OE : STD_LOGIC := '0';
-signal lastOE : STD_LOGIC := '0';
+signal E : STD_LOGIC := '0';
+signal lastE : STD_LOGIC := '0';
 signal compteur : UNSIGNED(14 downto 0) := (others => '0');
-signal enableOE : STD_LOGIC := '0';	
-
--- OTHERS
-signal dataReady : STD_LOGIC := '0';
+signal enableE : STD_LOGIC := '0';	
 
 begin
 -- Signal asignment 
-GLCD_E <= OE;
+GLCD_E <= E;
 
---lcdScreen <= (others => (others => (others => '1')));
-
--- Asign User screen to glcd screen
-arrayMatching:for P in 0 to 7 generate
-	--lcdScreen(P)()() <= userInterface()();
-end generate;
+-- Asigning the Ez User Interface array to the Ez glcd Data Transfer array
+pageAsign:for P in 0 to 7 generate
+	columnAsign: for R in 0 to 127 generate
+		rowAsign: for D in 0 to 7 generate
+		
+		page0Data:
+			if P = 0 generate
+				lcdScreen(P)(R)(D) <= userInterface(D)(R);
+			end generate;
+			
+		page1Data:	
+			if P = 1 generate
+				lcdScreen(P)(R)(D) <= userInterface(8 + D)(R);
+			end generate;
+			
+		page2Data:
+			if P = 2 generate
+				lcdScreen(P)(R)(D) <= userInterface(16 + D)(R);
+			end generate;
+			
+		page3Data:
+			if P = 3 generate
+				lcdScreen(P)(R)(D) <= userInterface(24 + D)(R);
+			end generate;
+			
+		page4Data:	
+			if P = 4 generate
+				lcdScreen(P)(R)(D) <= userInterface(32 + D)(R);
+			end generate;
+			
+		page5Data:
+			if P = 5 generate
+				lcdScreen(P)(R)(D) <= userInterface(40 + D)(R);
+			end generate;
+			
+		page6Data:	
+			if P = 6 generate
+				lcdScreen(P)(R)(D) <= userInterface(48 + D)(R);
+			end generate;
+			
+		page7Data:	
+			if P = 7 generate
+				lcdScreen(P)(R)(D) <= userInterface(56 + D)(R);	
+			end generate;
+			
+		end generate rowAsign;
+	end generate columnAsign;
+end generate pageAsign;
 
 -- Generate 30 images per second
 -- 1024 clock tick = 1 img -> 30_720 = 30 img; 50_000_000 / 30_720 = 1627 ~= 32uS (0x65B)
-WriteDataClk:process(RESET,CLK) 
+WriteDataClk:
+process(RESET,CLK) 
 	begin
 		if RESET = '0' then
 			compteur <= (others => '0');
 		elsif rising_edge(CLK) then
-			if enableOE <= '1' then
-				if compteur < x"7800" then
+			if enableE <= '1' then
+				if compteur < x"7800" then				-- For testing purpose:  1 img/sec = 50MHz / 1024 = x"7800"
 					compteur <= compteur + 1;
 				else
 					compteur <= (others => '0');
-					OE <= not OE;
+					E <= not E;
 				end if;
 			end if;
 		end if;
-	end process;
+end process;
 
-
--- Main sequential machine
-Controler:process(RESET,CLK)
-	variable reset_compteur : integer range 0 to 127 := 0;		--MODIF 1, ajourr limitations
+-- Main controler
+Controler:
+process(RESET,CLK)
+	variable reset_compteur : integer range 0 to 127 := 0;
 	variable address : integer range 0 to 127 := 0;
 	variable page : integer range 0 to 7 := 0;
 	begin
@@ -135,7 +175,7 @@ Controler:process(RESET,CLK)
 			GLCD_RST <= '0';
 			glcdControlerState <= init;
 			GLCD_DATA <= x"00";
-			enableOE <= '0';
+			enableE <= '0';
 			-- Variable reset
 			reset_compteur := 0;
 			address := 0;
@@ -150,7 +190,7 @@ Controler:process(RESET,CLK)
 						GLCD_RST <= '0';						-- Reset
 						GLCD_CS <= noSide;					-- Init to no side
 						GLCD_DATA <= x"00";
-						enableOE <= '0';
+						enableE <= '0';
 						GLCD_RS <= glcdSendCmd;						-- Set lcd to send cmd
 						GLCD_RW <= glcdWrite;
 						address := 0;
@@ -161,32 +201,30 @@ Controler:process(RESET,CLK)
 						reset_compteur := reset_compteur + 1;
 		
 					else
-						enableOE <= '1';								-- Enable data writing	
+						enableE <= '1';								-- Enable data writing	
 						GLCD_RS <= glcdSendCmd;						-- Set lcd to send cmd
-						GLCD_DATA <= b"00111111";					-- Start with send display on
+						GLCD_DATA <= setDisplayOn;					-- Start with send display on
 						glcdControlerState <= sendDisplayOn;	-- Send display on cmd	
 					end if;
 				
 				when sendDisplayOn =>
-					if OE = '1' and lastOE = '0' then		-- Rising edge => Setup values
-						lastOE <= OE;
-						GLCD_DATA <= b"00111111"; 				-- Display on
-						--dataReady <= '1';
-					elsif OE = '0' and lastOE = '1' then	-- Falling edge => LCD is reading the data 
-						lastOE <= OE;
-						dataReady <= '0';
+					if E = '1' and lastE = '0' then		-- Rising edge => Setup values
+						lastE <= E;
+						GLCD_DATA <= setDisplayOn; 				-- Display on
+					elsif E = '0' and lastE = '1' then	-- Falling edge => LCD is reading the data 
+						lastE <= E;
 						GLCD_CS <= leftSide;							-- Select left side
 						glcdControlerState <= writeDataLeft;
 					end if;
 					
 				when writeDataLeft =>
-					if OE = '1' and lastOE = '0' then		-- Rising edge => Setup values
+					if E = '1' and lastE = '0' then		-- Rising edge => Setup values
 						GLCD_RS <= glcdSendData;
-						lastOE <= OE;
+						lastE <= E;
 						GLCD_DATA <= lcdScreen(page)(address);
 						
-					elsif OE = '0' and lastOE = '1' then	-- Falling edge => LCD is reading the data
-						lastOE <= OE;
+					elsif E = '0' and lastE = '1' then	-- Falling edge => LCD is reading the data
+						lastE <= E;
 						address := address + 1;
 						if address = 64 then
 							glcdControlerState <= writeDataRight;
@@ -195,12 +233,12 @@ Controler:process(RESET,CLK)
 					end if;
 
 				when writeDataRight =>
-					if OE = '1' and lastOE = '0' then		-- Rising edge => Setup values
-						lastOE <= OE;
+					if E = '1' and lastE = '0' then		-- Rising edge => Setup values
+						lastE <= E;
 						GLCD_DATA <= lcdScreen(Page)(address);
 
-					elsif OE = '0' and lastOE = '1' then	-- Falling edge => LCD is reading the data
-						lastOE <= OE;
+					elsif E = '0' and lastE = '1' then	-- Falling edge => LCD is reading the data
+						lastE <= E;
 						if address = 127 then
 							address := 0;
 							glcdControlerState <= changePage;
@@ -210,9 +248,8 @@ Controler:process(RESET,CLK)
 					end if;
 					
 				when changePage =>
-				--	GLCD_CS <= noSide;
-					if OE = '1' and lastOE = '0' then		-- Rising edge => Setup values
-						lastOE <= OE;
+					if E = '1' and lastE = '0' then		-- Rising edge => Setup values
+						lastE <= E;
 						GLCD_RS <= glcdSendCmd;
 						
 						if page = 7 then
@@ -223,13 +260,15 @@ Controler:process(RESET,CLK)
 							GLCD_DATA <= glcdSetPage & std_logic_vector(to_unsigned(page,3));
 						end if;
 					
-					elsif OE = '0' and lastOE = '1' then	-- Falling edge => lcd is reading
+					elsif E = '0' and lastE = '1' then	-- Falling edge => lcd is reading
 						glcdControlerState <= writeDataLeft;
 						GLCD_CS <= leftSide;
 					end if;
 			end case;
 		end if;
-	end process;
+end process;
+
+-- Test image
 
 ----
 -- Selected Module Image
@@ -249,5 +288,6 @@ Controler:process(RESET,CLK)
 
 -- Page
 -- ADC bars contour
+
 end Behavioral;
 

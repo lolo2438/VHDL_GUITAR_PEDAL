@@ -91,6 +91,7 @@ signal sLastE : STD_LOGIC;
 
 begin
 
+-- Avr interface need reset logic inversion
 NOT_RESET <= not RESET;
 
 -- PORT MAP
