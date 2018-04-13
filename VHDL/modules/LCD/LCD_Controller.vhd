@@ -54,7 +54,7 @@ end LCD_Controler;
 architecture Behavioral of LCD_Controler is
 
 -- State machine
-Type glcdControler is (init,sendDisplayOn,writeDataLeft,switchingDelay,writeDataRight,changePage);
+Type glcdControler is (init,sendDisplayOn,writeDataLeft,writeDataRight,changePage);
 Signal glcdControlerState : glcdControler := init;
 
 -- Dynamic array
@@ -63,7 +63,6 @@ type pagedArray is array (127 downto 0) of STD_LOGIC_VECTOR(7 downto 0);				-- O
 type lcdArray is array (0 to 7) of pagedArray;										-- EGDTA 
 signal lcdScreen : lcdArray := (others => (others => (others => '0')));	-- lcdScreen(Page)(address)(Data)				
 
-signal testIMG : pagedArray;
 --type userInterfaceforLCD is array (0 to 63) of STD_LOGIC_VECTOR(0 to 127); -- Ez User interface for data placement
 --signal userInterface : userInterfaceforLCD :=(others => (others => '0'));
 
@@ -79,9 +78,9 @@ constant glcdSetPage : STD_LOGIC_VECTOR(4 downto 0) := b"10111";				-- Most sign
 constant setDisplayOn : STD_LOGIC_VECTOR(7 downto 0) := b"00111111";
 
 -- Commands for GLCD_CS
-constant leftSide : STD_LOGIC_VECTOR(1 downto 0) := b"01";
-constant rightSide : STD_LOGIC_VECTOR(1 downto 0) := b"10";
-constant noSide : STD_LOGIC_VECTOR(1 downto 0) := b"00";
+constant leftSide : STD_LOGIC_VECTOR(2 downto 1) := b"01";
+constant rightSide : STD_LOGIC_VECTOR(2 downto 1) := b"10";
+constant noSide : STD_LOGIC_VECTOR(2 downto 1) := b"00";
 
 -- Commands for GLCD_RS
 constant glcdSendData : STD_LOGIC := '1';
@@ -97,9 +96,7 @@ begin
 -- Signal asignment 
 GLCD_E <= E;
 
-lcdScreen(0) <= testIMG;
-
-testIMG <=	(x"00", x"00", x"00", x"00", x"00", x"00", x"0C", x"77", 
+lcdScreen(0) <=  (x"00", x"00", x"00", x"00", x"00", x"00", x"0C", x"77", 
 						x"80", x"80", x"80", x"8C", x"9F", x"88", x"8C", x"87", 
 						x"C0", x"40", x"30", x"1C", x"07", x"7F", x"80", x"80", 
 						x"80", x"BF", x"E0", x"1C", x"27", x"41", x"80", x"80", 
@@ -201,30 +198,26 @@ process(RESET,CLK)
 		if RESET = '0' then
 			GLCD_RST <= '0';
 			glcdControlerState <= init;
-			GLCD_DATA <= x"00";
 			enableE <= '0';
 			-- Variable reset
 			reset_compteur := 0;
-			address := 0;
-			page := 0;
-			GLCD_RW <= glcdWrite;
 			
 		elsif rising_edge(CLK) then
 			case glcdControlerState is
 				when init =>
-					if reset_compteur < 100 then			-- Hold reset for 2uS
+					if reset_compteur < 100 then					-- Hold reset for 2uS
 						reset_compteur := reset_compteur + 1;
-						GLCD_RST <= '0';						-- Reset
-						GLCD_CS <= noSide;					-- Init to no side
-						GLCD_DATA <= x"00";
-						enableE <= '0';
+						GLCD_RST <= '0';								-- Reset
+						GLCD_CS <= noSide;							-- Init to no side
+						GLCD_DATA <= x"00";							-- Set data to nothing
+						enableE <= '0';								-- Disable E
 						GLCD_RS <= glcdSendCmd;						-- Set lcd to send cmd
-						GLCD_RW <= glcdWrite;
-						address := 0;
-						page := 0;
+						GLCD_RW <= glcdWrite;						-- Set to write
+						address := 0;									-- Go to address 0
+						page := 0;										-- Go to page 0
 						
-					elsif reset_compteur < 120 then		-- Wait 400 ns for reset rise time
-						GLCD_RST <= '1';						-- Re-enable
+					elsif reset_compteur < 120 then				-- Wait 400 ns for reset rise time
+						GLCD_RST <= '1';								-- Re-enable
 						reset_compteur := reset_compteur + 1;
 		
 					else
@@ -235,56 +228,53 @@ process(RESET,CLK)
 					end if;
 				
 				when sendDisplayOn =>
-					if E = '1' and lastE = '0' then		-- Rising edge => Setup values
+					if E = '1' and lastE = '0' then				-- Rising edge => Setup values
 						lastE <= E;
-						GLCD_DATA <= setDisplayOn; 				-- Display on
-					elsif E = '0' and lastE = '1' then	-- Falling edge => LCD is reading the data 
+						GLCD_DATA <= setDisplayOn; 				-- Display on command
+						
+					elsif E = '0' and lastE = '1' then			-- Falling edge => LCD is reading the data 
 						lastE <= E;
-						GLCD_CS <= leftSide;							-- Select left side
 						glcdControlerState <= writeDataLeft;
 					end if;
 					
 				when writeDataLeft =>
-					if E = '1' and lastE = '0' then		-- Rising edge => Setup values
+					if E = '1' and lastE = '0' then				-- Rising edge => Setup values
+						GLCD_CS <= leftSide;
 						GLCD_RS <= glcdSendData;
 						lastE <= E;
 						GLCD_DATA <= lcdScreen(page)(address);
 						
-					elsif E = '0' and lastE = '1' then	-- Falling edge => LCD is reading the data
+					elsif E = '0' and lastE = '1' then			-- Falling edge => LCD is reading the data
 						lastE <= E;
 						address := address + 1;
+						
 						if address = 64 then
-							glcdControlerState <= switchingDelay;
-							GLCD_CS <= rightSide;
+							glcdControlerState <= writeDataRight;
 						end if;
-					end if;
-				
-				when switchingDelay =>
-					if E = '1' and lastE = '0' then		-- Rising edge => Setup values
-						lastE <= E;
-					elsif E = '0' and lastE = '1' then
-						lastE <= '1';						-- Falling edge => LCD RED our data
-						lastE <= E;
-						glcdControlerState <= writeDataRight;
+						
 					end if;
 					
 				when writeDataRight =>
-					if E = '1' and lastE = '0' then		-- Rising edge => Setup values
+					if E = '1' and lastE = '0' then				-- Rising edge => Setup values
 						lastE <= E;
+						GLCD_CS <= rightSide;
 						GLCD_DATA <= lcdScreen(Page)(address);
 
-					elsif E = '0' and lastE = '1' then	-- Falling edge => LCD is reading the data
+					elsif E = '0' and lastE = '1' then			-- Falling edge => LCD is reading the data
 						lastE <= E;
 						if address = 127 then
 							address := 0;
 							glcdControlerState <= changePage;
+							
 						else
 							address := address + 1;
 						end if;
+						
 					end if;
 					
 				when changePage =>
 					if E = '1' and lastE = '0' then		-- Rising edge => Setup values
+						GLCD_CS <= noSide;
 						lastE <= E;
 						GLCD_RS <= glcdSendCmd;
 						
@@ -298,7 +288,7 @@ process(RESET,CLK)
 					
 					elsif E = '0' and lastE = '1' then	-- Falling edge => lcd is reading
 						glcdControlerState <= writeDataLeft;
-						GLCD_CS <= leftSide;
+						
 					end if;
 			end case;
 		end if;
