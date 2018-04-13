@@ -11,6 +11,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.all;
 
 entity ADC_Read is
+	 Generic ( stabiliseDelay : integer range 0 to 5 := 5);
     Port ( -- FPGA CLOCK
 			  CLK : in  STD_LOGIC;
 			  
@@ -53,7 +54,7 @@ Signal lastSampleAdc4 : STD_LOGIC_VECTOR(9 downto 0) := (Others => '0');
 Signal tempChannel : STD_LOGIC_VECTOR(3 downto 0) := x"0";
 Signal lastNewSample : STD_LOGIC := '0';
 
-Signal compteur : unsigned(15 downto 0);
+Signal stabiliseCounter : integer range 0 to stabiliseDelay := 0;
 
 begin
 
@@ -62,11 +63,6 @@ ADC1 <= sADC1;
 ADC4 <= sADC4;
 
 -- Problem found: ADC seem to share values
---
---	possible fix: sample the ADC at a channel X and wait for when samples have stabilised
---
---
--- 
 ADC_Read:process(CLK,RESET)
 	begin
 		if RESET = '0' then
@@ -76,32 +72,46 @@ ADC_Read:process(CLK,RESET)
 			
 		elsif rising_edge(CLK) then
 			case stateAdcRead is
-				when waitData =>
-					if NEW_SAMPLE = '1' and lastNewSample = '0' then
-						lastNewSample <= NEW_SAMPLE;
-						stateAdcRead <= asignData;
-					elsif NEW_SAMPLE = '0' and lastNewSample = '1' then
+				when waitData =>															-- Waiting for the SPI to send us data
+				
+					if NEW_SAMPLE = '1' and lastNewSample = '0' then			-- New sample was detected (rising edge)
+						lastNewSample <= NEW_SAMPLE;					
+						stateAdcRead <= asignData;										-- Go asign the data to the right adc
+					elsif NEW_SAMPLE = '0' and lastNewSample = '1' then		-- Detecting the falling edge
 						lastNewSample <= NEW_SAMPLE;
 					end if;
 				
 				when asignData =>
-					if SAMPLE_CHANNEL = b"0000" then
-					--	lastSampleAdc0 <= testAdc0;
-						sADC0 <= SAMPLE;
-						REQUESTED_CHANNEL <= x"1";
+				
+					if SAMPLE_CHANNEL = b"0000" then									-- If the sample channel is 0 (ADC 0)
+						if stabiliseCounter < stabiliseDelay then					-- ditch the data x ammount of time
+							stabiliseCounter <= stabiliseCounter + 1;
+						else																	-- When x ammount of data was ditched: asign the stabilised data to ADC signal
+							stabiliseCounter <= 0;
+							sADC0 <= SAMPLE;
+							REQUESTED_CHANNEL <= x"1";
+						end if;
 						
-					elsif SAMPLE_CHANNEL = b"0001" then
-						--lastSampleAdc1 <= testAdc1;
-						sAdc1 <= SAMPLE;
-						REQUESTED_CHANNEL <= x"4";
+					elsif SAMPLE_CHANNEL = b"0001" then								-- Ditto for channel 1 (ADC 1)
+						if stabiliseCounter < stabiliseDelay then
+							stabiliseCounter <= stabiliseCounter + 1;
+						else
+							stabiliseCounter <= 0;
+							sAdc1 <= SAMPLE;
+							REQUESTED_CHANNEL <= x"4";
+						end if;
 						
-					elsif SAMPLE_CHANNEL = b"0100" then
-						--lastSampleAdc4 <= testAdc4;
-						sAdc4 <= SAMPLE;
-						REQUESTED_CHANNEL <= x"0";
+					elsif SAMPLE_CHANNEL = b"0100" then								-- Ditto for channel 4 (ADC4)
+						if stabiliseCounter < stabiliseDelay then
+							stabiliseCounter <= stabiliseCounter + 1;
+						else
+							stabiliseCounter <= 0;
+							sAdc4 <= SAMPLE;
+							REQUESTED_CHANNEL <= x"0";
+						end if;
 					end if;
 					
-					stateAdcRead <= waitData;
+					stateAdcRead <= waitData;											-- Go back to listening for data
 			end case;
 		end if;
 	end process;

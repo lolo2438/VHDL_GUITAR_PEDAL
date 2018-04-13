@@ -244,10 +244,11 @@ process(RESET,CLK)
 						
 					elsif E = '0' and lastE = '1' then			-- Falling edge => LCD is reading the data
 						lastE <= E;
-						address <= address + 1;
 						
-						if address = 64 then
+						if address = 63 then
 							glcdControlerState <= writeDataRight;
+						else
+							address <= address + 1;
 						end if;
 						
 					end if;

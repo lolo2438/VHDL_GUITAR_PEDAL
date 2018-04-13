@@ -24,6 +24,9 @@
   <files xmlns="http://www.xilinx.com/XMLSchema">
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="ADC_READ_TB_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="ADC_READ_TB_isim_beh.wdb"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="ADC_Read.prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="ADC_Read.stx"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="ADC_Read.xst"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Distortion.prj"/>
     <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="Distortion.stx"/>
     <file xil_pn:fileType="FILE_XST" xil_pn:name="Distortion.xst"/>
