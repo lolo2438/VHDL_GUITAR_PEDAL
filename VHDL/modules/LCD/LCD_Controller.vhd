@@ -54,17 +54,18 @@ end LCD_Controler;
 architecture Behavioral of LCD_Controler is
 
 -- State machine
-Type glcdControler is (init,sendDisplayOn,writeDataLeft,writeDataRight,changePage);
+Type glcdControler is (init,sendDisplayOn,writeDataLeft,switchingDelay,writeDataRight,changePage);
 Signal glcdControlerState : glcdControler := init;
 
 -- Dynamic array
-type pagedArray is array (0 to 127) of STD_LOGIC_VECTOR(0 to 7);				-- One page for Ez Glcd Data Transfer Array
+type pagedArray is array (127 downto 0) of STD_LOGIC_VECTOR(7 downto 0);				-- One page for Ez Glcd Data Transfer Array
 
 type lcdArray is array (0 to 7) of pagedArray;										-- EGDTA 
-signal lcdScreen : lcdArray := (others => (others => (others => '0')));		-- lcdScreen(Page)(address)(Data)				
+signal lcdScreen : lcdArray := (others => (others => (others => '0')));	-- lcdScreen(Page)(address)(Data)				
 
-type userInterfaceforLCD is array (0 to 63) of STD_LOGIC_VECTOR(0 to 127); -- Ez User interface for data placement
-signal userInterface : userInterfaceforLCD;
+signal testIMG : pagedArray;
+--type userInterfaceforLCD is array (0 to 63) of STD_LOGIC_VECTOR(0 to 127); -- Ez User interface for data placement
+--signal userInterface : userInterfaceforLCD :=(others => (others => '0'));
 
 -- Commands for GLCD_RW
 constant glcdWrite : STD_LOGIC := '0';
@@ -96,57 +97,83 @@ begin
 -- Signal asignment 
 GLCD_E <= E;
 
--- Asigning the Ez User Interface array to the Ez glcd Data Transfer array
-pageAsign:for P in 0 to 7 generate
-	columnAsign: for R in 0 to 127 generate
-		rowAsign: for D in 0 to 7 generate
-		
-		page0Data:
-			if P = 0 generate
-				lcdScreen(P)(R)(D) <= userInterface(D)(R);
-			end generate;
-			
-		page1Data:	
-			if P = 1 generate
-				lcdScreen(P)(R)(D) <= userInterface(8 + D)(R);
-			end generate;
-			
-		page2Data:
-			if P = 2 generate
-				lcdScreen(P)(R)(D) <= userInterface(16 + D)(R);
-			end generate;
-			
-		page3Data:
-			if P = 3 generate
-				lcdScreen(P)(R)(D) <= userInterface(24 + D)(R);
-			end generate;
-			
-		page4Data:	
-			if P = 4 generate
-				lcdScreen(P)(R)(D) <= userInterface(32 + D)(R);
-			end generate;
-			
-		page5Data:
-			if P = 5 generate
-				lcdScreen(P)(R)(D) <= userInterface(40 + D)(R);
-			end generate;
-			
-		page6Data:	
-			if P = 6 generate
-				lcdScreen(P)(R)(D) <= userInterface(48 + D)(R);
-			end generate;
-			
-		page7Data:	
-			if P = 7 generate
-				lcdScreen(P)(R)(D) <= userInterface(56 + D)(R);	
-			end generate;
-			
-		end generate rowAsign;
-	end generate columnAsign;
-end generate pageAsign;
+lcdScreen(0) <= testIMG;
+
+testIMG <=	(x"00", x"00", x"00", x"00", x"00", x"00", x"0C", x"77", 
+						x"80", x"80", x"80", x"8C", x"9F", x"88", x"8C", x"87", 
+						x"C0", x"40", x"30", x"1C", x"07", x"7F", x"80", x"80", 
+						x"80", x"BF", x"E0", x"1C", x"27", x"41", x"80", x"80", 
+						x"98", x"9C", x"8C", x"8C", x"8C", x"4A", x"33", x"79", 
+						x"C8", x"88", x"8F", x"86", x"80", x"80", x"80", x"8F", 
+						x"98", x"90", x"EF", x"10", x"60", x"41", x"81", x"8F", 
+						x"98", x"99", x"8D", x"87", x"C3", x"43", x"3B", x"03", 
+						x"02", x"7E", x"86", x"86", x"86", x"8C", x"98", x"98", 
+						x"9D", x"8D", x"8D", x"4C", x"2C", x"38", x"78", x"99", 
+						x"99", x"99", x"9B", x"93", x"A2", x"A2", x"B3", x"F6", 
+						x"67", x"A6", x"A6", x"A4", x"E4", x"E7", x"2F", x"6C", 
+						x"4C", x"D8", x"98", x"BF", x"28", x"28", x"4F", x"4F", 
+						x"60", x"30", x"10", x"71", x"FF", x"9F", x"A0", x"A0", 
+						x"C0", x"43", x"20", x"10", x"0C", x"F6", x"9E", x"80", 
+						x"80", x"F7", x"9F", x"00", x"00", x"00", x"00", x"00"); 
+
+--userInterface(0)(0) <= '1';
+--userInterface(0)(1) <= '1';
+--userInterface(0)(2) <= '1';
+--userInterface(1)(0) <= '1';
+--
+--userInterface(63)(127) <= '1';
+
+---- Asigning the Ez User Interface array to the Ez glcd Data Transfer array
+--pageAsign:for P in 0 to 7 generate
+--	columnAsign: for R in 0 to 127 generate
+--		rowAsign: for D in 0 to 7 generate
+--		
+--		page0Data:
+--			if P = 0 generate
+--				lcdScreen(P)(R)(D) <= userInterface(D)(R);
+--			end generate;
+--			
+--		page1Data:	
+--			if P = 1 generate
+--				lcdScreen(P)(R)(D) <= userInterface(8 + D)(R);
+--			end generate;
+--			
+--		page2Data:
+--			if P = 2 generate
+--				lcdScreen(P)(R)(D) <= userInterface(16 + D)(R);
+--			end generate;
+--			
+--		page3Data:
+--			if P = 3 generate
+--				lcdScreen(P)(R)(D) <= userInterface(24 + D)(R);
+--			end generate;
+--			
+--		page4Data:	
+--			if P = 4 generate
+--				lcdScreen(P)(R)(D) <= userInterface(32 + D)(R);
+--			end generate;
+--			
+--		page5Data:
+--			if P = 5 generate
+--				lcdScreen(P)(R)(D) <= userInterface(40 + D)(R);
+--			end generate;
+--			
+--		page6Data:	
+--			if P = 6 generate
+--				lcdScreen(P)(R)(D) <= userInterface(48 + D)(R);
+--			end generate;
+--			
+--		page7Data:	
+--			if P = 7 generate
+--				lcdScreen(P)(R)(D) <= userInterface(56 + D)(R);	
+--			end generate;
+--			
+--		end generate rowAsign;
+--	end generate columnAsign;
+--end generate pageAsign;
 
 -- Generate 30 images per second
--- 1024 clock tick = 1 img -> 30_720 = 30 img; 50_000_000 / 30_720 = 1627 ~= 32uS (0x65B)
+-- 1024 clock tick = 1 img -> 30_720 = 30 img; 50_000_000 / 30_720 = 1627 ~= 32uS (x"65B)
 WriteDataClk:
 process(RESET,CLK) 
 	begin
@@ -154,7 +181,7 @@ process(RESET,CLK)
 			compteur <= (others => '0');
 		elsif rising_edge(CLK) then
 			if enableE <= '1' then
-				if compteur < x"7800" then				-- For testing purpose:  1 img/sec = 50MHz / 1024 = x"7800"
+				if compteur < x"65B" then				-- For testing purpose:  1 img/sec = 50MHz / 1024 = x"7800"
 					compteur <= compteur + 1;
 				else
 					compteur <= (others => '0');
@@ -227,11 +254,20 @@ process(RESET,CLK)
 						lastE <= E;
 						address := address + 1;
 						if address = 64 then
-							glcdControlerState <= writeDataRight;
+							glcdControlerState <= switchingDelay;
 							GLCD_CS <= rightSide;
 						end if;
 					end if;
-
+				
+				when switchingDelay =>
+					if E = '1' and lastE = '0' then		-- Rising edge => Setup values
+						lastE <= E;
+					elsif E = '0' and lastE = '1' then
+						lastE <= '1';						-- Falling edge => LCD RED our data
+						lastE <= E;
+						glcdControlerState <= writeDataRight;
+					end if;
+					
 				when writeDataRight =>
 					if E = '1' and lastE = '0' then		-- Rising edge => Setup values
 						lastE <= E;

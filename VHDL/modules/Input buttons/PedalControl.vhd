@@ -15,7 +15,6 @@ use IEEE.NUMERIC_STD.ALL;
 entity PedalControl is
     Port ( CLK : in  STD_LOGIC;			-- System clock
            PEDAL_IN : in  STD_LOGIC;	-- Pedal input
-			  PEDAL_OUT : out STD_LOGIC;  -- Pedal state
 			  LOCK : out STD_LOGIC;			-- Lock Module
 			  RESET : in STD_LOGIC
 			  );
@@ -31,8 +30,6 @@ signal compteur : unsigned(24 downto 0) := (others => '0');
 signal lastPedal : STD_LOGIC := '0';
 
 begin
-
-PEDAL_OUT <= PEDAL_IN;
 
 PedalAnalyze : process(CLK,RESET)
 	begin

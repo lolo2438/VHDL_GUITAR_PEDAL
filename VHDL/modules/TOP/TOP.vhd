@@ -43,7 +43,11 @@ entity TOP is
 				GLCD_RST : out STD_LOGIC;
 				
 				-- OTHERS
-				RESET : in STD_LOGIC);
+				RESET : in STD_LOGIC;
+				LED1 : out STD_LOGIC;
+				LED2 : out STD_LOGIC;
+				LED3 : out STD_LOGIC
+				);
 end TOP;
 
 architecture Behavioral of TOP is
@@ -84,12 +88,15 @@ signal lockedModules : STD_LOGIC_VECTOR(7 downto 0);
 signal selectedModule : STD_LOGIC_VECTOR(7 downto 0);
 
 -- Button processing
-signal sPedal : STD_LOGIC;
 signal sLock : STD_LOGIC;
 signal sNextE : STD_LOGIC;
 signal sLastE : STD_LOGIC;
 
 begin
+
+LED1 <= adc0(8);
+LED2 <= PEDAL;
+LED3 <= NEXT_EFFECT;
 
 -- Avr interface need reset logic inversion
 NOT_RESET <= not RESET;
@@ -199,7 +206,7 @@ Port map ( -- FPGA 50 MHZ
 			  DONE => doneSending,
 			  
 			  -- Pedal
-			  PEDAL => sPedal,
+			  PEDAL => PEDAL,
 			  
 			  -- Lock
 			  LOCK => sLock,
@@ -227,7 +234,6 @@ Port map(
 			CLK => CLK,
 			
          PEDAL_IN => PEDAL,
-			PEDAL_OUT => sPedal,
 			
          NEXT_EFFECT_IN => NEXT_EFFECT,
          LAST_EFFECT_IN => LAST_EFFECT,

@@ -1,0 +1,2 @@
+vhdl isim_temp "modules/LCD/LCD_Controller.vhd"
+vhdl isim_temp "modules/LCD/LCD_CONTROLLER_TB.vhd"

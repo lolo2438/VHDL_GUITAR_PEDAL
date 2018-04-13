@@ -13,7 +13,6 @@ entity Button_Processing is
     Port ( CLK : in  STD_LOGIC;							-- FPGA CLOCK
 	 
            PEDAL_IN : in  STD_LOGIC;					-- PEDAL IN
-			  PEDAL_OUT : out  STD_LOGIC;					-- PEDAL OUT
 			  
            NEXT_EFFECT_IN : in  STD_LOGIC;			-- NEXT EFFECT IN
            NEXT_EFFECT_OUT : out  STD_LOGIC;			-- NEXT EFFECT OUT
@@ -42,13 +41,12 @@ Port map(
 			Bouton => PEDAL_IN,
 			Sortie => arPedal,
 			Horloge => CLK
-		  );
+	  );
 
 PedalControl: entity work.PedalControl(Behavioral)
 Port map(
 			 CLK => CLK,		
           PEDAL_IN => arPedal,	
-			 PEDAL_OUT => PEDAL_OUT,  
 			 LOCK => LOCK,
 			 RESET => RESET
 			);
