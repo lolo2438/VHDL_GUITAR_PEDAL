@@ -58,7 +58,7 @@ Type glcdControler is (init,sendDisplayOn,writeDataLeft,writeDataRight,changePag
 Signal glcdControlerState : glcdControler := init;
 
 -- Dynamic array
-type pagedArray is array (127 downto 0) of STD_LOGIC_VECTOR(7 downto 0);				-- One page for Ez Glcd Data Transfer Array
+type pagedArray is array (0 to 127) of STD_LOGIC_VECTOR(0 to 7);				-- One page for Ez Glcd Data Transfer Array
 
 type lcdArray is array (0 to 7) of pagedArray;										-- EGDTA 
 signal lcdScreen : lcdArray := (others => (others => (others => '0')));	-- lcdScreen(Page)(address)(Data)				
@@ -92,6 +92,10 @@ signal lastE : STD_LOGIC := '0';
 signal compteur : UNSIGNED(14 downto 0) := (others => '0');
 signal enableE : STD_LOGIC := '0';	
 
+signal reset_compteur : integer range 0 to 127 := 0;
+signal address : integer range 0 to 127 := 0;
+signal page : integer range 0 to 7 := 0;
+
 begin
 -- Signal asignment 
 GLCD_E <= E;
@@ -113,12 +117,6 @@ lcdScreen(0) <=  (x"00", x"00", x"00", x"00", x"00", x"00", x"0C", x"77",
 						x"C0", x"43", x"20", x"10", x"0C", x"F6", x"9E", x"80", 
 						x"80", x"F7", x"9F", x"00", x"00", x"00", x"00", x"00"); 
 
---userInterface(0)(0) <= '1';
---userInterface(0)(1) <= '1';
---userInterface(0)(2) <= '1';
---userInterface(1)(0) <= '1';
---
---userInterface(63)(127) <= '1';
 
 ---- Asigning the Ez User Interface array to the Ez glcd Data Transfer array
 --pageAsign:for P in 0 to 7 generate
@@ -191,34 +189,34 @@ end process;
 -- Main controler
 Controler:
 process(RESET,CLK)
-	variable reset_compteur : integer range 0 to 127 := 0;
-	variable address : integer range 0 to 127 := 0;
-	variable page : integer range 0 to 7 := 0;
+--	variable reset_compteur : integer range 0 to 127 := 0;
+--	variable address : integer range 0 to 127 := 0;
+--	variable page : integer range 0 to 7 := 0;
 	begin
 		if RESET = '0' then
 			GLCD_RST <= '0';
 			glcdControlerState <= init;
 			enableE <= '0';
 			-- Variable reset
-			reset_compteur := 0;
+			reset_compteur <= 0;
 			
 		elsif rising_edge(CLK) then
 			case glcdControlerState is
 				when init =>
 					if reset_compteur < 100 then					-- Hold reset for 2uS
-						reset_compteur := reset_compteur + 1;
+						reset_compteur <= reset_compteur + 1;
 						GLCD_RST <= '0';								-- Reset
 						GLCD_CS <= noSide;							-- Init to no side
 						GLCD_DATA <= x"00";							-- Set data to nothing
 						enableE <= '0';								-- Disable E
 						GLCD_RS <= glcdSendCmd;						-- Set lcd to send cmd
 						GLCD_RW <= glcdWrite;						-- Set to write
-						address := 0;									-- Go to address 0
-						page := 0;										-- Go to page 0
+						address <= 0;									-- Go to address 0
+						page <= 0;										-- Go to page 0
 						
 					elsif reset_compteur < 120 then				-- Wait 400 ns for reset rise time
 						GLCD_RST <= '1';								-- Re-enable
-						reset_compteur := reset_compteur + 1;
+						reset_compteur <= reset_compteur + 1;
 		
 					else
 						enableE <= '1';								-- Enable data writing	
@@ -246,7 +244,7 @@ process(RESET,CLK)
 						
 					elsif E = '0' and lastE = '1' then			-- Falling edge => LCD is reading the data
 						lastE <= E;
-						address := address + 1;
+						address <= address + 1;
 						
 						if address = 64 then
 							glcdControlerState <= writeDataRight;
@@ -262,12 +260,10 @@ process(RESET,CLK)
 
 					elsif E = '0' and lastE = '1' then			-- Falling edge => LCD is reading the data
 						lastE <= E;
+						address <= address + 1;
+						
 						if address = 127 then
-							address := 0;
 							glcdControlerState <= changePage;
-							
-						else
-							address := address + 1;
 						end if;
 						
 					end if;
@@ -279,15 +275,16 @@ process(RESET,CLK)
 						GLCD_RS <= glcdSendCmd;
 						
 						if page = 7 then
-							page := 0;
+							page <= 0;
 							GLCD_DATA <= glcdSetPage & std_logic_vector(to_unsigned(page,3));
 						else
-							page := page + 1;
+							page <= page + 1;
 							GLCD_DATA <= glcdSetPage & std_logic_vector(to_unsigned(page,3));
 						end if;
 					
 					elsif E = '0' and lastE = '1' then	-- Falling edge => lcd is reading
 						glcdControlerState <= writeDataLeft;
+						address <= 0;
 						
 					end if;
 			end case;

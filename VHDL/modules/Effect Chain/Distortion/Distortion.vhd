@@ -58,6 +58,11 @@ Signal savedDist : STD_LOGIC_VECTOR (9 downto 0);
 Signal savedTone : STD_LOGIC_VECTOR (9 downto 0);
 Signal savedLevel : STD_LOGIC_VECTOR (9 downto 0);
 
+Signal sDist : signed(10 downto 0);
+signal sLevel : signed(10 downto 0);
+Signal lastAudioIn23 : STD_LOGIC := '0';
+
+
 Signal isLocked : STD_LOGIC := '0';
 
 
@@ -79,6 +84,19 @@ begin
 -- dépassement a *dist
 -- Améliorer : levelGain change dépendament du niveau de distortion pour toujour pouvoir atteindre le max
 
+detectNewWave: process(CLK)	--A tester: est ce que le fait de garder le volume fixe le temps d'une wave repare le bruit etrange
+begin
+	if rising_edge(CLK) then
+		if audioIn(23) = '0' and lastAudioIn23 = '1' then	--when the audio signal goes from negative -> positive
+			sDist <= signed('0' & Dist);
+			sLevel <= signed('0' & Level);
+		end if;
+		
+		lastAudioIn23 <= audioIn(23);
+	end if;
+end process;
+
+
 process(CLK,RESET)
 	begin
 		if RESET = '0' then
@@ -89,7 +107,7 @@ process(CLK,RESET)
 			case distState is
 				when stateNormal =>						
 					if SM = '1' and Pedal = '1'  then					-- Selected module = 1 and pedal was activated => Normal operation
-						limit <= x"7FFFFF" - (signed('0' & Dist) * b"010000000001000");
+						limit <= x"7FFFFF" - (signed(sDist) * b"010000000001000");
 						
 						-- Add distortion by cutting the pre-amp'ed signal
 						if signed(audioIn) > limit then
@@ -105,7 +123,7 @@ process(CLK,RESET)
 						-- tone should go here
 						
 						-- Post-distortion amplification
-						tempCal1 <= signed(tempVector1) * levelGain * signed('0' & Level);
+						tempCal1 <= signed(tempVector1) * levelGain * signed(sLevel);
 						
 						-- post amp signal = > preampresult * gain * level/1024
 						audioOut <= std_logic_vector(tempCal1(33 downto 10));
