@@ -54,7 +54,7 @@ end LCD_Controler;
 architecture Behavioral of LCD_Controler is
 
 -- State machine
-Type glcdControler is (init,sendDisplayOn,writeDataLeft,writeDataRight,changePage);
+Type glcdControler is (init,sendDisplayOn,refreshAddressLeft,writeDataLeft,refreshAddressRight,writeDataRight,changePage);
 Signal glcdControlerState : glcdControler := init;
 
 -- Dynamic array
@@ -72,6 +72,7 @@ constant glcdRead : STD_LOGIC := '1';
 
 -- Command for Set Address
 constant glcdSetLine : STD_LOGIC_VECTOR(1 downto 0) := b"01";					-- Most significative data byte
+constant glcdSetAddress0 : STD_LOGIC_VECTOR(7 downto 0) := b"01000000";
 constant glcdSetPage : STD_LOGIC_VECTOR(4 downto 0) := b"10111";				-- Most significative data byte
 
 -- Command for display ON
@@ -92,9 +93,9 @@ signal lastE : STD_LOGIC := '0';
 signal compteur : UNSIGNED(14 downto 0) := (others => '0');
 signal enableE : STD_LOGIC := '0';	
 
-signal reset_compteur : integer range 0 to 127 := 0;
-signal address : integer range 0 to 127 := 0;
-signal page : integer range 0 to 7 := 0;
+--signal reset_compteur : integer range 0 to 127 := 0;
+--signal address : integer range 0 to 127 := 0;
+--signal page : integer range 0 to 7 := 0;
 
 begin
 -- Signal asignment 
@@ -117,6 +118,8 @@ lcdScreen(0) <=  (x"00", x"00", x"00", x"00", x"00", x"00", x"0C", x"77",
 						x"C0", x"43", x"20", x"10", x"0C", x"F6", x"9E", x"80", 
 						x"80", x"F7", x"9F", x"00", x"00", x"00", x"00", x"00"); 
 
+lcdScreen(1)(0) <= x"0F";
+lcdScreen(1)(1) <= x"F0";
 
 ---- Asigning the Ez User Interface array to the Ez glcd Data Transfer array
 --pageAsign:for P in 0 to 7 generate
@@ -189,34 +192,34 @@ end process;
 -- Main controler
 Controler:
 process(RESET,CLK)
---	variable reset_compteur : integer range 0 to 127 := 0;
---	variable address : integer range 0 to 127 := 0;
---	variable page : integer range 0 to 7 := 0;
+	variable reset_compteur : integer range 0 to 127 := 0;
+	variable address : integer range 0 to 127 := 0;
+	variable page : integer range 0 to 7 := 0;
 	begin
 		if RESET = '0' then
 			GLCD_RST <= '0';
 			glcdControlerState <= init;
 			enableE <= '0';
 			-- Variable reset
-			reset_compteur <= 0;
+			reset_compteur := 0;
 			
 		elsif rising_edge(CLK) then
 			case glcdControlerState is
 				when init =>
 					if reset_compteur < 100 then					-- Hold reset for 2uS
-						reset_compteur <= reset_compteur + 1;
+						reset_compteur := reset_compteur + 1;
 						GLCD_RST <= '0';								-- Reset
 						GLCD_CS <= noSide;							-- Init to no side
 						GLCD_DATA <= x"00";							-- Set data to nothing
 						enableE <= '0';								-- Disable E
 						GLCD_RS <= glcdSendCmd;						-- Set lcd to send cmd
 						GLCD_RW <= glcdWrite;						-- Set to write
-						address <= 0;									-- Go to address 0
-						page <= 0;										-- Go to page 0
+						address := 0;									-- Go to address 0
+						page := 0;										-- Go to page 0
 						
 					elsif reset_compteur < 120 then				-- Wait 400 ns for reset rise time
 						GLCD_RST <= '1';								-- Re-enable
-						reset_compteur <= reset_compteur + 1;
+						reset_compteur := reset_compteur + 1;
 		
 					else
 						enableE <= '1';								-- Enable data writing	
@@ -229,6 +232,18 @@ process(RESET,CLK)
 					if E = '1' and lastE = '0' then				-- Rising edge => Setup values
 						lastE <= E;
 						GLCD_DATA <= setDisplayOn; 				-- Display on command
+						
+					elsif E = '0' and lastE = '1' then			-- Falling edge => LCD is reading the data 
+						lastE <= E;
+						glcdControlerState <= refreshAddressLeft;
+					end if;
+				
+				when refreshAddressLeft =>
+					if E = '1' and lastE = '0' then		-- Rising edge => Setup values
+						GLCD_CS <= leftSide;
+						lastE <= E;
+						GLCD_RS <= glcdSendCmd;
+						GLCD_DATA <= glcdSetAddress0;
 						
 					elsif E = '0' and lastE = '1' then			-- Falling edge => LCD is reading the data 
 						lastE <= E;
@@ -246,46 +261,61 @@ process(RESET,CLK)
 						lastE <= E;
 						
 						if address = 63 then
-							glcdControlerState <= writeDataRight;
+							glcdControlerState <= refreshAddressRight;
 						else
-							address <= address + 1;
+							address := address + 1;
 						end if;
 						
 					end if;
-					
-				when writeDataRight =>
+				
+				when refreshAddressRight =>
 					if E = '1' and lastE = '0' then				-- Rising edge => Setup values
+						GLCD_CS <= rightSide;
 						lastE <= E;
+						GLCD_RS <= glcdSendCmd;
+						GLCD_DATA <= glcdSetAddress0;
+						
+					elsif E = '0' and lastE = '1' then						-- Falling edge => LCD is reading the data 
+						lastE <= E;
+						glcdControlerState <= writeDataRight;
+					end if;
+				
+				when writeDataRight =>
+					if E = '1' and lastE = '0' then							-- Rising edge => Setup values
+						lastE <= E;
+						GLCD_RS <= glcdSendData;
 						GLCD_CS <= rightSide;
 						GLCD_DATA <= lcdScreen(Page)(address);
 
-					elsif E = '0' and lastE = '1' then			-- Falling edge => LCD is reading the data
+					elsif E = '0' and lastE = '1' then						-- Falling edge => LCD is reading the data
 						lastE <= E;
-						address <= address + 1;
 						
 						if address = 127 then
 							glcdControlerState <= changePage;
+						else
+							address := address + 1;
 						end if;
 						
 					end if;
 					
 				when changePage =>
-					if E = '1' and lastE = '0' then		-- Rising edge => Setup values
+					if E = '1' and lastE = '0' then							-- Rising edge => Setup values
 						GLCD_CS <= noSide;
 						lastE <= E;
 						GLCD_RS <= glcdSendCmd;
 						
 						if page = 7 then
-							page <= 0;
+							page := 0;
 							GLCD_DATA <= glcdSetPage & std_logic_vector(to_unsigned(page,3));
 						else
-							page <= page + 1;
+							page := page + 1;
 							GLCD_DATA <= glcdSetPage & std_logic_vector(to_unsigned(page,3));
 						end if;
 					
-					elsif E = '0' and lastE = '1' then	-- Falling edge => lcd is reading
-						glcdControlerState <= writeDataLeft;
-						address <= 0;
+					elsif E = '0' and lastE = '1' then						-- Falling edge => lcd is reading
+						lastE <= E;
+						glcdControlerState <= refreshAddressLeft;
+						address:= 0;
 						
 					end if;
 			end case;

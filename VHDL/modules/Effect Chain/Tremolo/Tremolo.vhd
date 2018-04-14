@@ -101,14 +101,12 @@ Signal dataOutDiviser : STD_LOGIC_VECTOR(55 downto 0) := (others => '0');
 
 begin
 
--- à améliorer:
--- LUT pour choisir une frequence spécifique représentant des BPM avec RATE https://www.convertworld.com/fr/frequence/battements-par-minute.html
--- ajustement automatique de la frequence lorsqu'on change depth et rate
-
+-- à réparer
+-- rate minimum = 2x rate maximum 
 
 -- Signal assignations
 Locked <= isLocked;
-DepthXBpm <= std_logic_vector( (('0' & unsigned(Depth))+ b"1") * b"10" * (('0' &unsigned(Rate)) + x"3C"));
+DepthXBpm <= std_logic_vector( (('0' & unsigned(Depth))+ b"1") * b"10" * (('0' & unsigned(Rate)) + x"78"));			-- 120 BPM = x"78"
 
 -- Main sequencial machine
 MachSeq:process(CLK,RESET)
@@ -226,11 +224,9 @@ detectNewWave:process(CLK)
 			if newWave = '1' then
 				loadToDivisor <= '1';
 				if isLocked <= '0' then
-				--	TremClkMax <= x"7530" - ((x"14" *(unsigned(Rate))) + x"1338");-- todo multiplier par 2 ici
 					shapeScale <= slope;
 					waveMin <= x"400" - signed(b"0" & Depth);
 				elsif isLocked <= '1' then
-				--	TremClkMax <= x"7530" - ((x"14" *(unsigned(savedRate))) + x"1338");
 					shapeScale <= savedSlope;
 					waveMin <= x"400" - signed(b"00" & savedDepth);
 				end if;
@@ -251,7 +247,7 @@ WaveGen:process(WCLK,RESET)
 			
 		elsif rising_edge(WCLK) then
 				if direction = '0' then  			-- Going up	
-					if genWave >= x"400" then			-- if it went above 1024														
+					if genWave >= x"400" then			-- if it went above 1024							-----************** POSSIBLE FIX TO RATE FUCKING UP: (genWave >= x"400" + slope) or 3FF to see												
 						direction <= '1';	
 						genWave <= x"400";
 						tempWave <= x"001";

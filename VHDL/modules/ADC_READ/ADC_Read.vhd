@@ -11,7 +11,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.all;
 
 entity ADC_Read is
-	 Generic ( stabiliseDelay : integer range 0 to 5 := 5);
+	 Generic ( stabiliseDelay : integer range 0 to 5 := 3);
     Port ( -- FPGA CLOCK
 			  CLK : in  STD_LOGIC;
 			  

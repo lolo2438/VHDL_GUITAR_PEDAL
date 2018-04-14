@@ -1,16 +1,16 @@
 Release 14.7 - xst P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
---> Parameter TMPDIR set to C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL/xst/projnav.tmp
+--> Parameter TMPDIR set to F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.06 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.29 secs
  
---> Parameter xsthdpdir set to C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL/xst
+--> Parameter xsthdpdir set to F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.06 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.29 secs
  
 --> Reading design: LCD_Controler.prj
 
@@ -39,17 +39,17 @@ TABLE OF CONTENTS
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\LCD\LCD_Controller.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\LCD\LCD_Controller.vhd" into library work
 Parsing entity <LCD_Controler>.
 Parsing architecture <Behavioral> of entity <lcd_controler>.
 
 
-Total REAL time to Xst completion: 3.00 secs
-Total CPU time to Xst completion: 2.96 secs
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 5.50 secs
  
 --> 
 
-Total memory usage is 185364 kilobytes
+Total memory usage is 273992 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    0 (   0 filtered)

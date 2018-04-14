@@ -5,38 +5,5 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="error" file="HDLCompiler" num="69" delta="unknown" >"C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL/modules/ADC_READ/ADC_Read.vhd" Line 87: &lt;<arg fmt="%s" index="1">testadc4</arg>&gt; is not declared.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="69" delta="unknown" >"C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL/modules/ADC_READ/ADC_Read.vhd" Line 88: &lt;<arg fmt="%s" index="1">testadc4</arg>&gt; is not declared.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="806" delta="unknown" >"C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL/modules/ADC_READ/ADC_Read.vhd" Line 100: Syntax error near &quot;<arg fmt="%s" index="1">if</arg>&quot;.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="69" delta="unknown" >"C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL/modules/ADC_READ/ADC_Read.vhd" Line 101: &lt;<arg fmt="%s" index="1">lastsampledadc0</arg>&gt; is not declared.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="69" delta="unknown" >"C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL/modules/ADC_READ/ADC_Read.vhd" Line 100: &lt;<arg fmt="%s" index="1">lastsampledadc0</arg>&gt; is not declared.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="69" delta="unknown" >"C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL/modules/ADC_READ/ADC_Read.vhd" Line 105: &lt;<arg fmt="%s" index="1">lastsampleadc1</arg>&gt; is not declared.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="69" delta="unknown" >"C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL/modules/ADC_READ/ADC_Read.vhd" Line 104: &lt;<arg fmt="%s" index="1">lastsampledadc1</arg>&gt; is not declared.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="69" delta="unknown" >"C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL/modules/ADC_READ/ADC_Read.vhd" Line 109: &lt;<arg fmt="%s" index="1">lastsampleadc4</arg>&gt; is not declared.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="69" delta="unknown" >"C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL/modules/ADC_READ/ADC_Read.vhd" Line 108: &lt;<arg fmt="%s" index="1">lastsampledadc4</arg>&gt; is not declared.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="806" delta="unknown" >"C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL/modules/ADC_READ/ADC_Read.vhd" Line 112: Syntax error near &quot;<arg fmt="%s" index="1">if</arg>&quot;.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="841" delta="unknown" >"C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL/modules/ADC_READ/ADC_Read.vhd" Line 114: Expecting type <arg fmt="%s" index="2"> void</arg> for &lt;<arg fmt="%s" index="1">behavioral</arg>&gt;.
-</msg>
-
 </messages>
 

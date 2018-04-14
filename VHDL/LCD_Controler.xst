@@ -1,5 +1,5 @@
-set -tmpdir "C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL/xst/projnav.tmp"
-set -xsthdpdir "C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL/xst"
+set -tmpdir "F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/xst/projnav.tmp"
+set -xsthdpdir "F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/xst"
 run -compileonly yes
 -p xc6slx9-3-tqg144
 -top LCD_Controler

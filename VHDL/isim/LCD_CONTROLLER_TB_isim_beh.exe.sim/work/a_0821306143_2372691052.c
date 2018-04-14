@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL/modules/LCD/LCD_CONTROLLER_TB.vhd";
+static const char *ng0 = "F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/LCD/LCD_CONTROLLER_TB.vhd";
 
 
 
