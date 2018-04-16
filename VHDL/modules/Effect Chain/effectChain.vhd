@@ -87,6 +87,9 @@ with effectSelector select
 						 b"00000000" when others;
 
 
+
+-- TO CHANGE: USE A MUX INSTEAD TO SELECT THE AUDIO
+
 --PortMap
 BufferIn: entity work.Buffer_In(Behavioral)
 port map( CLK => CLK,

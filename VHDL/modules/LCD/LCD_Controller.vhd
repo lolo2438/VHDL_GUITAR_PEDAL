@@ -58,29 +58,26 @@ Type glcdControler is (init,sendDisplayOn,refreshAddressLeft,writeDataLeft,refre
 Signal glcdControlerState : glcdControler := init;
 
 -- Dynamic array
-type pagedArray is array (0 to 127) of STD_LOGIC_VECTOR(0 to 7);				-- One page for Ez Glcd Data Transfer Array
+type pagedArray is array (0 to 127) of STD_LOGIC_VECTOR(7 downto 0);				-- One page for Ez Glcd Data Transfer Array
 
-type lcdArray is array (0 to 7) of pagedArray;										-- EGDTA 
-signal lcdScreen : lcdArray := (others => (others => (others => '0')));	-- lcdScreen(Page)(address)(Data)				
-
---type userInterfaceforLCD is array (0 to 63) of STD_LOGIC_VECTOR(0 to 127); -- Ez User interface for data placement
---signal userInterface : userInterfaceforLCD :=(others => (others => '0'));
+type lcdArray is array (0 to 7) of pagedArray;											-- EGDTA 
+signal lcdScreen : lcdArray := (others => (others => (others => '0')));			-- lcdScreen(Page)(address)(Data)				
 
 -- Commands for GLCD_RW
 constant glcdWrite : STD_LOGIC := '0';
 constant glcdRead : STD_LOGIC := '1';
 
 -- Command for Set Address
-constant glcdSetLine : STD_LOGIC_VECTOR(1 downto 0) := b"01";					-- Most significative data byte
+constant glcdSetLine : STD_LOGIC_VECTOR(1 downto 0) := b"01";						-- Most significative data byte
 constant glcdSetAddress0 : STD_LOGIC_VECTOR(7 downto 0) := b"01000000";
-constant glcdSetPage : STD_LOGIC_VECTOR(4 downto 0) := b"10111";				-- Most significative data byte
+constant glcdSetPage : STD_LOGIC_VECTOR(4 downto 0) := b"10111";					-- Most significative data byte
 
 -- Command for display ON
 constant setDisplayOn : STD_LOGIC_VECTOR(7 downto 0) := b"00111111";
 
 -- Commands for GLCD_CS
-constant leftSide : STD_LOGIC_VECTOR(2 downto 1) := b"01";
-constant rightSide : STD_LOGIC_VECTOR(2 downto 1) := b"10";
+constant leftSide : STD_LOGIC_VECTOR(2 downto 1) := b"10";
+constant rightSide : STD_LOGIC_VECTOR(2 downto 1) := b"01";
 constant noSide : STD_LOGIC_VECTOR(2 downto 1) := b"00";
 
 -- Commands for GLCD_RS
@@ -93,82 +90,9 @@ signal lastE : STD_LOGIC := '0';
 signal compteur : UNSIGNED(14 downto 0) := (others => '0');
 signal enableE : STD_LOGIC := '0';	
 
---signal reset_compteur : integer range 0 to 127 := 0;
---signal address : integer range 0 to 127 := 0;
---signal page : integer range 0 to 7 := 0;
-
 begin
 -- Signal asignment 
 GLCD_E <= E;
-
-lcdScreen(0) <=  (x"00", x"00", x"00", x"00", x"00", x"00", x"0C", x"77", 
-						x"80", x"80", x"80", x"8C", x"9F", x"88", x"8C", x"87", 
-						x"C0", x"40", x"30", x"1C", x"07", x"7F", x"80", x"80", 
-						x"80", x"BF", x"E0", x"1C", x"27", x"41", x"80", x"80", 
-						x"98", x"9C", x"8C", x"8C", x"8C", x"4A", x"33", x"79", 
-						x"C8", x"88", x"8F", x"86", x"80", x"80", x"80", x"8F", 
-						x"98", x"90", x"EF", x"10", x"60", x"41", x"81", x"8F", 
-						x"98", x"99", x"8D", x"87", x"C3", x"43", x"3B", x"03", 
-						x"02", x"7E", x"86", x"86", x"86", x"8C", x"98", x"98", 
-						x"9D", x"8D", x"8D", x"4C", x"2C", x"38", x"78", x"99", 
-						x"99", x"99", x"9B", x"93", x"A2", x"A2", x"B3", x"F6", 
-						x"67", x"A6", x"A6", x"A4", x"E4", x"E7", x"2F", x"6C", 
-						x"4C", x"D8", x"98", x"BF", x"28", x"28", x"4F", x"4F", 
-						x"60", x"30", x"10", x"71", x"FF", x"9F", x"A0", x"A0", 
-						x"C0", x"43", x"20", x"10", x"0C", x"F6", x"9E", x"80", 
-						x"80", x"F7", x"9F", x"00", x"00", x"00", x"00", x"00"); 
-
-lcdScreen(1)(0) <= x"0F";
-lcdScreen(1)(1) <= x"F0";
-
----- Asigning the Ez User Interface array to the Ez glcd Data Transfer array
---pageAsign:for P in 0 to 7 generate
---	columnAsign: for R in 0 to 127 generate
---		rowAsign: for D in 0 to 7 generate
---		
---		page0Data:
---			if P = 0 generate
---				lcdScreen(P)(R)(D) <= userInterface(D)(R);
---			end generate;
---			
---		page1Data:	
---			if P = 1 generate
---				lcdScreen(P)(R)(D) <= userInterface(8 + D)(R);
---			end generate;
---			
---		page2Data:
---			if P = 2 generate
---				lcdScreen(P)(R)(D) <= userInterface(16 + D)(R);
---			end generate;
---			
---		page3Data:
---			if P = 3 generate
---				lcdScreen(P)(R)(D) <= userInterface(24 + D)(R);
---			end generate;
---			
---		page4Data:	
---			if P = 4 generate
---				lcdScreen(P)(R)(D) <= userInterface(32 + D)(R);
---			end generate;
---			
---		page5Data:
---			if P = 5 generate
---				lcdScreen(P)(R)(D) <= userInterface(40 + D)(R);
---			end generate;
---			
---		page6Data:	
---			if P = 6 generate
---				lcdScreen(P)(R)(D) <= userInterface(48 + D)(R);
---			end generate;
---			
---		page7Data:	
---			if P = 7 generate
---				lcdScreen(P)(R)(D) <= userInterface(56 + D)(R);	
---			end generate;
---			
---		end generate rowAsign;
---	end generate columnAsign;
---end generate pageAsign;
 
 -- Generate 30 images per second
 -- 1024 clock tick = 1 img -> 30_720 = 30 img; 50_000_000 / 30_720 = 1627 ~= 32uS (x"65B)
@@ -200,7 +124,6 @@ process(RESET,CLK)
 			GLCD_RST <= '0';
 			glcdControlerState <= init;
 			enableE <= '0';
-			-- Variable reset
 			reset_compteur := 0;
 			
 		elsif rising_edge(CLK) then
@@ -249,7 +172,7 @@ process(RESET,CLK)
 						lastE <= E;
 						glcdControlerState <= writeDataLeft;
 					end if;
-					
+				
 				when writeDataLeft =>
 					if E = '1' and lastE = '0' then				-- Rising edge => Setup values
 						GLCD_CS <= leftSide;
@@ -262,6 +185,7 @@ process(RESET,CLK)
 						
 						if address = 63 then
 							glcdControlerState <= refreshAddressRight;
+							address := 64;
 						else
 							address := address + 1;
 						end if;
@@ -311,37 +235,76 @@ process(RESET,CLK)
 							page := page + 1;
 							GLCD_DATA <= glcdSetPage & std_logic_vector(to_unsigned(page,3));
 						end if;
-					
+						
+						address := 0;
 					elsif E = '0' and lastE = '1' then						-- Falling edge => lcd is reading
 						lastE <= E;
 						glcdControlerState <= refreshAddressLeft;
-						address:= 0;
 						
 					end if;
 			end case;
 		end if;
 end process;
 
--- Test image
 
-----
+-- IMAGES
+
+
+---
 -- Selected Module Image
 ----
+with SM select
+	lcdScreen(0) <=	(x"00", x"00", x"00", x"00", x"00", x"00", x"30", x"EE", 
+							 x"01", x"01", x"01", x"31", x"F9", x"11", x"31", x"E1", 
+							 x"03", x"02", x"0C", x"38", x"E0", x"FE", x"01", x"01", 
+							 x"01", x"FD", x"07", x"38", x"E4", x"82", x"01", x"01", 
+							 x"19", x"39", x"31", x"31", x"31", x"52", x"CC", x"9E", 
+							 x"13", x"11", x"F1", x"61", x"01", x"01", x"01", x"F1", 
+							 x"19", x"09", x"F7", x"08", x"06", x"82", x"81", x"F1", 
+							 x"19", x"99", x"B1", x"E1", x"C3", x"C2", x"DC", x"C0", 
+							 x"40", x"7E", x"61", x"61", x"61", x"31", x"19", x"19", 
+							 x"B9", x"B1", x"B1", x"32", x"34", x"1C", x"1E", x"99", 
+							 x"99", x"99", x"D9", x"C9", x"45", x"45", x"CD", x"6F", 
+							 x"E6", x"65", x"65", x"25", x"27", x"E7", x"F4", x"36", 
+							 x"32", x"1B", x"19", x"FD", x"14", x"14", x"F2", x"F2", 
+							 x"06", x"0C", x"08", x"8E", x"FF", x"F9", x"05", x"05", 
+							 x"03", x"C2", x"04", x"08", x"30", x"6F", x"79", x"01", 
+							 x"01", x"EF", x"F9", x"00", x"00", x"00", x"00", x"00") when b"00000001",				-- Distortion IMG TOP
+							 (others => (others => '0')) when others;
 
-----
--- Lock icon
-----
-
+with SM select
+	lcdScreen(1) <=  (x"00", x"00", x"00", x"00", x"E0", x"F8", x"CF", x"C3", 
+							x"C0", x"C0", x"C0", x"CC", x"CF", x"4C", x"44", x"63", 
+							x"20", x"10", x"C8", x"F4", x"BB", x"87", x"40", x"30", 
+							x"08", x"7F", x"48", x"C4", x"85", x"85", x"87", x"87", 
+							x"8E", x"8E", x"CE", x"EC", x"34", x"38", x"14", x"17", 
+							x"D8", x"CC", x"CF", x"CC", x"EE", x"66", x"22", x"3B", 
+							x"32", x"32", x"33", x"7B", x"6B", x"CD", x"CD", x"8C", 
+							x"8C", x"CC", x"4C", x"64", x"36", x"1A", x"0A", x"FE", 
+							x"CE", x"C6", x"C3", x"63", x"3B", x"05", x"7F", x"C7", 
+							x"C1", x"C1", x"DD", x"7F", x"01", x"01", x"F1", x"F8", 
+							x"C7", x"C3", x"40", x"70", x"18", x"0F", x"00", x"FC", 
+							x"C7", x"C0", x"C0", x"40", x"3F", x"03", x"1F", x"38", 
+							x"60", x"C0", x"C3", x"87", x"88", x"CC", x"47", x"40", 
+							x"30", x"10", x"0C", x"E7", x"FF", x"C0", x"C0", x"60", 
+							x"3F", x"03", x"1E", x"78", x"E0", x"C0", x"C0", x"C0", 
+							x"7F", x"07", x"00", x"00", x"00", x"00", x"00", x"00") when b"00000001",				 -- Distortion IMG BOT
+						   (others => (others => '0')) when others;
+												
 ----
 -- ADC Bars
 ----
+ADC0Bar:
+process(CLK)
+	begin
+		if rising_edge(CLK) then
+			--Todo
+		end if;
+end process;
 
 ----
 -- Static images
 ----
-
--- Page
--- ADC bars contour
 
 end Behavioral;
 

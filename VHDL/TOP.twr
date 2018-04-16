@@ -36,11 +36,11 @@ Setup/Hold to clock BCLK
             |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
 Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------+------------+------------------+--------+
-LRCK        |    3.378(R)|      SLOW  |   -0.180(R)|      SLOW  |BCLK_BUFGP        |   0.000|
-            |    4.082(F)|      SLOW  |   -1.158(F)|      FAST  |BCLK_BUFGP        |   0.000|
-RESET       |    7.030(R)|      SLOW  |   -1.799(R)|      FAST  |BCLK_BUFGP        |   0.000|
-            |    5.344(F)|      SLOW  |   -1.750(F)|      FAST  |BCLK_BUFGP        |   0.000|
-SDTI        |    3.438(R)|      SLOW  |   -0.588(R)|      FAST  |BCLK_BUFGP        |   0.000|
+LRCK        |    4.482(R)|      SLOW  |   -0.598(R)|      SLOW  |BCLK_BUFGP        |   0.000|
+            |    4.329(F)|      SLOW  |   -1.255(F)|      FAST  |BCLK_BUFGP        |   0.000|
+RESET       |    6.280(R)|      SLOW  |   -1.174(R)|      FAST  |BCLK_BUFGP        |   0.000|
+            |    7.298(F)|      SLOW  |   -2.842(F)|      FAST  |BCLK_BUFGP        |   0.000|
+SDTI        |    4.739(R)|      SLOW  |   -0.755(R)|      SLOW  |BCLK_BUFGP        |   0.000|
 ------------+------------+------------+------------+------------+------------------+--------+
 
 Setup/Hold to clock CLK
@@ -48,14 +48,14 @@ Setup/Hold to clock CLK
             |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
 Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------+------------+------------------+--------+
-CCLK        |    3.787(R)|      SLOW  |   -0.833(R)|      SLOW  |CLK_BUFGP         |   0.000|
-LAST_EFFECT |    2.823(R)|      SLOW  |   -0.603(R)|      SLOW  |CLK_BUFGP         |   0.000|
-NEXT_EFFECT |    2.624(R)|      SLOW  |   -0.614(R)|      SLOW  |CLK_BUFGP         |   0.000|
-PEDAL       |    7.089(R)|      SLOW  |   -0.351(R)|      SLOW  |CLK_BUFGP         |   0.000|
-RESET       |   10.175(R)|      SLOW  |   -1.266(R)|      FAST  |CLK_BUFGP         |   0.000|
-SPI_MOSI    |    1.798(R)|      SLOW  |   -0.830(R)|      SLOW  |CLK_BUFGP         |   0.000|
-SPI_SCK     |    1.902(R)|      SLOW  |   -0.907(R)|      SLOW  |CLK_BUFGP         |   0.000|
-SPI_SS      |    3.630(R)|      SLOW  |   -0.889(R)|      SLOW  |CLK_BUFGP         |   0.000|
+CCLK        |    3.602(R)|      SLOW  |   -0.929(R)|      SLOW  |CLK_BUFGP         |   0.000|
+LAST_EFFECT |    2.091(R)|      SLOW  |   -0.459(R)|      SLOW  |CLK_BUFGP         |   0.000|
+NEXT_EFFECT |    2.590(R)|      SLOW  |   -0.759(R)|      SLOW  |CLK_BUFGP         |   0.000|
+PEDAL       |    8.490(R)|      SLOW  |   -0.243(R)|      SLOW  |CLK_BUFGP         |   0.000|
+RESET       |    7.475(R)|      SLOW  |   -1.340(R)|      FAST  |CLK_BUFGP         |   0.000|
+SPI_MOSI    |    1.440(R)|      SLOW  |   -0.468(R)|      SLOW  |CLK_BUFGP         |   0.000|
+SPI_SCK     |    1.288(R)|      SLOW  |   -0.350(R)|      SLOW  |CLK_BUFGP         |   0.000|
+SPI_SS      |    1.989(R)|      SLOW  |   -0.261(R)|      SLOW  |CLK_BUFGP         |   0.000|
 ------------+------------+------------+------------+------------+------------------+--------+
 
 Clock BCLK to Pad
@@ -63,7 +63,7 @@ Clock BCLK to Pad
             |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
 Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
 ------------+-----------------+------------+-----------------+------------+------------------+--------+
-SDTO        |         7.867(F)|      SLOW  |         4.100(F)|      FAST  |BCLK_BUFGP        |   0.000|
+SDTO        |         7.736(F)|      SLOW  |         4.021(F)|      FAST  |BCLK_BUFGP        |   0.000|
 ------------+-----------------+------------+-----------------+------------+------------------+--------+
 
 Clock CLK to Pad
@@ -71,26 +71,26 @@ Clock CLK to Pad
               |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
 Destination   |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
 --------------+-----------------+------------+-----------------+------------+------------------+--------+
-AVR_RX        |         9.241(R)|      SLOW  |         4.966(R)|      FAST  |CLK_BUFGP         |   0.000|
-GLCD_CS<1>    |         7.489(R)|      SLOW  |         3.959(R)|      FAST  |CLK_BUFGP         |   0.000|
-GLCD_CS<2>    |         7.556(R)|      SLOW  |         4.044(R)|      FAST  |CLK_BUFGP         |   0.000|
-GLCD_DATA<0>  |         7.954(R)|      SLOW  |         4.329(R)|      FAST  |CLK_BUFGP         |   0.000|
-GLCD_DATA<1>  |         8.056(R)|      SLOW  |         4.444(R)|      FAST  |CLK_BUFGP         |   0.000|
-GLCD_DATA<2>  |         7.799(R)|      SLOW  |         4.282(R)|      FAST  |CLK_BUFGP         |   0.000|
-GLCD_DATA<3>  |         7.788(R)|      SLOW  |         4.202(R)|      FAST  |CLK_BUFGP         |   0.000|
-GLCD_DATA<4>  |         8.345(R)|      SLOW  |         4.585(R)|      FAST  |CLK_BUFGP         |   0.000|
-GLCD_DATA<5>  |         8.672(R)|      SLOW  |         4.812(R)|      FAST  |CLK_BUFGP         |   0.000|
-GLCD_DATA<6>  |         8.863(R)|      SLOW  |         4.933(R)|      FAST  |CLK_BUFGP         |   0.000|
-GLCD_DATA<7>  |         7.659(R)|      SLOW  |         4.114(R)|      FAST  |CLK_BUFGP         |   0.000|
-GLCD_E        |         7.697(R)|      SLOW  |         4.173(R)|      FAST  |CLK_BUFGP         |   0.000|
-GLCD_RS       |         7.347(R)|      SLOW  |         3.923(R)|      FAST  |CLK_BUFGP         |   0.000|
-GLCD_RST      |         7.654(R)|      SLOW  |         4.063(R)|      FAST  |CLK_BUFGP         |   0.000|
-LED1          |         8.110(R)|      SLOW  |         4.374(R)|      FAST  |CLK_BUFGP         |   0.000|
-SPI_CHANNEL<0>|         9.658(R)|      SLOW  |         4.723(R)|      FAST  |CLK_BUFGP         |   0.000|
-SPI_CHANNEL<1>|         9.918(R)|      SLOW  |         5.418(R)|      FAST  |CLK_BUFGP         |   0.000|
-SPI_CHANNEL<2>|         9.918(R)|      SLOW  |         5.006(R)|      FAST  |CLK_BUFGP         |   0.000|
-SPI_CHANNEL<3>|         9.657(R)|      SLOW  |         5.254(R)|      FAST  |CLK_BUFGP         |   0.000|
-SPI_MISO      |        11.276(R)|      SLOW  |         4.463(R)|      FAST  |CLK_BUFGP         |   0.000|
+AVR_RX        |        10.452(R)|      SLOW  |         5.915(R)|      FAST  |CLK_BUFGP         |   0.000|
+GLCD_CS<1>    |        10.040(R)|      SLOW  |         5.627(R)|      FAST  |CLK_BUFGP         |   0.000|
+GLCD_CS<2>    |        10.028(R)|      SLOW  |         5.629(R)|      FAST  |CLK_BUFGP         |   0.000|
+GLCD_DATA<0>  |         9.524(R)|      SLOW  |         5.249(R)|      FAST  |CLK_BUFGP         |   0.000|
+GLCD_DATA<1>  |         9.438(R)|      SLOW  |         5.183(R)|      FAST  |CLK_BUFGP         |   0.000|
+GLCD_DATA<2>  |         9.381(R)|      SLOW  |         5.139(R)|      FAST  |CLK_BUFGP         |   0.000|
+GLCD_DATA<3>  |         9.899(R)|      SLOW  |         5.452(R)|      FAST  |CLK_BUFGP         |   0.000|
+GLCD_DATA<4>  |         9.481(R)|      SLOW  |         5.200(R)|      FAST  |CLK_BUFGP         |   0.000|
+GLCD_DATA<5>  |         8.735(R)|      SLOW  |         4.714(R)|      FAST  |CLK_BUFGP         |   0.000|
+GLCD_DATA<6>  |         8.890(R)|      SLOW  |         4.809(R)|      FAST  |CLK_BUFGP         |   0.000|
+GLCD_DATA<7>  |         9.615(R)|      SLOW  |         5.350(R)|      FAST  |CLK_BUFGP         |   0.000|
+GLCD_E        |         9.745(R)|      SLOW  |         5.505(R)|      FAST  |CLK_BUFGP         |   0.000|
+GLCD_RS       |         9.539(R)|      SLOW  |         5.248(R)|      FAST  |CLK_BUFGP         |   0.000|
+GLCD_RST      |         9.810(R)|      SLOW  |         5.420(R)|      FAST  |CLK_BUFGP         |   0.000|
+LED1          |        10.294(R)|      SLOW  |         5.747(R)|      FAST  |CLK_BUFGP         |   0.000|
+SPI_CHANNEL<0>|         9.362(R)|      SLOW  |         4.264(R)|      FAST  |CLK_BUFGP         |   0.000|
+SPI_CHANNEL<1>|        10.674(R)|      SLOW  |         6.150(R)|      FAST  |CLK_BUFGP         |   0.000|
+SPI_CHANNEL<2>|        10.719(R)|      SLOW  |         4.985(R)|      FAST  |CLK_BUFGP         |   0.000|
+SPI_CHANNEL<3>|        10.863(R)|      SLOW  |         6.198(R)|      FAST  |CLK_BUFGP         |   0.000|
+SPI_MISO      |        10.744(R)|      SLOW  |         4.137(R)|      FAST  |CLK_BUFGP         |   0.000|
 --------------+-----------------+------------+-----------------+------------+------------------+--------+
 
 Clock to Setup on destination clock BCLK
@@ -98,8 +98,8 @@ Clock to Setup on destination clock BCLK
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-BCLK           |    4.270|         |    3.880|    6.388|
-CLK            |         |         |    5.651|         |
+BCLK           |    3.817|         |    3.681|    5.900|
+CLK            |         |         |    5.290|         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock CLK
@@ -107,28 +107,28 @@ Clock to Setup on destination clock CLK
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-BCLK           |    3.587|    2.175|         |         |
-CLK            |    9.749|         |         |         |
+BCLK           |    2.971|    2.338|         |         |
+CLK            |    7.575|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Pad to Pad
 ---------------+---------------+---------+
 Source Pad     |Destination Pad|  Delay  |
 ---------------+---------------+---------+
-NEXT_EFFECT    |LED3           |   11.553|
-PEDAL          |LED2           |   12.053|
-SPI_SS         |SPI_MISO       |   11.067|
+NEXT_EFFECT    |LED3           |   11.305|
+PEDAL          |LED2           |   12.458|
+SPI_SS         |SPI_MISO       |   10.327|
 ---------------+---------------+---------+
 
 
-Analysis completed Fri Apr 13 16:31:14 2018 
+Analysis completed Mon Apr 16 17:09:27 2018 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 273 MB
+Peak Memory Usage: 274 MB
 
 
 
