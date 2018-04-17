@@ -3,16 +3,16 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
+Total REAL time to Xst completion: 0.00 secs
 Total CPU time to Xst completion: 0.16 secs
  
 --> Parameter xsthdpdir set to F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/xst
 
 
-Total REAL time to Xst completion: 1.00 secs
+Total REAL time to Xst completion: 0.00 secs
 Total CPU time to Xst completion: 0.16 secs
  
---> Reading design: Distortion.prj
+--> Reading design: volumeControl.prj
 
 TABLE OF CONTENTS
   1) Synthesis Options Summary
@@ -39,14 +39,13 @@ TABLE OF CONTENTS
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\ipcore_dir\DiviseurDist.vhd" into library work
-Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Distortion\Distortion.vhd" into library work
-Parsing entity <Distortion>.
-Parsing architecture <Behavioral> of entity <distortion>.
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Volume\volumeControl.vhd" into library work
+Parsing entity <volumeControl>.
+Parsing architecture <Behavioral> of entity <volumecontrol>.
 
 
 Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 4.88 secs
+Total CPU time to Xst completion: 4.82 secs
  
 --> 
 

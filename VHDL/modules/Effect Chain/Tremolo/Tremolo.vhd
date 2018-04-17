@@ -37,10 +37,6 @@ entity Tremolo is
 			  Pedal : in STD_LOGIC;											-- Constant '1' indicates that pedal is activated
            SM : in STD_LOGIC;												-- Constant '1' indicates us that module is selected	
 			  
-			  -- Lock Module
-           lock : in  STD_LOGIC;											-- goes high for 1 clock cycle, when detected switch between locked and normal mode
-			  locked : out STD_LOGIC;										-- indicated that the module is locked
-			  
 			  -- External control
            Rate  : in  STD_LOGIC_VECTOR (9 downto 0);				-- Frequency of the tremolo
            Wave  : in  STD_LOGIC_VECTOR (9 downto 0);				-- Wave shape of the tremolo
@@ -63,16 +59,6 @@ COMPONENT Diviseur
   );
 END COMPONENT;
 
-Type effectState is (stateNormal,stateLocked);
-Signal tremState : effectState := stateNormal;
-
--- Saved signals for locked mode
-Signal savedRate  : STD_LOGIC_VECTOR(9 downto 0) := (others => '0');
-signal savedSlope : signed(10 downto 0) := (others => '0');
-Signal savedDepth : STD_LOGIC_VECTOR(9 downto 0) := (others => '0');
-
-Signal isLocked : STD_LOGIC := '0';
-
 -- Signal for audio effect calculation
 signal tempVector : STD_LOGIC_VECTOR(35 downto 0);
 
@@ -91,7 +77,6 @@ Signal WCLK : STD_LOGIC := '0';
 Signal compteur : unsigned(14 downto 0) := (others => '0');
 Signal TremClkMax: unsigned(31 downto 0) := (others => '0');
 
-
 -- Signal for divisor
 Signal loadToDivisor : STD_LOGIC := '0';
 Signal DepthXBpm : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
@@ -105,60 +90,45 @@ begin
 -- rate minimum = 2x rate maximum 
 
 -- Signal assignations
-Locked <= isLocked;
 DepthXBpm <= std_logic_vector( (('0' & unsigned(Depth))+ b"1") * b"10" * (('0' & unsigned(Rate)) + x"78"));			-- 120 BPM = x"78"
 
--- Main sequencial machine
-MachSeq:process(CLK,RESET)
+-- Main module
+Tremolo:
+process(CLK)
 begin
-	if RESET = '0' then
-		tremState <= stateNormal;
-		islocked <= '0';
-		
-	elsif rising_edge(CLK) then													
-		case tremState is
-			when stateNormal =>						
-				if SM = '1' and Pedal = '1'  then								-- Selected module = 1 and pedal was activated => Normal operation
-					tempVector <= std_logic_vector(signed(audioIn) * genWave);
-					
-					audioOut <= tempVector(33 downto 10);
-					
-				else
-					audioOut <= audioIn;
-				end if;
-				
-				if SM = '1' and lock = '1' then							      -- Selected module = '1' and lock = '1' => Lock the module
-					-- Save External controls
-					savedRate <= Rate;
-					savedSlope <= slope;
-					savedDepth <= Depth;
-					tremState <= stateLocked;
-					islocked <= '1';
-				end if;
-				
-			when stateLocked =>						
-				-- If module is selected or chain effect is activated
-				if Pedal = '1' then
-					tempVector <= std_logic_vector(signed(audioIn) * genWave);
-					audioOut <= tempVector(33 downto 10);
-				else
-					audioOut <= audioIn;
-				end if;
-				
-				-- If module is selected and we unlock
-				if SM = '1' and lock = '1' then
-					islocked <= '0';
-					tremState <= stateNormal;
-				end if;
-				
-		end case;
+	if rising_edge(CLK) then																		
+		if SM = '1' and Pedal = '1'  then								-- Selected module = 1 and pedal was activated => Normal operation
+			tempVector <= std_logic_vector(signed(audioIn) * genWave);
+			
+			audioOut <= tempVector(33 downto 10);
+			
+		else
+			audioOut <= audioIn;
+		end if;
 	end if;
 end process;
+
+-- Detects when a new waveform is generated and loads the user selected settings
+detectNewWave:
+process(CLK)
+	begin
+		if rising_edge(CLK) then
+			if newWave = '1' then
+				loadToDivisor <= '1';
+				shapeScale <= slope;
+				waveMin <= x"400" - signed(b"0" & Depth);
+			else
+				loadToDivisor <= '0';
+			end if;
+		end if;
+end process;
+
 
 -- Tclkmax = (50_000_000 / nbpoints) * (60/bpm)
 
 -- Tremolo clock
-ClkDiv:process(CLK,RESET)
+ClkDiv:
+process(CLK,RESET)
 begin
 	if RESET = '0' then
 		compteur <= (others => '0');
@@ -174,7 +144,8 @@ end process;
 
 
 -- Slope selector ( /\/ -> |¯|_| )
-WaveSlope:process(CLK)
+WaveSlope:
+process(CLK)
 begin
 	if rising_edge(CLK) then
 		if ((unsigned(Wave) >= 0) and (unsigned(Wave) < 93)) then	--1
@@ -217,28 +188,9 @@ begin
 end process;
 
 
--- Detects when a new waveform is generated and loads the user selected settings
-detectNewWave:process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if newWave = '1' then
-				loadToDivisor <= '1';
-				if isLocked <= '0' then
-					shapeScale <= slope;
-					waveMin <= x"400" - signed(b"0" & Depth);
-				elsif isLocked <= '1' then
-					shapeScale <= savedSlope;
-					waveMin <= x"400" - signed(b"00" & savedDepth);
-				end if;
-			else
-				loadToDivisor <= '0';
-			end if;
-		end if;
-	end process;
-
-
 -- Wave generator
-WaveGen:process(WCLK,RESET)
+WaveGen:
+process(WCLK,RESET)
 	begin
 		if RESET = '0' then
 			genWave <= x"400";
@@ -278,10 +230,11 @@ WaveGen:process(WCLK,RESET)
 					end if;
 				end if;
 		end if;
-	end process;
+end process;
 
 
-detectDivisorDone:process(CLK)
+detectDivisorDone:
+process(CLK)
 begin
 	if rising_edge(CLK) then
 		if divisionDone = '1' then

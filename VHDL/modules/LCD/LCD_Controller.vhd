@@ -26,10 +26,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity LCD_Controler is
     Port ( -- FPGA CLOCK
 			  CLK : in  STD_LOGIC;
-			  
-			  -- LOCKED MODULES
-           LM : in  STD_LOGIC_VECTOR (7 downto 0);
-			  
+			 
 			  -- SELECTED MODULE
            SM : in  STD_LOGIC_VECTOR (7 downto 0);
 			  

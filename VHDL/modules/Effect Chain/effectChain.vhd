@@ -24,10 +24,6 @@ entity effectChain is
 			  -- Pedal
 			  PEDAL : in STD_LOGIC;
 			  
-			  -- Lock
-			  LOCK : in STD_LOGIC;
-			  LOCKED : out STD_LOGIC_VECTOR(7 downto 0);
-			  
 			  -- Selected module
 			  SM : out STD_LOGIC_VECTOR(7 downto 0);
 			  
@@ -87,9 +83,6 @@ with effectSelector select
 						 b"00000000" when others;
 
 
-
--- TO CHANGE: USE A MUX INSTEAD TO SELECT THE AUDIO
-
 --PortMap
 BufferIn: entity work.Buffer_In(Behavioral)
 port map( CLK => CLK,
@@ -113,10 +106,6 @@ port map(  -- System Clock (50 MHz)
 			  Pedal => PEDAL,											-- Constant '1' indicates that pedal is activated
            SM => selectModule(0),												-- Constant '1' indicates us that module is selected	
 			  
-			  -- Lock Module
-           lock => LOCK,											-- goes high for 1 clock cycle, when detected switch between locked and normal mode
-			  locked => LOCKED(0),										-- indicated that the module is locked
-			  
 			  -- External control
            Dist => ADC0,				-- Ammount of distortion 	  -> Gain of the pre-cut signal
            Tone => ADC1,				-- Tone of the signal		  -> Filtre passe bas
@@ -137,11 +126,7 @@ port map(-- System Clock (50 MHz)
 			  -- Select Module
 			  Pedal => PEDAL,										-- Constant '1' indicates that pedal is activated
            SM => selectModule(1),											-- Constant '1' indicates us that module is selected	
-			  
-			  -- Lock Module
-           lock => LOCK,											-- goes high for 1 clock cycle, when detected switch between locked and normal mode
-			  locked => LOCKED(1),									-- indicated that the module is locked
-			  
+
 			  -- External control
            Rate  => ADC0,
            Wave  => ADC1,		
@@ -155,8 +140,6 @@ port map( CLK => CLK,
           audioOut => audioOutVolume,
 			 Pedal => PEDAL,
           SM => selectModule(2), 
-          lock => LOCK,					
-			 locked => LOCKED(2),
           TBD1 => ADC0,
           vol => ADC1,							
 			 TBD2 => ADC4

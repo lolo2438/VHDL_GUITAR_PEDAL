@@ -11,17 +11,13 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity Button_Processing is
     Port ( CLK : in  STD_LOGIC;							-- FPGA CLOCK
-	 
-           PEDAL_IN : in  STD_LOGIC;					-- PEDAL IN
 			  
            NEXT_EFFECT_IN : in  STD_LOGIC;			-- NEXT EFFECT IN
            NEXT_EFFECT_OUT : out  STD_LOGIC;			-- NEXT EFFECT OUT
            
-           
            LAST_EFFECT_IN : in  STD_LOGIC;			-- LAST EFFECT IN
            LAST_EFFECT_OUT : out  STD_LOGIC;			-- LAST EFFECT OUT
 			  
-			  LOCK : out  STD_LOGIC;						-- LOCK PULSE
 			  RESET : in STD_LOGIC							-- RESET SIGNAL
 			 );
 			 
@@ -34,22 +30,6 @@ signal arNEXT_EFFECT : STD_LOGIC := '0';
 signal arPedal : STD_LOGIC := '0';
 
 begin
-
--- Pedal stays at constant '1' whilst others buttons send a pulse
-AR_Pedal : entity work.Anti_Rebond(Behavioral)
-Port map(	
-			Bouton => PEDAL_IN,
-			Sortie => arPedal,
-			Horloge => CLK
-	  );
-
-PedalControl: entity work.PedalControl(Behavioral)
-Port map(
-			 CLK => CLK,		
-          PEDAL_IN => arPedal,	
-			 LOCK => LOCK,
-			 RESET => RESET
-			);
 
 -- Step 1: Remove rebound	  
 AR_Back : entity work.Anti_Rebond(Behavioral)

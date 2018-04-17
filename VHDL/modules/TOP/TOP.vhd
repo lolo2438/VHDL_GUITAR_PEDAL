@@ -88,7 +88,6 @@ signal lockedModules : STD_LOGIC_VECTOR(7 downto 0);
 signal selectedModule : STD_LOGIC_VECTOR(7 downto 0);
 
 -- Button processing
-signal sLock : STD_LOGIC;
 signal sNextE : STD_LOGIC;
 signal sLastE : STD_LOGIC;
 
@@ -208,10 +207,6 @@ Port map ( -- FPGA 50 MHZ
 			  -- Pedal
 			  PEDAL => PEDAL,
 			  
-			  -- Lock
-			  LOCK => sLock,
-			  LOCKED => lockedModules,
-			  
 			  -- Selected module
 			  SM => selectedModule,
 			  
@@ -233,12 +228,8 @@ Buttton_Process : entity work.Button_Processing(Behavioral)
 Port map(
 			CLK => CLK,
 			
-         PEDAL_IN => PEDAL,
-			
          NEXT_EFFECT_IN => NEXT_EFFECT,
          LAST_EFFECT_IN => LAST_EFFECT,
-     
-         LOCK=> sLock,
 			
          NEXT_EFFECT_OUT => sNextE,
          LAST_EFFECT_OUT => sLastE,
@@ -250,9 +241,6 @@ Port map(
 GLCD: entity work.LCD_Controler(Behavioral)
 Port map( -- FPGA CLOCK
 			  CLK => CLK,
-			  
-			  -- LOCKED MODULES
-           LM => lockedModules,
 			  
 			  -- SELECTED MODULE
            SM => selectedModule,
