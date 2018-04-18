@@ -46,29 +46,17 @@ end Distortion;
 
 architecture Behavioral of Distortion is
 
-COMPONENT DiviseurDist
-  PORT (
-    aclk : IN STD_LOGIC;
-    s_axis_divisor_tvalid : IN STD_LOGIC;
-    s_axis_divisor_tdata : IN STD_LOGIC_VECTOR(23 DOWNTO 0);
-    s_axis_dividend_tvalid : IN STD_LOGIC;
-    s_axis_dividend_tdata : IN STD_LOGIC_VECTOR(23 DOWNTO 0);
-    m_axis_dout_tvalid : OUT STD_LOGIC;
-    m_axis_dout_tdata : OUT STD_LOGIC_VECTOR(47 DOWNTO 0)
-  );
-END COMPONENT;
-
 Signal sDist : signed(10 downto 0);
 signal sLevel : signed(10 downto 0);
 Signal lastAudioIn23 : STD_LOGIC := '0';
 
 signal tempVector1 : std_logic_vector(23 downto 0) := (others => '0');
 
-signal tempCal1 : signed(58 downto 0) := (others => '0');
+signal tempCal1 : signed(37 downto 0) := (others => '0');
 
 signal limit : signed(25 downto 0) := (others => '0');
 
-signal levelGain : signed(23 downto 0) := (others => '0');					-- Temp gain: 2
+constant levelGain : signed(2 downto 0) := b"101";					-- Temp gain:5
 
 signal newWave : STD_LOGIC := '0';
 
@@ -77,10 +65,7 @@ signal tempPeak : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
 signal maximumPeak : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
 
 -- Signal for divisor
-Signal loadToDivisor : STD_LOGIC := '0';
-Signal divisionDone : STD_LOGIC := '0';
-Signal dataOutDiviser : STD_LOGIC_VECTOR(47 downto 0) := (others => '0');
-Signal divisor : STD_LOGIC_VECTOR(23 downto 0);
+--signal divisor : STD_LOGIC_VECTOR(23 downto 0);
 
 begin
 
@@ -92,7 +77,7 @@ begin
 -- dépassement a *dist
 -- Améliorer : levelGain change dépendament du niveau de distortion pour toujour pouvoir atteindre le max
 
-detectNewWave: process(CLK)	--A tester: est ce que le fait de garder le volume fixe le temps d'une wave repare le bruit etrange
+detectNewWave: process(CLK)
 begin
 	if rising_edge(CLK) then
 		if audioIn(23) = '0' and lastAudioIn23 = '1' then	--when the audio signal goes from negative -> positive
@@ -107,27 +92,27 @@ begin
 	end if;
 end process;
 
-detectPeak:
-process(CLK)
-begin
-	if rising_edge(CLK) then
-		if newWave = '0' then				-- If our input wave is not renewed
-			if signed(audioIn) > lastAudioIn then
-				tempPeak <= audioIn;
-				loadToDivisor <= '0';
-			else
-				maximumPeak <= tempPeak;
-				loadToDivisor <= '1';
-			end if;
-			
-			lastAudioIn <= signed(audioIn);
-			
-		else
-			lastAudioIn <= (others => '0');
-		end if;
-		
-	end if;
-end process;
+--detectPeak:
+--process(CLK)
+--begin
+--	if rising_edge(CLK) then
+--		if newWave = '0' then				-- If our input wave is not renewed
+--			if signed(audioIn) > lastAudioIn then
+--				tempPeak <= audioIn;
+--				loadToDivisor <= '0';
+--			else
+--				maximumPeak <= tempPeak;
+--				loadToDivisor <= '1';
+--			end if;
+--			
+--			lastAudioIn <= signed(audioIn);
+--			
+--		else
+--			lastAudioIn <= (others => '0');
+--		end if;
+--		
+--	end if;
+--end process;
 
 Distortion:
 process(CLK)
@@ -135,13 +120,6 @@ process(CLK)
 		if rising_edge(CLK) then
 			if SM = '1' and Pedal = '1'  then					-- Selected module = 1 and pedal was activated => Normal operation
 				limit <= x"7FFFFF" - (signed(sDist) * b"0100_0000_0001_000"); --8200 (2^31 / 1024)
-				
-				-- Protection for divisor
-				if limit > signed(maximumPeak) then
-					divisor <= maximumPeak;
-				else
-					divisor <= STD_LOGIC_VECTOR(limit(23 downto 0));
-				end if;
 				
 				-- Add distortion by cutting the pre-amp'ed signal
 				if signed(audioIn) > limit then
@@ -159,36 +137,19 @@ process(CLK)
 				-- Post-distortion amplification
 				tempCal1 <= signed(tempVector1) * signed(levelGain) * signed(sLevel);
 				
+				if tempCal1 > x"7FFFFF" then
+					audioOut <= x"7FFFFF";
+				elsif tempCal1 < x"800000" then
+					audioOut <= x"800000";
+				else
 				-- post amp signal = > preampresult * gain * level/1024
 				audioOut <= std_logic_vector(tempCal1(33 downto 10));
-				
+				end if;
 			else																	   -- Otherwise foward signal
 				audioOut <= audioIn;
 			end if;
 		end if;
 end process;
-
-
-detectDivisionDone:
-process(CLK)
-begin
-	if rising_edge(CLK) then
-		if divisionDone = '1' then
-			levelGain <= signed(dataOutDiviser(47 downto 24));
-		end if;
-	end if;
-end process;
-
-Gain : DiviseurDist
-  PORT MAP (
-    aclk => CLK,
-    s_axis_divisor_tvalid => loadToDivisor,
-    s_axis_divisor_tdata => divisor,
-    s_axis_dividend_tvalid => loadToDivisor,
-    s_axis_dividend_tdata => maximumPeak,
-    m_axis_dout_tvalid => divisionDone,
-    m_axis_dout_tdata => dataOutDiviser
-  );
 
 end Behavioral;
 

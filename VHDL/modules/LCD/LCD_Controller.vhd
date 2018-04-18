@@ -295,7 +295,167 @@ ADC0Bar:
 process(CLK)
 	begin
 		if rising_edge(CLK) then
-			--Todo
+			if ADC0 > x"3E0" then	-- 992
+				lcdScreen(4)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(5)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(6)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"3C0" then --960
+				lcdScreen(4)(15 to 28) <= (x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE");
+				lcdScreen(5)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(6)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"3A0" then --928
+				lcdScreen(4)(15 to 28) <= (x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC");
+				lcdScreen(5)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(6)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"380" then --896
+				lcdScreen(4)(15 to 28) <= (x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8");
+				lcdScreen(5)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(6)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"360" then --864
+				lcdScreen(4)(15 to 28) <= (x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0");
+				lcdScreen(5)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(6)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"340" then --832
+				lcdScreen(4)(15 to 28) <= (x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0");
+				lcdScreen(5)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(6)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"320" then --800
+				lcdScreen(4)(15 to 28) <= (x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0");
+				lcdScreen(5)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(6)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"300" then --768
+				lcdScreen(4)(15 to 28) <= (x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80");
+				lcdScreen(5)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(6)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"2E0" then --736
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(6)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"2C0" then --704
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE");
+				lcdScreen(6)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"2A0" then --672
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC");
+				lcdScreen(6)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"280" then --640
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8");
+				lcdScreen(6)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"260" then --608
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0");
+				lcdScreen(6)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"240" then --576
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0");
+				lcdScreen(6)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"220" then --544
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0");
+				lcdScreen(6)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"200" then --512
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80");
+				lcdScreen(6)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"1E0" then --480
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(6)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"1C0" then --448
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(6)(15 to 28) <= (x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"1A0" then --416
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(6)(15 to 28) <= (x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"180" then --384
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(6)(15 to 28) <= (x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"160" then --352
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(6)(15 to 28) <= (x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"140" then --320
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(6)(15 to 28) <= (x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"120" then --288
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(6)(15 to 28) <= (x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"100" then --256
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(6)(15 to 28) <= (x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"E0" then --224
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(6)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(7)(15 to 28) <= (x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF",x"FF");
+			elsif ADC0 > x"C0" then --192
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(6)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(7)(15 to 28) <= (x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE",x"FE");
+			elsif ADC0 > x"A0" then --160
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(6)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(7)(15 to 28) <= (x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC",x"FC");
+			elsif ADC0 > x"80" then --128
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(6)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(7)(15 to 28) <= (x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8",x"F8");
+			elsif ADC0 > x"60" then --96
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(6)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(7)(15 to 28) <= (x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0",x"F0");
+			elsif ADC0 > x"40" then --64
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(6)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(7)(15 to 28) <= (x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0",x"E0");
+			elsif ADC0 > x"20" then --32
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(6)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(7)(15 to 28) <= (x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0",x"C0");
+			else							-- 0
+				lcdScreen(4)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(5)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(6)(15 to 28) <= (x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00",x"00");
+				lcdScreen(7)(15 to 28) <= (x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80",x"80");		
+			end if;
 		end if;
 end process;
 

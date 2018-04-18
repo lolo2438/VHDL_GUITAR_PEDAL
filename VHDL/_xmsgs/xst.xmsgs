@@ -5,22 +5,22 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\ADC_READ\ADC_Read.vhd" Line 66: Assignment to <arg fmt="%s" index="1">tempsample</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\ADC_READ\ADC_Read.vhd" Line 66: Assignment to <arg fmt="%s" index="1">tempsample</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="89" delta="new" >"F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Distortion\Distortion.vhd" Line 49: &lt;<arg fmt="%s" index="1">diviseurdist</arg>&gt; remains a black-box since it has no binding entity.
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Distortion\Distortion.vhd" Line 80: Assignment to <arg fmt="%s" index="1">newwave</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="89" delta="old" >"F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Tremolo\Tremolo.vhd" Line 49: &lt;<arg fmt="%s" index="1">diviseur</arg>&gt; remains a black-box since it has no binding entity.
+<msg type="warning" file="HDLCompiler" num="89" delta="new" >"F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Tremolo\Tremolo.vhd" Line 49: &lt;<arg fmt="%s" index="1">diviseur</arg>&gt; remains a black-box since it has no binding entity.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\LCD\LCD_Controller.vhd" Line 61: Net &lt;<arg fmt="%s" index="1">lcdScreen[2][0][7]</arg>&gt; does not have a driver.
+<msg type="warning" file="HDLCompiler" num="634" delta="new" >"F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\LCD\LCD_Controller.vhd" Line 61: Net &lt;<arg fmt="%s" index="1">lcdScreen[2][0][7]</arg>&gt; does not have a driver.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" Line 72: Net &lt;<arg fmt="%s" index="1">txData[7]</arg>&gt; does not have a driver.
+<msg type="warning" file="HDLCompiler" num="634" delta="new" >"F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" Line 72: Net &lt;<arg fmt="%s" index="1">txData[7]</arg>&gt; does not have a driver.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" Line 74: Net &lt;<arg fmt="%s" index="1">newTxData</arg>&gt; does not have a driver.
+<msg type="warning" file="HDLCompiler" num="634" delta="new" >"F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" Line 74: Net &lt;<arg fmt="%s" index="1">newTxData</arg>&gt; does not have a driver.
 </msg>
 
 <msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd</arg>&quot; line <arg fmt="%s" index="2">143</arg>: Output port &lt;<arg fmt="%s" index="3">rx_data</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">avr_interface</arg>&gt; is unconnected or connected to loadless signal.
@@ -54,9 +54,6 @@
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">RESET</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-</msg>
-
-<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">ADC0</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">ADC1</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -878,48 +875,6 @@
 <msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;4&gt;&lt;14&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
 </msg>
 
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;4&gt;&lt;15&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;4&gt;&lt;16&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;4&gt;&lt;17&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;4&gt;&lt;18&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;4&gt;&lt;19&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;4&gt;&lt;20&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;4&gt;&lt;21&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;4&gt;&lt;22&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;4&gt;&lt;23&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;4&gt;&lt;24&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;4&gt;&lt;25&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;4&gt;&lt;26&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;4&gt;&lt;27&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;4&gt;&lt;28&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
 <msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;4&gt;&lt;29&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
 </msg>
 
@@ -1260,48 +1215,6 @@
 </msg>
 
 <msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;5&gt;&lt;14&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;5&gt;&lt;15&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;5&gt;&lt;16&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;5&gt;&lt;17&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;5&gt;&lt;18&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;5&gt;&lt;19&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;5&gt;&lt;20&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;5&gt;&lt;21&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;5&gt;&lt;22&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;5&gt;&lt;23&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;5&gt;&lt;24&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;5&gt;&lt;25&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;5&gt;&lt;26&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;5&gt;&lt;27&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;5&gt;&lt;28&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
 </msg>
 
 <msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;5&gt;&lt;29&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
@@ -1646,48 +1559,6 @@
 <msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;6&gt;&lt;14&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
 </msg>
 
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;6&gt;&lt;15&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;6&gt;&lt;16&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;6&gt;&lt;17&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;6&gt;&lt;18&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;6&gt;&lt;19&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;6&gt;&lt;20&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;6&gt;&lt;21&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;6&gt;&lt;22&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;6&gt;&lt;23&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;6&gt;&lt;24&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;6&gt;&lt;25&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;6&gt;&lt;26&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;6&gt;&lt;27&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;6&gt;&lt;28&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
 <msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;6&gt;&lt;29&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
 </msg>
 
@@ -2030,48 +1901,6 @@
 <msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;7&gt;&lt;14&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
 </msg>
 
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;7&gt;&lt;15&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;7&gt;&lt;16&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;7&gt;&lt;17&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;7&gt;&lt;18&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;7&gt;&lt;19&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;7&gt;&lt;20&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;7&gt;&lt;21&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;7&gt;&lt;22&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;7&gt;&lt;23&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;7&gt;&lt;24&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;7&gt;&lt;25&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;7&gt;&lt;26&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;7&gt;&lt;27&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
-<msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;7&gt;&lt;28&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
-</msg>
-
 <msg type="warning" file="Xst" num="2935" delta="new" >Signal &apos;<arg fmt="%s" index="1">lcdScreen&lt;7&gt;&lt;29&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">LCD_Controler</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">00000000</arg>).
 </msg>
 
@@ -2385,111 +2214,6 @@ It will be removed from the design.
 <msg type="warning" file="Xst" num="1293" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">sVolume_10</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">Volume</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_8</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_9</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_34</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_35</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_36</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_37</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_38</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_39</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_40</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_41</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_42</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_43</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_44</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_45</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_46</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_47</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_48</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_49</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_50</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_51</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_52</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_53</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_54</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_55</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_56</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_57</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempCal1_58</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
 <msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">tempVector_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Tremolo</arg>&gt;.
 </msg>
 
@@ -2571,7 +2295,7 @@ It will be removed from the design.
 <msg type="warning" file="Xst" num="2404" delta="new" > FFs/Latches &lt;<arg fmt="%s" index="1">sDist</arg>&lt;<arg fmt="%d" index="2">10</arg>:<arg fmt="%d" index="3">10</arg>&gt;&gt; (without init value) have a constant value of <arg fmt="%c" index="4">0</arg> in block &lt;<arg fmt="%s" index="5">Distortion</arg>&gt;.
 </msg>
 
-<msg type="info" file="Xst" num="2385" delta="new" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT</arg> by adding <arg fmt="%d" index="2">1</arg> register level(s).
+<msg type="info" file="Xst" num="2385" delta="new" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT</arg> by adding <arg fmt="%d" index="2">3</arg> register level(s).
 </msg>
 
 <msg type="info" file="Xst" num="2385" delta="new" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_audioIn[23]_genWave[11]_MuLt_3_OUT</arg> by adding <arg fmt="%d" index="2">3</arg> register level(s).
@@ -2586,46 +2310,40 @@ It will be removed from the design.
 <msg type="warning" file="Xst" num="1293" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">sVolume_10</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">volumeControl</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_levelGain[23]_MuLt_23_OUT3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_submult_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
-</msg>
-
 <msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">REQUESTED_CHANNEL_1</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ADC_Read</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="1895" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">REQUESTED_CHANNEL_3</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ADC_Read</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_33</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_16</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_32</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_31</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_30</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_29</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_28</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_11</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_27</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_10</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_26</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_9</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_25</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_8</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_24</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Distortion</arg>&gt;.
 </msg>
 
 <msg type="warning" file="Xst" num="1293" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">waveMin_11</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">Tremolo</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
@@ -2691,10 +2409,17 @@ It will be removed from the design.
 <msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Mmult_audioIn[23]_sVolume[10]_MuLt_2_OUT2_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">volumeControl</arg>&gt;.
 </msg>
 
+<msg type="warning" file="Xst" num="1426" delta="new" >The value init of the FF/Latch <arg fmt="%s" index="1">lcdScreen&lt;7&gt;_15_7</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">LCD_Controler</arg>.
+You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
+</msg>
+
 <msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">avr_interface/serial_tx/block_q</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">TOP</arg>&gt;.
 </msg>
 
 <msg type="warning" file="Xst" num="2973" delta="new" >All outputs of instance &lt;<arg fmt="%s" index="1">avr_interface/serial_rx</arg>&gt; of block &lt;<arg fmt="%s" index="2">serial_rx</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="3">TOP</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">lcdScreen&lt;7&gt;_15_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">LCD_Controler</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">6 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;lcdScreen&lt;7&gt;_15_1&gt; &lt;lcdScreen&lt;7&gt;_15_2&gt; &lt;lcdScreen&lt;7&gt;_15_3&gt; &lt;lcdScreen&lt;7&gt;_15_4&gt; &lt;lcdScreen&lt;7&gt;_15_5&gt; &lt;lcdScreen&lt;7&gt;_15_6&gt; </arg>
 </msg>
 
 <msg type="warning" file="Xst" num="1293" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">GLCD/compteur_14</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">TOP</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
@@ -2707,6 +2432,13 @@ It will be removed from the design.
 </msg>
 
 <msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">GLCD/compteur_11</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">TOP</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">GLCD/lcdScreen&lt;7&gt;_15_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">TOP</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;GLCD/lcdScreen&lt;6&gt;_15_7&gt; </arg>
+</msg>
+
+<msg type="warning" file="Xst" num="1426" delta="new" >The value init of the FF/Latch <arg fmt="%s" index="1">GLCD/lcdScreen&lt;7&gt;_15_7</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">TOP</arg>.
+You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
 </msg>
 
 </messages>

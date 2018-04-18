@@ -1,2 +1,0 @@
-vhdl work "modules/LCD/LCD_Controller.vhd"
-vhdl work "modules/LCD/LCD_CONTROLLER_TB.vhd"

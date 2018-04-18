@@ -15,17 +15,16 @@
          <ClosedNode>/TOP - Behavioral C:|Users|e1538867|Desktop|VHDL_GUITAR_PEDAL|VHDL|modules|TOP|TOP.vhd/effectChain - effectChain - Behavioral</ClosedNode>
          <ClosedNode>/TOP - Behavioral F:|Laurent|Documents|GitHub|VHDL_GUITAR_PEDAL|VHDL|modules|TOP|TOP.vhd/Buttton_Process - Button_Processing - Behavioral</ClosedNode>
          <ClosedNode>/TOP - Behavioral F:|Laurent|Documents|GitHub|VHDL_GUITAR_PEDAL|VHDL|modules|TOP|TOP.vhd/avr_interface - avr_interface - RTL</ClosedNode>
-         <ClosedNode>/TOP - Behavioral F:|Laurent|Documents|GitHub|VHDL_GUITAR_PEDAL|VHDL|modules|TOP|TOP.vhd/effectChain - effectChain - Behavioral/Distortion - Distortion - Behavioral</ClosedNode>
          <ClosedNode>/TOP - Behavioral F:|Laurent|Documents|GitHub|VHDL_GUITAR_PEDAL|VHDL|modules|TOP|TOP.vhd/effectChain - effectChain - Behavioral/Tremolo - Tremolo - Behavioral</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>GLCD - LCD_Controler - Behavioral (F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/LCD/LCD_Controller.vhd)</SelectedItem>
+         <SelectedItem>TOP - Behavioral (F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/TOP/TOP.vhd)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001e0000000020000000000000000000000000200000064ffffffff000000810000000300000002000001e00000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>GLCD - LCD_Controler - Behavioral (F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/LCD/LCD_Controller.vhd)</CurrentItem>
+      <CurrentItem>TOP - Behavioral (F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/modules/TOP/TOP.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -75,13 +74,13 @@
          <ClosedNode>User Constraints</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem></SelectedItem>
+         <SelectedItem>Implement Design</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000e7000000010000000100000000000000000000000064ffffffff000000810000000000000001000000e70000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000c9000000010000000100000000000000000000000064ffffffff000000810000000000000001000000c90000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem></CurrentItem>
+      <CurrentItem>Implement Design</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="DESUT_UCF" guiview="Process" >
       <ClosedNodes>
@@ -199,13 +198,13 @@
          <ClosedNodesVersion>1</ClosedNodesVersion>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem></SelectedItem>
+         <SelectedItem>CORE Generator</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000e7000000010000000100000000000000000000000064ffffffff000000810000000000000001000000e70000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000c9000000010000000100000000000000000000000064ffffffff000000810000000000000001000000c90000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem></CurrentItem>
+      <CurrentItem>CORE Generator</CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="DESUT_XCO" guiview="Process" >
       <ClosedNodes>

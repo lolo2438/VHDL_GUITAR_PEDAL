@@ -3,13 +3,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
+Total REAL time to Xst completion: 1.00 secs
 Total CPU time to Xst completion: 0.17 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
+Total REAL time to Xst completion: 1.00 secs
 Total CPU time to Xst completion: 0.17 secs
  
 --> Reading design: TOP.prj
@@ -108,7 +108,6 @@ Cores Search Directories           : {"ipcore_dir"  }
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\ipcore_dir\DiviseurDist.vhd" into library work
 Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\ipcore_dir\Diviseur.vhd" into library work
 Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Input buttons\Detecteur_Front.vhd" into library work
 Parsing entity <Detecteur_front>.
@@ -198,7 +197,7 @@ Elaborating entity <effectChain> (architecture <Behavioral>) from library <work>
 Elaborating entity <Buffer_In> (architecture <Behavioral>) from library <work>.
 
 Elaborating entity <Distortion> (architecture <Behavioral>) from library <work>.
-WARNING:HDLCompiler:89 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Distortion\Distortion.vhd" Line 49: <diviseurdist> remains a black-box since it has no binding entity.
+WARNING:HDLCompiler:1127 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Distortion\Distortion.vhd" Line 80: Assignment to newwave ignored, since the identifier is never used
 
 Elaborating entity <Tremolo> (architecture <Behavioral>) from library <work>.
 WARNING:HDLCompiler:89 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Tremolo\Tremolo.vhd" Line 49: <diviseur> remains a black-box since it has no binding entity.
@@ -419,34 +418,27 @@ Synthesizing Unit <Distortion>.
 WARNING:Xst:647 - Input <Tone> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <RESET> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 11-bit register for signal <sLevel>.
-    Found 1-bit register for signal <newWave>.
     Found 1-bit register for signal <lastAudioIn23>.
-    Found 24-bit register for signal <tempPeak>.
-    Found 1-bit register for signal <loadToDivisor>.
-    Found 24-bit register for signal <maximumPeak>.
-    Found 24-bit register for signal <lastAudioIn>.
     Found 26-bit register for signal <limit>.
-    Found 24-bit register for signal <divisor>.
     Found 24-bit register for signal <tempVector1>.
-    Found 59-bit register for signal <tempCal1>.
+    Found 38-bit register for signal <tempCal1>.
     Found 24-bit register for signal <audioOut>.
-    Found 24-bit register for signal <levelGain>.
     Found 11-bit register for signal <sDist>.
-    Found 26-bit subtractor for signal <GND_27_o_sDist[10]_sub_15_OUT<25:0>> created at line 137.
-    Found 24-bit subtractor for signal <GND_27_o_limit[23]_sub_21_OUT<23:0>> created at line 1326.
-    Found 11x15-bit multiplier for signal <sDist[10]_GND_27_o_MuLt_13_OUT> created at line 137.
-    Found 24x24-bit multiplier for signal <tempVector1[23]_levelGain[23]_MuLt_23_OUT> created at line 160.
-    Found 48x11-bit multiplier for signal <tempVector1[23]_sLevel[10]_MuLt_24_OUT> created at line 160.
-    Found 24-bit comparator greater for signal <audioIn[23]_lastAudioIn[23]_LessThan_5_o> created at line 115
-    Found 26-bit comparator greater for signal <limit[25]_maximumPeak[23]_LessThan_16_o> created at line 140
-    Found 26-bit comparator greater for signal <audioIn[23]_limit[25]_LessThan_18_o> created at line 147
-    Found 24-bit comparator greater for signal <GND_27_o_audioIn[23]_LessThan_20_o> created at line 150
+    Found 26-bit subtractor for signal <GND_27_o_sDist[10]_sub_6_OUT<25:0>> created at line 122.
+    Found 24-bit subtractor for signal <GND_27_o_limit[23]_sub_10_OUT<23:0>> created at line 1326.
+    Found 11x15-bit multiplier for signal <sDist[10]_GND_27_o_MuLt_4_OUT> created at line 122.
+    Found 24x3-bit multiplier for signal <tempVector1[23]_PWR_26_o_MuLt_12_OUT> created at line 138.
+    Found 27x11-bit multiplier for signal <tempVector1[23]_sLevel[10]_MuLt_13_OUT> created at line 138.
+    Found 26-bit comparator greater for signal <audioIn[23]_limit[25]_LessThan_7_o> created at line 125
+    Found 24-bit comparator greater for signal <GND_27_o_audioIn[23]_LessThan_9_o> created at line 128
+    Found 38-bit comparator greater for signal <tempCal1[37]_GND_27_o_LessThan_15_o> created at line 140
+    Found 38-bit comparator greater for signal <PWR_26_o_tempCal1[37]_LessThan_16_o> created at line 142
     Summary:
 	inferred   3 Multiplier(s).
 	inferred   2 Adder/Subtractor(s).
-	inferred 278 D-type flip-flop(s).
+	inferred 135 D-type flip-flop(s).
 	inferred   4 Comparator(s).
-	inferred   4 Multiplexer(s).
+	inferred   5 Multiplexer(s).
 Unit <Distortion> synthesized.
 
 Synthesizing Unit <Tremolo>.
@@ -564,7 +556,6 @@ Unit <Detecteur_front> synthesized.
 
 Synthesizing Unit <LCD_Controler>.
     Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\LCD\LCD_Controller.vhd".
-WARNING:Xst:647 - Input <ADC0> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <ADC1> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <ADC4> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:2935 - Signal 'lcdScreen<2><0>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
@@ -838,20 +829,6 @@ WARNING:Xst:2935 - Signal 'lcdScreen<4><11>', unconnected in block 'LCD_Controle
 WARNING:Xst:2935 - Signal 'lcdScreen<4><12>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<4><13>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<4><14>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<4><15>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<4><16>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<4><17>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<4><18>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<4><19>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<4><20>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<4><21>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<4><22>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<4><23>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<4><24>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<4><25>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<4><26>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<4><27>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<4><28>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<4><29>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<4><30>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<4><31>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
@@ -966,20 +943,6 @@ WARNING:Xst:2935 - Signal 'lcdScreen<5><11>', unconnected in block 'LCD_Controle
 WARNING:Xst:2935 - Signal 'lcdScreen<5><12>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<5><13>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<5><14>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<5><15>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<5><16>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<5><17>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<5><18>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<5><19>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<5><20>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<5><21>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<5><22>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<5><23>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<5><24>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<5><25>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<5><26>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<5><27>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<5><28>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<5><29>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<5><30>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<5><31>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
@@ -1094,20 +1057,6 @@ WARNING:Xst:2935 - Signal 'lcdScreen<6><11>', unconnected in block 'LCD_Controle
 WARNING:Xst:2935 - Signal 'lcdScreen<6><12>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<6><13>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<6><14>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<6><15>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<6><16>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<6><17>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<6><18>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<6><19>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<6><20>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<6><21>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<6><22>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<6><23>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<6><24>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<6><25>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<6><26>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<6><27>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<6><28>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<6><29>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<6><30>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<6><31>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
@@ -1222,20 +1171,6 @@ WARNING:Xst:2935 - Signal 'lcdScreen<7><11>', unconnected in block 'LCD_Controle
 WARNING:Xst:2935 - Signal 'lcdScreen<7><12>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<7><13>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<7><14>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<7><15>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<7><16>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<7><17>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<7><18>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<7><19>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<7><20>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<7><21>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<7><22>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<7><23>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<7><24>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<7><25>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<7><26>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<7><27>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
-WARNING:Xst:2935 - Signal 'lcdScreen<7><28>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<7><29>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<7><30>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<7><31>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
@@ -1335,6 +1270,58 @@ WARNING:Xst:2935 - Signal 'lcdScreen<7><124>', unconnected in block 'LCD_Control
 WARNING:Xst:2935 - Signal 'lcdScreen<7><125>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<7><126>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<7><127>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+    Register <lcdScreen<4><28>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><27>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><26>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><25>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><24>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><23>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><22>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><21>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><20>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><19>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><18>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><17>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><16>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<5><28>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><27>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><26>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><25>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><24>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><23>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><22>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><21>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><20>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><19>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><18>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><17>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><16>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<7><28>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><27>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><26>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><25>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><24>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><23>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><22>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><21>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><20>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><19>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><18>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><17>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><16>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<6><28>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><27>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><26>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><25>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><24>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><23>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><22>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><21>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><20>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><19>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><18>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><17>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><16>> equivalent to <lcdScreen<6><15>> has been removed
     Found 1-bit register for signal <GLCD_RST>.
     Found 3-bit register for signal <glcdControlerState>.
     Found 7-bit register for signal <Controler.reset_compteur>.
@@ -1347,6 +1334,10 @@ WARNING:Xst:2935 - Signal 'lcdScreen<7><127>', unconnected in block 'LCD_Control
     Found 7-bit register for signal <Controler.address>.
     Found 3-bit register for signal <Controler.page>.
     Found 1-bit register for signal <lastE>.
+    Found 8-bit register for signal <lcdScreen<4><15>>.
+    Found 8-bit register for signal <lcdScreen<5><15>>.
+    Found 8-bit register for signal <lcdScreen<6><15>>.
+    Found 8-bit register for signal <lcdScreen<7><15>>.
     Found finite state machine <FSM_4> for signal <glcdControlerState>.
     -----------------------------------------------------------------------
     | States             | 7                                              |
@@ -1365,16 +1356,61 @@ WARNING:Xst:2935 - Signal 'lcdScreen<7><127>', unconnected in block 'LCD_Control
     Found 7-bit adder for signal <Controler.reset_compteur[6]_GND_62_o_add_7_OUT> created at line 142.
     Found 7-bit adder for signal <Controler.address[6]_GND_62_o_add_297_OUT> created at line 217.
     Found 3-bit adder for signal <Controler.page[2]_GND_62_o_add_307_OUT> created at line 232.
+    Found 8-bit 7-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][15][7]_wide_mux_182_OUT> created at line 209.
+    Found 8-bit 7-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][16][7]_wide_mux_183_OUT> created at line 209.
+    Found 8-bit 7-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][17][7]_wide_mux_184_OUT> created at line 209.
+    Found 8-bit 7-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][18][7]_wide_mux_185_OUT> created at line 209.
+    Found 8-bit 7-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][19][7]_wide_mux_186_OUT> created at line 209.
+    Found 8-bit 7-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][20][7]_wide_mux_187_OUT> created at line 209.
+    Found 8-bit 7-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][21][7]_wide_mux_188_OUT> created at line 209.
+    Found 8-bit 7-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][22][7]_wide_mux_189_OUT> created at line 209.
+    Found 8-bit 7-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][23][7]_wide_mux_190_OUT> created at line 209.
+    Found 8-bit 7-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][24][7]_wide_mux_191_OUT> created at line 209.
+    Found 8-bit 7-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][25][7]_wide_mux_192_OUT> created at line 209.
+    Found 8-bit 7-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][26][7]_wide_mux_193_OUT> created at line 209.
+    Found 8-bit 7-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][27][7]_wide_mux_194_OUT> created at line 209.
+    Found 8-bit 7-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][28][7]_wide_mux_195_OUT> created at line 209.
     Found 8-bit 120-to-1 multiplexer for signal <Controler.address[6]_Controler.page[2]_wide_mux_295_OUT> created at line 209.
     Found 8-bit 7-to-1 multiplexer for signal <glcdControlerState[2]_X_31_o_wide_mux_319_OUT> created at line 127.
     Found 15-bit comparator greater for signal <compteur[14]_GND_62_o_LessThan_1_o> created at line 103
     Found 7-bit comparator greater for signal <Controler.reset_compteur[6]_PWR_55_o_LessThan_5_o> created at line 129
     Found 7-bit comparator greater for signal <Controler.reset_compteur[6]_PWR_55_o_LessThan_7_o> created at line 140
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_596_o> created at line 298
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_597_o> created at line 303
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_598_o> created at line 308
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_599_o> created at line 313
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_600_o> created at line 318
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_601_o> created at line 323
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_602_o> created at line 328
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_603_o> created at line 333
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_604_o> created at line 338
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_605_o> created at line 343
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_606_o> created at line 348
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_607_o> created at line 353
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_608_o> created at line 358
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_609_o> created at line 363
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_610_o> created at line 368
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_611_o> created at line 373
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_612_o> created at line 378
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_613_o> created at line 383
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_614_o> created at line 388
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_615_o> created at line 393
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_616_o> created at line 398
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_617_o> created at line 403
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_618_o> created at line 408
+    Found 10-bit comparator greater for signal <GND_62_o_ADC0[9]_LessThan_619_o> created at line 413
+    Found 8-bit comparator lessequal for signal <n0509> created at line 418
+    Found 8-bit comparator lessequal for signal <n0511> created at line 423
+    Found 8-bit comparator lessequal for signal <n0513> created at line 428
+    Found 8-bit comparator lessequal for signal <n0515> created at line 433
+    Found 8-bit comparator lessequal for signal <n0517> created at line 438
+    Found 8-bit comparator lessequal for signal <n0519> created at line 443
+    Found 8-bit comparator lessequal for signal <n0521> created at line 448
     Summary:
 	inferred   4 Adder/Subtractor(s).
-	inferred  46 D-type flip-flop(s).
-	inferred   3 Comparator(s).
-	inferred 353 Multiplexer(s).
+	inferred  78 D-type flip-flop(s).
+	inferred  34 Comparator(s).
+	inferred 393 Multiplexer(s).
 	inferred   1 Finite State Machine(s).
 Unit <LCD_Controler> synthesized.
 
@@ -1388,9 +1424,9 @@ Macro Statistics
  12x11-bit multiplier                                  : 1
  15x11-bit multiplier                                  : 1
  24x12-bit multiplier                                  : 1
- 24x24-bit multiplier                                  : 1
+ 24x3-bit multiplier                                   : 1
  25x11-bit multiplier                                  : 1
- 48x11-bit multiplier                                  : 1
+ 27x11-bit multiplier                                  : 1
 # Adders/Subtractors                                   : 22
  11-bit adder                                          : 2
  12-bit adder                                          : 1
@@ -1406,38 +1442,39 @@ Macro Statistics
  5-bit subtractor                                      : 2
  7-bit adder                                           : 3
  9-bit adder                                           : 1
-# Registers                                            : 92
- 1-bit register                                        : 39
+# Registers                                            : 89
+ 1-bit register                                        : 37
  10-bit register                                       : 4
  11-bit register                                       : 5
  12-bit register                                       : 3
  15-bit register                                       : 2
  19-bit register                                       : 2
  2-bit register                                        : 1
- 24-bit register                                       : 14
+ 24-bit register                                       : 9
  26-bit register                                       : 1
  3-bit register                                        : 4
  32-bit register                                       : 1
  36-bit register                                       : 1
- 38-bit register                                       : 1
+ 38-bit register                                       : 2
  4-bit register                                        : 3
  5-bit register                                        : 2
- 59-bit register                                       : 1
  7-bit register                                        : 3
- 8-bit register                                        : 4
+ 8-bit register                                        : 8
  9-bit register                                        : 1
-# Comparators                                          : 24
- 10-bit comparator greater                             : 10
+# Comparators                                          : 55
+ 10-bit comparator greater                             : 34
  12-bit comparator equal                               : 1
  12-bit comparator greater                             : 2
  15-bit comparator greater                             : 1
- 24-bit comparator greater                             : 2
+ 24-bit comparator greater                             : 1
  25-bit comparator greater                             : 2
- 26-bit comparator greater                             : 2
+ 26-bit comparator greater                             : 1
  32-bit comparator greater                             : 1
+ 38-bit comparator greater                             : 2
  4-bit comparator greater                              : 1
  7-bit comparator greater                              : 2
-# Multiplexers                                         : 439
+ 8-bit comparator lessequal                            : 7
+# Multiplexers                                         : 480
  1-bit 2-to-1 multiplexer                              : 40
  1-bit 24-to-1 multiplexer                             : 2
  10-bit 2-to-1 multiplexer                             : 1
@@ -1446,14 +1483,14 @@ Macro Statistics
  15-bit 2-to-1 multiplexer                             : 2
  19-bit 2-to-1 multiplexer                             : 4
  19-bit 3-to-1 multiplexer                             : 2
- 24-bit 2-to-1 multiplexer                             : 9
+ 24-bit 2-to-1 multiplexer                             : 10
  3-bit 2-to-1 multiplexer                              : 4
  4-bit 2-to-1 multiplexer                              : 2
  5-bit 2-to-1 multiplexer                              : 2
  7-bit 2-to-1 multiplexer                              : 8
  8-bit 120-to-1 multiplexer                            : 1
- 8-bit 2-to-1 multiplexer                              : 340
- 8-bit 7-to-1 multiplexer                              : 1
+ 8-bit 2-to-1 multiplexer                              : 366
+ 8-bit 7-to-1 multiplexer                              : 15
  9-bit 2-to-1 multiplexer                              : 1
 # Tristates                                            : 6
  1-bit tristate buffer                                 : 6
@@ -1468,52 +1505,14 @@ INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmet
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
-Reading core <ipcore_dir/DiviseurDist.ngc>.
-Reading Secure Unit <blk00000001>.
 Reading core <ipcore_dir/Diviseur.ngc>.
 Reading Secure Unit <blk00000001>.
-Loading core <DiviseurDist> for timing and area information for instance <Gain>.
 Loading core <Diviseur> for timing and area information for instance <TREMCLKVALUE>.
 WARNING:Xst:1290 - Hierarchical block <serial_rx> is unconnected in block <avr_interface>.
    It will be removed from the design.
 INFO:Xst:2261 - The FF/Latch <sLevel_10> in Unit <Distortion> is equivalent to the following FF/Latch, which will be removed : <sDist_10> 
 WARNING:Xst:1710 - FF/Latch <sLevel_10> (without init value) has a constant value of 0 in block <Distortion>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sVolume_10> has a constant value of 0 in block <Volume>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2677 - Node <tempCal1_0> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_1> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_2> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_3> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_4> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_5> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_6> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_7> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_8> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_9> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_34> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_35> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_36> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_37> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_38> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_39> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_40> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_41> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_42> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_43> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_44> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_45> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_46> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_47> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_48> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_49> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_50> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_51> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_52> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_53> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_54> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_55> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_56> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_57> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <tempCal1_58> of sequential type is unconnected in block <Distortion>.
 WARNING:Xst:2677 - Node <tempVector_0> of sequential type is unconnected in block <Tremolo>.
 WARNING:Xst:2677 - Node <tempVector_1> of sequential type is unconnected in block <Tremolo>.
 WARNING:Xst:2677 - Node <tempVector_2> of sequential type is unconnected in block <Tremolo>.
@@ -1547,12 +1546,12 @@ The following registers are absorbed into counter <stabiliseCounter>: 1 register
 Unit <ADC_Read> synthesized (advanced).
 
 Synthesizing (advanced) Unit <Distortion>.
-	Multiplier <Mmult_sDist[10]_GND_27_o_MuLt_13_OUT> in block <Distortion> and adder/subtractor <Msub_GND_27_o_sDist[10]_sub_15_OUT<25:0>> in block <Distortion> are combined into a MAC<Maddsub_sDist[10]_GND_27_o_MuLt_13_OUT>.
+	Multiplier <Mmult_sDist[10]_GND_27_o_MuLt_4_OUT> in block <Distortion> and adder/subtractor <Msub_GND_27_o_sDist[10]_sub_6_OUT<25:0>> in block <Distortion> are combined into a MAC<Maddsub_sDist[10]_GND_27_o_MuLt_4_OUT>.
 	The following registers are also absorbed by the MAC: <limit> in block <Distortion>.
-	Found pipelined multiplier on signal <tempVector1[23]_sLevel[10]_MuLt_24_OUT>:
+	Found pipelined multiplier on signal <tempVector1[23]_sLevel[10]_MuLt_13_OUT>:
 		- 1 pipeline level(s) found in a register connected to the multiplier macro output.
 		Pushing register(s) into the multiplier macro.
-INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT by adding 1 register level(s).
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT by adding 3 register level(s).
 Unit <Distortion> synthesized (advanced).
 
 Synthesizing (advanced) Unit <LCD_Controler>.
@@ -1614,9 +1613,9 @@ Macro Statistics
  15x11-to-26-bit MAC                                   : 1
 # Multipliers                                          : 4
  24x12-bit registered multiplier                       : 1
- 24x24-bit multiplier                                  : 1
+ 24x3-bit multiplier                                   : 1
  25x11-bit registered multiplier                       : 1
- 48x11-bit registered multiplier                       : 1
+ 27x11-bit registered multiplier                       : 1
 # Adders/Subtractors                                   : 12
  11-bit adder                                          : 1
  12-bit adder                                          : 1
@@ -1634,20 +1633,22 @@ Macro Statistics
  4-bit up counter                                      : 1
  7-bit up counter                                      : 1
  9-bit up counter                                      : 1
-# Registers                                            : 643
- Flip-Flops                                            : 643
-# Comparators                                          : 24
- 10-bit comparator greater                             : 10
+# Registers                                            : 553
+ Flip-Flops                                            : 553
+# Comparators                                          : 55
+ 10-bit comparator greater                             : 34
  12-bit comparator equal                               : 1
  12-bit comparator greater                             : 2
  15-bit comparator greater                             : 1
- 24-bit comparator greater                             : 2
+ 24-bit comparator greater                             : 1
  25-bit comparator greater                             : 2
- 26-bit comparator greater                             : 2
+ 26-bit comparator greater                             : 1
  32-bit comparator greater                             : 1
+ 38-bit comparator greater                             : 2
  4-bit comparator greater                              : 1
  7-bit comparator greater                              : 2
-# Multiplexers                                         : 443
+ 8-bit comparator lessequal                            : 7
+# Multiplexers                                         : 484
  1-bit 2-to-1 multiplexer                              : 51
  1-bit 24-to-1 multiplexer                             : 2
  10-bit 2-to-1 multiplexer                             : 1
@@ -1655,14 +1656,14 @@ Macro Statistics
  12-bit 2-to-1 multiplexer                             : 9
  19-bit 2-to-1 multiplexer                             : 4
  19-bit 3-to-1 multiplexer                             : 2
- 24-bit 2-to-1 multiplexer                             : 9
+ 24-bit 2-to-1 multiplexer                             : 10
  3-bit 2-to-1 multiplexer                              : 2
  4-bit 2-to-1 multiplexer                              : 1
  5-bit 2-to-1 multiplexer                              : 2
  7-bit 2-to-1 multiplexer                              : 8
  8-bit 120-to-1 multiplexer                            : 1
- 8-bit 2-to-1 multiplexer                              : 340
- 8-bit 7-to-1 multiplexer                              : 1
+ 8-bit 2-to-1 multiplexer                              : 366
+ 8-bit 7-to-1 multiplexer                              : 15
 # FSMs                                                 : 5
 # Xors                                                 : 2
  1-bit xor2                                            : 2
@@ -1716,20 +1717,18 @@ Optimizing FSM <GLCD/FSM_4> on signal <glcdControlerState[1:3]> with user encodi
  writedataright      | 101
  changepage          | 110
 ---------------------------------
-WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_levelGain[23]_MuLt_23_OUT3> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_submult_1> of sequential type is unconnected in block <Distortion>.
 WARNING:Xst:1710 - FF/Latch <REQUESTED_CHANNEL_1> (without init value) has a constant value of 0 in block <ADC_Read>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REQUESTED_CHANNEL_3> (without init value) has a constant value of 0 in block <ADC_Read>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_33> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_32> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_31> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_30> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_29> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_28> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_27> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_26> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_25> of sequential type is unconnected in block <Distortion>.
-WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_24> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_16> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_15> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_14> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_13> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_12> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_11> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_10> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_9> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_8> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_7> of sequential type is unconnected in block <Distortion>.
 WARNING:Xst:1293 - FF/Latch <waveMin_11> has a constant value of 0 in block <Tremolo>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <Mmult_audioIn[23]_genWave[11]_MuLt_3_OUT2_16> of sequential type is unconnected in block <Tremolo>.
 WARNING:Xst:2677 - Node <Mmult_audioIn[23]_genWave[11]_MuLt_3_OUT2_15> of sequential type is unconnected in block <Tremolo>.
@@ -1751,6 +1750,8 @@ WARNING:Xst:2677 - Node <Mmult_audioIn[23]_sVolume[10]_MuLt_2_OUT2_10> of sequen
 WARNING:Xst:2677 - Node <Mmult_audioIn[23]_sVolume[10]_MuLt_2_OUT2_9> of sequential type is unconnected in block <volumeControl>.
 WARNING:Xst:2677 - Node <Mmult_audioIn[23]_sVolume[10]_MuLt_2_OUT2_8> of sequential type is unconnected in block <volumeControl>.
 WARNING:Xst:2677 - Node <Mmult_audioIn[23]_sVolume[10]_MuLt_2_OUT2_7> of sequential type is unconnected in block <volumeControl>.
+WARNING:Xst:1426 - The value init of the FF/Latch lcdScreen<7>_15_7 hinder the constant cleaning in the block LCD_Controler.
+   You should achieve better results by setting this init to 1.
 WARNING:Xst:2677 - Node <avr_interface/serial_tx/block_q> of sequential type is unconnected in block <TOP>.
 WARNING:Xst:2973 - All outputs of instance <avr_interface/serial_rx> of block <serial_rx> are unconnected in block <TOP>. Underlying logic will be removed.
 
@@ -1781,14 +1782,19 @@ Optimizing unit <volumeControl> ...
 Optimizing unit <Anti_Rebond> ...
 
 Optimizing unit <LCD_Controler> ...
+INFO:Xst:2261 - The FF/Latch <lcdScreen<7>_15_0> in Unit <LCD_Controler> is equivalent to the following 6 FFs/Latches, which will be removed : <lcdScreen<7>_15_1> <lcdScreen<7>_15_2> <lcdScreen<7>_15_3> <lcdScreen<7>_15_4> <lcdScreen<7>_15_5> <lcdScreen<7>_15_6> 
 WARNING:Xst:1293 - FF/Latch <GLCD/compteur_14> has a constant value of 0 in block <TOP>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <GLCD/compteur_13> has a constant value of 0 in block <TOP>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <GLCD/compteur_12> has a constant value of 0 in block <TOP>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <GLCD/compteur_11> has a constant value of 0 in block <TOP>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <GLCD/lcdScreen<7>_15_0> in Unit <TOP> is equivalent to the following FF/Latch, which will be removed : <GLCD/lcdScreen<6>_15_7> 
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block TOP, actual ratio is 41.
+WARNING:Xst:1426 - The value init of the FF/Latch GLCD/lcdScreen<7>_15_7 hinder the constant cleaning in the block TOP.
+   You should achieve better results by setting this init to 1.
+Found area constraint ratio of 100 (+ 5) on block TOP, actual ratio is 31.
+FlipFlop GLCD/Controler.page_0 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -1796,8 +1802,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 625
- Flip-Flops                                            : 625
+# Registers                                            : 577
+ Flip-Flops                                            : 577
 
 =========================================================================
 
@@ -1820,37 +1826,34 @@ Top Level Output File Name         : TOP.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 7834
-#      GND                         : 3
-#      INV                         : 191
-#      LUT1                        : 17
-#      LUT2                        : 2082
-#      LUT3                        : 1432
-#      LUT4                        : 199
-#      LUT5                        : 178
-#      LUT6                        : 338
-#      MULT_AND                    : 49
-#      MUXCY                       : 1684
+# BELS                             : 5696
+#      GND                         : 2
+#      INV                         : 124
+#      LUT1                        : 13
+#      LUT2                        : 2016
+#      LUT3                        : 837
+#      LUT4                        : 149
+#      LUT5                        : 218
+#      LUT6                        : 381
+#      MULT_AND                    : 24
+#      MUXCY                       : 968
 #      MUXF7                       : 24
-#      VCC                         : 3
-#      XORCY                       : 1634
-# FlipFlops/Latches                : 5188
-#      FD                          : 3911
+#      VCC                         : 2
+#      XORCY                       : 938
+# FlipFlops/Latches                : 3252
+#      FD                          : 2051
 #      FD_1                        : 2
 #      FDC                         : 47
 #      FDC_1                       : 4
 #      FDCE                        : 81
-#      FDE                         : 335
+#      FDE                         : 260
 #      FDP                         : 1
 #      FDP_1                       : 2
 #      FDPE                        : 3
-#      FDR                         : 48
+#      FDR                         : 47
 #      FDRE                        : 1
 #      FDS                         : 745
 #      FDSE                        : 8
-# Shift Registers                  : 51
-#      SRLC16E                     : 48
-#      SRLC32E                     : 3
 # Clock Buffers                    : 3
 #      BUFG                        : 1
 #      BUFGP                       : 2
@@ -1858,8 +1861,8 @@ Primitive and Black Box Usage:
 #      IBUF                        : 10
 #      OBUF                        : 18
 #      OBUFT                       : 6
-# DSPs                             : 11
-#      DSP48A1                     : 11
+# DSPs                             : 8
+#      DSP48A1                     : 8
 
 Device utilization summary:
 ---------------------------
@@ -1868,17 +1871,15 @@ Selected Device : 6slx9tqg144-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:            5188  out of  11440    45%  
- Number of Slice LUTs:                 4488  out of   5720    78%  
-    Number used as Logic:              4437  out of   5720    77%  
-    Number used as Memory:               51  out of   1440     3%  
-       Number used as SRL:               51
+ Number of Slice Registers:            3252  out of  11440    28%  
+ Number of Slice LUTs:                 3738  out of   5720    65%  
+    Number used as Logic:              3738  out of   5720    65%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   6716
-   Number with an unused Flip Flop:    1528  out of   6716    22%  
-   Number with an unused LUT:          2228  out of   6716    33%  
-   Number of fully used LUT-FF pairs:  2960  out of   6716    44%  
+ Number of LUT Flip Flop pairs used:   4025
+   Number with an unused Flip Flop:     773  out of   4025    19%  
+   Number with an unused LUT:           287  out of   4025     7%  
+   Number of fully used LUT-FF pairs:  2965  out of   4025    73%  
    Number of unique control sets:        39
 
 IO Utilization: 
@@ -1887,7 +1888,7 @@ IO Utilization:
 
 Specific Feature Utilization:
  Number of BUFG/BUFGCTRLs:                3  out of     16    18%  
- Number of DSP48A1s:                     11  out of     16    68%  
+ Number of DSP48A1s:                      8  out of     16    50%  
 
 ---------------------------
 Partition Resource Summary:
@@ -1910,7 +1911,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-CLK                                | BUFGP                  | 5133  |
+CLK                                | BUFGP                  | 3143  |
 BCLK                               | BUFGP                  | 91    |
 effectChain/Tremolo/WCLK           | BUFG                   | 26    |
 -----------------------------------+------------------------+-------+
@@ -1923,10 +1924,10 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 17.639ns (Maximum Frequency: 56.693MHz)
-   Minimum input arrival time before clock: 5.103ns
+   Minimum period: 10.358ns (Maximum Frequency: 96.544MHz)
+   Minimum input arrival time before clock: 7.362ns
    Maximum output required time after clock: 5.316ns
-   Maximum combinational path delay: 5.511ns
+   Maximum combinational path delay: 5.373ns
 
 Timing Details:
 ---------------
@@ -1934,52 +1935,66 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'CLK'
-  Clock period: 17.639ns (frequency: 56.693MHz)
-  Total number of paths / destination ports: 189075 / 6562
+  Clock period: 10.358ns (frequency: 96.544MHz)
+  Total number of paths / destination ports: 108380 / 4436
 -------------------------------------------------------------------------
-Delay:               17.639ns (Levels of Logic = 2)
-  Source:            effectChain/Distortion/Mmult_tempVector1[23]_levelGain[23]_MuLt_23_OUT (DSP)
-  Destination:       effectChain/Distortion/Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_submult_01 (DSP)
+Delay:               10.358ns (Levels of Logic = 17)
+  Source:            effectChain/Distortion/tempVector1_2 (FF)
+  Destination:       effectChain/Distortion/Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT1 (DSP)
   Source Clock:      CLK rising
   Destination Clock: CLK rising
 
-  Data Path: effectChain/Distortion/Mmult_tempVector1[23]_levelGain[23]_MuLt_23_OUT to effectChain/Distortion/Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_submult_01
+  Data Path: effectChain/Distortion/tempVector1_2 to effectChain/Distortion/Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT1
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     DSP48A1:CLK->P47     18   6.742   1.049  effectChain/Distortion/Mmult_tempVector1[23]_levelGain[23]_MuLt_23_OUT (effectChain/Distortion/Mmult_tempVector1[23]_levelGain[23]_MuLt_23_OUT_P47_to_Mmult_tempVector1[23]_levelGain[23]_MuLt_23_OUT1)
-     DSP48A1:C30->PCOUT47    1   2.689   0.000  effectChain/Distortion/Mmult_tempVector1[23]_levelGain[23]_MuLt_23_OUT1 (effectChain/Distortion/Mmult_tempVector1[23]_levelGain[23]_MuLt_23_OUT1_PCOUT_to_Mmult_tempVector1[23]_levelGain[23]_MuLt_23_OUT2_PCIN_47)
-     DSP48A1:PCIN47->P16    1   2.264   0.579  effectChain/Distortion/Mmult_tempVector1[23]_levelGain[23]_MuLt_23_OUT2 (effectChain/Distortion/tempVector1[23]_levelGain[23]_MuLt_23_OUT<33>)
-     DSP48A1:A16               4.316          effectChain/Distortion/Mmult_tempVector1[23]_sLevel[10]_MuLt_24_OUT_submult_01
+     FDE:C->Q              2   0.447   0.721  effectChain/Distortion/tempVector1_2 (effectChain/Distortion/tempVector1_2)
+     LUT2:I0->O            1   0.203   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_lut<2> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<2> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<3> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<4> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<5> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<6> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<7> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<8> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<9> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<9>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<10> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<10>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<11> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<11>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<12> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<12>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<13> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<13>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<14> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<14>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<15> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<15>)
+     XORCY:CI->O           1   0.180   0.579  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_xor<16> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_16)
+     DSP48A1:A16->P47     18   4.560   1.049  effectChain/Distortion/Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT (effectChain/Distortion/Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT_P47_to_Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT1)
+     DSP48A1:C30               2.200          effectChain/Distortion/Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT1
     ----------------------------------------
-    Total                     17.639ns (16.011ns logic, 1.628ns route)
-                                       (90.8% logic, 9.2% route)
+    Total                     10.358ns (8.009ns logic, 2.349ns route)
+                                       (77.3% logic, 22.7% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'BCLK'
-  Clock period: 9.109ns (frequency: 109.784MHz)
-  Total number of paths / destination ports: 579 / 167
+  Clock period: 8.527ns (frequency: 117.277MHz)
+  Total number of paths / destination ports: 584 / 167
 -------------------------------------------------------------------------
-Delay:               4.554ns (Levels of Logic = 5)
-  Source:            I2SToParallel/DATA_ADC_L_15 (FF)
+Delay:               4.263ns (Levels of Logic = 4)
+  Source:            I2SToParallel/DATA_ADC_L_3 (FF)
   Destination:       parallelToI2S/SDTO (FF)
   Source Clock:      BCLK rising
   Destination Clock: BCLK falling
 
-  Data Path: I2SToParallel/DATA_ADC_L_15 to parallelToI2S/SDTO
+  Data Path: I2SToParallel/DATA_ADC_L_3 to parallelToI2S/SDTO
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q              1   0.447   0.827  I2SToParallel/DATA_ADC_L_15 (I2SToParallel/DATA_ADC_L_15)
-     LUT6:I2->O            1   0.203   0.827  parallelToI2S/Mmux_GND_7_o_X_6_o_Mux_4_o_11 (parallelToI2S/Mmux_GND_7_o_X_6_o_Mux_4_o_11)
-     LUT6:I2->O            1   0.203   0.827  parallelToI2S/Mmux_GND_7_o_SDTO_MUX_104_o11 (parallelToI2S/Mmux_GND_7_o_SDTO_MUX_104_o1)
-     LUT5:I1->O            1   0.203   0.000  parallelToI2S/Mmux_GND_7_o_SDTO_MUX_104_o14_F (N118)
-     MUXF7:I0->O           1   0.131   0.580  parallelToI2S/Mmux_GND_7_o_SDTO_MUX_104_o14 (parallelToI2S/Mmux_GND_7_o_SDTO_MUX_104_o13)
-     LUT6:I5->O            1   0.205   0.000  parallelToI2S/Mmux_GND_7_o_SDTO_MUX_104_o15 (parallelToI2S/GND_7_o_SDTO_MUX_104_o)
+     FDE:C->Q              1   0.447   0.827  I2SToParallel/DATA_ADC_L_3 (I2SToParallel/DATA_ADC_L_3)
+     LUT6:I2->O            1   0.203   0.684  parallelToI2S/Mmux_GND_7_o_X_6_o_Mux_4_o_9 (parallelToI2S/Mmux_GND_7_o_X_6_o_Mux_4_o_9)
+     LUT6:I4->O            1   0.203   0.808  parallelToI2S/Mmux_GND_7_o_SDTO_MUX_104_o14 (parallelToI2S/Mmux_GND_7_o_SDTO_MUX_104_o13)
+     LUT5:I2->O            1   0.205   0.580  parallelToI2S/Mmux_GND_7_o_SDTO_MUX_104_o16_SW0 (N97)
+     LUT6:I5->O            1   0.205   0.000  parallelToI2S/Mmux_GND_7_o_SDTO_MUX_104_o16 (parallelToI2S/GND_7_o_SDTO_MUX_104_o)
      FDC_1:D                   0.102          parallelToI2S/SDTO
     ----------------------------------------
-    Total                      4.554ns (1.494ns logic, 3.060ns route)
-                                       (32.8% logic, 67.2% route)
+    Total                      4.263ns (1.365ns logic, 2.898ns route)
+                                       (32.0% logic, 68.0% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'effectChain/Tremolo/WCLK'
@@ -2025,23 +2040,25 @@ Delay:               6.189ns (Levels of Logic = 21)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'CLK'
-  Total number of paths / destination ports: 424 / 372
+  Total number of paths / destination ports: 514 / 370
 -------------------------------------------------------------------------
-Offset:              5.103ns (Levels of Logic = 2)
-  Source:            RESET (PAD)
-  Destination:       avr_interface/cclk_detector/ctr_q_8 (FF)
+Offset:              7.362ns (Levels of Logic = 4)
+  Source:            PEDAL (PAD)
+  Destination:       effectChain/Tremolo/Mmult_audioIn[23]_genWave[11]_MuLt_3_OUT1 (DSP)
   Destination Clock: CLK rising
 
-  Data Path: RESET to avr_interface/cclk_detector/ctr_q_8
+  Data Path: PEDAL to effectChain/Tremolo/Mmult_audioIn[23]_genWave[11]_MuLt_3_OUT1
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            35   1.222   1.334  RESET_IBUF (RESET_IBUF)
-     INV:I->O            113   0.206   1.911  NOT_RESET1_INV_0 (ADC_READ/RESET_inv)
-     FDCE:CLR                  0.430          ADC_READ/REQUESTED_CHANNEL_0
+     IBUF:I->O            55   1.222   1.581  PEDAL_IBUF (LED2_OBUF)
+     LUT4:I3->O           34   0.205   1.685  effectChain/Distortion/SM_Pedal_AND_88_o1 (effectChain/Distortion/Mmux_audioIn[23]_tempCal1[33]_mux_21_OUT1121)
+     LUT6:I0->O           23   0.203   1.498  effectChain/Distortion/Mmux_audioIn[23]_tempCal1[33]_mux_21_OUT1124 (effectChain/Distortion/Mmux_audioIn[23]_tempCal1[33]_mux_21_OUT112)
+     LUT5:I0->O            2   0.203   0.616  effectChain/Distortion/Mmux_audioIn[23]_tempCal1[33]_mux_21_OUT16 (effectChain/Distortion/audioIn[23]_tempCal1[33]_mux_21_OUT<0>)
+     DSP48A1:A0                0.149          effectChain/Tremolo/Mmult_audioIn[23]_genWave[11]_MuLt_3_OUT
     ----------------------------------------
-    Total                      5.103ns (1.858ns logic, 3.245ns route)
-                                       (36.4% logic, 63.6% route)
+    Total                      7.362ns (1.982ns logic, 5.380ns route)
+                                       (26.9% logic, 73.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'BCLK'
@@ -2126,7 +2143,7 @@ Offset:              3.597ns (Levels of Logic = 1)
 Timing constraint: Default path analysis
   Total number of paths / destination ports: 3 / 3
 -------------------------------------------------------------------------
-Delay:               5.511ns (Levels of Logic = 2)
+Delay:               5.373ns (Levels of Logic = 2)
   Source:            PEDAL (PAD)
   Destination:       LED2 (PAD)
 
@@ -2134,11 +2151,11 @@ Delay:               5.511ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            76   1.222   1.718  PEDAL_IBUF (LED2_OBUF)
+     IBUF:I->O            55   1.222   1.580  PEDAL_IBUF (LED2_OBUF)
      OBUF:I->O                 2.571          LED2_OBUF (LED2)
     ----------------------------------------
-    Total                      5.511ns (3.793ns logic, 1.718ns route)
-                                       (68.8% logic, 31.2% route)
+    Total                      5.373ns (3.793ns logic, 1.580ns route)
+                                       (70.6% logic, 29.4% route)
 
 =========================================================================
 
@@ -2150,8 +2167,8 @@ Clock to Setup on destination clock BCLK
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-BCLK           |    3.845|         |    6.298|         |
-CLK            |         |         |    4.537|         |
+BCLK           |    3.845|         |    5.986|         |
+CLK            |         |         |    4.406|         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock CLK
@@ -2160,7 +2177,7 @@ Clock to Setup on destination clock CLK
 Source Clock            |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ------------------------+---------+---------+---------+---------+
 BCLK                    |    1.165|    1.165|         |         |
-CLK                     |   17.639|         |         |         |
+CLK                     |   10.358|         |         |         |
 effectChain/Tremolo/WCLK|    9.452|         |         |         |
 ------------------------+---------+---------+---------+---------+
 
@@ -2176,14 +2193,14 @@ effectChain/Tremolo/WCLK|    6.189|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 37.00 secs
-Total CPU time to Xst completion: 37.23 secs
+Total REAL time to Xst completion: 36.00 secs
+Total CPU time to Xst completion: 35.51 secs
  
 --> 
 
-Total memory usage is 431548 kilobytes
+Total memory usage is 411176 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  892 (   0 filtered)
-Number of infos    :    9 (   0 filtered)
+Number of warnings :  800 (   0 filtered)
+Number of infos    :   11 (   0 filtered)
 
