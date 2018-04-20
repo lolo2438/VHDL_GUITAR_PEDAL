@@ -51,21 +51,10 @@ signal sLevel : signed(10 downto 0);
 Signal lastAudioIn23 : STD_LOGIC := '0';
 
 signal tempVector1 : std_logic_vector(23 downto 0) := (others => '0');
-
 signal tempCal1 : signed(37 downto 0) := (others => '0');
-
 signal limit : signed(25 downto 0) := (others => '0');
-
 constant levelGain : signed(2 downto 0) := b"101";					-- Temp gain:5
-
 signal newWave : STD_LOGIC := '0';
-
-signal lastAudioIn : signed(23 downto 0) := (others => '0');
-signal tempPeak : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
-signal maximumPeak : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
-
--- Signal for divisor
---signal divisor : STD_LOGIC_VECTOR(23 downto 0);
 
 begin
 
@@ -75,7 +64,7 @@ begin
 -- https://en.wikipedia.org/wiki/Distortion 
 
 -- dépassement a *dist
--- Améliorer : levelGain change dépendament du niveau de distortion pour toujour pouvoir atteindre le max
+-- Améliorer : levelGain change dépendament du niveau de distortion pour garder le meme niveau 
 
 detectNewWave: process(CLK)
 begin
@@ -83,9 +72,6 @@ begin
 		if audioIn(23) = '0' and lastAudioIn23 = '1' then	--when the audio signal goes from negative -> positive
 			sDist <= signed('0' & Dist);
 			sLevel <= signed('0' & Level);
-			newWave <= '1';
-		else
-			newWave <= '0';
 		end if;
 		
 		lastAudioIn23 <= audioIn(23);
@@ -119,7 +105,7 @@ process(CLK)
 	begin
 		if rising_edge(CLK) then
 			if SM = '1' and Pedal = '1'  then					-- Selected module = 1 and pedal was activated => Normal operation
-				limit <= x"7FFFFF" - (signed(sDist) * b"0100_0000_0001_000"); --8200 (2^31 / 1024)
+				limit <= x"7FFFFF" - (sDist * b"010000000001000"); --8200 (2^31 / 1024)
 				
 				-- Add distortion by cutting the pre-amp'ed signal
 				if signed(audioIn) > limit then
@@ -137,13 +123,13 @@ process(CLK)
 				-- Post-distortion amplification
 				tempCal1 <= signed(tempVector1) * signed(levelGain) * signed(sLevel);
 				
-				if tempCal1 > x"7FFFFF" then
+				if tempCal1(34 downto 10) > x"7FFFFF" then
 					audioOut <= x"7FFFFF";
-				elsif tempCal1 < x"800000" then
+				elsif tempCal1(34 downto 10) < x"800000" then
 					audioOut <= x"800000";
 				else
-				-- post amp signal = > preampresult * gain * level/1024
-				audioOut <= std_logic_vector(tempCal1(33 downto 10));
+					-- post amp signal = > preampresult * gain * level/1024
+					audioOut <= std_logic_vector(tempCal1(33 downto 10));
 				end if;
 			else																	   -- Otherwise foward signal
 				audioOut <= audioIn;
