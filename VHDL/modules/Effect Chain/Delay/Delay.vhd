@@ -30,6 +30,25 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity Delay is
+    Port ( -- System Clock (50 MHz)
+			  CLK : in  STD_LOGIC;
+			  
+			  -- System global reset
+			  RESET : in STD_LOGIC;											-- logical '0' indicates us that reset button was pressed
+			  
+			  -- Audio signals
+			  audioIn : in  STD_LOGIC_VECTOR (23 downto 0);
+           audioOut : out  STD_LOGIC_VECTOR (23 downto 0);
+			  
+			  -- Select Module
+			  Pedal : in STD_LOGIC;
+           SM : in STD_LOGIC;												-- Constant '1' indicates us that module is selected	
+			  
+			  -- External control
+           eLevel : in  STD_LOGIC_VECTOR (9 downto 0);			-- Effect Level: volume of the delay
+           fBack : in  STD_LOGIC_VECTOR (9 downto 0);				-- Feedback: ammount of time the sound is played
+			  dTime : in STD_LOGIC_VECTOR (9 downto 0)				-- Delay Time: time between effects
+			);
 end Delay;
 
 architecture Behavioral of Delay is
