@@ -1,0 +1,2110 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.05 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.06 secs
+ 
+--> Reading design: TOP.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "TOP.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "TOP"
+Output Format                      : NGC
+Target Device                      : xc6slx9-3-tqg144
+
+---- Source Options
+Top Module Name                    : TOP
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+---- Other Options
+Cores Search Directories           : {"ipcore_dir"  }
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\ipcore_dir\Diviseur.vhd" into library work
+Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Input buttons\Detecteur_Front.vhd" into library work
+Parsing entity <Detecteur_front>.
+Parsing architecture <Behavioral> of entity <detecteur_front>.
+Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Input buttons\Anti_Rebond.vhd" into library work
+Parsing entity <Anti_Rebond>.
+Parsing architecture <Behavioral> of entity <anti_rebond>.
+Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Volume\volumeControl.vhd" into library work
+Parsing entity <volumeControl>.
+Parsing architecture <Behavioral> of entity <volumecontrol>.
+Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Tremolo\Tremolo.vhd" into library work
+Parsing entity <Tremolo>.
+Parsing architecture <Behavioral> of entity <tremolo>.
+Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Distortion\Distortion.vhd" into library work
+Parsing entity <Distortion>.
+Parsing architecture <Behavioral> of entity <distortion>.
+Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Delay\Delay.vhd" into library work
+Parsing entity <Delay>.
+Parsing architecture <Behavioral> of entity <delay>.
+Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\BufferOut\Buffer_Out.vhd" into library work
+Parsing entity <Buffer_Out>.
+Parsing architecture <Behavioral> of entity <buffer_out>.
+Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\BufferIn\Buffer_In.vhd" into library work
+Parsing entity <Buffer_In>.
+Parsing architecture <Behavioral> of entity <buffer_in>.
+Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\spi_slave.vhd" into library work
+Parsing entity <spi_slave>.
+Parsing architecture <RTL> of entity <spi_slave>.
+Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_tx.vhd" into library work
+Parsing entity <serial_tx>.
+Parsing architecture <RTL> of entity <serial_tx>.
+Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_rx.vhd" into library work
+Parsing entity <serial_rx>.
+Parsing architecture <RTL> of entity <serial_rx>.
+Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\cclk_detector.vhd" into library work
+Parsing entity <cclk_detector>.
+Parsing architecture <RTL> of entity <cclk_detector>.
+Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\LCD\LCD_Controller.vhd" into library work
+Parsing entity <LCD_Controler>.
+Parsing architecture <Behavioral> of entity <lcd_controler>.
+Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Input buttons\Button_Processing.vhd" into library work
+Parsing entity <Button_Processing>.
+Parsing architecture <Behavioral> of entity <button_processing>.
+Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\I2S Interface\PARALLEL_TO_I2S.vhd" into library work
+Parsing entity <PARALLEL_TO_I2S>.
+Parsing architecture <Behavioral> of entity <parallel_to_i2s>.
+Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\I2S Interface\I2S_TO_PARALLEL.vhd" into library work
+Parsing entity <I2S_TO_PARALLEL>.
+Parsing architecture <Behavioral> of entity <i2s_to_parallel>.
+Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\effectChain.vhd" into library work
+Parsing entity <effectChain>.
+Parsing architecture <Behavioral> of entity <effectchain>.
+Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\avr_interface.vhd" into library work
+Parsing entity <avr_interface>.
+Parsing architecture <RTL> of entity <avr_interface>.
+Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\ADC_READ\ADC_Read.vhd" into library work
+Parsing entity <ADC_Read>.
+Parsing architecture <Behavioral> of entity <adc_read>.
+Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" into library work
+Parsing entity <TOP>.
+Parsing architecture <Behavioral> of entity <top>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <TOP> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <I2S_TO_PARALLEL> (architecture <Behavioral>) with generics from library <work>.
+
+Elaborating entity <PARALLEL_TO_I2S> (architecture <Behavioral>) with generics from library <work>.
+
+Elaborating entity <avr_interface> (architecture <RTL>) from library <work>.
+
+Elaborating entity <cclk_detector> (architecture <RTL>) from library <work>.
+
+Elaborating entity <spi_slave> (architecture <RTL>) from library <work>.
+
+Elaborating entity <serial_rx> (architecture <RTL>) with generics from library <work>.
+INFO:HDLCompiler:679 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_rx.vhd" Line 80. Case statement is complete. others clause is never selected
+
+Elaborating entity <serial_tx> (architecture <RTL>) with generics from library <work>.
+INFO:HDLCompiler:679 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_tx.vhd" Line 96. Case statement is complete. others clause is never selected
+
+Elaborating entity <ADC_Read> (architecture <Behavioral>) with generics from library <work>.
+WARNING:HDLCompiler:1127 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\ADC_READ\ADC_Read.vhd" Line 66: Assignment to tempsample ignored, since the identifier is never used
+
+Elaborating entity <effectChain> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <Buffer_In> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <Distortion> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <Tremolo> (architecture <Behavioral>) from library <work>.
+WARNING:HDLCompiler:89 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Tremolo\Tremolo.vhd" Line 49: <diviseur> remains a black-box since it has no binding entity.
+
+Elaborating entity <Delay> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <volumeControl> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <Buffer_Out> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <Button_Processing> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <Anti_Rebond> (architecture <Behavioral>) with generics from library <work>.
+
+Elaborating entity <Detecteur_front> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <LCD_Controler> (architecture <Behavioral>) from library <work>.
+WARNING:HDLCompiler:634 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\LCD\LCD_Controller.vhd" Line 61: Net <lcdScreen[4][0][7]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" Line 72: Net <txData[7]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" Line 74: Net <newTxData> does not have a driver.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <TOP>.
+    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd".
+INFO:Xst:3210 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 143: Output port <rx_data> of the instance <avr_interface> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 143: Output port <tx_busy> of the instance <avr_interface> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 143: Output port <new_rx_data> of the instance <avr_interface> is unconnected or connected to loadless signal.
+WARNING:Xst:653 - Signal <txData> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <newTxData> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+    Summary:
+	no macro.
+Unit <TOP> synthesized.
+
+Synthesizing Unit <I2S_TO_PARALLEL>.
+    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\I2S Interface\I2S_TO_PARALLEL.vhd".
+        DATA_WIDTH = 24
+    Found 1-bit register for signal <dataReady>.
+    Found 24-bit register for signal <shiftRegIn>.
+    Found 5-bit register for signal <Receive.dataShift>.
+    Found 2-bit register for signal <i2sRx>.
+    Found 24-bit register for signal <DATA_ADC_L>.
+    Found 24-bit register for signal <DATA_ADC_R>.
+    Found 1-bit register for signal <lastLRCK>.
+    Found 1-bit register for signal <DATA_READY>.
+    Found finite state machine <FSM_0> for signal <i2sRx>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 8                                              |
+    | Inputs             | 3                                              |
+    | Outputs            | 3                                              |
+    | Clock              | BCLK (rising_edge)                             |
+    | Power Up State     | waiting                                        |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 5-bit subtractor for signal <GND_4_o_GND_4_o_sub_1_OUT<4:0>> created at line 58.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  80 D-type flip-flop(s).
+	inferred  26 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <I2S_TO_PARALLEL> synthesized.
+
+Synthesizing Unit <PARALLEL_TO_I2S>.
+    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\I2S Interface\PARALLEL_TO_I2S.vhd".
+        DATA_WIDTH = 24
+    Found 1-bit register for signal <SDTO>.
+    Found 5-bit register for signal <Transmit.dataShift>.
+    Found 1-bit register for signal <LRCK_Flag>.
+    Found 1-bit register for signal <i2sTx>.
+    Found 1-bit register for signal <sDone>.
+    Found 1-bit register for signal <DONE>.
+    Found 1-bit register for signal <lastLRCK>.
+    Found 5-bit subtractor for signal <GND_7_o_GND_7_o_sub_3_OUT<4:0>> created at line 78.
+    Found 1-bit 24-to-1 multiplexer for signal <GND_7_o_X_6_o_Mux_3_o> created at line 81.
+    Found 1-bit 24-to-1 multiplexer for signal <GND_7_o_X_6_o_Mux_4_o> created at line 83.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  11 D-type flip-flop(s).
+	inferred   8 Multiplexer(s).
+Unit <PARALLEL_TO_I2S> synthesized.
+
+Synthesizing Unit <avr_interface>.
+    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\avr_interface.vhd".
+    Found 10-bit register for signal <sample_q>.
+    Found 1-bit register for signal <new_sample_q>.
+    Found 1-bit register for signal <byte_ct_q>.
+    Found 4-bit register for signal <sample_channel_q>.
+    Found 1-bit tristate buffer for signal <spi_miso> created at line 125
+    Found 1-bit tristate buffer for signal <spi_channel<3>> created at line 125
+    Found 1-bit tristate buffer for signal <spi_channel<2>> created at line 125
+    Found 1-bit tristate buffer for signal <spi_channel<1>> created at line 125
+    Found 1-bit tristate buffer for signal <spi_channel<0>> created at line 125
+    Found 1-bit tristate buffer for signal <tx> created at line 125
+    Summary:
+	inferred  16 D-type flip-flop(s).
+	inferred   2 Multiplexer(s).
+	inferred   6 Tristate(s).
+Unit <avr_interface> synthesized.
+
+Synthesizing Unit <cclk_detector>.
+    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\cclk_detector.vhd".
+    Found 9-bit register for signal <ctr_q>.
+    Found 1-bit register for signal <ready_q>.
+    Found 9-bit adder for signal <ctr_q[8]_GND_12_o_add_1_OUT> created at line 1241.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  10 D-type flip-flop(s).
+	inferred   2 Multiplexer(s).
+Unit <cclk_detector> synthesized.
+
+Synthesizing Unit <spi_slave>.
+    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\spi_slave.vhd".
+    Found 1-bit register for signal <miso_q>.
+    Found 3-bit register for signal <bit_ct_q>.
+    Found 8-bit register for signal <dout_q>.
+    Found 1-bit register for signal <done_q>.
+    Found 1-bit register for signal <sck_q>.
+    Found 1-bit register for signal <mosi_q>.
+    Found 1-bit register for signal <ss_q>.
+    Found 8-bit register for signal <data_q>.
+    Found 1-bit register for signal <sck_old_q>.
+    Found 3-bit adder for signal <bit_ct_q[2]_GND_13_o_add_1_OUT> created at line 1241.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  25 D-type flip-flop(s).
+	inferred   4 Multiplexer(s).
+Unit <spi_slave> synthesized.
+
+Synthesizing Unit <serial_rx>.
+    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_rx.vhd".
+        CLK_PER_BIT = 100
+        CTR_SIZE = 7
+    Found 3-bit register for signal <bit_ctr_q>.
+    Found 2-bit register for signal <state_q>.
+    Found 7-bit register for signal <ctr_q>.
+    Found 1-bit register for signal <new_data_q>.
+    Found 1-bit register for signal <rx_q>.
+    Found 8-bit register for signal <data_q>.
+    Found finite state machine <FSM_1> for signal <state_q>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 9                                              |
+    | Inputs             | 4                                              |
+    | Outputs            | 2                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | rst (positive)                                 |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | idle                                           |
+    | Power Up State     | idle                                           |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 7-bit adder for signal <ctr_q[6]_GND_15_o_add_6_OUT> created at line 1241.
+    Found 3-bit adder for signal <bit_ctr_q[2]_GND_15_o_add_8_OUT> created at line 1241.
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred  20 D-type flip-flop(s).
+	inferred   7 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <serial_rx> synthesized.
+
+Synthesizing Unit <serial_tx>.
+    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_tx.vhd".
+        CLK_PER_BIT = 100
+        CTR_SIZE = 7
+    Found 2-bit register for signal <state_q>.
+    Found 1-bit register for signal <tx_q>.
+    Found 1-bit register for signal <block_q>.
+    Found 8-bit register for signal <data_q>.
+    Found 3-bit register for signal <bit_ctr_q>.
+    Found 7-bit register for signal <ctr_q>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <serial_tx> synthesized.
+
+Synthesizing Unit <ADC_Read>.
+    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\ADC_READ\ADC_Read.vhd".
+        stabiliseDelay = 8
+    Found 4-bit register for signal <REQUESTED_CHANNEL>.
+    Found 1-bit register for signal <lastNewSample>.
+    Found 1-bit register for signal <stateADCRead>.
+    Found 4-bit register for signal <stabiliseCounter>.
+    Found 10-bit register for signal <sADC0>.
+    Found 10-bit register for signal <sADC1>.
+    Found 10-bit register for signal <sADC4>.
+    Found 4-bit adder for signal <stabiliseCounter[3]_GND_24_o_add_17_OUT> created at line 106.
+    Found 4-bit comparator greater for signal <stabiliseCounter[3]_PWR_22_o_LessThan_17_o> created at line 105
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  40 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+	inferred   2 Multiplexer(s).
+Unit <ADC_Read> synthesized.
+
+Synthesizing Unit <effectChain>.
+    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\effectChain.vhd".
+    Found 3-bit register for signal <effectSelector>.
+    Found 3-bit adder for signal <effectSelector[2]_GND_25_o_add_1_OUT> created at line 1241.
+    Found 3-bit subtractor for signal <GND_25_o_GND_25_o_sub_3_OUT<2:0>> created at line 1308.
+    Found 8x8-bit Read Only RAM for signal <selectModule>
+    Summary:
+	inferred   1 RAM(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred   3 D-type flip-flop(s).
+Unit <effectChain> synthesized.
+
+Synthesizing Unit <Buffer_In>.
+    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\BufferIn\Buffer_In.vhd".
+    Found 24-bit register for signal <audioBuffer>.
+    Summary:
+	inferred  24 D-type flip-flop(s).
+Unit <Buffer_In> synthesized.
+
+Synthesizing Unit <Distortion>.
+    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Distortion\Distortion.vhd".
+WARNING:Xst:647 - Input <Tone> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <RESET> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 11-bit register for signal <sLevel>.
+    Found 1-bit register for signal <lastAudioIn23>.
+    Found 26-bit register for signal <limit>.
+    Found 24-bit register for signal <tempVector1>.
+    Found 38-bit register for signal <tempCal1>.
+    Found 24-bit register for signal <audioOut>.
+    Found 11-bit register for signal <sDist>.
+    Found 26-bit subtractor for signal <GND_27_o_sDist[10]_sub_6_OUT<25:0>> created at line 108.
+    Found 24-bit subtractor for signal <GND_27_o_limit[23]_sub_10_OUT<23:0>> created at line 1326.
+    Found 11x15-bit multiplier for signal <sDist[10]_GND_27_o_MuLt_4_OUT> created at line 108.
+    Found 24x3-bit multiplier for signal <tempVector1[23]_PWR_26_o_MuLt_12_OUT> created at line 124.
+    Found 27x11-bit multiplier for signal <tempVector1[23]_sLevel[10]_MuLt_13_OUT> created at line 124.
+    Found 26-bit comparator greater for signal <audioIn[23]_limit[25]_LessThan_7_o> created at line 111
+    Found 24-bit comparator greater for signal <GND_27_o_audioIn[23]_LessThan_9_o> created at line 114
+    Found 25-bit comparator greater for signal <tempCal1[34]_GND_27_o_LessThan_15_o> created at line 126
+    Found 25-bit comparator greater for signal <PWR_26_o_tempCal1[34]_LessThan_16_o> created at line 128
+    Summary:
+	inferred   3 Multiplier(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred 135 D-type flip-flop(s).
+	inferred   4 Comparator(s).
+	inferred   5 Multiplexer(s).
+Unit <Distortion> synthesized.
+
+Synthesizing Unit <Tremolo>.
+    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Tremolo\Tremolo.vhd".
+    Found 1-bit register for signal <direction>.
+    Found 15-bit register for signal <compteur>.
+    Found 12-bit register for signal <tempWave>.
+    Found 12-bit register for signal <genWave>.
+    Found 24-bit register for signal <audioOut>.
+    Found 1-bit register for signal <loadToDivisor>.
+    Found 11-bit register for signal <shapeScale>.
+    Found 12-bit register for signal <waveMin>.
+    Found 1-bit register for signal <WCLK>.
+    Found 11-bit register for signal <slope>.
+    Found 1-bit register for signal <newWave>.
+    Found 32-bit register for signal <TremClkMax>.
+    Found 36-bit register for signal <tempVector>.
+    Found 11-bit adder for signal <GND_31_o_GND_31_o_add_0_OUT> created at line 93.
+    Found 11-bit adder for signal <GND_31_o_GND_31_o_add_1_OUT> created at line 93.
+    Found 15-bit adder for signal <compteur[14]_GND_31_o_add_14_OUT> created at line 1241.
+    Found 12-bit adder for signal <genWave[11]_tempWave[11]_add_51_OUT> created at line 209.
+    Found 12-bit adder for signal <tempWave[11]_GND_31_o_add_60_OUT> created at line 1253.
+    Found 12-bit subtractor for signal <GND_31_o_GND_31_o_sub_9_OUT<11:0>> created at line 119.
+    Found 12-bit subtractor for signal <genWave[11]_tempWave[11]_sub_60_OUT<11:0>> created at line 225.
+    Found 12x11-bit multiplier for signal <DepthXBpm<22:0>> created at line 93.
+    Found 24x12-bit multiplier for signal <audioIn[23]_genWave[11]_MuLt_3_OUT> created at line 101.
+    Found 32-bit comparator greater for signal <GND_31_o_TremClkMax[31]_LessThan_14_o> created at line 136
+    Found 10-bit comparator greater for signal <Wave[9]_GND_31_o_LessThan_18_o> created at line 151
+    Found 10-bit comparator greater for signal <Wave[9]_GND_31_o_LessThan_20_o> created at line 154
+    Found 10-bit comparator greater for signal <Wave[9]_GND_31_o_LessThan_22_o> created at line 157
+    Found 10-bit comparator greater for signal <Wave[9]_GND_31_o_LessThan_24_o> created at line 160
+    Found 10-bit comparator greater for signal <Wave[9]_GND_31_o_LessThan_26_o> created at line 163
+    Found 10-bit comparator greater for signal <Wave[9]_PWR_32_o_LessThan_28_o> created at line 166
+    Found 10-bit comparator greater for signal <Wave[9]_PWR_32_o_LessThan_30_o> created at line 169
+    Found 10-bit comparator greater for signal <Wave[9]_PWR_32_o_LessThan_32_o> created at line 172
+    Found 10-bit comparator greater for signal <Wave[9]_PWR_32_o_LessThan_34_o> created at line 175
+    Found 10-bit comparator greater for signal <Wave[9]_PWR_32_o_LessThan_36_o> created at line 178
+    Found 12-bit comparator greater for signal <n0076> created at line 202
+    Found 12-bit comparator greater for signal <n0084> created at line 219
+    Found 12-bit comparator equal for signal <tempWave[11]_GND_31_o_equal_59_o> created at line 224
+    Summary:
+	inferred   2 Multiplier(s).
+	inferred   6 Adder/Subtractor(s).
+	inferred 169 D-type flip-flop(s).
+	inferred  14 Comparator(s).
+	inferred  22 Multiplexer(s).
+Unit <Tremolo> synthesized.
+
+Synthesizing Unit <Delay>.
+    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Delay\Delay.vhd".
+WARNING:Xst:647 - Input <eLevel> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <fBack> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <dTime> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <RESET> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <Pedal> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <SM> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:3035 - Index value(s) does not match array range for signal <tempFifo>, simulation mismatch.
+    Found 48001x24-bit single-port RAM <Mram_tempFifo> for signal <tempFifo>.
+    Found 1-bit register for signal <a>.
+    Found 24-bit register for signal <audioOut>.
+    Found 16-bit register for signal <Temp.t>.
+    Found 16-bit adder for signal <Temp.t[15]_GND_55_o_add_4_OUT> created at line 83.
+    Found 16-bit subtractor for signal <GND_55_o_GND_55_o_sub_6_OUT<15:0>> created at line 84.
+    Summary:
+	inferred   1 RAM(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred  41 D-type flip-flop(s).
+Unit <Delay> synthesized.
+
+Synthesizing Unit <volumeControl>.
+    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Volume\volumeControl.vhd".
+WARNING:Xst:647 - Input <TBD1> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <TBD2> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <RESET> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 1-bit register for signal <lastAudioIn23>.
+    Found 38-bit register for signal <tempVector>.
+    Found 24-bit register for signal <audioOut>.
+    Found 11-bit register for signal <sVolume>.
+    Found 25x11-bit multiplier for signal <audioIn[23]_sVolume[10]_MuLt_2_OUT> created at line 76.
+    Found 25-bit comparator greater for signal <tempVector[34]_GND_56_o_LessThan_4_o> created at line 79
+    Found 25-bit comparator greater for signal <PWR_49_o_tempVector[34]_LessThan_5_o> created at line 83
+    Summary:
+	inferred   1 Multiplier(s).
+	inferred  74 D-type flip-flop(s).
+	inferred   2 Comparator(s).
+	inferred   3 Multiplexer(s).
+Unit <volumeControl> synthesized.
+
+Synthesizing Unit <Buffer_Out>.
+    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\BufferOut\Buffer_Out.vhd".
+    Found 24-bit register for signal <audioOut>.
+    Summary:
+	inferred  24 D-type flip-flop(s).
+Unit <Buffer_Out> synthesized.
+
+Synthesizing Unit <Button_Processing>.
+    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Input buttons\Button_Processing.vhd".
+WARNING:Xst:647 - Input <RESET> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Summary:
+	no macro.
+Unit <Button_Processing> synthesized.
+
+Synthesizing Unit <Anti_Rebond>.
+    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Input buttons\Anti_Rebond.vhd".
+        REBOND_MS = 10.0
+        PERIODE_HORLOGE_NS = 20.0
+    Found 19-bit register for signal <Compteur>.
+    Found 2-bit register for signal <Etat>.
+    Found finite state machine <FSM_3> for signal <Etat>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 10                                             |
+    | Inputs             | 2                                              |
+    | Outputs            | 3                                              |
+    | Clock              | Horloge (rising_edge)                          |
+    | Power Up State     | bas                                            |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 19-bit subtractor for signal <GND_61_o_GND_61_o_sub_11_OUT<18:0>> created at line 1308.
+    Found 19-bit 3-to-1 multiplexer for signal <Compteur_Suivant> created at line 73.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  19 D-type flip-flop(s).
+	inferred   3 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <Anti_Rebond> synthesized.
+
+Synthesizing Unit <Detecteur_front>.
+    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Input buttons\Detecteur_Front.vhd".
+    Found 1-bit register for signal <lastInput>.
+    Found 1-bit register for signal <Output>.
+    Summary:
+	inferred   2 D-type flip-flop(s).
+Unit <Detecteur_front> synthesized.
+
+Synthesizing Unit <LCD_Controler>.
+    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\LCD\LCD_Controller.vhd".
+WARNING:Xst:2935 - Signal 'lcdScreen<4><0>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><1>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><2>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><3>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><4>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><5>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><6>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><7>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><8>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><9>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><10>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><11>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><12>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><13>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><14>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><29>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><30>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><31>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><32>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><33>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><34>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><35>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><36>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><37>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><38>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><39>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><40>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><41>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><42>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><43>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><44>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><45>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><46>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><47>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><48>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><49>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><50>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><51>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><52>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><53>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><54>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><55>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><56>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><71>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><72>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><73>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><74>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><75>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><76>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><77>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><78>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><79>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><80>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><81>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><82>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><83>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><84>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><85>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><86>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><87>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><88>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><89>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><90>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><91>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><92>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><93>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><94>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><95>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><96>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><97>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><98>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><113>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><114>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><115>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><116>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><117>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><118>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><119>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><120>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><121>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><122>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><123>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><124>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><125>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><126>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<4><127>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><0>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><1>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><2>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><3>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><4>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><5>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><6>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><7>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><8>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><9>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><10>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><11>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><12>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><13>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><14>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><29>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><30>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><31>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><32>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><33>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><34>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><35>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><36>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><37>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><38>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><39>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><40>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><41>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><42>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><43>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><44>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><45>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><46>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><47>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><48>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><49>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><50>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><51>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><52>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><53>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><54>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><55>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><56>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><71>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><72>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><73>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><74>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><75>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><76>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><77>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><78>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><79>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><80>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><81>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><82>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><83>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><84>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><85>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><86>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><87>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><88>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><89>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><90>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><91>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><92>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><93>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><94>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><95>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><96>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><97>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><98>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><113>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><114>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><115>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><116>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><117>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><118>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><119>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><120>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><121>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><122>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><123>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><124>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><125>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><126>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<5><127>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><0>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><1>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><2>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><3>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><4>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><5>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><6>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><7>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><8>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><9>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><10>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><11>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><12>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><13>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><14>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><29>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><30>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><31>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><32>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><33>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><34>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><35>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><36>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><37>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><38>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><39>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><40>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><41>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><42>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><43>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><44>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><45>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><46>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><47>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><48>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><49>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><50>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><51>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><52>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><53>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><54>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><55>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><56>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><71>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><72>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><73>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><74>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><75>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><76>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><77>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><78>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><79>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><80>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><81>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><82>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><83>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><84>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><85>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><86>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><87>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><88>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><89>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><90>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><91>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><92>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><93>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><94>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><95>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><96>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><97>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><98>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><113>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><114>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><115>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><116>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><117>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><118>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><119>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><120>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><121>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><122>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><123>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><124>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><125>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><126>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<6><127>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><0>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><1>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><2>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><3>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><4>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><5>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><6>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><7>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><8>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><9>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><10>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><11>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><12>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><13>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><14>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><29>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><30>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><31>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><32>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><33>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><34>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><35>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><36>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><37>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><38>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><39>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><40>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><41>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><42>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><43>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><44>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><45>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><46>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><47>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><48>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><49>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><50>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><51>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><52>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><53>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><54>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><55>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><56>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><71>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><72>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><73>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><74>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><75>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><76>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><77>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><78>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><79>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><80>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><81>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><82>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><83>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><84>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><85>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><86>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><87>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><88>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><89>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><90>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><91>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><92>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><93>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><94>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><95>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><96>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><97>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><98>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><113>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><114>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><115>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><116>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><117>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><118>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><119>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><120>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><121>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><122>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><123>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><124>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><125>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><126>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+WARNING:Xst:2935 - Signal 'lcdScreen<7><127>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
+    Register <lcdScreen<7><70>> equivalent to <lcdScreen<7><57>> has been removed
+    Register <lcdScreen<7><69>> equivalent to <lcdScreen<7><57>> has been removed
+    Register <lcdScreen<7><68>> equivalent to <lcdScreen<7><57>> has been removed
+    Register <lcdScreen<7><67>> equivalent to <lcdScreen<7><57>> has been removed
+    Register <lcdScreen<7><66>> equivalent to <lcdScreen<7><57>> has been removed
+    Register <lcdScreen<7><65>> equivalent to <lcdScreen<7><57>> has been removed
+    Register <lcdScreen<7><64>> equivalent to <lcdScreen<7><57>> has been removed
+    Register <lcdScreen<7><63>> equivalent to <lcdScreen<7><57>> has been removed
+    Register <lcdScreen<7><62>> equivalent to <lcdScreen<7><57>> has been removed
+    Register <lcdScreen<7><61>> equivalent to <lcdScreen<7><57>> has been removed
+    Register <lcdScreen<7><60>> equivalent to <lcdScreen<7><57>> has been removed
+    Register <lcdScreen<7><59>> equivalent to <lcdScreen<7><57>> has been removed
+    Register <lcdScreen<7><58>> equivalent to <lcdScreen<7><57>> has been removed
+    Register <lcdScreen<6><70>> equivalent to <lcdScreen<6><57>> has been removed
+    Register <lcdScreen<6><69>> equivalent to <lcdScreen<6><57>> has been removed
+    Register <lcdScreen<6><68>> equivalent to <lcdScreen<6><57>> has been removed
+    Register <lcdScreen<6><67>> equivalent to <lcdScreen<6><57>> has been removed
+    Register <lcdScreen<6><66>> equivalent to <lcdScreen<6><57>> has been removed
+    Register <lcdScreen<6><65>> equivalent to <lcdScreen<6><57>> has been removed
+    Register <lcdScreen<6><64>> equivalent to <lcdScreen<6><57>> has been removed
+    Register <lcdScreen<6><63>> equivalent to <lcdScreen<6><57>> has been removed
+    Register <lcdScreen<6><62>> equivalent to <lcdScreen<6><57>> has been removed
+    Register <lcdScreen<6><61>> equivalent to <lcdScreen<6><57>> has been removed
+    Register <lcdScreen<6><60>> equivalent to <lcdScreen<6><57>> has been removed
+    Register <lcdScreen<6><59>> equivalent to <lcdScreen<6><57>> has been removed
+    Register <lcdScreen<6><58>> equivalent to <lcdScreen<6><57>> has been removed
+    Register <lcdScreen<4><112>> equivalent to <lcdScreen<4><99>> has been removed
+    Register <lcdScreen<4><111>> equivalent to <lcdScreen<4><99>> has been removed
+    Register <lcdScreen<4><110>> equivalent to <lcdScreen<4><99>> has been removed
+    Register <lcdScreen<4><109>> equivalent to <lcdScreen<4><99>> has been removed
+    Register <lcdScreen<4><108>> equivalent to <lcdScreen<4><99>> has been removed
+    Register <lcdScreen<4><107>> equivalent to <lcdScreen<4><99>> has been removed
+    Register <lcdScreen<4><106>> equivalent to <lcdScreen<4><99>> has been removed
+    Register <lcdScreen<4><105>> equivalent to <lcdScreen<4><99>> has been removed
+    Register <lcdScreen<4><104>> equivalent to <lcdScreen<4><99>> has been removed
+    Register <lcdScreen<4><103>> equivalent to <lcdScreen<4><99>> has been removed
+    Register <lcdScreen<4><102>> equivalent to <lcdScreen<4><99>> has been removed
+    Register <lcdScreen<4><101>> equivalent to <lcdScreen<4><99>> has been removed
+    Register <lcdScreen<4><100>> equivalent to <lcdScreen<4><99>> has been removed
+    Register <lcdScreen<5><28>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><27>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><26>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><25>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><24>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><23>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><22>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><21>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><20>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><19>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><18>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><17>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<5><16>> equivalent to <lcdScreen<5><15>> has been removed
+    Register <lcdScreen<4><28>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><27>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><26>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><25>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><24>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><23>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><22>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><21>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><20>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><19>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><18>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><17>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<4><16>> equivalent to <lcdScreen<4><15>> has been removed
+    Register <lcdScreen<5><70>> equivalent to <lcdScreen<5><57>> has been removed
+    Register <lcdScreen<5><69>> equivalent to <lcdScreen<5><57>> has been removed
+    Register <lcdScreen<5><68>> equivalent to <lcdScreen<5><57>> has been removed
+    Register <lcdScreen<5><67>> equivalent to <lcdScreen<5><57>> has been removed
+    Register <lcdScreen<5><66>> equivalent to <lcdScreen<5><57>> has been removed
+    Register <lcdScreen<5><65>> equivalent to <lcdScreen<5><57>> has been removed
+    Register <lcdScreen<5><64>> equivalent to <lcdScreen<5><57>> has been removed
+    Register <lcdScreen<5><63>> equivalent to <lcdScreen<5><57>> has been removed
+    Register <lcdScreen<5><62>> equivalent to <lcdScreen<5><57>> has been removed
+    Register <lcdScreen<5><61>> equivalent to <lcdScreen<5><57>> has been removed
+    Register <lcdScreen<5><60>> equivalent to <lcdScreen<5><57>> has been removed
+    Register <lcdScreen<5><59>> equivalent to <lcdScreen<5><57>> has been removed
+    Register <lcdScreen<5><58>> equivalent to <lcdScreen<5><57>> has been removed
+    Register <lcdScreen<4><70>> equivalent to <lcdScreen<4><57>> has been removed
+    Register <lcdScreen<4><69>> equivalent to <lcdScreen<4><57>> has been removed
+    Register <lcdScreen<4><68>> equivalent to <lcdScreen<4><57>> has been removed
+    Register <lcdScreen<4><67>> equivalent to <lcdScreen<4><57>> has been removed
+    Register <lcdScreen<4><66>> equivalent to <lcdScreen<4><57>> has been removed
+    Register <lcdScreen<4><65>> equivalent to <lcdScreen<4><57>> has been removed
+    Register <lcdScreen<4><64>> equivalent to <lcdScreen<4><57>> has been removed
+    Register <lcdScreen<4><63>> equivalent to <lcdScreen<4><57>> has been removed
+    Register <lcdScreen<4><62>> equivalent to <lcdScreen<4><57>> has been removed
+    Register <lcdScreen<4><61>> equivalent to <lcdScreen<4><57>> has been removed
+    Register <lcdScreen<4><60>> equivalent to <lcdScreen<4><57>> has been removed
+    Register <lcdScreen<4><59>> equivalent to <lcdScreen<4><57>> has been removed
+    Register <lcdScreen<4><58>> equivalent to <lcdScreen<4><57>> has been removed
+    Register <lcdScreen<7><28>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><27>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><26>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><25>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><24>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><23>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><22>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><21>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><20>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><19>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><18>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><17>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<7><16>> equivalent to <lcdScreen<7><15>> has been removed
+    Register <lcdScreen<6><28>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><27>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><26>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><25>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><24>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><23>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><22>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><21>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><20>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><19>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><18>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><17>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><16>> equivalent to <lcdScreen<6><15>> has been removed
+    Register <lcdScreen<6><112>> equivalent to <lcdScreen<6><99>> has been removed
+    Register <lcdScreen<6><111>> equivalent to <lcdScreen<6><99>> has been removed
+    Register <lcdScreen<6><110>> equivalent to <lcdScreen<6><99>> has been removed
+    Register <lcdScreen<6><109>> equivalent to <lcdScreen<6><99>> has been removed
+    Register <lcdScreen<6><108>> equivalent to <lcdScreen<6><99>> has been removed
+    Register <lcdScreen<6><107>> equivalent to <lcdScreen<6><99>> has been removed
+    Register <lcdScreen<6><106>> equivalent to <lcdScreen<6><99>> has been removed
+    Register <lcdScreen<6><105>> equivalent to <lcdScreen<6><99>> has been removed
+    Register <lcdScreen<6><104>> equivalent to <lcdScreen<6><99>> has been removed
+    Register <lcdScreen<6><103>> equivalent to <lcdScreen<6><99>> has been removed
+    Register <lcdScreen<6><102>> equivalent to <lcdScreen<6><99>> has been removed
+    Register <lcdScreen<6><101>> equivalent to <lcdScreen<6><99>> has been removed
+    Register <lcdScreen<6><100>> equivalent to <lcdScreen<6><99>> has been removed
+    Register <lcdScreen<5><112>> equivalent to <lcdScreen<5><99>> has been removed
+    Register <lcdScreen<5><111>> equivalent to <lcdScreen<5><99>> has been removed
+    Register <lcdScreen<5><110>> equivalent to <lcdScreen<5><99>> has been removed
+    Register <lcdScreen<5><109>> equivalent to <lcdScreen<5><99>> has been removed
+    Register <lcdScreen<5><108>> equivalent to <lcdScreen<5><99>> has been removed
+    Register <lcdScreen<5><107>> equivalent to <lcdScreen<5><99>> has been removed
+    Register <lcdScreen<5><106>> equivalent to <lcdScreen<5><99>> has been removed
+    Register <lcdScreen<5><105>> equivalent to <lcdScreen<5><99>> has been removed
+    Register <lcdScreen<5><104>> equivalent to <lcdScreen<5><99>> has been removed
+    Register <lcdScreen<5><103>> equivalent to <lcdScreen<5><99>> has been removed
+    Register <lcdScreen<5><102>> equivalent to <lcdScreen<5><99>> has been removed
+    Register <lcdScreen<5><101>> equivalent to <lcdScreen<5><99>> has been removed
+    Register <lcdScreen<5><100>> equivalent to <lcdScreen<5><99>> has been removed
+    Register <lcdScreen<7><112>> equivalent to <lcdScreen<7><99>> has been removed
+    Register <lcdScreen<7><111>> equivalent to <lcdScreen<7><99>> has been removed
+    Register <lcdScreen<7><110>> equivalent to <lcdScreen<7><99>> has been removed
+    Register <lcdScreen<7><109>> equivalent to <lcdScreen<7><99>> has been removed
+    Register <lcdScreen<7><108>> equivalent to <lcdScreen<7><99>> has been removed
+    Register <lcdScreen<7><107>> equivalent to <lcdScreen<7><99>> has been removed
+    Register <lcdScreen<7><106>> equivalent to <lcdScreen<7><99>> has been removed
+    Register <lcdScreen<7><105>> equivalent to <lcdScreen<7><99>> has been removed
+    Register <lcdScreen<7><104>> equivalent to <lcdScreen<7><99>> has been removed
+    Register <lcdScreen<7><103>> equivalent to <lcdScreen<7><99>> has been removed
+    Register <lcdScreen<7><102>> equivalent to <lcdScreen<7><99>> has been removed
+    Register <lcdScreen<7><101>> equivalent to <lcdScreen<7><99>> has been removed
+    Register <lcdScreen<7><100>> equivalent to <lcdScreen<7><99>> has been removed
+    Found 1-bit register for signal <GLCD_RST>.
+    Found 3-bit register for signal <glcdControlerState>.
+    Found 7-bit register for signal <Controler.reset_compteur>.
+    Found 15-bit register for signal <compteur>.
+    Found 1-bit register for signal <E>.
+    Found 2-bit register for signal <GLCD_CS>.
+    Found 8-bit register for signal <GLCD_DATA>.
+    Found 1-bit register for signal <GLCD_RS>.
+    Found 1-bit register for signal <GLCD_RW>.
+    Found 7-bit register for signal <Controler.address>.
+    Found 3-bit register for signal <Controler.page>.
+    Found 1-bit register for signal <lastE>.
+    Found 8-bit register for signal <lcdScreen<4><15>>.
+    Found 8-bit register for signal <lcdScreen<5><15>>.
+    Found 8-bit register for signal <lcdScreen<6><15>>.
+    Found 8-bit register for signal <lcdScreen<7><15>>.
+    Found 8-bit register for signal <lcdScreen<4><57>>.
+    Found 8-bit register for signal <lcdScreen<5><57>>.
+    Found 8-bit register for signal <lcdScreen<6><57>>.
+    Found 8-bit register for signal <lcdScreen<7><57>>.
+    Found 8-bit register for signal <lcdScreen<4><99>>.
+    Found 8-bit register for signal <lcdScreen<5><99>>.
+    Found 8-bit register for signal <lcdScreen<6><99>>.
+    Found 8-bit register for signal <lcdScreen<7><99>>.
+    Found finite state machine <FSM_4> for signal <glcdControlerState>.
+    -----------------------------------------------------------------------
+    | States             | 7                                              |
+    | Transitions        | 23                                             |
+    | Inputs             | 6                                              |
+    | Outputs            | 6                                              |
+    | Clock              | CLK (rising_edge)                              |
+    | Reset              | RESET (negative)                               |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | init                                           |
+    | Power Up State     | init                                           |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 15-bit adder for signal <compteur[14]_GND_63_o_add_4_OUT> created at line 1241.
+    Found 7-bit adder for signal <Controler.reset_compteur[6]_GND_63_o_add_10_OUT> created at line 150.
+    Found 7-bit adder for signal <Controler.address[6]_GND_63_o_add_300_OUT> created at line 225.
+    Found 3-bit adder for signal <Controler.page[2]_GND_63_o_add_310_OUT> created at line 240.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][15][7]_wide_mux_185_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][16][7]_wide_mux_186_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][17][7]_wide_mux_187_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][18][7]_wide_mux_188_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][19][7]_wide_mux_189_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][20][7]_wide_mux_190_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][21][7]_wide_mux_191_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][22][7]_wide_mux_192_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][23][7]_wide_mux_193_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][24][7]_wide_mux_194_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][25][7]_wide_mux_195_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][26][7]_wide_mux_196_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][27][7]_wide_mux_197_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][28][7]_wide_mux_198_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][57][7]_wide_mux_227_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][58][7]_wide_mux_228_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][59][7]_wide_mux_229_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][60][7]_wide_mux_230_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][61][7]_wide_mux_231_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][62][7]_wide_mux_232_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][63][7]_wide_mux_233_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][64][7]_wide_mux_234_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][65][7]_wide_mux_235_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][66][7]_wide_mux_236_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][67][7]_wide_mux_237_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][68][7]_wide_mux_238_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][69][7]_wide_mux_239_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][70][7]_wide_mux_240_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][99][7]_wide_mux_269_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][100][7]_wide_mux_270_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][101][7]_wide_mux_271_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][102][7]_wide_mux_272_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][103][7]_wide_mux_273_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][104][7]_wide_mux_274_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][105][7]_wide_mux_275_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][106][7]_wide_mux_276_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][107][7]_wide_mux_277_OUT> created at line 217.
+    Found 8-bit 7-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][108][7]_wide_mux_278_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][109][7]_wide_mux_279_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][110][7]_wide_mux_280_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][111][7]_wide_mux_281_OUT> created at line 217.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][112][7]_wide_mux_282_OUT> created at line 217.
+    Found 8-bit 120-to-1 multiplexer for signal <Controler.address[6]_Controler.page[2]_wide_mux_298_OUT> created at line 217.
+    Found 8-bit 7-to-1 multiplexer for signal <glcdControlerState[2]_X_32_o_wide_mux_322_OUT> created at line 135.
+    Found 15-bit comparator greater for signal <compteur[14]_GND_63_o_LessThan_4_o> created at line 111
+    Found 7-bit comparator greater for signal <Controler.reset_compteur[6]_PWR_57_o_LessThan_8_o> created at line 137
+    Found 7-bit comparator greater for signal <Controler.reset_compteur[6]_PWR_57_o_LessThan_10_o> created at line 148
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC0[9]_LessThan_856_o> created at line 328
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC0[9]_LessThan_857_o> created at line 333
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC0[9]_LessThan_858_o> created at line 338
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC0[9]_LessThan_859_o> created at line 343
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC0[9]_LessThan_860_o> created at line 348
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC0[9]_LessThan_861_o> created at line 353
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC0[9]_LessThan_862_o> created at line 358
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC0[9]_LessThan_863_o> created at line 363
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC0[9]_LessThan_864_o> created at line 368
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC0[9]_LessThan_865_o> created at line 373
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC0[9]_LessThan_866_o> created at line 378
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC0[9]_LessThan_867_o> created at line 383
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC0[9]_LessThan_868_o> created at line 388
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC0[9]_LessThan_869_o> created at line 393
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC0[9]_LessThan_870_o> created at line 398
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC0[9]_LessThan_871_o> created at line 403
+    Found 10-bit comparator greater for signal <GND_63_o_sADC0[9]_LessThan_872_o> created at line 408
+    Found 10-bit comparator greater for signal <GND_63_o_sADC0[9]_LessThan_873_o> created at line 413
+    Found 10-bit comparator greater for signal <GND_63_o_sADC0[9]_LessThan_874_o> created at line 418
+    Found 10-bit comparator greater for signal <GND_63_o_sADC0[9]_LessThan_875_o> created at line 423
+    Found 10-bit comparator greater for signal <GND_63_o_sADC0[9]_LessThan_876_o> created at line 428
+    Found 10-bit comparator greater for signal <GND_63_o_sADC0[9]_LessThan_877_o> created at line 433
+    Found 10-bit comparator greater for signal <GND_63_o_sADC0[9]_LessThan_878_o> created at line 438
+    Found 10-bit comparator greater for signal <GND_63_o_sADC0[9]_LessThan_879_o> created at line 443
+    Found 10-bit comparator greater for signal <GND_63_o_sADC0[9]_LessThan_880_o> created at line 448
+    Found 10-bit comparator greater for signal <GND_63_o_sADC0[9]_LessThan_881_o> created at line 453
+    Found 10-bit comparator greater for signal <GND_63_o_sADC0[9]_LessThan_882_o> created at line 458
+    Found 10-bit comparator greater for signal <GND_63_o_sADC0[9]_LessThan_883_o> created at line 463
+    Found 10-bit comparator greater for signal <GND_63_o_sADC0[9]_LessThan_884_o> created at line 468
+    Found 10-bit comparator greater for signal <GND_63_o_sADC0[9]_LessThan_885_o> created at line 473
+    Found 10-bit comparator greater for signal <GND_63_o_sADC0[9]_LessThan_886_o> created at line 478
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC1[9]_LessThan_2049_o> created at line 496
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC1[9]_LessThan_2050_o> created at line 501
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC1[9]_LessThan_2051_o> created at line 506
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC1[9]_LessThan_2052_o> created at line 511
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC1[9]_LessThan_2053_o> created at line 516
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC1[9]_LessThan_2054_o> created at line 521
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC1[9]_LessThan_2055_o> created at line 526
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC1[9]_LessThan_2056_o> created at line 531
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC1[9]_LessThan_2057_o> created at line 536
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC1[9]_LessThan_2058_o> created at line 541
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC1[9]_LessThan_2059_o> created at line 546
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC1[9]_LessThan_2060_o> created at line 556
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC1[9]_LessThan_2061_o> created at line 561
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC1[9]_LessThan_2062_o> created at line 566
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC1[9]_LessThan_2063_o> created at line 571
+    Found 10-bit comparator greater for signal <GND_63_o_sADC1[9]_LessThan_2064_o> created at line 576
+    Found 10-bit comparator greater for signal <GND_63_o_sADC1[9]_LessThan_2065_o> created at line 581
+    Found 10-bit comparator greater for signal <GND_63_o_sADC1[9]_LessThan_2066_o> created at line 586
+    Found 10-bit comparator greater for signal <GND_63_o_sADC1[9]_LessThan_2067_o> created at line 591
+    Found 10-bit comparator greater for signal <GND_63_o_sADC1[9]_LessThan_2068_o> created at line 596
+    Found 10-bit comparator greater for signal <GND_63_o_sADC1[9]_LessThan_2069_o> created at line 601
+    Found 10-bit comparator greater for signal <GND_63_o_sADC1[9]_LessThan_2070_o> created at line 606
+    Found 10-bit comparator greater for signal <GND_63_o_sADC1[9]_LessThan_2071_o> created at line 611
+    Found 10-bit comparator greater for signal <GND_63_o_sADC1[9]_LessThan_2072_o> created at line 616
+    Found 10-bit comparator greater for signal <GND_63_o_sADC1[9]_LessThan_2073_o> created at line 621
+    Found 10-bit comparator greater for signal <GND_63_o_sADC1[9]_LessThan_2074_o> created at line 626
+    Found 10-bit comparator greater for signal <GND_63_o_sADC1[9]_LessThan_2075_o> created at line 631
+    Found 10-bit comparator greater for signal <GND_63_o_sADC1[9]_LessThan_2076_o> created at line 636
+    Found 10-bit comparator greater for signal <GND_63_o_sADC1[9]_LessThan_2077_o> created at line 641
+    Found 10-bit comparator greater for signal <GND_63_o_sADC1[9]_LessThan_2078_o> created at line 646
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC4[9]_LessThan_3199_o> created at line 664
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC4[9]_LessThan_3200_o> created at line 669
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC4[9]_LessThan_3201_o> created at line 674
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC4[9]_LessThan_3202_o> created at line 679
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC4[9]_LessThan_3203_o> created at line 684
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC4[9]_LessThan_3204_o> created at line 689
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC4[9]_LessThan_3205_o> created at line 694
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC4[9]_LessThan_3206_o> created at line 699
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC4[9]_LessThan_3207_o> created at line 704
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC4[9]_LessThan_3208_o> created at line 709
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC4[9]_LessThan_3209_o> created at line 714
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC4[9]_LessThan_3210_o> created at line 724
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC4[9]_LessThan_3211_o> created at line 729
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC4[9]_LessThan_3212_o> created at line 734
+    Found 10-bit comparator greater for signal <PWR_57_o_sADC4[9]_LessThan_3213_o> created at line 739
+    Found 10-bit comparator greater for signal <GND_63_o_sADC4[9]_LessThan_3214_o> created at line 744
+    Found 10-bit comparator greater for signal <GND_63_o_sADC4[9]_LessThan_3215_o> created at line 749
+    Found 10-bit comparator greater for signal <GND_63_o_sADC4[9]_LessThan_3216_o> created at line 754
+    Found 10-bit comparator greater for signal <GND_63_o_sADC4[9]_LessThan_3217_o> created at line 759
+    Found 10-bit comparator greater for signal <GND_63_o_sADC4[9]_LessThan_3218_o> created at line 764
+    Found 10-bit comparator greater for signal <GND_63_o_sADC4[9]_LessThan_3219_o> created at line 769
+    Found 10-bit comparator greater for signal <GND_63_o_sADC4[9]_LessThan_3220_o> created at line 774
+    Found 10-bit comparator greater for signal <GND_63_o_sADC4[9]_LessThan_3221_o> created at line 779
+    Found 10-bit comparator greater for signal <GND_63_o_sADC4[9]_LessThan_3222_o> created at line 784
+    Found 10-bit comparator greater for signal <GND_63_o_sADC4[9]_LessThan_3223_o> created at line 789
+    Found 10-bit comparator greater for signal <GND_63_o_sADC4[9]_LessThan_3224_o> created at line 794
+    Found 10-bit comparator greater for signal <GND_63_o_sADC4[9]_LessThan_3225_o> created at line 799
+    Found 10-bit comparator greater for signal <GND_63_o_sADC4[9]_LessThan_3226_o> created at line 804
+    Found 10-bit comparator greater for signal <GND_63_o_sADC4[9]_LessThan_3227_o> created at line 809
+    Found 10-bit comparator greater for signal <GND_63_o_sADC4[9]_LessThan_3228_o> created at line 814
+    Summary:
+	inferred   4 Adder/Subtractor(s).
+	inferred 142 D-type flip-flop(s).
+	inferred  94 Comparator(s).
+	inferred 471 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <LCD_Controler> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 2
+ 48001x24-bit single-port RAM                          : 1
+ 8x8-bit single-port Read Only RAM                     : 1
+# Multipliers                                          : 6
+ 12x11-bit multiplier                                  : 1
+ 15x11-bit multiplier                                  : 1
+ 24x12-bit multiplier                                  : 1
+ 24x3-bit multiplier                                   : 1
+ 25x11-bit multiplier                                  : 1
+ 27x11-bit multiplier                                  : 1
+# Adders/Subtractors                                   : 24
+ 11-bit adder                                          : 2
+ 12-bit adder                                          : 1
+ 12-bit addsub                                         : 1
+ 12-bit subtractor                                     : 1
+ 15-bit adder                                          : 2
+ 16-bit adder                                          : 1
+ 16-bit subtractor                                     : 1
+ 19-bit subtractor                                     : 2
+ 24-bit subtractor                                     : 1
+ 26-bit subtractor                                     : 1
+ 3-bit adder                                           : 3
+ 3-bit addsub                                          : 1
+ 4-bit adder                                           : 1
+ 5-bit subtractor                                      : 2
+ 7-bit adder                                           : 3
+ 9-bit adder                                           : 1
+# Registers                                            : 100
+ 1-bit register                                        : 38
+ 10-bit register                                       : 4
+ 11-bit register                                       : 5
+ 12-bit register                                       : 3
+ 15-bit register                                       : 2
+ 16-bit register                                       : 1
+ 19-bit register                                       : 2
+ 2-bit register                                        : 1
+ 24-bit register                                       : 10
+ 26-bit register                                       : 1
+ 3-bit register                                        : 4
+ 32-bit register                                       : 1
+ 36-bit register                                       : 1
+ 38-bit register                                       : 2
+ 4-bit register                                        : 3
+ 5-bit register                                        : 2
+ 7-bit register                                        : 3
+ 8-bit register                                        : 16
+ 9-bit register                                        : 1
+# Comparators                                          : 115
+ 10-bit comparator greater                             : 101
+ 12-bit comparator equal                               : 1
+ 12-bit comparator greater                             : 2
+ 15-bit comparator greater                             : 1
+ 24-bit comparator greater                             : 1
+ 25-bit comparator greater                             : 4
+ 26-bit comparator greater                             : 1
+ 32-bit comparator greater                             : 1
+ 4-bit comparator greater                              : 1
+ 7-bit comparator greater                              : 2
+# Multiplexers                                         : 558
+ 1-bit 2-to-1 multiplexer                              : 40
+ 1-bit 24-to-1 multiplexer                             : 2
+ 10-bit 2-to-1 multiplexer                             : 1
+ 11-bit 2-to-1 multiplexer                             : 10
+ 12-bit 2-to-1 multiplexer                             : 10
+ 15-bit 2-to-1 multiplexer                             : 2
+ 19-bit 2-to-1 multiplexer                             : 4
+ 19-bit 3-to-1 multiplexer                             : 2
+ 24-bit 2-to-1 multiplexer                             : 10
+ 3-bit 2-to-1 multiplexer                              : 4
+ 4-bit 2-to-1 multiplexer                              : 2
+ 5-bit 2-to-1 multiplexer                              : 2
+ 7-bit 2-to-1 multiplexer                              : 8
+ 8-bit 120-to-1 multiplexer                            : 1
+ 8-bit 2-to-1 multiplexer                              : 416
+ 8-bit 7-to-1 multiplexer                              : 2
+ 8-bit 8-to-1 multiplexer                              : 41
+ 9-bit 2-to-1 multiplexer                              : 1
+# Tristates                                            : 6
+ 1-bit tristate buffer                                 : 6
+# FSMs                                                 : 5
+# Xors                                                 : 2
+ 1-bit xor2                                            : 2
+
+=========================================================================
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Reading core <ipcore_dir/Diviseur.ngc>.
+Reading Secure Unit <blk00000001>.
+Loading core <Diviseur> for timing and area information for instance <TREMCLKVALUE>.
+WARNING:Xst:1290 - Hierarchical block <serial_rx> is unconnected in block <avr_interface>.
+   It will be removed from the design.
+INFO:Xst:2261 - The FF/Latch <sLevel_10> in Unit <Distortion> is equivalent to the following FF/Latch, which will be removed : <sDist_10> 
+WARNING:Xst:1710 - FF/Latch <sLevel_10> (without init value) has a constant value of 0 in block <Distortion>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <sVolume_10> has a constant value of 0 in block <Volume>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <tempCal1_0> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <tempCal1_1> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <tempCal1_2> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <tempCal1_3> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <tempCal1_4> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <tempCal1_5> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <tempCal1_6> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <tempCal1_7> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <tempCal1_8> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <tempCal1_9> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <tempCal1_35> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <tempCal1_36> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <tempCal1_37> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <tempVector_0> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <tempVector_1> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <tempVector_2> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <tempVector_3> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <tempVector_4> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <tempVector_5> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <tempVector_6> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <tempVector_7> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <tempVector_8> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <tempVector_9> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <tempVector_34> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <tempVector_35> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <tempVector_0> of sequential type is unconnected in block <Volume>.
+WARNING:Xst:2677 - Node <tempVector_1> of sequential type is unconnected in block <Volume>.
+WARNING:Xst:2677 - Node <tempVector_2> of sequential type is unconnected in block <Volume>.
+WARNING:Xst:2677 - Node <tempVector_3> of sequential type is unconnected in block <Volume>.
+WARNING:Xst:2677 - Node <tempVector_4> of sequential type is unconnected in block <Volume>.
+WARNING:Xst:2677 - Node <tempVector_5> of sequential type is unconnected in block <Volume>.
+WARNING:Xst:2677 - Node <tempVector_6> of sequential type is unconnected in block <Volume>.
+WARNING:Xst:2677 - Node <tempVector_7> of sequential type is unconnected in block <Volume>.
+WARNING:Xst:2677 - Node <tempVector_8> of sequential type is unconnected in block <Volume>.
+WARNING:Xst:2677 - Node <tempVector_9> of sequential type is unconnected in block <Volume>.
+WARNING:Xst:2677 - Node <tempVector_35> of sequential type is unconnected in block <Volume>.
+WARNING:Xst:2677 - Node <tempVector_36> of sequential type is unconnected in block <Volume>.
+WARNING:Xst:2677 - Node <tempVector_37> of sequential type is unconnected in block <Volume>.
+WARNING:Xst:2404 -  FFs/Latches <sLevel<10:10>> (without init value) have a constant value of 0 in block <Distortion>.
+WARNING:Xst:2404 -  FFs/Latches <sDist<10:10>> (without init value) have a constant value of 0 in block <Distortion>.
+
+Synthesizing (advanced) Unit <ADC_Read>.
+The following registers are absorbed into counter <stabiliseCounter>: 1 register on signal <stabiliseCounter>.
+Unit <ADC_Read> synthesized (advanced).
+
+Synthesizing (advanced) Unit <Delay>.
+The following registers are absorbed into counter <Temp.t>: 1 register on signal <Temp.t>.
+INFO:Xst:3230 - The RAM description <Mram_tempFifo> will not be implemented on the device block RAM because of limited available resources. If you would like this RAM to be implemented in block RAM, please select a larger device or increase the value specified by the BRAM_Utilization_Ratio constraint.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 48001-word x 24-bit                 |          |
+    |     clkA           | connected to signal <CLK>           | rise     |
+    |     weA            | connected to signal <a>             | low      |
+    |     addrA          | connected to signal <GND_55_o_GND_55_o_sub_6_OUT> |          |
+    |     diA            | connected to signal <audioIn>       |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <Delay> synthesized (advanced).
+
+Synthesizing (advanced) Unit <Distortion>.
+	Multiplier <Mmult_sDist[10]_GND_27_o_MuLt_4_OUT> in block <Distortion> and adder/subtractor <Msub_GND_27_o_sDist[10]_sub_6_OUT<25:0>> in block <Distortion> are combined into a MAC<Maddsub_sDist[10]_GND_27_o_MuLt_4_OUT>.
+	The following registers are also absorbed by the MAC: <limit> in block <Distortion>.
+	Found pipelined multiplier on signal <tempVector1[23]_sLevel[10]_MuLt_13_OUT>:
+		- 1 pipeline level(s) found in a register connected to the multiplier macro output.
+		Pushing register(s) into the multiplier macro.
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT by adding 3 register level(s).
+Unit <Distortion> synthesized (advanced).
+
+Synthesizing (advanced) Unit <LCD_Controler>.
+The following registers are absorbed into counter <compteur>: 1 register on signal <compteur>.
+The following registers are absorbed into counter <Controler.reset_compteur>: 1 register on signal <Controler.reset_compteur>.
+Unit <LCD_Controler> synthesized (advanced).
+
+Synthesizing (advanced) Unit <Tremolo>.
+The following registers are absorbed into counter <compteur>: 1 register on signal <compteur>.
+	Found pipelined multiplier on signal <audioIn[23]_genWave[11]_MuLt_3_OUT>:
+		- 1 pipeline level(s) found in a register connected to the multiplier macro output.
+		Pushing register(s) into the multiplier macro.
+	Adder/Subtractor <Madd_GND_31_o_GND_31_o_add_1_OUT> in block <Tremolo> and  <Mmult_DepthXBpm<22:0>> in block <Tremolo> are combined into a MULT with pre-adder <Mmult_DepthXBpm<22:0>1>.
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_audioIn[23]_genWave[11]_MuLt_3_OUT by adding 3 register level(s).
+Unit <Tremolo> synthesized (advanced).
+
+Synthesizing (advanced) Unit <cclk_detector>.
+The following registers are absorbed into counter <ctr_q>: 1 register on signal <ctr_q>.
+Unit <cclk_detector> synthesized (advanced).
+
+Synthesizing (advanced) Unit <effectChain>.
+The following registers are absorbed into counter <effectSelector>: 1 register on signal <effectSelector>.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_selectModule> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 8-word x 8-bit                      |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <effectSelector> |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to signal <selectModule>  |          |
+    -----------------------------------------------------------------------
+Unit <effectChain> synthesized (advanced).
+
+Synthesizing (advanced) Unit <serial_rx>.
+The following registers are absorbed into counter <bit_ctr_q>: 1 register on signal <bit_ctr_q>.
+Unit <serial_rx> synthesized (advanced).
+
+Synthesizing (advanced) Unit <spi_slave>.
+The following registers are absorbed into counter <bit_ct_q>: 1 register on signal <bit_ct_q>.
+Unit <spi_slave> synthesized (advanced).
+
+Synthesizing (advanced) Unit <volumeControl>.
+	Found pipelined multiplier on signal <audioIn[23]_sVolume[10]_MuLt_2_OUT>:
+		- 1 pipeline level(s) found in a register connected to the multiplier macro output.
+		Pushing register(s) into the multiplier macro.
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_audioIn[23]_sVolume[10]_MuLt_2_OUT by adding 3 register level(s).
+Unit <volumeControl> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 2
+ 48001x24-bit single-port distributed RAM              : 1
+ 8x8-bit single-port distributed Read Only RAM         : 1
+# MACs                                                 : 2
+ 12x11-to-23-bit Mult with pre-adder                   : 1
+ 15x11-to-26-bit MAC                                   : 1
+# Multipliers                                          : 4
+ 24x12-bit registered multiplier                       : 1
+ 24x3-bit multiplier                                   : 1
+ 25x11-bit registered multiplier                       : 1
+ 27x11-bit registered multiplier                       : 1
+# Adders/Subtractors                                   : 14
+ 11-bit adder                                          : 1
+ 12-bit adder                                          : 1
+ 12-bit addsub                                         : 1
+ 12-bit subtractor                                     : 1
+ 16-bit adder                                          : 1
+ 16-bit subtractor                                     : 1
+ 19-bit subtractor                                     : 2
+ 24-bit subtractor                                     : 1
+ 3-bit adder                                           : 1
+ 5-bit subtractor                                      : 2
+ 7-bit adder                                           : 2
+# Counters                                             : 9
+ 15-bit up counter                                     : 2
+ 16-bit up counter                                     : 1
+ 3-bit up counter                                      : 2
+ 3-bit updown counter                                  : 1
+ 4-bit up counter                                      : 1
+ 7-bit up counter                                      : 1
+ 9-bit up counter                                      : 1
+# Registers                                            : 642
+ Flip-Flops                                            : 642
+# Comparators                                          : 115
+ 10-bit comparator greater                             : 101
+ 12-bit comparator equal                               : 1
+ 12-bit comparator greater                             : 2
+ 15-bit comparator greater                             : 1
+ 24-bit comparator greater                             : 1
+ 25-bit comparator greater                             : 4
+ 26-bit comparator greater                             : 1
+ 32-bit comparator greater                             : 1
+ 4-bit comparator greater                              : 1
+ 7-bit comparator greater                              : 2
+# Multiplexers                                         : 562
+ 1-bit 2-to-1 multiplexer                              : 51
+ 1-bit 24-to-1 multiplexer                             : 2
+ 10-bit 2-to-1 multiplexer                             : 1
+ 11-bit 2-to-1 multiplexer                             : 10
+ 12-bit 2-to-1 multiplexer                             : 9
+ 19-bit 2-to-1 multiplexer                             : 4
+ 19-bit 3-to-1 multiplexer                             : 2
+ 24-bit 2-to-1 multiplexer                             : 10
+ 3-bit 2-to-1 multiplexer                              : 2
+ 4-bit 2-to-1 multiplexer                              : 1
+ 5-bit 2-to-1 multiplexer                              : 2
+ 7-bit 2-to-1 multiplexer                              : 8
+ 8-bit 120-to-1 multiplexer                            : 1
+ 8-bit 2-to-1 multiplexer                              : 416
+ 8-bit 7-to-1 multiplexer                              : 2
+ 8-bit 8-to-1 multiplexer                              : 41
+# FSMs                                                 : 5
+# Xors                                                 : 2
+ 1-bit xor2                                            : 2
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1293 - FF/Latch <sVolume_10> has a constant value of 0 in block <volumeControl>. This FF/Latch will be trimmed during the optimization process.
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <I2SToParallel/FSM_0> on signal <i2sRx[1:2]> with user encoding.
+---------------------
+ State   | Encoding
+---------------------
+ rx      | 00
+ rdy     | 01
+ waiting | 10
+---------------------
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <avr_interface/serial_rx/FSM_1> on signal <state_q[1:2]> with gray encoding.
+-----------------------
+ State     | Encoding
+-----------------------
+ idle      | 00
+ wait_half | 01
+ wait_full | 11
+ wait_high | 10
+-----------------------
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <Buttton_Process/AR_Back/FSM_3> on signal <Etat[1:2]> with sequential encoding.
+Optimizing FSM <Buttton_Process/AR_Next/FSM_3> on signal <Etat[1:2]> with sequential encoding.
+--------------------------
+ State        | Encoding
+--------------------------
+ bas          | 00
+ haut         | 11
+ attente_bas  | 10
+ attente_haut | 01
+--------------------------
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <GLCD/FSM_4> on signal <glcdControlerState[1:3]> with user encoding.
+---------------------------------
+ State               | Encoding
+---------------------------------
+ init                | 000
+ senddisplayon       | 001
+ refreshaddressleft  | 010
+ writedataleft       | 011
+ refreshaddressright | 100
+ writedataright      | 101
+ changepage          | 110
+---------------------------------
+WARNING:Xst:1710 - FF/Latch <REQUESTED_CHANNEL_1> (without init value) has a constant value of 0 in block <ADC_Read>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REQUESTED_CHANNEL_3> (without init value) has a constant value of 0 in block <ADC_Read>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_16> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_15> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_14> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_13> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_12> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_11> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_10> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_9> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_8> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:2677 - Node <Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT2_7> of sequential type is unconnected in block <Distortion>.
+WARNING:Xst:1293 - FF/Latch <waveMin_11> has a constant value of 0 in block <Tremolo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <Mmult_audioIn[23]_genWave[11]_MuLt_3_OUT2_16> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <Mmult_audioIn[23]_genWave[11]_MuLt_3_OUT2_15> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <Mmult_audioIn[23]_genWave[11]_MuLt_3_OUT2_14> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <Mmult_audioIn[23]_genWave[11]_MuLt_3_OUT2_13> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <Mmult_audioIn[23]_genWave[11]_MuLt_3_OUT2_12> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <Mmult_audioIn[23]_genWave[11]_MuLt_3_OUT2_11> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <Mmult_audioIn[23]_genWave[11]_MuLt_3_OUT2_10> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <Mmult_audioIn[23]_genWave[11]_MuLt_3_OUT2_9> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <Mmult_audioIn[23]_genWave[11]_MuLt_3_OUT2_8> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <Mmult_audioIn[23]_genWave[11]_MuLt_3_OUT2_7> of sequential type is unconnected in block <Tremolo>.
+WARNING:Xst:2677 - Node <Mmult_audioIn[23]_sVolume[10]_MuLt_2_OUT2_16> of sequential type is unconnected in block <volumeControl>.
+WARNING:Xst:2677 - Node <Mmult_audioIn[23]_sVolume[10]_MuLt_2_OUT2_15> of sequential type is unconnected in block <volumeControl>.
+WARNING:Xst:2677 - Node <Mmult_audioIn[23]_sVolume[10]_MuLt_2_OUT2_14> of sequential type is unconnected in block <volumeControl>.
+WARNING:Xst:2677 - Node <Mmult_audioIn[23]_sVolume[10]_MuLt_2_OUT2_13> of sequential type is unconnected in block <volumeControl>.
+WARNING:Xst:2677 - Node <Mmult_audioIn[23]_sVolume[10]_MuLt_2_OUT2_12> of sequential type is unconnected in block <volumeControl>.
+WARNING:Xst:2677 - Node <Mmult_audioIn[23]_sVolume[10]_MuLt_2_OUT2_11> of sequential type is unconnected in block <volumeControl>.
+WARNING:Xst:2677 - Node <Mmult_audioIn[23]_sVolume[10]_MuLt_2_OUT2_10> of sequential type is unconnected in block <volumeControl>.
+WARNING:Xst:2677 - Node <Mmult_audioIn[23]_sVolume[10]_MuLt_2_OUT2_9> of sequential type is unconnected in block <volumeControl>.
+WARNING:Xst:2677 - Node <Mmult_audioIn[23]_sVolume[10]_MuLt_2_OUT2_8> of sequential type is unconnected in block <volumeControl>.
+WARNING:Xst:2677 - Node <Mmult_audioIn[23]_sVolume[10]_MuLt_2_OUT2_7> of sequential type is unconnected in block <volumeControl>.
+WARNING:Xst:1426 - The value init of the FF/Latch lcdScreen<7>_99_7 hinder the constant cleaning in the block LCD_Controler.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1426 - The value init of the FF/Latch lcdScreen<7>_57_7 hinder the constant cleaning in the block LCD_Controler.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1426 - The value init of the FF/Latch lcdScreen<7>_15_7 hinder the constant cleaning in the block LCD_Controler.
+   You should achieve better results by setting this init to 1.
+INFO:Xst:2261 - The FF/Latch <lcdScreen<5>_99_2> in Unit <LCD_Controler> is equivalent to the following FF/Latch, which will be removed : <lcdScreen<5>_99_3> 
+INFO:Xst:2261 - The FF/Latch <lcdScreen<5>_57_2> in Unit <LCD_Controler> is equivalent to the following FF/Latch, which will be removed : <lcdScreen<5>_57_3> 
+WARNING:Xst:2677 - Node <avr_interface/serial_tx/block_q> of sequential type is unconnected in block <TOP>.
+WARNING:Xst:2973 - All outputs of instance <avr_interface/serial_rx> of block <serial_rx> are unconnected in block <TOP>. Underlying logic will be removed.
+
+Optimizing unit <Buffer_In> ...
+
+Optimizing unit <Buffer_Out> ...
+
+Optimizing unit <TOP> ...
+
+Optimizing unit <I2S_TO_PARALLEL> ...
+
+Optimizing unit <PARALLEL_TO_I2S> ...
+
+Optimizing unit <spi_slave> ...
+
+Optimizing unit <serial_rx> ...
+
+Optimizing unit <ADC_Read> ...
+
+Optimizing unit <effectChain> ...
+
+Optimizing unit <Distortion> ...
+
+Optimizing unit <Tremolo> ...
+
+Optimizing unit <Delay> ...
+
+Optimizing unit <volumeControl> ...
+
+Optimizing unit <Anti_Rebond> ...
+
+Optimizing unit <LCD_Controler> ...
+WARNING:Xst:1293 - FF/Latch <GLCD/compteur_14> has a constant value of 0 in block <TOP>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <GLCD/compteur_13> has a constant value of 0 in block <TOP>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <GLCD/compteur_12> has a constant value of 0 in block <TOP>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <GLCD/compteur_11> has a constant value of 0 in block <TOP>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <GLCD/lcdScreen<7>_15_7> in Unit <TOP> is equivalent to the following 2 FFs/Latches, which will be removed : <GLCD/lcdScreen<7>_99_7> <GLCD/lcdScreen<7>_57_7> 
+
+Mapping all equations...
+Building and optimizing final netlist ...
+WARNING:Xst:1426 - The value init of the FF/Latch GLCD/lcdScreen<7>_15_7 hinder the constant cleaning in the block TOP.
+   You should achieve better results by setting this init to 1.
+Found area constraint ratio of 100 (+ 5) on block TOP, actual ratio is 94.
+FlipFlop GLCD/Controler.page_0 has been replicated 1 time(s)
+FlipFlop GLCD/Controler.page_1 has been replicated 1 time(s)
+FlipFlop GLCD/Controler.page_2 has been replicated 1 time(s)
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 687
+ Flip-Flops                                            : 687
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : TOP.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 8553
+#      GND                         : 2
+#      INV                         : 146
+#      LUT1                        : 44
+#      LUT2                        : 2293
+#      LUT3                        : 887
+#      LUT4                        : 150
+#      LUT5                        : 207
+#      LUT6                        : 1883
+#      MULT_AND                    : 24
+#      MUXCY                       : 1013
+#      MUXF7                       : 628
+#      MUXF8                       : 288
+#      VCC                         : 2
+#      XORCY                       : 986
+# FlipFlops/Latches                : 3362
+#      FD                          : 2078
+#      FD_1                        : 1
+#      FDC                         : 44
+#      FDC_1                       : 4
+#      FDCE                        : 84
+#      FDE                         : 292
+#      FDE_1                       : 1
+#      FDP_1                       : 2
+#      FDPE                        : 4
+#      FDR                         : 98
+#      FDRE                        : 1
+#      FDS                         : 745
+#      FDSE                        : 8
+# RAMS                             : 4512
+#      RAM256X1S                   : 4512
+# Clock Buffers                    : 3
+#      BUFG                        : 1
+#      BUFGP                       : 2
+# IO Buffers                       : 34
+#      IBUF                        : 10
+#      OBUF                        : 18
+#      OBUFT                       : 6
+# DSPs                             : 8
+#      DSP48A1                     : 8
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx9tqg144-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:            3362  out of  11440    29%  
+ Number of Slice LUTs:                23658  out of   5720   413% (*) 
+    Number used as Logic:              5610  out of   5720    98%  
+    Number used as Memory:            18048  out of   1440   1253% (*) 
+       Number used as RAM:            18048
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:  23956
+   Number with an unused Flip Flop:   20594  out of  23956    85%  
+   Number with an unused LUT:           298  out of  23956     1%  
+   Number of fully used LUT-FF pairs:  3064  out of  23956    12%  
+   Number of unique control sets:        61
+
+IO Utilization: 
+ Number of IOs:                          38
+ Number of bonded IOBs:                  36  out of    102    35%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                3  out of     16    18%  
+ Number of DSP48A1s:                      8  out of     16    50%  
+
+WARNING:Xst:1336 -  (*) More than 100% of Device resources are used
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+CLK                                | BUFGP                  | 7765  |
+BCLK                               | BUFGP                  | 91    |
+effectChain/Tremolo/WCLK           | BUFG                   | 26    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 10.358ns (Maximum Frequency: 96.544MHz)
+   Minimum input arrival time before clock: 5.117ns
+   Maximum output required time after clock: 5.316ns
+   Maximum combinational path delay: 5.511ns
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'CLK'
+  Clock period: 10.358ns (frequency: 96.544MHz)
+  Total number of paths / destination ports: 4399025 / 49744
+-------------------------------------------------------------------------
+Delay:               10.358ns (Levels of Logic = 17)
+  Source:            effectChain/Distortion/tempVector1_2 (FF)
+  Destination:       effectChain/Distortion/Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT1 (DSP)
+  Source Clock:      CLK rising
+  Destination Clock: CLK rising
+
+  Data Path: effectChain/Distortion/tempVector1_2 to effectChain/Distortion/Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              2   0.447   0.721  effectChain/Distortion/tempVector1_2 (effectChain/Distortion/tempVector1_2)
+     LUT2:I0->O            1   0.203   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_lut<2> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<2> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<3> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<4> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<5> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<6> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<7> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<8> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<9> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<9>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<10> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<10>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<11> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<11>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<12> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<12>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<13> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<13>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<14> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<14>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<15> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_cy<15>)
+     XORCY:CI->O           1   0.180   0.579  effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_xor<16> (effectChain/Distortion/Mmult_tempVector1[23]_PWR_26_o_MuLt_12_OUT_Madd_16)
+     DSP48A1:A16->P47     18   4.560   1.049  effectChain/Distortion/Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT (effectChain/Distortion/Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT_P47_to_Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT1)
+     DSP48A1:C30               2.200          effectChain/Distortion/Mmult_tempVector1[23]_sLevel[10]_MuLt_13_OUT1
+    ----------------------------------------
+    Total                     10.358ns (8.009ns logic, 2.349ns route)
+                                       (77.3% logic, 22.7% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'BCLK'
+  Clock period: 8.527ns (frequency: 117.277MHz)
+  Total number of paths / destination ports: 584 / 170
+-------------------------------------------------------------------------
+Delay:               4.263ns (Levels of Logic = 4)
+  Source:            I2SToParallel/DATA_ADC_L_7 (FF)
+  Destination:       parallelToI2S/SDTO (FF)
+  Source Clock:      BCLK rising
+  Destination Clock: BCLK falling
+
+  Data Path: I2SToParallel/DATA_ADC_L_7 to parallelToI2S/SDTO
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              1   0.447   0.827  I2SToParallel/DATA_ADC_L_7 (I2SToParallel/DATA_ADC_L_7)
+     LUT6:I2->O            1   0.203   0.684  parallelToI2S/Mmux_GND_7_o_X_6_o_Mux_4_o_10 (parallelToI2S/Mmux_GND_7_o_X_6_o_Mux_4_o_10)
+     LUT6:I4->O            1   0.203   0.808  parallelToI2S/Mmux_GND_7_o_SDTO_MUX_104_o13 (parallelToI2S/Mmux_GND_7_o_SDTO_MUX_104_o12)
+     LUT5:I2->O            1   0.205   0.580  parallelToI2S/Mmux_GND_7_o_SDTO_MUX_104_o16_SW0 (N156)
+     LUT6:I5->O            1   0.205   0.000  parallelToI2S/Mmux_GND_7_o_SDTO_MUX_104_o16 (parallelToI2S/GND_7_o_SDTO_MUX_104_o)
+     FDC_1:D                   0.102          parallelToI2S/SDTO
+    ----------------------------------------
+    Total                      4.263ns (1.365ns logic, 2.898ns route)
+                                       (32.0% logic, 68.0% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'effectChain/Tremolo/WCLK'
+  Clock period: 6.189ns (frequency: 161.572MHz)
+  Total number of paths / destination ports: 6573 / 40
+-------------------------------------------------------------------------
+Delay:               6.189ns (Levels of Logic = 21)
+  Source:            effectChain/Tremolo/genWave_0 (FF)
+  Destination:       effectChain/Tremolo/genWave_11 (FF)
+  Source Clock:      effectChain/Tremolo/WCLK rising
+  Destination Clock: effectChain/Tremolo/WCLK rising
+
+  Data Path: effectChain/Tremolo/genWave_0 to effectChain/Tremolo/genWave_11
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             4   0.447   0.931  effectChain/Tremolo/genWave_0 (effectChain/Tremolo/genWave_0)
+     LUT4:I0->O            1   0.203   0.000  effectChain/Tremolo/Mcompar_n0084_lut<0> (effectChain/Tremolo/Mcompar_n0084_lut<0>)
+     MUXCY:S->O            1   0.172   0.000  effectChain/Tremolo/Mcompar_n0084_cy<0> (effectChain/Tremolo/Mcompar_n0084_cy<0>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Tremolo/Mcompar_n0084_cy<1> (effectChain/Tremolo/Mcompar_n0084_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Tremolo/Mcompar_n0084_cy<2> (effectChain/Tremolo/Mcompar_n0084_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Tremolo/Mcompar_n0084_cy<3> (effectChain/Tremolo/Mcompar_n0084_cy<3>)
+     MUXCY:CI->O           6   0.213   0.849  effectChain/Tremolo/Mcompar_n0084_cy<4> (effectChain/Tremolo/Mcompar_n0084_cy<4>)
+     LUT4:I2->O           22   0.203   1.238  effectChain/Tremolo/Mcompar_n0084_cy<5> (effectChain/Tremolo/Mcompar_n0084_cy<5>)
+     LUT6:I4->O            1   0.203   0.827  effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_A11 (effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_A<0>)
+     LUT4:I0->O            1   0.203   0.000  effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_lut<0> (effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_lut<0>)
+     MUXCY:S->O            1   0.172   0.000  effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<0> (effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<0>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<1> (effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<2> (effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<3> (effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<4> (effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<5> (effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<6> (effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<7> (effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<8> (effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<9> (effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<9>)
+     MUXCY:CI->O           0   0.019   0.000  effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<10> (effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_cy<10>)
+     XORCY:CI->O           1   0.180   0.000  effectChain/Tremolo/Mmux_genWave[11]_genWave[11]_mux_66_OUT_rs_xor<11> (effectChain/Tremolo/genWave[11]_genWave[11]_mux_66_OUT<11>)
+     FDCE:D                    0.102          effectChain/Tremolo/genWave_11
+    ----------------------------------------
+    Total                      6.189ns (2.345ns logic, 3.844ns route)
+                                       (37.9% logic, 62.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'CLK'
+  Total number of paths / destination ports: 391 / 339
+-------------------------------------------------------------------------
+Offset:              5.117ns (Levels of Logic = 2)
+  Source:            RESET (PAD)
+  Destination:       avr_interface/cclk_detector/ctr_q_8 (FF)
+  Destination Clock: CLK rising
+
+  Data Path: RESET to avr_interface/cclk_detector/ctr_q_8
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            36   1.222   1.348  RESET_IBUF (RESET_IBUF)
+     INV:I->O            113   0.206   1.911  NOT_RESET1_INV_0 (ADC_READ/RESET_inv)
+     FDCE:CLR                  0.430          ADC_READ/REQUESTED_CHANNEL_0
+    ----------------------------------------
+    Total                      5.117ns (1.858ns logic, 3.259ns route)
+                                       (36.3% logic, 63.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'BCLK'
+  Total number of paths / destination ports: 201 / 148
+-------------------------------------------------------------------------
+Offset:              5.117ns (Levels of Logic = 2)
+  Source:            RESET (PAD)
+  Destination:       I2SToParallel/Receive.dataShift_4 (FF)
+  Destination Clock: BCLK rising
+
+  Data Path: RESET to I2SToParallel/Receive.dataShift_4
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            36   1.222   1.348  RESET_IBUF (RESET_IBUF)
+     INV:I->O            113   0.206   1.911  NOT_RESET1_INV_0 (ADC_READ/RESET_inv)
+     FDCE:CLR                  0.430          I2SToParallel/dataReady
+    ----------------------------------------
+    Total                      5.117ns (1.858ns logic, 3.259ns route)
+                                       (36.3% logic, 63.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'effectChain/Tremolo/WCLK'
+  Total number of paths / destination ports: 27 / 27
+-------------------------------------------------------------------------
+Offset:              5.117ns (Levels of Logic = 2)
+  Source:            RESET (PAD)
+  Destination:       effectChain/Tremolo/genWave_11 (FF)
+  Destination Clock: effectChain/Tremolo/WCLK rising
+
+  Data Path: RESET to effectChain/Tremolo/genWave_11
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            36   1.222   1.348  RESET_IBUF (RESET_IBUF)
+     INV:I->O            113   0.206   1.911  NOT_RESET1_INV_0 (ADC_READ/RESET_inv)
+     FDCE:CLR                  0.430          effectChain/Tremolo/direction
+    ----------------------------------------
+    Total                      5.117ns (1.858ns logic, 3.259ns route)
+                                       (36.3% logic, 63.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'CLK'
+  Total number of paths / destination ports: 23 / 20
+-------------------------------------------------------------------------
+Offset:              5.316ns (Levels of Logic = 2)
+  Source:            avr_interface/cclk_detector/ready_q (FF)
+  Destination:       SPI_CHANNEL<3> (PAD)
+  Source Clock:      CLK rising
+
+  Data Path: avr_interface/cclk_detector/ready_q to SPI_CHANNEL<3>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              9   0.447   0.829  avr_interface/cclk_detector/ready_q (avr_interface/cclk_detector/ready_q)
+     INV:I->O             30   0.206   1.263  avr_interface/n_rdy1_INV_0 (avr_interface/n_rdy)
+     OBUFT:T->O                2.571          SPI_CHANNEL_3_OBUFT (SPI_CHANNEL<3>)
+    ----------------------------------------
+    Total                      5.316ns (3.224ns logic, 2.092ns route)
+                                       (60.7% logic, 39.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'BCLK'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              3.597ns (Levels of Logic = 1)
+  Source:            parallelToI2S/SDTO (FF)
+  Destination:       SDTO (PAD)
+  Source Clock:      BCLK falling
+
+  Data Path: parallelToI2S/SDTO to SDTO
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC_1:C->Q            1   0.447   0.579  parallelToI2S/SDTO (parallelToI2S/SDTO)
+     OBUF:I->O                 2.571          SDTO_OBUF (SDTO)
+    ----------------------------------------
+    Total                      3.597ns (3.018ns logic, 0.579ns route)
+                                       (83.9% logic, 16.1% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 3 / 3
+-------------------------------------------------------------------------
+Delay:               5.511ns (Levels of Logic = 2)
+  Source:            PEDAL (PAD)
+  Destination:       LED2 (PAD)
+
+  Data Path: PEDAL to LED2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            76   1.222   1.718  PEDAL_IBUF (LED2_OBUF)
+     OBUF:I->O                 2.571          LED2_OBUF (LED2)
+    ----------------------------------------
+    Total                      5.511ns (3.793ns logic, 1.718ns route)
+                                       (68.8% logic, 31.2% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock BCLK
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+BCLK           |    3.859|         |    5.986|         |
+CLK            |         |         |    4.406|         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock CLK
+------------------------+---------+---------+---------+---------+
+                        | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock            |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+------------------------+---------+---------+---------+---------+
+BCLK                    |    1.128|    1.128|         |         |
+CLK                     |   10.358|         |         |         |
+effectChain/Tremolo/WCLK|    9.452|         |         |         |
+------------------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock effectChain/Tremolo/WCLK
+------------------------+---------+---------+---------+---------+
+                        | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock            |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+------------------------+---------+---------+---------+---------+
+CLK                     |    6.140|         |         |         |
+effectChain/Tremolo/WCLK|    6.189|         |         |         |
+------------------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 38.00 secs
+Total CPU time to Xst completion: 37.44 secs
+ 
+--> 
+
+Total memory usage is 479176 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  452 (   0 filtered)
+Number of infos    :   13 (   0 filtered)
+

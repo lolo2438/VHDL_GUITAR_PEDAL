@@ -22,7 +22,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx primitives in this code.
@@ -53,7 +53,43 @@ end Delay;
 
 architecture Behavioral of Delay is
 
+Type fifo is array (0 to 48000) of STD_LOGIC_VECTOR(23 downto 0);
+signal tempFifo : fifo;
+
+signal a : STD_LOGIC := '0';
+
+signal tempVector : STD_LOGIC_VECTOR(23 downto 0);
+
 begin
+
+--audioOut <= tempVector;
+
+Temp:
+process(CLK)
+
+variable t : integer range 0 to 48000 := 0;
+
+begin
+	if rising_edge(CLK) then
+		if a = '0' then
+			t := t + 1;
+			tempFifo(t-1) <= audioIn;
+			
+			if t = 48000 then
+				a <= '1';
+			end if;
+			
+		else
+			t := t + 1;
+			audioOut <= tempFifo(t-1);
+			
+			if t = 48000 then
+				a <= '0';
+			end if;
+			
+		end if;
+	end if;
+end process;
 
 
 end Behavioral;

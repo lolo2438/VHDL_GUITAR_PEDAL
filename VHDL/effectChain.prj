@@ -1,0 +1,8 @@
+vhdl work "ipcore_dir/Diviseur.vhd"
+vhdl work "modules/Effect Chain/Volume/volumeControl.vhd"
+vhdl work "modules/Effect Chain/Tremolo/Tremolo.vhd"
+vhdl work "modules/Effect Chain/Distortion/Distortion.vhd"
+vhdl work "modules/Effect Chain/Delay/Delay.vhd"
+vhdl work "modules/Effect Chain/BufferOut/Buffer_Out.vhd"
+vhdl work "modules/Effect Chain/BufferIn/Buffer_In.vhd"
+vhdl work "modules/Effect Chain/effectChain.vhd"

@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2018-04-22T19:30:06</DateModified>
+  <DateModified>2018-04-23T18:01:12</DateModified>
   <ModuleName>TOP</ModuleName>
-  <SummaryTimeStamp>2018-04-17T22:44:59</SummaryTimeStamp>
-  <SavedFilePath>F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/iseconfig/TOP.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL\</ImplementationReportsDirectory>
+  <SummaryTimeStamp>2018-04-23T17:55:23</SummaryTimeStamp>
+  <SavedFilePath>C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL/iseconfig/TOP.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL\</ImplementationReportsDirectory>
   <DateInitialized>2018-02-05T17:07:22</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
@@ -19,7 +19,7 @@
     <toc-item title="Detailed Reports" target="Detailed Reports" />
    </view>
    <view inputState="Unknown" program="implementation" contextTags="FPGA_ONLY" hidden="true" type="HTML" file="TOP_envsettings.html" label="System Settings" />
-   <view inputState="Translated" program="map" locator="MAP_IOB_TABLE" contextTags="FPGA_ONLY" type="IOBProperties" file="TOP_map.xrpt" label="IOB Properties" />
+   <view inputState="Translated" program="map" locator="MAP_IOB_TABLE" contextTags="FPGA_ONLY" type="IOBProperties" file="TOP_map.xrpt" showConstraints="0" label="IOB Properties" />
    <view inputState="Translated" program="map" contextTags="FPGA_ONLY" hidden="true" type="Control_Sets" file="TOP_map.xrpt" label="Control Set Information" />
    <view inputState="Translated" program="map" locator="MAP_MODULE_HIERARCHY" contextTags="FPGA_ONLY" type="Module_Utilization" file="TOP_map.xrpt" label="Module Level Utilization" />
    <view inputState="Mapped" program="par" locator="CONSTRAINT_TABLE" contextTags="FPGA_ONLY" type="ConstraintsData" file="TOP.ptwx" label="Timing Constraints" translator="ptwxToTableXML.xslt" />

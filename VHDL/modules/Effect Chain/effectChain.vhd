@@ -47,10 +47,12 @@ Signal selectModule : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
 Signal effectSelector: unsigned(2 downto 0) := (others => '0');
 
 -- AUDIO SIGNAL
-signal audioOutBuffer : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
+signal audioOutBuffer 	  : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
 signal audioOutDistortion : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
-signal audioOutTremolo: STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
-signal audioOutVolume : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
+signal audioOutTremolo	  : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
+signal audioOutDelay  	  : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
+signal audioOutVolume 	  : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
+
 
 begin
 
@@ -125,7 +127,7 @@ port map(-- System Clock (50 MHz)
 			  
 			  -- Select Module
 			  Pedal => PEDAL,										-- Constant '1' indicates that pedal is activated
-           SM => selectModule(1),											-- Constant '1' indicates us that module is selected	
+           SM => selectModule(1),							-- Constant '1' indicates us that module is selected	
 
 			  -- External control
            Rate  => ADC0,
@@ -133,13 +135,33 @@ port map(-- System Clock (50 MHz)
 			  Depth => ADC4
 			);
 
+Delay: entity work.Delay(Behavioral)
+port map(  CLK => CLK,
+			 
+			  RESET => RESET,										-- logical '0' indicates us that reset button was pressed
+			  
+			  -- Audio signals
+			  audioIn => audioOutTremolo,
+           audioOut => audioOutDelay,
+			  
+			  -- Select Module
+			  Pedal => PEDAL,
+           SM => selectModule(2),							-- Constant '1' indicates us that module is selected									
+			  
+			  -- External control
+           eLevel => ADC0,			-- Effect Level: volume of the delay
+           fBack  => ADC1,			-- Feedback: ammount of time the sound is played
+			  dTime	=> ADC4			-- Delay Time: time between effects
+			  );
+
+
 Volume: entity work.volumeControl(Behavioral)
 port map( CLK => CLK,
 			 RESET => RESET,
-			 audioIn => audioOutTremolo,
+			 audioIn => audioOutDelay,
           audioOut => audioOutVolume,
 			 Pedal => PEDAL,
-          SM => selectModule(2), 
+          SM => selectModule(3), 
           TBD1 => ADC0,
           vol => ADC1,							
 			 TBD2 => ADC4
