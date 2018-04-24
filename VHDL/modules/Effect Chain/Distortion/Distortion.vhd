@@ -51,8 +51,10 @@ signal sLevel : signed(10 downto 0);
 Signal lastAudioIn23 : STD_LOGIC := '0';
 
 signal tempVector1 : std_logic_vector(23 downto 0) := (others => '0');
+signal tempVector2 : std_logic_vector(23 downto 0) := (others => '0');
 signal tempCal1 : signed(37 downto 0) := (others => '0');
-signal limit : signed(25 downto 0) := (others => '0');
+
+constant limit : signed(23 downto 0) := x"427E56"
 constant levelGain : signed(2 downto 0) := b"101";					-- Temp gain:5
 signal newWave : STD_LOGIC := '0';
 
@@ -105,24 +107,25 @@ process(CLK)
 	begin
 		if rising_edge(CLK) then
 			if SM = '1' and Pedal = '1'  then					-- Selected module = 1 and pedal was activated => Normal operation
-				limit <= x"7FFFFF" - (sDist * b"010000000001000"); --8200 (2^31 / 1024)
+				
+				tempVector1 <= std_logic_vector( sdist * audioIn);
 				
 				-- Add distortion by cutting the pre-amp'ed signal
-				if signed(audioIn) > limit then
-					tempVector1 <= std_logic_vector(limit(23 downto 0));
+				if signed(tempVector1(34 downto 10)) > limit then
+					tempVector2 <= std_logic_vector(limit);
 					
-				elsif signed(audioIn) < (0 - limit(23 downto 0)) then
-					tempVector1 <= std_logic_vector(0 - limit(23 downto 0));
-					
+				elsif signed(tempVector1(34 downto 10)) < (0 - limit) then
+					tempVector2 <= std_logic_vector(0 - limit);	
 				else
-					tempVector1 <= audioIn;
+					tempVector2 <= audioIn;
 				end if;
 				
 				-- tone should go here
 		
 				-- Post-distortion amplification
-				tempCal1 <= signed(tempVector1) * signed(levelGain) * signed(sLevel);
+				tempCal1 <= signed(tempVector2) * signed(levelGain) * signed(sLevel);
 				
+				-- Just making sure here we dont go over the maximum
 				if tempCal1(34 downto 10) > x"7FFFFF" then
 					audioOut <= x"7FFFFF";
 				elsif tempCal1(34 downto 10) < x"800000" then

@@ -53,44 +53,9 @@ end Delay;
 
 architecture Behavioral of Delay is
 
-Type fifo is array (0 to 48000) of STD_LOGIC_VECTOR(23 downto 0);
-signal tempFifo : fifo;
-
-signal a : STD_LOGIC := '0';
-
-signal tempVector : STD_LOGIC_VECTOR(23 downto 0);
-
 begin
 
---audioOut <= tempVector;
-
-Temp:
-process(CLK)
-
-variable t : integer range 0 to 48000 := 0;
-
-begin
-	if rising_edge(CLK) then
-		if a = '0' then
-			t := t + 1;
-			tempFifo(t-1) <= audioIn;
-			
-			if t = 48000 then
-				a <= '1';
-			end if;
-			
-		else
-			t := t + 1;
-			audioOut <= tempFifo(t-1);
-			
-			if t = 48000 then
-				a <= '0';
-			end if;
-			
-		end if;
-	end if;
-end process;
-
+audioOut <= audioIn;
 
 end Behavioral;
 
