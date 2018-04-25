@@ -33,6 +33,13 @@ entity LCD_Controler is
 			  -- RESET
            RESET : in  STD_LOGIC;
 			  
+			  -- PEDAL
+			  PEDAL : in STD_LOGIC;
+			  
+			  -- LOCKED DATA
+			  LM : in STD_LOGIC_VECTOR (7 downto 0);
+			  
+			  
 			  -- ADC DATA
            ADC0 : in  STD_LOGIC_VECTOR (9 downto 0);
            ADC1 : in  STD_LOGIC_VECTOR (9 downto 0);
@@ -84,7 +91,7 @@ constant glcdSendCmd : STD_LOGIC := '0';
 -- OPERATION ENABLE SIGNAL
 signal E : STD_LOGIC := '0';
 signal lastE : STD_LOGIC := '0';
-signal compteur : UNSIGNED(14 downto 0) := (others => '0');
+signal compteur : UNSIGNED(10 downto 0) := (others => '0');
 signal enableE : STD_LOGIC := '0';	
 
 --
@@ -251,9 +258,11 @@ process(RESET,CLK)
 		end if;
 end process;
 
-
--- IMAGES
-
+---
+------------
+-- IMAGES ----
+------------
+---
 
 ---
 -- Selected Module Image
@@ -296,9 +305,6 @@ with SM select			-- PAGE 1
 							x"7F", x"07", x"00", x"00", x"00", x"00", x"00", x"00") when b"00000001",				 -- Distortion IMG BOT
 						   (others => (others => '0')) when others;
 
-with SM select			-- PAGE 2
-	lcdScreen(2) <=  (others => (others => '0')) when others;
-
 with SM select
 	lcdScreen(3) <=  (x"00", x"00", x"00", x"00", x"00", x"00", x"00", x"00", 
 							x"00", x"00", x"00", x"00", x"00", x"00", x"00", x"80", 
@@ -317,7 +323,102 @@ with SM select
 							x"90", x"00", x"00", x"00", x"00", x"00", x"00", x"00", 
 							x"00", x"00", x"00", x"00", x"00", x"00", x"00", x"00") when b"00000001",				 -- Distortion IMG BOT
 						   (others => (others => '0')) when others;
-												
+	
+
+----
+--	Small icons
+----
+
+lockIcon:
+process(CLK)
+begin
+	if rising_edge(CLK) then
+		case SM is
+			when b"00000001" => -- distortion
+				if LM(0) = '1' then
+					lcdScreen(2)(117) <= x"F0";
+					lcdScreen(2)(118) <= x"FC";
+					lcdScreen(2)(119) <= x"F2";
+					lcdScreen(2)(120) <= x"F2";
+					lcdScreen(2)(121) <= x"F2";
+					lcdScreen(2)(122) <= x"FC";
+					lcdScreen(2)(123) <= x"F0";
+				elsif LM(0) = '0' then
+					lcdScreen(2)(117) <= x"00";
+					lcdScreen(2)(118) <= x"00";
+					lcdScreen(2)(119) <= x"00";
+					lcdScreen(2)(120) <= x"00";
+					lcdScreen(2)(121) <= x"00";
+					lcdScreen(2)(122) <= x"00";
+					lcdScreen(2)(123) <= x"00";
+				end if;
+			when b"00000010" => -- Tremolo
+				if LM(1) = '1' then
+					lcdScreen(2)(117) <= x"F0";
+					lcdScreen(2)(118) <= x"FC";
+					lcdScreen(2)(119) <= x"F2";
+					lcdScreen(2)(120) <= x"F2";
+					lcdScreen(2)(121) <= x"F2";
+					lcdScreen(2)(122) <= x"FC";
+					lcdScreen(2)(123) <= x"F0";
+				elsif LM(1) = '0' then
+					lcdScreen(2)(117) <= x"00";
+					lcdScreen(2)(118) <= x"00";
+					lcdScreen(2)(119) <= x"00";
+					lcdScreen(2)(120) <= x"00";
+					lcdScreen(2)(121) <= x"00";
+					lcdScreen(2)(122) <= x"00";
+					lcdScreen(2)(123) <= x"00";
+				end if;
+			when b"00000100" => -- Volume
+				if LM(2) = '1' then
+					lcdScreen(2)(117) <= x"F0";
+					lcdScreen(2)(118) <= x"FC";
+					lcdScreen(2)(119) <= x"F2";
+					lcdScreen(2)(120) <= x"F2";
+					lcdScreen(2)(121) <= x"F2";
+					lcdScreen(2)(122) <= x"FC";
+					lcdScreen(2)(123) <= x"F0";
+				elsif LM(2) = '0' then
+					lcdScreen(2)(117) <= x"00";
+					lcdScreen(2)(118) <= x"00";
+					lcdScreen(2)(119) <= x"00";
+					lcdScreen(2)(120) <= x"00";
+					lcdScreen(2)(121) <= x"00";
+					lcdScreen(2)(122) <= x"00";
+					lcdScreen(2)(123) <= x"00";
+				end if;
+			when others =>
+				
+			end case;
+	end if;
+end process;
+
+pedalIcon:
+process(CLK)
+begin
+	if rising_edge(CLK) then
+		if PEDAL = '1' then
+			lcdScreen(2)(3) <= x"38";
+			lcdScreen(2)(4) <= x"77";
+			lcdScreen(2)(5) <= x"80";
+			lcdScreen(2)(6) <= x"9E";
+			lcdScreen(2)(7) <= x"80";
+			lcdScreen(2)(8) <= x"77";
+			lcdScreen(2)(9) <= x"38";
+		else
+			lcdScreen(2)(3) <= x"00";
+			lcdScreen(2)(4) <= x"00";
+			lcdScreen(2)(5) <= x"00";
+			lcdScreen(2)(6) <= x"00";
+			lcdScreen(2)(7) <= x"00";
+			lcdScreen(2)(8) <= x"00";
+			lcdScreen(2)(9) <= x"00";
+		end if;
+	end if;
+end process;
+
+
 ----
 -- ADC lines
 ----

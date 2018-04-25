@@ -27,6 +27,10 @@ entity effectChain is
 			  -- Selected module
 			  SM : out STD_LOGIC_VECTOR(7 downto 0);
 			  
+			  -- Lock
+			  LM : out STD_LOGIC_VECTOR(7 downto 0);
+			  LOCK : in STD_LOGIC;
+			  
 			  -- Effect control
 			  LAST_EFFECT: in STD_LOGIC;
 			  NEXT_EFFECT: in STD_LOGIC;
@@ -37,7 +41,12 @@ entity effectChain is
 			  -- Control ADC
 			  ADC0 : in STD_LOGIC_VECTOR(9 downto 0);
 			  ADC1 : in STD_LOGIC_VECTOR(9 downto 0);
-			  ADC4 : in STD_LOGIC_VECTOR(9 downto 0)
+			  ADC4 : in STD_LOGIC_VECTOR(9 downto 0);
+			  
+			  -- Adc data to LCD
+			  LCD_ADC0 : out STD_LOGIC_VECTOR(9 downto 0);
+			  LCD_ADC1 : out STD_LOGIC_VECTOR(9 downto 0);
+			  LCD_ADC4 : out STD_LOGIC_VECTOR(9 downto 0)
 			);
 end effectChain;
 
@@ -50,9 +59,20 @@ Signal effectSelector: unsigned(2 downto 0) := (others => '0');
 signal audioOutBuffer 	  : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
 signal audioOutDistortion : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
 signal audioOutTremolo	  : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
-signal audioOutDelay  	  : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
 signal audioOutVolume 	  : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
 
+--Distortion lcd data
+signal lcdDist : std_logic_vector(9 downto 0);
+signal lcdTone : std_logic_vector(9 downto 0);
+signal lcdLevel : std_logic_vector(9 downto 0);
+
+-- Tremolo lcd data
+signal lcdRate : std_logic_vector(9 downto 0);
+signal lcdWave : std_logic_vector(9 downto 0);
+signal lcdDepth : std_logic_vector(9 downto 0);
+
+-- Volume lcd Data
+signal lcdVol : std_logic_vector(9 downto 0);
 
 begin
 
@@ -74,15 +94,31 @@ ChooseEffect:process(RESET,CLK)
 	end process;
 
 with effectSelector select
-	selectModule <= b"00000001" when b"000",
-						 b"00000010" when b"001",
-						 b"00000100" when b"010",
+	selectModule <= b"00000001" when b"000",		-- Distortion
+						 b"00000010" when b"001",		-- Tremolo
+						 b"00000100" when b"010",		-- Volume
 						 b"00001000" when b"011",
 						 b"00010000" when b"100",
 						 b"00100000" when b"101",
 						 b"01000000" when b"110",
 						 b"10000000" when b"111",
 						 b"00000000" when others;
+
+with effectSelector select
+	LCD_ADC0 <= lcdDist when b"000",		-- Distortion
+					lcdRate when b"001",		-- Tremolo
+					ADC0 when others;
+
+with effectSelector select
+	LCD_ADC1 <= lcdTone when b"000",		-- Distortion
+					lcdWave when b"001",		-- Tremolo
+					lcdVol when b"010",		-- Volume
+					ADC1 when others;
+
+with effectSelector select
+	LCD_ADC4 <= lcdLevel when b"000",		-- Distortion
+					lcdDepth when b"001",		-- Tremolo
+					ADC4 when others;
 
 
 --PortMap
@@ -107,11 +143,19 @@ port map(  -- System Clock (50 MHz)
 			  -- Select Module
 			  Pedal => PEDAL,											-- Constant '1' indicates that pedal is activated
            SM => selectModule(0),												-- Constant '1' indicates us that module is selected	
+			  LM => LM(0),
+			  
+			  LOCK => LOCK,
 			  
 			  -- External control
            Dist => ADC0,				-- Ammount of distortion 	  -> Gain of the pre-cut signal
            Tone => ADC1,				-- Tone of the signal		  -> Filtre passe bas
-			  Level => ADC4				-- Ammount of gain of volume -> gain of the post-processed signal
+			  Level => ADC4,				-- Ammount of gain of volume -> gain of the post-processed signal
+			  
+			  -- Data to LCD
+			  distOut => lcdDist,
+			  toneOut => lcdTone,
+			  levelOut => lcdLevel
 			 );
 
 Tremolo: entity work.Tremolo(Behavioral)
@@ -128,43 +172,37 @@ port map(-- System Clock (50 MHz)
 			  -- Select Module
 			  Pedal => PEDAL,										-- Constant '1' indicates that pedal is activated
            SM => selectModule(1),							-- Constant '1' indicates us that module is selected	
-
+			  LM => LM(1),
+			  
+			  LOCK => LOCK,
+			  
 			  -- External control
            Rate  => ADC0,
            Wave  => ADC1,		
-			  Depth => ADC4
+			  Depth => ADC4,
+			  
+			  -- Data to LCD
+			  rateOut => lcdRate,
+			  waveOut => lcdWave,
+			  depthOut => lcdDepth
 			);
-
-Delay: entity work.Delay(Behavioral)
-port map(  CLK => CLK,
-			 
-			  RESET => RESET,										-- logical '0' indicates us that reset button was pressed
-			  
-			  -- Audio signals
-			  audioIn => audioOutTremolo,
-           audioOut => audioOutDelay,
-			  
-			  -- Select Module
-			  Pedal => PEDAL,
-           SM => selectModule(2),							-- Constant '1' indicates us that module is selected									
-			  
-			  -- External control
-           eLevel => ADC0,			-- Effect Level: volume of the delay
-           fBack  => ADC1,			-- Feedback: ammount of time the sound is played
-			  dTime	=> ADC4			-- Delay Time: time between effects
-			  );
 
 
 Volume: entity work.volumeControl(Behavioral)
 port map( CLK => CLK,
 			 RESET => RESET,
-			 audioIn => audioOutDelay,
+			 
+			 audioIn => audioOutTremolo,
           audioOut => audioOutVolume,
+			 
 			 Pedal => PEDAL,
-          SM => selectModule(3), 
-          TBD1 => ADC0,
-          vol => ADC1,							
-			 TBD2 => ADC4
+          SM => selectModule(2), 
+			 LM => LM(2),
+			 
+			 LOCK => LOCK,
+			 
+          vol => ADC1,
+			 volOut => lcdVol
 			);
 
 BufferOut: entity work.Buffer_Out(Behavioral)

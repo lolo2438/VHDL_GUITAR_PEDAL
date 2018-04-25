@@ -15,6 +15,11 @@ entity Button_Processing is
            NEXT_EFFECT_IN : in  STD_LOGIC;			-- NEXT EFFECT IN
            NEXT_EFFECT_OUT : out  STD_LOGIC;			-- NEXT EFFECT OUT
            
+			  PEDAL_IN : in STD_LOGIC;
+			  PEDAL_OUT : out STD_LOGIC;
+			  
+			  LOCK : out STD_LOGIC;
+			  
            LAST_EFFECT_IN : in  STD_LOGIC;			-- LAST EFFECT IN
            LAST_EFFECT_OUT : out  STD_LOGIC;			-- LAST EFFECT OUT
 			  
@@ -30,6 +35,24 @@ signal arNEXT_EFFECT : STD_LOGIC := '0';
 signal arPedal : STD_LOGIC := '0';
 
 begin
+
+AR_Pedal : entity work.Anti_Rebond(Behavioral)
+Port map(	
+			Bouton => PEDAL_IN,
+			Sortie => arPedal,
+			Horloge => CLK
+		  );
+
+PEDAL_OUT <= arPedal;
+
+lockDetection: entity work.PedalControl(Behavioral)
+Port map (
+			  CLK => CLK,			-- System clock
+           PEDAL_IN => arPedal,	-- Pedal input
+			  LOCK => LOCK,			-- Lock Module
+			  RESET => RESET
+			 );
+
 
 -- Step 1: Remove rebound	  
 AR_Back : entity work.Anti_Rebond(Behavioral)

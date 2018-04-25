@@ -37,17 +37,26 @@ entity volumeControl is
 			  -- Select Module
 			  Pedal : in STD_LOGIC;
            SM : in STD_LOGIC;												-- Constant '1' indicates us that module is selected	
+			  LM : out STD_LOGIC;
+			  
+			  LOCK : in STD_LOGIC;
 			  
 			  -- External control
            vol : in  STD_LOGIC_VECTOR (9 downto 0);
-           TBD1 : in  STD_LOGIC_VECTOR (9 downto 0);				-- To be determined
-			  TBD2 : in STD_LOGIC_VECTOR (9 downto 0)
+			  
+			  volOut : out  STD_LOGIC_VECTOR (9 downto 0)
 			);
 end volumeControl;
 
 architecture Behavioral of volumeControl is
 
-Signal sVolume : signed(10 downto 0) := (others => '0');
+signal sVolume : signed(10 downto 0) := (others => '0');
+
+signal savedVolume : signed(10 downto 0) := (others => '0');
+
+signal lastLOCK : STD_LOGIC := '0';
+signal locked : STD_LOGIC := '0';
+signal lastLocked : STD_LOGIC := '0';
 
 Signal lastAudioIn23 : STD_LOGIC := '0';
 signal tempVector : STD_LOGIC_VECTOR(37 downto 0) := (others => '0');
@@ -56,38 +65,79 @@ constant gain : signed(2 downto 0) := b"010";					      -- Volume Gain constant 
 
 begin
 
+volOut <= std_logic_vector(sVolume(9 downto 0));
+
+LM <= locked;
+
+detectLock:
+process(CLK)
+begin
+	if rising_edge(CLK) then
+		if SM = '1' then	
+			if LOCK /= lastLOCK then
+				locked <= not locked;
+			end if;
+			
+			lastLOCK <= LOCK;
+		end if;
+	end if;
+end process;
+
+
+saveParameters:
+process(CLK)
+begin
+	if rising_edge(CLK) then
+		if locked = '1' and lastLocked = '0' then			--If we have a rising edge => module is getting locked => Save the parameters
+			savedVolume <= signed('0' & Vol);
+		end if;
+	
+		lastLocked <= locked;
+	end if;
+end process;
+
+
 detectNewWave:
 process(CLK)	--A tester: est ce que le fait de garder le volume fixe le temps d'une wave repare le bruit etrange
 begin
 	if rising_edge(CLK) then
 		if audioIn(23) = '0' and lastAudioIn23 = '1' then	--when the audio signal goes from negative -> positive
-			sVolume <= ('0' & signed(Vol));
+			if locked = '0' then
+				sVolume <= ('0' & signed(Vol));
+			else
+				sVolume <= savedVolume;
+			end if;
 		end if;
 		
 		lastAudioIn23 <= audioIn(23);
 	end if;
 end process;
 
+
 Main:
 process(CLK)
 	begin
 		if rising_edge(CLK) then						
-			if SM = '1' and Pedal = '1'  then
-				tempVector <= std_logic_vector(signed(audioIn) * gain* sVolume); -- quand on fait * vol il y a du bruit à des endroits etrange
+			if SM = '1' then 
 				
-				-- If value gets over positive peak
-				if signed(tempVector(34 downto 10)) > x"7FFFFF" then
-					audioOut <= x"7FFFFF";
+				if Pedal = '1'  then
+					tempVector <= std_logic_vector(signed(audioIn) * gain* sVolume); -- quand on fait * vol il y a du bruit à des endroits etrange
 					
-				--If value gets over negative peak
-					elsif signed(tempVector(34 downto 10)) < x"800000" then
-					audioOut <= x"800000";
-				
-				-- If value is in range
+					-- If value gets over positive peak
+					if signed(tempVector(34 downto 10)) > x"7FFFFF" then
+						audioOut <= x"7FFFFF";
+						
+					--If value gets over negative peak
+						elsif signed(tempVector(34 downto 10)) < x"800000" then
+						audioOut <= x"800000";
+					
+					-- If value is in range
+					else
+						audioOut <= tempVector(33 downto 10);
+					end if;
 				else
-					audioOut <= tempVector(33 downto 10);
+					audioOut <= audioIn;
 				end if;
-				
 			--Otherwise foward signal
 			else
 				audioOut <= audioIn;

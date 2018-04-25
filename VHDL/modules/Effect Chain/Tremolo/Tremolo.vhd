@@ -36,11 +36,17 @@ entity Tremolo is
 			  -- Select Module
 			  Pedal : in STD_LOGIC;											-- Constant '1' indicates that pedal is activated
            SM : in STD_LOGIC;												-- Constant '1' indicates us that module is selected	
+			  LM : out STD_LOGIC;
+			  LOCK : in STD_LOGIC;
 			  
 			  -- External control
            Rate  : in  STD_LOGIC_VECTOR (9 downto 0);				-- Frequency of the tremolo
            Wave  : in  STD_LOGIC_VECTOR (9 downto 0);				-- Wave shape of the tremolo
-			  Depth : in STD_LOGIC_VECTOR (9 downto 0)				-- Amplitude of the tremolo
+			  Depth : in STD_LOGIC_VECTOR (9 downto 0);				-- Amplitude of the tremolo
+			  
+			  rateOut : out  STD_LOGIC_VECTOR (9 downto 0);
+			  waveOut : out  STD_LOGIC_VECTOR (9 downto 0);
+			  depthOut : out  STD_LOGIC_VECTOR (9 downto 0)
 			);
 end Tremolo;
 
@@ -83,24 +89,44 @@ Signal DepthXBpm : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
 Signal divisionDone : STD_LOGIC := '0';
 Signal dataOutDiviser : STD_LOGIC_VECTOR(55 downto 0) := (others => '0');
 
+signal sRate : unsigned(9 downto 0);
+signal sWave : unsigned(9 downto 0);
+signal sDepth : signed(9 downto 0);
+
+-- LOCKED
+signal savedRate : unsigned(9 downto 0);
+signal savedWave : unsigned(9 downto 0);
+signal savedDepth: signed(9 downto 0);
+
+signal lastLOCK : STD_LOGIC := '0';
+signal locked : STD_LOGIC := '0';
+signal lastLocked : STD_LOGIC := '0';
 
 begin
 
 -- à réparer
 -- rate minimum = 2x rate maximum 
+rateOut <= std_logic_vector(sRate);
+waveOut <= std_logic_vector(sWave);
+depthOut <= std_logic_vector(sDepth);
 
--- Signal assignations
-DepthXBpm <= std_logic_vector( (('0' & unsigned(Depth))+ b"1") * b"10" * (('0' & unsigned(Rate)) + x"78"));			-- 120 BPM = x"78"
+LM <= locked;
 
 -- Main module
 Tremolo:
 process(CLK)
 begin
 	if rising_edge(CLK) then																		
-		if SM = '1' and Pedal = '1'  then								-- Selected module = 1 and pedal was activated => Normal operation
-			tempVector <= std_logic_vector(signed(audioIn) * genWave);
+		if SM = '1' then
 			
-			audioOut <= tempVector(33 downto 10);
+			if Pedal = '1'  then								-- Selected module = 1 and pedal was activated => Normal operation
+				tempVector <= std_logic_vector(signed(audioIn) * genWave);
+			
+				audioOut <= tempVector(33 downto 10);
+			
+			else
+				audioOut <= audioIn;
+			end if;
 			
 		else
 			audioOut <= audioIn;
@@ -108,7 +134,38 @@ begin
 	end if;
 end process;
 
+
+detectLock:
+process(CLK)
+begin
+	if rising_edge(CLK) then
+		if SM = '1' then
+			if LOCK /= lastLOCK then
+				locked <= not locked;
+			end if;
+			
+			lastLOCK <= LOCK;
+		end if;
+	end if;
+end process;
+
+saveParameters:
+process(CLK)
+begin
+	if rising_edge(CLK) then
+		if locked = '1' and lastLocked = '0' then			--If we have a rising edge => module is getting locked => Save the parameters
+			savedDepth <= signed(Depth);
+			savedRate <= unsigned(Rate);
+			savedWave <= unsigned(Wave);
+		end if;
+	
+		lastLocked <= locked;
+	end if;
+end process;
+
+----
 -- Detects when a new waveform is generated and loads the user selected settings
+----
 detectNewWave:
 process(CLK)
 	begin
@@ -116,17 +173,28 @@ process(CLK)
 			if newWave = '1' then
 				loadToDivisor <= '1';
 				shapeScale <= slope;
-				waveMin <= x"400" - signed(b"0" & Depth);
+				waveMin <= x"400" - ('0' & sDepth);
+				DepthXBpm <= std_logic_vector(('0' & unsigned(sDepth)+ b"1") * b"10" * (('0' & sRate) + x"78"));			-- 120 BPM = x"78"				
 			else
 				loadToDivisor <= '0';
+				
+				if locked = '0' then
+					sDepth <= signed(Depth);
+					sRate <= unsigned(Rate);
+					sWave <= unsigned(Wave);
+				else
+					sDepth <= savedDepth;
+					sRate <= savedRate;
+					sWave <= savedWave;
+				end if;
+				
 			end if;
 		end if;
 end process;
 
-
--- Tclkmax = (50_000_000 / nbpoints) * (60/bpm)
-
--- Tremolo clock
+----
+-- Tremolo wave clock
+----
 ClkDiv:
 process(CLK,RESET)
 begin
@@ -142,43 +210,44 @@ begin
 	end if;
 end process;
 
-
+----
 -- Slope selector ( /\/ -> |¯|_| )
+----
 WaveSlope:
 process(CLK)
 begin
 	if rising_edge(CLK) then
-		if ((unsigned(Wave) >= 0) and (unsigned(Wave) < 93)) then	--1
+		if ((unsigned(sWave) >= 0) and (unsigned(sWave) < 93)) then	--1
 			slope <= b"00000000001";
 			
-		elsif ((unsigned(Wave) >= 93) and (unsigned(Wave) < 186)) then	--2
+		elsif ((unsigned(sWave) >= 93) and (unsigned(sWave) < 186)) then	--2
 			slope <= b"00000000010";
 		
-		elsif ((unsigned(Wave) >= 186) and (unsigned(Wave) < 279)) then --4
+		elsif ((unsigned(sWave) >= 186) and (unsigned(sWave) < 279)) then --4
 			slope <= b"00000000100";
 		
-		elsif ((unsigned(Wave) >= 279) and (unsigned(Wave) < 372)) then --8
+		elsif ((unsigned(sWave) >= 279) and (unsigned(sWave) < 372)) then --8
 			slope <= b"00000001000";
 		
-		elsif ((unsigned(Wave) >= 372) and (unsigned(Wave) < 465)) then --16
+		elsif ((unsigned(sWave) >= 372) and (unsigned(sWave) < 465)) then --16
 			slope <= b"00000010000";
 		
-		elsif ((unsigned(Wave) >= 465) and (unsigned(Wave) < 558)) then --32
+		elsif ((unsigned(sWave) >= 465) and (unsigned(sWave) < 558)) then --32
 			slope <= b"00000100000";
 		
-		elsif ((unsigned(Wave) >= 558) and (unsigned(Wave) < 651)) then --64
+		elsif ((unsigned(sWave) >= 558) and (unsigned(sWave) < 651)) then --64
 			slope <= b"00001000000";
 		
-		elsif ((unsigned(Wave) >= 651) and (unsigned(Wave) < 744)) then --128
+		elsif ((unsigned(sWave) >= 651) and (unsigned(sWave) < 744)) then --128
 			slope <= b"00010000000";
 		
-		elsif ((unsigned(Wave) >= 744) and (unsigned(Wave) < 837)) then --256
+		elsif ((unsigned(sWave) >= 744) and (unsigned(sWave) < 837)) then --256
 			slope <= b"00100000000";
 			
-		elsif ((unsigned(Wave) >= 837) and (unsigned(Wave) < 930)) then --512
+		elsif ((unsigned(sWave) >= 837) and (unsigned(sWave) < 930)) then --512
 			slope <= b"01000000000";
 		
-		elsif ((unsigned(Wave) >= 930) and (unsigned(Wave) <= 1023)) then --1024
+		elsif ((unsigned(sWave) >= 930) and (unsigned(sWave) <= 1023)) then --1024
 			slope <= b"10000000000";
 		
 		else
@@ -188,7 +257,9 @@ begin
 end process;
 
 
--- Wave generator
+----
+-- Tremolo wave generator
+----
 WaveGen:
 process(WCLK,RESET)
 	begin
@@ -232,7 +303,9 @@ process(WCLK,RESET)
 		end if;
 end process;
 
-
+----
+-- Divisor section
+----
 detectDivisorDone:
 process(CLK)
 begin

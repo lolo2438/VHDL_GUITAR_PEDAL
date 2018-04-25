@@ -41,7 +41,6 @@ Signal stateADCRead : readAdc := waitData;
 Signal sADC0 : STD_LOGIC_VECTOR(9 downto 0) := (Others => '0');
 Signal sADC1 : STD_LOGIC_VECTOR(9 downto 0) := (Others => '0');
 Signal sADC4 : STD_LOGIC_VECTOR(9 downto 0) := (Others => '0');
-Signal tempSample : STD_LOGIC_VECTOR(9 downto 0) := (Others => '0');
 
 signal testAdc0 : STD_LOGIC_VECTOR(9 downto 0) := (Others => '0');
 signal testAdc1 : STD_LOGIC_VECTOR(9 downto 0) := (Others => '0');
@@ -66,8 +65,7 @@ ADC4 <= sADC4;
 ADC_Read:process(CLK,RESET)
 	begin
 		if RESET = '0' then
-					
-			tempSample <= (others => '0');
+			
 			REQUESTED_CHANNEL <= x"0";
 			
 		elsif rising_edge(CLK) then

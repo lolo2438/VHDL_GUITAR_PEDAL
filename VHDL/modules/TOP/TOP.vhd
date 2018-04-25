@@ -83,6 +83,11 @@ signal adc0 : STD_LOGIC_VECTOR(9 downto 0);
 signal adc1 : STD_LOGIC_VECTOR(9 downto 0);
 signal adc4 : STD_LOGIC_VECTOR(9 downto 0);
 
+-- ADC DATA DISPLAYED ON LCD => IMPORTANT FOR LOCK
+signal lcdAdc0 : STD_LOGIC_VECTOR(9 downto 0);
+signal lcdAdc1 : STD_LOGIC_VECTOR(9 downto 0);
+signal lcdAdc4 : STD_LOGIC_VECTOR(9 downto 0);
+
 -- Guitar effect chain signals
 signal lockedModules : STD_LOGIC_VECTOR(7 downto 0);
 signal selectedModule : STD_LOGIC_VECTOR(7 downto 0);
@@ -90,6 +95,10 @@ signal selectedModule : STD_LOGIC_VECTOR(7 downto 0);
 -- Button processing
 signal sNextE : STD_LOGIC;
 signal sLastE : STD_LOGIC;
+signal sPedal : STD_LOGIC;
+
+signal lock : STD_LOGIC;
+
 
 begin
 
@@ -205,10 +214,13 @@ Port map ( -- FPGA 50 MHZ
 			  DONE => doneSending,
 			  
 			  -- Pedal
-			  PEDAL => PEDAL,
+			  PEDAL => sPedal,
 			  
 			  -- Selected module
 			  SM => selectedModule,
+			  LM => lockedModules,
+			  
+			  LOCK => lock,
 			  
 			  -- Effect control
 			  LAST_EFFECT => sLastE,
@@ -220,7 +232,12 @@ Port map ( -- FPGA 50 MHZ
 			  -- Control ADC
 			  ADC0 => adc0,
 			  ADC1 => adc1,
-			  ADC4 => adc4
+			  ADC4 => adc4,
+			  
+			  -- LCD adc data
+			  LCD_ADC0 => lcdADC0,
+			  LCD_ADC1 => lcdADC1,
+			  LCD_ADC4 => lcdADC4
 			);
 
 -- Input buttons Signal processing
@@ -230,6 +247,10 @@ Port map(
 			
          NEXT_EFFECT_IN => NEXT_EFFECT,
          LAST_EFFECT_IN => LAST_EFFECT,
+			
+			PEDAL_IN => PEDAL,
+			PEDAL_OUT => sPedal,
+			LOCK => lock,
 			
          NEXT_EFFECT_OUT => sNextE,
          LAST_EFFECT_OUT => sLastE,
@@ -248,10 +269,16 @@ Port map( -- FPGA CLOCK
 			  -- RESET
            RESET => RESET,
 			  
+			  -- PEDAL
+			  PEDAL => sPedal,
+			  
+			  -- Locked modules
+			  LM => lockedModules,
+			  
 			  -- ADC DATA
-           ADC0 => adc0,
-           ADC1 => adc1,
-           ADC4 => adc4,
+           ADC0 => lcdAdc0,
+           ADC1 => lcdAdc1,
+           ADC4 => lcdAdc4,
 			  
 			  -- GLCD Hardware signal
            GLCD_DATA => GLCD_DATA,				-- LCD DATA OUT
