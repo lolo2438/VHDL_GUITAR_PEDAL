@@ -75,7 +75,8 @@ Signal direction : STD_LOGIC := '0';
 signal slope : signed(10 downto 0) := (others => '0');
 signal shapeScale : signed(10 downto 0) := (others => '0');
 signal waveMin : signed(11 downto 0) := (others => '0');
-signal newWave : STD_LOGIC;
+signal newWave : STD_LOGIC := '0';
+signal lastNewWave : STD_LOGIC := '0';
 
 --Wave generation clock
 Signal WCLK : STD_LOGIC := '0';
@@ -98,14 +99,13 @@ signal savedRate : unsigned(9 downto 0);
 signal savedWave : unsigned(9 downto 0);
 signal savedDepth: signed(9 downto 0);
 
-signal lastLOCK : STD_LOGIC := '0';
 signal locked : STD_LOGIC := '0';
-signal lastLocked : STD_LOGIC := '0';
 
 begin
 
 -- à réparer
 -- rate minimum = 2x rate maximum 
+
 rateOut <= std_logic_vector(sRate);
 waveOut <= std_logic_vector(sWave);
 depthOut <= std_logic_vector(sDepth);
@@ -136,30 +136,14 @@ end process;
 
 
 detectLock:
-process(CLK)
+process(CLK,SM,LOCK)
 begin
-	if rising_edge(CLK) then
-		if SM = '1' then
-			if LOCK /= lastLOCK then
-				locked <= not locked;
-			end if;
-			
-			lastLOCK <= LOCK;
-		end if;
-	end if;
-end process;
-
-saveParameters:
-process(CLK)
-begin
-	if rising_edge(CLK) then
-		if locked = '1' and lastLocked = '0' then			--If we have a rising edge => module is getting locked => Save the parameters
-			savedDepth <= signed(Depth);
-			savedRate <= unsigned(Rate);
-			savedWave <= unsigned(Wave);
-		end if;
-	
-		lastLocked <= locked;
+	if rising_edge(CLK) and SM = '1' and LOCK = '1' then
+		locked <= not locked;
+		
+		savedDepth <= signed(Depth);
+		savedRate <= unsigned(Rate);
+		savedWave <= unsigned(Wave);
 	end if;
 end process;
 
@@ -170,19 +154,21 @@ detectNewWave:
 process(CLK)
 	begin
 		if rising_edge(CLK) then
-			if newWave = '1' then
+			if newWave = '1' and lastNewWave = '0' then
+				lastNewWave <= newWave;
 				loadToDivisor <= '1';
 				shapeScale <= slope;
 				waveMin <= x"400" - ('0' & sDepth);
-				DepthXBpm <= std_logic_vector(('0' & unsigned(sDepth)+ b"1") * b"10" * (('0' & sRate) + x"78"));			-- 120 BPM = x"78"				
+				DepthXBpm <= std_logic_vector((('0' & unsigned(sDepth))+ b"1") * b"10" * (('0' & sRate) + x"78"));			-- 120 BPM = x"78"				
 			else
+				lastNewWave <= '0';
 				loadToDivisor <= '0';
 				
 				if locked = '0' then
 					sDepth <= signed(Depth);
 					sRate <= unsigned(Rate);
 					sWave <= unsigned(Wave);
-				else
+				elsif locked = '1' then
 					sDepth <= savedDepth;
 					sRate <= savedRate;
 					sWave <= savedWave;
@@ -217,37 +203,37 @@ WaveSlope:
 process(CLK)
 begin
 	if rising_edge(CLK) then
-		if ((unsigned(sWave) >= 0) and (unsigned(sWave) < 93)) then	--1
+		if ((to_integer(sWave) >= 0) and (to_integer(sWave) < 93)) then	--1
 			slope <= b"00000000001";
 			
-		elsif ((unsigned(sWave) >= 93) and (unsigned(sWave) < 186)) then	--2
+		elsif ((to_integer(sWave) >= 93) and (to_integer(sWave) < 186)) then	--2
 			slope <= b"00000000010";
 		
-		elsif ((unsigned(sWave) >= 186) and (unsigned(sWave) < 279)) then --4
+		elsif ((to_integer(sWave) >= 186) and (to_integer(sWave) < 279)) then --4
 			slope <= b"00000000100";
 		
-		elsif ((unsigned(sWave) >= 279) and (unsigned(sWave) < 372)) then --8
+		elsif ((to_integer(sWave) >= 279) and (to_integer(sWave) < 372)) then --8
 			slope <= b"00000001000";
 		
-		elsif ((unsigned(sWave) >= 372) and (unsigned(sWave) < 465)) then --16
+		elsif ((to_integer(sWave) >= 372) and (to_integer(sWave) < 465)) then --16
 			slope <= b"00000010000";
 		
-		elsif ((unsigned(sWave) >= 465) and (unsigned(sWave) < 558)) then --32
+		elsif ((to_integer(sWave) >= 465) and (to_integer(sWave) < 558)) then --32
 			slope <= b"00000100000";
 		
-		elsif ((unsigned(sWave) >= 558) and (unsigned(sWave) < 651)) then --64
+		elsif ((to_integer(sWave) >= 558) and (to_integer(sWave) < 651)) then --64
 			slope <= b"00001000000";
 		
-		elsif ((unsigned(sWave) >= 651) and (unsigned(sWave) < 744)) then --128
+		elsif ((to_integer(sWave) >= 651) and (to_integer(sWave) < 744)) then --128
 			slope <= b"00010000000";
 		
-		elsif ((unsigned(sWave) >= 744) and (unsigned(sWave) < 837)) then --256
+		elsif ((to_integer(sWave) >= 744) and (to_integer(sWave) < 837)) then --256
 			slope <= b"00100000000";
 			
-		elsif ((unsigned(sWave) >= 837) and (unsigned(sWave) < 930)) then --512
+		elsif ((to_integer(sWave) >= 837) and (to_integer(sWave) < 930)) then --512
 			slope <= b"01000000000";
 		
-		elsif ((unsigned(sWave) >= 930) and (unsigned(sWave) <= 1023)) then --1024
+		elsif ((to_integer(sWave) >= 930) and (to_integer(sWave) <= 1023)) then --1024
 			slope <= b"10000000000";
 		
 		else

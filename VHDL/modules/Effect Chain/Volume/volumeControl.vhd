@@ -54,7 +54,6 @@ signal sVolume : signed(10 downto 0) := (others => '0');
 
 signal savedVolume : signed(10 downto 0) := (others => '0');
 
-signal lastLOCK : STD_LOGIC := '0';
 signal locked : STD_LOGIC := '0';
 signal lastLocked : STD_LOGIC := '0';
 
@@ -70,29 +69,11 @@ volOut <= std_logic_vector(sVolume(9 downto 0));
 LM <= locked;
 
 detectLock:
-process(CLK)
+process(CLK,SM,LOCK)
 begin
-	if rising_edge(CLK) then
-		if SM = '1' then	
-			if LOCK /= lastLOCK then
-				locked <= not locked;
-			end if;
-			
-			lastLOCK <= LOCK;
-		end if;
-	end if;
-end process;
-
-
-saveParameters:
-process(CLK)
-begin
-	if rising_edge(CLK) then
-		if locked = '1' and lastLocked = '0' then			--If we have a rising edge => module is getting locked => Save the parameters
-			savedVolume <= signed('0' & Vol);
-		end if;
-	
-		lastLocked <= locked;
+	if rising_edge(CLK) and SM = '1' and LOCK = '1' then
+		locked <= not locked;
+		savedVolume <= signed('0' & Vol);
 	end if;
 end process;
 

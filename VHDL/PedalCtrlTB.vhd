@@ -43,7 +43,7 @@ ARCHITECTURE behavior OF PedalCtrlTB IS
     PORT(
          CLK : IN  std_logic;
          PEDAL_IN : IN  std_logic;
-         PEDAL_OUT : OUT  std_logic;
+       --  PEDAL_OUT : OUT  std_logic;
          LOCK : OUT  std_logic;
          RESET : IN  std_logic
         );
@@ -56,7 +56,7 @@ ARCHITECTURE behavior OF PedalCtrlTB IS
    signal RESET : std_logic := '0';
 
  	--Outputs
-   signal PEDAL_OUT : std_logic;
+   --signal PEDAL_OUT : std_logic;
    signal LOCK : std_logic;
 
    -- Clock period definitions
@@ -68,7 +68,7 @@ BEGIN
    uut: PedalControl PORT MAP (
           CLK => CLK,
           PEDAL_IN => PEDAL_IN,
-          PEDAL_OUT => PEDAL_OUT,
+        --  PEDAL_OUT => PEDAL_OUT,
           LOCK => LOCK,
           RESET => RESET
         );
@@ -101,16 +101,6 @@ BEGIN
 		PEDAL_IN <= '1';
 		
 		wait for 750 ms;
-		
-		PEDAL_IN <= '0';
-		
-		wait for 750 ms;
-		
-		PEDAL_IN <= '1';
-		
-		wait for 750 ms;
-		
-		-- Lock
 		
 		PEDAL_IN <= '0';
 		

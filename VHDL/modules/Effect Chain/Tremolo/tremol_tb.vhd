@@ -47,11 +47,14 @@ ARCHITECTURE behavior OF tremol_tb IS
          audioOut : OUT  std_logic_vector(23 downto 0);
          Pedal : IN  std_logic;
          SM : IN  std_logic;
-         lock : IN  std_logic;
-         locked : OUT  std_logic;
+         LM : OUT  std_logic;
+         LOCK : IN  std_logic;
          Rate : IN  std_logic_vector(9 downto 0);
          Wave : IN  std_logic_vector(9 downto 0);
-         Depth : IN  std_logic_vector(9 downto 0)
+         Depth : IN  std_logic_vector(9 downto 0);
+			rateOut : out  STD_LOGIC_VECTOR (9 downto 0);
+			waveOut : out  STD_LOGIC_VECTOR (9 downto 0);
+			depthOut : out  STD_LOGIC_VECTOR (9 downto 0)
         );
     END COMPONENT;
     
@@ -62,14 +65,17 @@ ARCHITECTURE behavior OF tremol_tb IS
    signal audioIn : std_logic_vector(23 downto 0) := (others => '0');
    signal Pedal : std_logic := '0';
    signal SM : std_logic := '0';
-   signal lock : std_logic := '0';
+   signal LOCK : std_logic := '0';
    signal Rate : std_logic_vector(9 downto 0) := (others => '0');
    signal Wave : std_logic_vector(9 downto 0) := (others => '0');
    signal Depth : std_logic_vector(9 downto 0) := (others => '0');
 
  	--Outputs
    signal audioOut : std_logic_vector(23 downto 0);
-   signal locked : std_logic;
+   signal LM : std_logic;
+	signal rateOut : STD_LOGIC_VECTOR (9 downto 0);
+	signal waveOut : STD_LOGIC_VECTOR (9 downto 0);
+	signal depthOut : STD_LOGIC_VECTOR (9 downto 0);
 
    -- Clock period definitions
    constant CLK_period : time := 20 ns;
@@ -84,11 +90,14 @@ BEGIN
           audioOut => audioOut,
           Pedal => Pedal,
           SM => SM,
-          lock => lock,
-          locked => locked,
+          LM => LM,
+          LOCK => LOCK,
           Rate => Rate,
           Wave => Wave,
-          Depth => Depth
+          Depth => Depth,
+			 rateOut => rateOut,
+			 waveOut => waveOut,
+			 depthOut => depthOut
         );
 
    -- Clock process definitions

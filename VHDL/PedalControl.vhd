@@ -54,7 +54,7 @@ PedalAnalyze : process(CLK,RESET)
 				when Analyzing =>
 					
 					-- If we push the pedal button again -> lock the module
-					if PEDAL_IN /= lastPedal then
+					if lastPedal /= PEDAL_IN then
 						lastPedal <= PEDAL_IN;
 						LOCK <= '1';
 						machinePedal <= Waiting;

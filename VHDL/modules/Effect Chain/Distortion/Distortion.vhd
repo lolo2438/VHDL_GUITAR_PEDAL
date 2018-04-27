@@ -59,10 +59,9 @@ signal sTone : signed(10 downto 0);
 
 signal savedDist : signed(10 downto 0);
 signal savedLevel : signed(10 downto 0);
+signal savedTone : signed(10 downto 0);
 
-signal lastLOCK : STD_LOGIC := '0';
 signal locked : STD_LOGIC := '0';
-signal lastLocked : STD_LOGIC := '0';
 
 Signal lastAudioIn23 : STD_LOGIC := '0';
 
@@ -91,29 +90,14 @@ levelOut <= std_logic_vector(sLevel(9 downto 0));
 LM <= locked;
 
 detectLock:
-process(CLK)
+process(CLK,SM,LOCK)
 begin
-	if rising_edge(CLK) then
-		if SM = '1' then
-			if LOCK /= lastLOCK then
-				locked <= not locked;
-			end if;
-			
-			lastLOCK <= LOCK;
-		end if;
-	end if;
-end process;
-
-saveParameters:
-process(CLK)
-begin
-	if rising_edge(CLK) then
-		if locked = '1' and lastLocked = '0' then			--If we have a rising edge => module is getting locked => Save the parameters
-			savedDist <= signed('0' & Dist);
-			savedLevel <= signed('0' & Level);
-		end if;
-	
-		lastLocked <= locked;
+	if rising_edge(CLK) and SM = '1' and LOCK = '1' then
+		locked <= not locked;
+		
+		savedDist <= signed('0' & Dist);
+		savedLevel <= signed('0' & Level);
+		savedTone <= signed('0' & Tone);
 	end if;
 end process;
 
@@ -125,9 +109,11 @@ begin
 			if locked = '0' then
 				sDist <= signed('0' & Dist);
 				sLevel <= signed('0' & Level);
+				sTone <= signed('0' & Tone);
 			else
 				sDist <= savedDist;
 				sLevel <= savedLevel;
+				sTone <= savedTone;
 			end if;
 		end if;
 		

@@ -47,7 +47,7 @@ PEDAL_OUT <= arPedal;
 
 lockDetection: entity work.PedalControl(Behavioral)
 Port map (
-			  CLK => CLK,			-- System clock
+			  CLK => CLK,				-- System clock
            PEDAL_IN => arPedal,	-- Pedal input
 			  LOCK => LOCK,			-- Lock Module
 			  RESET => RESET

@@ -145,7 +145,7 @@ process(RESET,CLK)
 						reset_compteur := reset_compteur + 1;
 						GLCD_RST <= '0';								-- Reset
 						GLCD_CS <= noSide;							-- Init to no side
-						GLCD_DATA <= x"00";							-- Set data to nothing
+						GLCD_DATA <= setDisplayOn;				   -- Set data to nothing
 						enableE <= '0';								-- Disable E
 						GLCD_RS <= glcdSendCmd;						-- Set lcd to send cmd
 						GLCD_RW <= glcdWrite;						-- Set to write
@@ -389,7 +389,13 @@ begin
 					lcdScreen(2)(123) <= x"00";
 				end if;
 			when others =>
-				
+					lcdScreen(2)(117) <= x"00";
+					lcdScreen(2)(118) <= x"00";
+					lcdScreen(2)(119) <= x"00";
+					lcdScreen(2)(120) <= x"00";
+					lcdScreen(2)(121) <= x"00";
+					lcdScreen(2)(122) <= x"00";
+					lcdScreen(2)(123) <= x"00";
 			end case;
 	end if;
 end process;
@@ -400,11 +406,11 @@ begin
 	if rising_edge(CLK) then
 		if PEDAL = '1' then
 			lcdScreen(2)(3) <= x"38";
-			lcdScreen(2)(4) <= x"77";
+			lcdScreen(2)(4) <= x"44";
 			lcdScreen(2)(5) <= x"80";
 			lcdScreen(2)(6) <= x"9E";
 			lcdScreen(2)(7) <= x"80";
-			lcdScreen(2)(8) <= x"77";
+			lcdScreen(2)(8) <= x"44";
 			lcdScreen(2)(9) <= x"38";
 		else
 			lcdScreen(2)(3) <= x"00";

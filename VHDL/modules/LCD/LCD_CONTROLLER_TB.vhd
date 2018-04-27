@@ -42,6 +42,7 @@ ARCHITECTURE behavior OF LCD_CONTROLLER_TB IS
     COMPONENT LCD_Controler
     PORT(
          CLK : IN  std_logic;
+			PEDAL : IN std_logic;
          LM : IN  std_logic_vector(7 downto 0);
          SM : IN  std_logic_vector(7 downto 0);
          RESET : IN  std_logic;
@@ -66,7 +67,8 @@ ARCHITECTURE behavior OF LCD_CONTROLLER_TB IS
    signal ADC0 : std_logic_vector(9 downto 0) := (others => '0');
    signal ADC1 : std_logic_vector(9 downto 0) := (others => '0');
    signal ADC4 : std_logic_vector(9 downto 0) := (others => '0');
-
+	signal PEDAL : std_logic := '0';
+	
  	--Outputs
    signal GLCD_DATA : std_logic_vector(7 downto 0);
    signal GLCD_E : std_logic;
@@ -85,6 +87,7 @@ BEGIN
           CLK => CLK,
           LM => LM,
           SM => SM,
+			 PEDAL => PEDAL,
           RESET => RESET,
           ADC0 => ADC0,
           ADC1 => ADC1,
