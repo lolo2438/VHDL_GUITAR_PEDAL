@@ -103,49 +103,48 @@ process(RESET,CLK)
 		if RESET = '0' then
 			compteur <= (others => '0');
 		elsif rising_edge(CLK) then
-			--if enableE = '1' then
+			if enableE = '1' then
 				if compteur < x"65B" then				-- For testing purpose:  1 img/sec = 50MHz / 1024 = x"7800"
 					compteur <= compteur + 1;
 				else
 					compteur <= (others => '0');
 					E <= not E;
 				end if;
-			--else
-			--	compteur <= (others => '0');
-			--end if;
+			else
+				compteur <= (others => '0');
+			end if;
 		end if;
 end process;
 
 -- Main controler
 Controler:
 process(RESET,CLK)
-	variable reset_compteur : integer range 0 to 20000 := 0;
+	variable reset_compteur : integer range 0 to 127 := 0;
 	variable address : integer range 0 to 127 := 0;
 	variable page : integer range 0 to 7 := 0;
 	begin
 		if RESET = '0' then
 			GLCD_RST <= '0';
 			glcdControlerState <= init;
-			--enableE <= '0';
+			enableE <= '0';
 			reset_compteur := 0;
 			
 		elsif rising_edge(CLK) then
 			case glcdControlerState is
 				when init =>
-					--if reset_compteur < 10000 then					-- Hold reset for 2uS
-					if E = '1' and lastE = '0' then
-						--reset_compteur := reset_compteur + 1;
+					if reset_compteur < 100 then					-- Hold reset for 2uS
+						reset_compteur := reset_compteur + 1;
 						GLCD_RST <= '0';								-- Reset
 						GLCD_CS <= noSide;							-- Init to no side
 						GLCD_DATA <= x"00";				   -- Set data to nothing
-					--	enableE <= '0';								-- Disable E
+						enableE <= '0';								-- Disable E
 						GLCD_RS <= glcdSendCmd;						-- Set lcd to send cmd
 						GLCD_RW <= glcdWrite;						-- Set to write
 						address := 0;									-- Go to address 0
 						page := 0;										-- Go to page 0
-					elsif E = '0' and lastE = '1' then
+					else
 						GLCD_RST <= '1';
-					--	enableE <= '1';								-- Enable data writing	
+						enableE <= '1';								-- Enable data writing	
 						GLCD_RS <= glcdSendCmd;						-- Set lcd to send cmd
 						GLCD_DATA <= setDisplayOn;					-- Start with send display on
 						glcdControlerState <= sendDisplayOn;	-- Send display on cmd
@@ -154,6 +153,8 @@ process(RESET,CLK)
 				when sendDisplayOn =>
 					if E = '1' and lastE = '0' then --and dataReady = '0' then				-- Rising edge => Setup values
 						lastE <= E;
+						GLCD_RS <= glcdSendCmd;
+						GLCD_CS <= noSide;							-- Init to no side
 						GLCD_DATA <= setDisplayOn; 				-- Display on command
 						dataReady <= '1';
 						
@@ -242,7 +243,6 @@ process(RESET,CLK)
 						if page = 7 then
 							page := 0;
 							GLCD_DATA <= glcdSetPage & std_logic_vector(to_unsigned(page,3));
-							glcdControlerState <= init;															---- POSSIBLE FIX FOR LCD NOT BOOTING UP
 						else
 							page := page + 1;
 							GLCD_DATA <= glcdSetPage & std_logic_vector(to_unsigned(page,3));
@@ -252,7 +252,7 @@ process(RESET,CLK)
 						
 					elsif E = '0' and lastE = '1' then -- and dataReady = '1' then						-- Falling edge => lcd is reading
 						lastE <= E;
-						glcdControlerState <= refreshAddressLeft;
+						glcdControlerState <= sendDisplayOn;
 						dataReady <= '0';
 						
 					end if;
