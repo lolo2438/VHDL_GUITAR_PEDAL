@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2018-04-30T20:07:34</DateModified>
+  <DateModified>2018-04-30T22:16:25</DateModified>
   <ModuleName>TOP</ModuleName>
-  <SummaryTimeStamp>2018-04-30T19:59:04</SummaryTimeStamp>
-  <SavedFilePath>C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL/iseconfig/TOP.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Users/e1538867/Desktop/VHDL_GUITAR_PEDAL/VHDL_GUITAR_PEDAL/VHDL\</ImplementationReportsDirectory>
+  <SummaryTimeStamp>2018-04-30T22:15:55</SummaryTimeStamp>
+  <SavedFilePath>F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/iseconfig/TOP.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL\</ImplementationReportsDirectory>
   <DateInitialized>2018-02-05T17:07:22</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
