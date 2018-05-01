@@ -1,33 +1,11 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date:    20:08:28 02/19/2018 
--- Design Name: 
--- Module Name:    Buffer_Out - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
-----------------------------------------------------------------------------------
+-------
+-- Made by: Laurent Tremblay
+-- Project: Guitar pedal
+-- Module: BufferOut
+-- Description: This module takes the audio signal and sends it to the I2S interface when its ready
+-------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity Buffer_Out is
     Port ( CLK : in  STD_LOGIC;

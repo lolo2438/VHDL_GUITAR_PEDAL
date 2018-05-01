@@ -1,22 +1,10 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date:    20:08:38 02/12/2018 
--- Design Name: 
--- Module Name:    volumeControl - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
+-------
+-- Made by: Laurent Tremblay
+-- Project: Guitar pedal
+-- Module: Distortion
 -- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
-----------------------------------------------------------------------------------
+--		This modules apply a volume control effect
+-------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 

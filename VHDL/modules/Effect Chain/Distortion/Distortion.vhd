@@ -1,22 +1,10 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date:    20:25:26 02/12/2018 
--- Design Name: 
--- Module Name:    Distortion - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
+-------
+-- Made by: Laurent Tremblay
+-- Project: Guitar pedal
+-- Module: Distortion
 -- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
-----------------------------------------------------------------------------------
+--		This modules apply a distortion effect to the signal using 2/3 adc parameters
+-------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -27,7 +15,7 @@ entity Distortion is
 			  CLK : in  STD_LOGIC;
 			  
 			  -- System global reset
-			  RESET : in STD_LOGIC;											-- logical '0' indicates us that reset button was pressed
+		--	  RESET : in STD_LOGIC;											-- logical '0' indicates us that reset button was pressed
 			  
 			  -- Audio signals
 			  audioIn : in  STD_LOGIC_VECTOR (23 downto 0);

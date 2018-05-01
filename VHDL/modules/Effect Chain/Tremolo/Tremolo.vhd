@@ -1,22 +1,10 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date:    14:33:55 02/23/2018 
--- Design Name: 
--- Module Name:    Tremolo - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
+-------
+-- Made by: Laurent Tremblay
+-- Project: Guitar pedal
+-- Module: Distortion
 -- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
-----------------------------------------------------------------------------------
+--		This modules apply a tremolo effect to the signal using 3/3 adc parameters
+-------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 

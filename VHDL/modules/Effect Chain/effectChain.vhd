@@ -134,7 +134,7 @@ port map(  -- System Clock (50 MHz)
 			  CLK => CLK,
 			  
 			  -- System global reset
-			  RESET => RESET,											-- logical '0' indicates us that reset button was pressed
+			 -- RESET => RESET,											-- logical '0' indicates us that reset button was pressed
 			  
 			  -- Audio signals
 			  audioIn => audioOutBuffer,

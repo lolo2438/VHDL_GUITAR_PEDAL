@@ -5,7 +5,7 @@
 --	Description: This module analyses
 --					 the input of the pedal
 --					 button and acts accordingly.
--- 1 press => Activate/deactivate, 2 press => lock.
+-- 2 press => lock.
 --------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
