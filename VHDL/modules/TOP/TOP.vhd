@@ -43,7 +43,10 @@ entity TOP is
 				GLCD_RST : out STD_LOGIC;
 				
 				-- OTHERS
+				LED1 : out STD_LOGIC;
+				LED2 : out STD_LOGIC;
 				RESET : in STD_LOGIC
+				
 				);
 end TOP;
 
@@ -73,7 +76,7 @@ signal newRxData : STD_LOGIC;
 signal txBusy : STD_LOGIC;
 
 	-- Others
-signal sReset : STD_LOGIC;
+signal not_RESET : STD_LOGIC;
 
 -- ADC READ signals
 signal adc0 : STD_LOGIC_VECTOR(9 downto 0);
@@ -96,11 +99,12 @@ signal sPedal : STD_LOGIC;
 
 signal lock : STD_LOGIC;
 
-
 begin
+LED1 <= sPedal;
+LED2 <= PEDAL;
 
 -- Avr interface need reset logic inversion
-
+not_RESET <= not RESET;
 -- PORT MAP
 
 -- I2S INTERFACE
@@ -118,7 +122,7 @@ port map(  -- FPGA CLOCK
 			  DATA_ADC_R => audioIn,
 			  
 			  -- OTHERS
-			  RESET => sReset,
+			  RESET => RESET,
 			  DATA_READY => dataReady
 			  );
 			  
@@ -136,7 +140,7 @@ port map ( -- FPGA CLOCK
 			  DATA_DAC_R => audioOut,
 			  
 			  -- OTHERS
-			  RESET => sReset,
+			  RESET => RESET,
 			  DONE => doneSending
 			  );
 
@@ -144,7 +148,7 @@ port map ( -- FPGA CLOCK
 avr_interface : entity work.avr_interface(RTL)
 port map (	-- Clocks and Reset
 				clk => CLK,
-				rst => not sReset,
+				rst => not_RESET,
 				cclk => CCLK,
 				
 				-- Hardward SPI pins
@@ -177,7 +181,7 @@ Port map ( -- FPGA CLOCK
 			  CLK => CLK,
 			  
 			  -- RESET
-			  RESET => sReset,
+			  RESET => RESET,
 			  
 			  -- From AVR Interface
 			  NEW_SAMPLE => newSample,
@@ -219,7 +223,7 @@ Port map ( -- FPGA 50 MHZ
 			  NEXT_EFFECT => sNextE,
 			  
 			  -- Reset
-			  RESET => sReset,
+			  RESET => RESET,
 			  
 			  -- Control ADC
 			  ADC0 => adc0,
@@ -247,7 +251,7 @@ Port map(
          NEXT_EFFECT_OUT => sNextE,
          LAST_EFFECT_OUT => sLastE,
 			
-			RESET => sReset
+			RESET => RESET
 		  );
 
 -- Graphic interface signals
@@ -279,11 +283,6 @@ Port map( -- FPGA CLOCK
            GLCD_RS => GLCD_RS,					-- LCD REGISTER SELECT: RS=1 select DATA, RS=0 select INSTRUCTIONS
            GLCD_CS => GLCD_CS,					-- CHIP SELECT FOR LCD SIDE: 10 = SELECT LEFT, 01 = SELECT RIGHT
 			  GLCD_RST => GLCD_RST);				-- RESET FOR LCD, 0 = reset
-
-bootReset: entity work.startUpReset(Behavioral)
-Port map(	CLK => CLK,
-				RESET_FROM_IO => RESET,
-				RESET_FOR_BOOT => sReset);
 
 
 -- LOGIQUE DE SORTIE
