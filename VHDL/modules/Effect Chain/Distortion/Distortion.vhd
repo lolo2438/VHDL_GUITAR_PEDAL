@@ -58,9 +58,9 @@ signal tempVector2 : std_logic_vector(23 downto 0) := (others => '0');
 
 signal tempCal1 : signed(37 downto 0) := (others => '0');
 
-constant limit : signed(23 downto 0) := x"427E56";
+constant limit : signed(23 downto 0) := x"300000";--x"427E56";
 constant levelGain : signed(2 downto 0) := b"101";					-- Temp gain:5
-constant distGain : signed(2 downto 0) := b"101";
+constant distGain : signed(2 downto 0) := b"011";
 signal newWave : STD_LOGIC := '0';
 
 begin
