@@ -1,1 +1,1 @@
-work	"LCD_Controller.vhd"
+work	"modules/Effect Chain/Distortion/Distortion.vhd"

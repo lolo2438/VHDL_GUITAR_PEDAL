@@ -10,7 +10,6 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 use IEEE.NUMERIC_STD.ALL;
 
-
 entity volumeControl is
     Port ( -- System Clock (50 MHz)
 			  CLK : in  STD_LOGIC;

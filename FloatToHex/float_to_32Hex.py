@@ -49,6 +49,7 @@ outputFile.close()
 
 #Convert C hexadecimal to VHDL hexadecimal and normalise to 8 hex values (32 bit)
 for line in inputArray:
+    i = 0
     outputFile = open("output.txt","a")
     inputHexArray = []
 
@@ -57,10 +58,11 @@ for line in inputArray:
 
     for item in inputHexArray:
         if item[-1] == "L":
-            outputFile.write('x"' + item[2:-1].zfill(8) + '", ')
+            outputFile.write('FirCoef('+str(i)+') <= x"' + item[2:-1].zfill(8) + '";\n')
         else:
-            outputFile.write('x"' + item[2:].zfill(8) + '", ')
-
+            outputFile.write('FirCoef('+str(i)+') <= x"' + item[2:].zfill(8) + '";\n')
+        i += 1
+        
     outputFile.write("\n")
     outputFile.close()
 
