@@ -39,7 +39,6 @@ Signal shiftRegOutL : STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0) := (others => '0')
 Signal shiftRegOutR: STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0) := (others => '0');
 
 Signal lastLRCK : STD_LOGIC := '0';
-Signal LRCK_Flag : STD_LOGIC := '0';
 Signal LRCK_Changed : STD_LOGIC := '0';
 Signal sDone : STD_LOGIC := '0';
 Signal lastDone : STD_LOGIC := '0';
@@ -55,15 +54,12 @@ detectLRCK: process(BCLK)
 		if rising_edge(BCLK) then
 			if(lastLRCK /= LRCK) then
 				lastLRCK <= LRCK;
-				LRCK_Flag <= '1';
+				LRCK_Changed <= '1';
 			else
-				LRCK_Flag <= '0';
+				LRCK_Changed <= '0';
 			end if;
 		end if;
 	end process;
-	
--- Cross process signal
-LRCK_Changed <= LRCK_Flag;
 
 -- TRANSMIT
 Transmit:process(RESET,BCLK)

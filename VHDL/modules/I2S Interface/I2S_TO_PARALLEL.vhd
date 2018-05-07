@@ -79,8 +79,6 @@ Receive:process(RESET,BCLK)
 						dataShift := DATA_WIDTH;
 						shiftRegIn <= (others => '0');
 						
-						i2sRx <= Rx;
-						
 						dataReady <= '0';
 						
 						i2sRx <= Rx;

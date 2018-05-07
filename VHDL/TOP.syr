@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.58 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.58 secs
  
 --> Reading design: TOP.prj
 
@@ -108,65 +108,65 @@ Cores Search Directories           : {"ipcore_dir"  }
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\ipcore_dir\Diviseur.vhd" into library work
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\PedalControl.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\ipcore_dir\Diviseur.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\PedalControl.vhd" into library work
 Parsing entity <PedalControl>.
 Parsing architecture <Behavioral> of entity <pedalcontrol>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Input buttons\Detecteur_Front.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Input buttons\Detecteur_Front.vhd" into library work
 Parsing entity <Detecteur_front>.
 Parsing architecture <Behavioral> of entity <detecteur_front>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Input buttons\Anti_Rebond.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Input buttons\Anti_Rebond.vhd" into library work
 Parsing entity <Anti_Rebond>.
 Parsing architecture <Behavioral> of entity <anti_rebond>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Volume\volumeControl.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Volume\volumeControl.vhd" into library work
 Parsing entity <volumeControl>.
 Parsing architecture <Behavioral> of entity <volumecontrol>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Tremolo\Tremolo.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Tremolo\Tremolo.vhd" into library work
 Parsing entity <Tremolo>.
 Parsing architecture <Behavioral> of entity <tremolo>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Distortion\Distortion.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Distortion\Distortion.vhd" into library work
 Parsing entity <Distortion>.
 Parsing architecture <Behavioral> of entity <distortion>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\BufferOut\Buffer_Out.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\BufferOut\Buffer_Out.vhd" into library work
 Parsing entity <Buffer_Out>.
 Parsing architecture <Behavioral> of entity <buffer_out>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\BufferIn\Buffer_In.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\BufferIn\Buffer_In.vhd" into library work
 Parsing entity <Buffer_In>.
 Parsing architecture <Behavioral> of entity <buffer_in>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\spi_slave.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\spi_slave.vhd" into library work
 Parsing entity <spi_slave>.
 Parsing architecture <RTL> of entity <spi_slave>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_tx.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_tx.vhd" into library work
 Parsing entity <serial_tx>.
 Parsing architecture <RTL> of entity <serial_tx>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_rx.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_rx.vhd" into library work
 Parsing entity <serial_rx>.
 Parsing architecture <RTL> of entity <serial_rx>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\cclk_detector.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\cclk_detector.vhd" into library work
 Parsing entity <cclk_detector>.
 Parsing architecture <RTL> of entity <cclk_detector>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\LCD\LCD_Controller.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\LCD\LCD_Controller.vhd" into library work
 Parsing entity <LCD_Controler>.
 Parsing architecture <Behavioral> of entity <lcd_controler>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Input buttons\Button_Processing.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Input buttons\Button_Processing.vhd" into library work
 Parsing entity <Button_Processing>.
 Parsing architecture <Behavioral> of entity <button_processing>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\I2S Interface\PARALLEL_TO_I2S.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\I2S Interface\PARALLEL_TO_I2S.vhd" into library work
 Parsing entity <PARALLEL_TO_I2S>.
 Parsing architecture <Behavioral> of entity <parallel_to_i2s>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\I2S Interface\I2S_TO_PARALLEL.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\I2S Interface\I2S_TO_PARALLEL.vhd" into library work
 Parsing entity <I2S_TO_PARALLEL>.
 Parsing architecture <Behavioral> of entity <i2s_to_parallel>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\effectChain.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\effectChain.vhd" into library work
 Parsing entity <effectChain>.
 Parsing architecture <Behavioral> of entity <effectchain>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\avr_interface.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\avr_interface.vhd" into library work
 Parsing entity <avr_interface>.
 Parsing architecture <RTL> of entity <avr_interface>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\ADC_READ\ADC_Read.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\ADC_READ\ADC_Read.vhd" into library work
 Parsing entity <ADC_Read>.
 Parsing architecture <Behavioral> of entity <adc_read>.
-Parsing VHDL file "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" into library work
+Parsing VHDL file "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" into library work
 Parsing entity <TOP>.
 Parsing architecture <Behavioral> of entity <top>.
 
@@ -187,10 +187,10 @@ Elaborating entity <cclk_detector> (architecture <RTL>) from library <work>.
 Elaborating entity <spi_slave> (architecture <RTL>) from library <work>.
 
 Elaborating entity <serial_rx> (architecture <RTL>) with generics from library <work>.
-INFO:HDLCompiler:679 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_rx.vhd" Line 80. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_rx.vhd" Line 80. Case statement is complete. others clause is never selected
 
 Elaborating entity <serial_tx> (architecture <RTL>) with generics from library <work>.
-INFO:HDLCompiler:679 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_tx.vhd" Line 96. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_tx.vhd" Line 96. Case statement is complete. others clause is never selected
 
 Elaborating entity <ADC_Read> (architecture <Behavioral>) with generics from library <work>.
 
@@ -201,7 +201,7 @@ Elaborating entity <Buffer_In> (architecture <Behavioral>) from library <work>.
 Elaborating entity <Distortion> (architecture <Behavioral>) from library <work>.
 
 Elaborating entity <Tremolo> (architecture <Behavioral>) from library <work>.
-WARNING:HDLCompiler:89 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Tremolo\Tremolo.vhd" Line 43: <diviseur> remains a black-box since it has no binding entity.
+WARNING:HDLCompiler:89 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Tremolo\Tremolo.vhd" Line 43: <diviseur> remains a black-box since it has no binding entity.
 
 Elaborating entity <volumeControl> (architecture <Behavioral>) from library <work>.
 
@@ -216,20 +216,20 @@ Elaborating entity <PedalControl> (architecture <Behavioral>) from library <work
 Elaborating entity <Detecteur_front> (architecture <Behavioral>) from library <work>.
 
 Elaborating entity <LCD_Controler> (architecture <Behavioral>) from library <work>.
-WARNING:HDLCompiler:1127 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\LCD\LCD_Controller.vhd" Line 121: Assignment to dataready ignored, since the identifier is never used
-WARNING:HDLCompiler:634 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\LCD\LCD_Controller.vhd" Line 56: Net <lcdScreen[2][0][7]> does not have a driver.
-WARNING:HDLCompiler:634 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" Line 72: Net <txData[7]> does not have a driver.
-WARNING:HDLCompiler:634 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" Line 74: Net <newTxData> does not have a driver.
+WARNING:HDLCompiler:1127 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\LCD\LCD_Controller.vhd" Line 120: Assignment to dataready ignored, since the identifier is never used
+WARNING:HDLCompiler:634 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\LCD\LCD_Controller.vhd" Line 56: Net <lcdScreen[2][0][7]> does not have a driver.
+WARNING:HDLCompiler:634 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" Line 72: Net <txData[7]> does not have a driver.
+WARNING:HDLCompiler:634 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" Line 74: Net <newTxData> does not have a driver.
 
 =========================================================================
 *                           HDL Synthesis                               *
 =========================================================================
 
 Synthesizing Unit <TOP>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd".
-INFO:Xst:3210 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 148: Output port <rx_data> of the instance <avr_interface> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 148: Output port <tx_busy> of the instance <avr_interface> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 148: Output port <new_rx_data> of the instance <avr_interface> is unconnected or connected to loadless signal.
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd".
+INFO:Xst:3210 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 148: Output port <rx_data> of the instance <avr_interface> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 148: Output port <tx_busy> of the instance <avr_interface> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" line 148: Output port <new_rx_data> of the instance <avr_interface> is unconnected or connected to loadless signal.
 WARNING:Xst:653 - Signal <txData> is used but never assigned. This sourceless signal will be automatically connected to value GND.
 WARNING:Xst:653 - Signal <newTxData> is used but never assigned. This sourceless signal will be automatically connected to value GND.
     Summary:
@@ -237,7 +237,7 @@ WARNING:Xst:653 - Signal <newTxData> is used but never assigned. This sourceless
 Unit <TOP> synthesized.
 
 Synthesizing Unit <I2S_TO_PARALLEL>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\I2S Interface\I2S_TO_PARALLEL.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\I2S Interface\I2S_TO_PARALLEL.vhd".
         DATA_WIDTH = 24
     Found 1-bit register for signal <dataReady>.
     Found 24-bit register for signal <shiftRegIn>.
@@ -267,18 +267,18 @@ Synthesizing Unit <I2S_TO_PARALLEL>.
 Unit <I2S_TO_PARALLEL> synthesized.
 
 Synthesizing Unit <PARALLEL_TO_I2S>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\I2S Interface\PARALLEL_TO_I2S.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\I2S Interface\PARALLEL_TO_I2S.vhd".
         DATA_WIDTH = 24
     Found 1-bit register for signal <SDTO>.
     Found 5-bit register for signal <Transmit.dataShift>.
-    Found 1-bit register for signal <LRCK_Flag>.
+    Found 1-bit register for signal <LRCK_Changed>.
     Found 1-bit register for signal <i2sTx>.
     Found 1-bit register for signal <sDone>.
     Found 1-bit register for signal <DONE>.
     Found 1-bit register for signal <lastLRCK>.
-    Found 5-bit subtractor for signal <GND_7_o_GND_7_o_sub_3_OUT<4:0>> created at line 78.
-    Found 1-bit 24-to-1 multiplexer for signal <GND_7_o_X_6_o_Mux_3_o> created at line 81.
-    Found 1-bit 24-to-1 multiplexer for signal <GND_7_o_X_6_o_Mux_4_o> created at line 83.
+    Found 5-bit subtractor for signal <GND_7_o_GND_7_o_sub_3_OUT<4:0>> created at line 74.
+    Found 1-bit 24-to-1 multiplexer for signal <GND_7_o_X_6_o_Mux_3_o> created at line 77.
+    Found 1-bit 24-to-1 multiplexer for signal <GND_7_o_X_6_o_Mux_4_o> created at line 79.
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred  11 D-type flip-flop(s).
@@ -286,7 +286,7 @@ Synthesizing Unit <PARALLEL_TO_I2S>.
 Unit <PARALLEL_TO_I2S> synthesized.
 
 Synthesizing Unit <avr_interface>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\avr_interface.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\avr_interface.vhd".
     Found 10-bit register for signal <sample_q>.
     Found 1-bit register for signal <new_sample_q>.
     Found 1-bit register for signal <byte_ct_q>.
@@ -304,7 +304,7 @@ Synthesizing Unit <avr_interface>.
 Unit <avr_interface> synthesized.
 
 Synthesizing Unit <cclk_detector>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\cclk_detector.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\cclk_detector.vhd".
     Found 9-bit register for signal <ctr_q>.
     Found 1-bit register for signal <ready_q>.
     Found 9-bit adder for signal <ctr_q[8]_GND_12_o_add_1_OUT> created at line 1241.
@@ -315,7 +315,7 @@ Synthesizing Unit <cclk_detector>.
 Unit <cclk_detector> synthesized.
 
 Synthesizing Unit <spi_slave>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\spi_slave.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\spi_slave.vhd".
     Found 1-bit register for signal <miso_q>.
     Found 3-bit register for signal <bit_ct_q>.
     Found 8-bit register for signal <dout_q>.
@@ -333,7 +333,7 @@ Synthesizing Unit <spi_slave>.
 Unit <spi_slave> synthesized.
 
 Synthesizing Unit <serial_rx>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_rx.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_rx.vhd".
         CLK_PER_BIT = 100
         CTR_SIZE = 7
     Found 3-bit register for signal <bit_ctr_q>.
@@ -366,7 +366,7 @@ Synthesizing Unit <serial_rx>.
 Unit <serial_rx> synthesized.
 
 Synthesizing Unit <serial_tx>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_tx.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\AVR_Interface\serial_tx.vhd".
         CLK_PER_BIT = 100
         CTR_SIZE = 7
     Found 2-bit register for signal <state_q>.
@@ -380,7 +380,7 @@ Synthesizing Unit <serial_tx>.
 Unit <serial_tx> synthesized.
 
 Synthesizing Unit <ADC_Read>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\ADC_READ\ADC_Read.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\ADC_READ\ADC_Read.vhd".
         stabiliseDelay = 8
     Found 4-bit register for signal <REQUESTED_CHANNEL>.
     Found 1-bit register for signal <lastNewSample>.
@@ -399,7 +399,7 @@ Synthesizing Unit <ADC_Read>.
 Unit <ADC_Read> synthesized.
 
 Synthesizing Unit <effectChain>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\effectChain.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\effectChain.vhd".
 WARNING:Xst:653 - Signal <LM<7:3>> is used but never assigned. This sourceless signal will be automatically connected to value GND.
     Found 3-bit register for signal <effectSelector>.
     Found 3-bit adder for signal <effectSelector[2]_GND_25_o_add_1_OUT> created at line 1241.
@@ -413,14 +413,14 @@ WARNING:Xst:653 - Signal <LM<7:3>> is used but never assigned. This sourceless s
 Unit <effectChain> synthesized.
 
 Synthesizing Unit <Buffer_In>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\BufferIn\Buffer_In.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\BufferIn\Buffer_In.vhd".
     Found 24-bit register for signal <audioBuffer>.
     Summary:
 	inferred  24 D-type flip-flop(s).
 Unit <Buffer_In> synthesized.
 
 Synthesizing Unit <Distortion>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Distortion\Distortion.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Distortion\Distortion.vhd".
     Found 11-bit register for signal <savedDist>.
     Found 11-bit register for signal <savedLevel>.
     Found 11-bit register for signal <savedTone>.
@@ -449,7 +449,7 @@ Synthesizing Unit <Distortion>.
 Unit <Distortion> synthesized.
 
 Synthesizing Unit <Tremolo>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Tremolo\Tremolo.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Tremolo\Tremolo.vhd".
     Register <loadToDivisor> equivalent to <lastNewWave> has been removed
     Found 1-bit register for signal <direction>.
     Found 15-bit register for signal <compteur>.
@@ -504,7 +504,7 @@ Synthesizing Unit <Tremolo>.
 Unit <Tremolo> synthesized.
 
 Synthesizing Unit <volumeControl>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Volume\volumeControl.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Volume\volumeControl.vhd".
 WARNING:Xst:647 - Input <RESET> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 11-bit register for signal <savedVolume>.
     Found 11-bit register for signal <sVolume>.
@@ -523,20 +523,20 @@ WARNING:Xst:647 - Input <RESET> is never used. This port will be preserved and l
 Unit <volumeControl> synthesized.
 
 Synthesizing Unit <Buffer_Out>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\BufferOut\Buffer_Out.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\BufferOut\Buffer_Out.vhd".
     Found 24-bit register for signal <audioOut>.
     Summary:
 	inferred  24 D-type flip-flop(s).
 Unit <Buffer_Out> synthesized.
 
 Synthesizing Unit <Button_Processing>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Input buttons\Button_Processing.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Input buttons\Button_Processing.vhd".
     Summary:
 	no macro.
 Unit <Button_Processing> synthesized.
 
 Synthesizing Unit <Anti_Rebond>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Input buttons\Anti_Rebond.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Input buttons\Anti_Rebond.vhd".
         REBOND_MS = 10.0
         PERIODE_HORLOGE_NS = 20.0
     Found 19-bit register for signal <Compteur>.
@@ -562,7 +562,7 @@ Synthesizing Unit <Anti_Rebond>.
 Unit <Anti_Rebond> synthesized.
 
 Synthesizing Unit <PedalControl>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\PedalControl.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\PedalControl.vhd".
     Found 1-bit register for signal <machinePedal>.
     Found 1-bit register for signal <LOCK>.
     Found 25-bit register for signal <compteur>.
@@ -577,7 +577,7 @@ Synthesizing Unit <PedalControl>.
 Unit <PedalControl> synthesized.
 
 Synthesizing Unit <Detecteur_front>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\Input buttons\Detecteur_Front.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Input buttons\Detecteur_Front.vhd".
     Found 1-bit register for signal <lastInput>.
     Found 1-bit register for signal <Output>.
     Summary:
@@ -585,7 +585,7 @@ Synthesizing Unit <Detecteur_front>.
 Unit <Detecteur_front> synthesized.
 
 Synthesizing Unit <LCD_Controler>.
-    Related source file is "C:\Users\e1538867\Desktop\VHDL_GUITAR_PEDAL\VHDL_GUITAR_PEDAL\VHDL\modules\LCD\LCD_Controller.vhd".
+    Related source file is "F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\LCD\LCD_Controller.vhd".
 WARNING:Xst:647 - Input <LM<7:3>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:2935 - Signal 'lcdScreen<2><0>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
 WARNING:Xst:2935 - Signal 'lcdScreen<2><1>', unconnected in block 'LCD_Controler', is tied to its initial value (00000000).
@@ -1255,146 +1255,146 @@ WARNING:Xst:2935 - Signal 'lcdScreen<7><127>', unconnected in block 'LCD_Control
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
     Found 11-bit adder for signal <compteur[10]_GND_64_o_add_4_OUT> created at line 1241.
-    Found 7-bit adder for signal <Controler.reset_compteur[6]_GND_64_o_add_9_OUT> created at line 136.
-    Found 7-bit adder for signal <Controler.address[6]_GND_64_o_add_297_OUT> created at line 231.
-    Found 3-bit adder for signal <Controler.page[2]_GND_64_o_add_307_OUT> created at line 247.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][15][7]_wide_mux_182_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][16][7]_wide_mux_183_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][17][7]_wide_mux_184_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][18][7]_wide_mux_185_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][19][7]_wide_mux_186_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][20][7]_wide_mux_187_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][21][7]_wide_mux_188_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][22][7]_wide_mux_189_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][23][7]_wide_mux_190_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][24][7]_wide_mux_191_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][25][7]_wide_mux_192_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][26][7]_wide_mux_193_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][27][7]_wide_mux_194_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][28][7]_wide_mux_195_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][57][7]_wide_mux_224_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][58][7]_wide_mux_225_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][59][7]_wide_mux_226_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][60][7]_wide_mux_227_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][61][7]_wide_mux_228_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][62][7]_wide_mux_229_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][63][7]_wide_mux_230_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][64][7]_wide_mux_231_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][65][7]_wide_mux_232_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][66][7]_wide_mux_233_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][67][7]_wide_mux_234_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][68][7]_wide_mux_235_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][69][7]_wide_mux_236_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][70][7]_wide_mux_237_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][99][7]_wide_mux_266_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][100][7]_wide_mux_267_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][101][7]_wide_mux_268_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][102][7]_wide_mux_269_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][103][7]_wide_mux_270_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][104][7]_wide_mux_271_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][105][7]_wide_mux_272_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][106][7]_wide_mux_273_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][107][7]_wide_mux_274_OUT> created at line 222.
-    Found 8-bit 7-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][108][7]_wide_mux_275_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][109][7]_wide_mux_276_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][110][7]_wide_mux_277_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][111][7]_wide_mux_278_OUT> created at line 222.
-    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][112][7]_wide_mux_279_OUT> created at line 222.
-    Found 8-bit 124-to-1 multiplexer for signal <Controler.address[6]_Controler.page[2]_wide_mux_295_OUT> created at line 222.
-    Found 8-bit 7-to-1 multiplexer for signal <glcdControlerState[2]_X_32_o_wide_mux_319_OUT> created at line 133.
-    Found 11-bit comparator greater for signal <compteur[10]_PWR_55_o_LessThan_4_o> created at line 107
-    Found 7-bit comparator greater for signal <Controler.reset_compteur[6]_PWR_55_o_LessThan_9_o> created at line 135
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_806_o> created at line 489
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_807_o> created at line 494
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_808_o> created at line 499
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_809_o> created at line 504
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_810_o> created at line 509
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_811_o> created at line 514
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_812_o> created at line 519
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_813_o> created at line 524
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_814_o> created at line 529
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_815_o> created at line 534
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_816_o> created at line 539
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_817_o> created at line 544
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_818_o> created at line 549
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_819_o> created at line 554
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_820_o> created at line 559
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_821_o> created at line 564
-    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_822_o> created at line 569
-    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_823_o> created at line 574
-    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_824_o> created at line 579
-    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_825_o> created at line 584
-    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_826_o> created at line 589
-    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_827_o> created at line 594
-    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_828_o> created at line 599
-    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_829_o> created at line 604
-    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_830_o> created at line 609
-    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_831_o> created at line 614
-    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_832_o> created at line 619
-    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_833_o> created at line 624
-    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_834_o> created at line 629
-    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_835_o> created at line 634
-    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_836_o> created at line 639
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_1999_o> created at line 657
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2000_o> created at line 662
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2001_o> created at line 667
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2002_o> created at line 672
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2003_o> created at line 677
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2004_o> created at line 682
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2005_o> created at line 687
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2006_o> created at line 692
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2007_o> created at line 697
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2008_o> created at line 702
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2009_o> created at line 707
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2010_o> created at line 717
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2011_o> created at line 722
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2012_o> created at line 727
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2013_o> created at line 732
-    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2014_o> created at line 737
-    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2015_o> created at line 742
-    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2016_o> created at line 747
-    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2017_o> created at line 752
-    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2018_o> created at line 757
-    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2019_o> created at line 762
-    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2020_o> created at line 767
-    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2021_o> created at line 772
-    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2022_o> created at line 777
-    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2023_o> created at line 782
-    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2024_o> created at line 787
-    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2025_o> created at line 792
-    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2026_o> created at line 797
-    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2027_o> created at line 802
-    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2028_o> created at line 807
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3149_o> created at line 825
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3150_o> created at line 830
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3151_o> created at line 835
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3152_o> created at line 840
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3153_o> created at line 845
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3154_o> created at line 850
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3155_o> created at line 855
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3156_o> created at line 860
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3157_o> created at line 865
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3158_o> created at line 870
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3159_o> created at line 875
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3160_o> created at line 885
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3161_o> created at line 890
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3162_o> created at line 895
-    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3163_o> created at line 900
-    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3164_o> created at line 905
-    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3165_o> created at line 910
-    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3166_o> created at line 915
-    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3167_o> created at line 920
-    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3168_o> created at line 925
-    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3169_o> created at line 930
-    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3170_o> created at line 935
-    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3171_o> created at line 940
-    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3172_o> created at line 945
-    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3173_o> created at line 950
-    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3174_o> created at line 955
-    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3175_o> created at line 960
-    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3176_o> created at line 965
-    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3177_o> created at line 970
-    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3178_o> created at line 975
+    Found 7-bit adder for signal <Controler.reset_compteur[6]_GND_64_o_add_9_OUT> created at line 135.
+    Found 7-bit adder for signal <Controler.address[6]_GND_64_o_add_297_OUT> created at line 230.
+    Found 3-bit adder for signal <Controler.page[2]_GND_64_o_add_307_OUT> created at line 246.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][15][7]_wide_mux_182_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][16][7]_wide_mux_183_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][17][7]_wide_mux_184_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][18][7]_wide_mux_185_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][19][7]_wide_mux_186_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][20][7]_wide_mux_187_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][21][7]_wide_mux_188_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][22][7]_wide_mux_189_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][23][7]_wide_mux_190_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][24][7]_wide_mux_191_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][25][7]_wide_mux_192_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][26][7]_wide_mux_193_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][27][7]_wide_mux_194_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][28][7]_wide_mux_195_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][57][7]_wide_mux_224_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][58][7]_wide_mux_225_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][59][7]_wide_mux_226_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][60][7]_wide_mux_227_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][61][7]_wide_mux_228_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][62][7]_wide_mux_229_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][63][7]_wide_mux_230_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][64][7]_wide_mux_231_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][65][7]_wide_mux_232_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][66][7]_wide_mux_233_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][67][7]_wide_mux_234_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][68][7]_wide_mux_235_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][69][7]_wide_mux_236_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][70][7]_wide_mux_237_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][99][7]_wide_mux_266_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][100][7]_wide_mux_267_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][101][7]_wide_mux_268_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][102][7]_wide_mux_269_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][103][7]_wide_mux_270_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][104][7]_wide_mux_271_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][105][7]_wide_mux_272_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][106][7]_wide_mux_273_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][107][7]_wide_mux_274_OUT> created at line 221.
+    Found 8-bit 7-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][108][7]_wide_mux_275_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][109][7]_wide_mux_276_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][110][7]_wide_mux_277_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][111][7]_wide_mux_278_OUT> created at line 221.
+    Found 8-bit 8-to-1 multiplexer for signal <Controler.page[2]_lcdScreen[7][112][7]_wide_mux_279_OUT> created at line 221.
+    Found 8-bit 124-to-1 multiplexer for signal <Controler.address[6]_Controler.page[2]_wide_mux_295_OUT> created at line 221.
+    Found 8-bit 7-to-1 multiplexer for signal <glcdControlerState[2]_X_32_o_wide_mux_319_OUT> created at line 132.
+    Found 11-bit comparator greater for signal <compteur[10]_PWR_55_o_LessThan_4_o> created at line 106
+    Found 7-bit comparator greater for signal <Controler.reset_compteur[6]_PWR_55_o_LessThan_9_o> created at line 134
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_806_o> created at line 488
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_807_o> created at line 493
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_808_o> created at line 498
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_809_o> created at line 503
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_810_o> created at line 508
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_811_o> created at line 513
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_812_o> created at line 518
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_813_o> created at line 523
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_814_o> created at line 528
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_815_o> created at line 533
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_816_o> created at line 538
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_817_o> created at line 543
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_818_o> created at line 548
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_819_o> created at line 553
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_820_o> created at line 558
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC0[9]_LessThan_821_o> created at line 563
+    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_822_o> created at line 568
+    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_823_o> created at line 573
+    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_824_o> created at line 578
+    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_825_o> created at line 583
+    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_826_o> created at line 588
+    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_827_o> created at line 593
+    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_828_o> created at line 598
+    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_829_o> created at line 603
+    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_830_o> created at line 608
+    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_831_o> created at line 613
+    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_832_o> created at line 618
+    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_833_o> created at line 623
+    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_834_o> created at line 628
+    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_835_o> created at line 633
+    Found 10-bit comparator greater for signal <GND_64_o_sADC0[9]_LessThan_836_o> created at line 638
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_1999_o> created at line 656
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2000_o> created at line 661
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2001_o> created at line 666
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2002_o> created at line 671
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2003_o> created at line 676
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2004_o> created at line 681
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2005_o> created at line 686
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2006_o> created at line 691
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2007_o> created at line 696
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2008_o> created at line 701
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2009_o> created at line 706
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2010_o> created at line 716
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2011_o> created at line 721
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2012_o> created at line 726
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC1[9]_LessThan_2013_o> created at line 731
+    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2014_o> created at line 736
+    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2015_o> created at line 741
+    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2016_o> created at line 746
+    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2017_o> created at line 751
+    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2018_o> created at line 756
+    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2019_o> created at line 761
+    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2020_o> created at line 766
+    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2021_o> created at line 771
+    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2022_o> created at line 776
+    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2023_o> created at line 781
+    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2024_o> created at line 786
+    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2025_o> created at line 791
+    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2026_o> created at line 796
+    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2027_o> created at line 801
+    Found 10-bit comparator greater for signal <GND_64_o_sADC1[9]_LessThan_2028_o> created at line 806
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3149_o> created at line 824
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3150_o> created at line 829
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3151_o> created at line 834
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3152_o> created at line 839
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3153_o> created at line 844
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3154_o> created at line 849
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3155_o> created at line 854
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3156_o> created at line 859
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3157_o> created at line 864
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3158_o> created at line 869
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3159_o> created at line 874
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3160_o> created at line 884
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3161_o> created at line 889
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3162_o> created at line 894
+    Found 10-bit comparator greater for signal <PWR_55_o_sADC4[9]_LessThan_3163_o> created at line 899
+    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3164_o> created at line 904
+    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3165_o> created at line 909
+    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3166_o> created at line 914
+    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3167_o> created at line 919
+    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3168_o> created at line 924
+    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3169_o> created at line 929
+    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3170_o> created at line 934
+    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3171_o> created at line 939
+    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3172_o> created at line 944
+    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3173_o> created at line 949
+    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3174_o> created at line 954
+    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3175_o> created at line 959
+    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3176_o> created at line 964
+    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3177_o> created at line 969
+    Found 10-bit comparator greater for signal <GND_64_o_sADC4[9]_LessThan_3178_o> created at line 974
     Summary:
 	inferred   4 Adder/Subtractor(s).
 	inferred 227 D-type flip-flop(s).
@@ -2288,12 +2288,12 @@ effectChain/Tremolo/WCLK|    6.189|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 27.00 secs
-Total CPU time to Xst completion: 26.09 secs
+Total REAL time to Xst completion: 45.00 secs
+Total CPU time to Xst completion: 44.98 secs
  
 --> 
 
-Total memory usage is 314888 kilobytes
+Total memory usage is 425576 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  625 (   0 filtered)

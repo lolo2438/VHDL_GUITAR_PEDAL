@@ -94,8 +94,7 @@ sADC0 <= unsigned(ADC0);
 sADC1 <= unsigned(ADC1);
 sADC4 <= unsigned(ADC4);
 
---GLCD_RST <= '1';
--- Generate 30 images per second
+-- Generate ~30 images per second
 -- 1024 clock tick = 1 img -> 30_720 = 30 img; 50_000_000 / 30_720 = 1627 ~= 32uS (x"65B)
 WriteDataClk:
 process(RESET,CLK) 
@@ -104,7 +103,7 @@ process(RESET,CLK)
 			compteur <= (others => '0');
 		elsif rising_edge(CLK) then
 			if enableE = '1' then
-				if compteur < x"65B" then				-- For testing purpose:  1 img/sec = 50MHz / 1024 = x"7800"
+				if compteur < x"65B" then
 					compteur <= compteur + 1;
 				else
 					compteur <= (others => '0');
