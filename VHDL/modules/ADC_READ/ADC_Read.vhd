@@ -70,7 +70,7 @@ ADC_Read:process(CLK,RESET)
 			
 		elsif rising_edge(CLK) then
 			case stateAdcRead is
-				when waitData =>															-- Waiting for the SPI to send us data
+				when waitData =>															-- Waiting for data
 				
 					if NEW_SAMPLE = '1' and lastNewSample = '0' then			-- New sample was detected (rising edge)
 						lastNewSample <= NEW_SAMPLE;					

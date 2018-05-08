@@ -39,7 +39,6 @@ Signal shiftRegOutL : STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0) := (others => '0')
 Signal shiftRegOutR: STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0) := (others => '0');
 
 Signal lastLRCK : STD_LOGIC := '0';
-Signal LRCK_Changed : STD_LOGIC := '0';
 Signal sDone : STD_LOGIC := '0';
 Signal lastDone : STD_LOGIC := '0';
 
@@ -48,24 +47,11 @@ begin
 shiftRegOutL <= DATA_DAC_L;
 shiftRegOutR <= DATA_DAC_R;
 
--- Detecting changes in LRCK
-detectLRCK: process(BCLK)
-	begin
-		if rising_edge(BCLK) then
-			if(lastLRCK /= LRCK) then
-				lastLRCK <= LRCK;
-				LRCK_Changed <= '1';
-			else
-				LRCK_Changed <= '0';
-			end if;
-		end if;
-	end process;
-
--- TRANSMIT
-Transmit:process(RESET,BCLK)
+Transmit:
+process(RESET,BCLK)
 	variable dataShift : integer range 0 to DATA_WIDTH := DATA_WIDTH;
 	begin
-		if (RESET = '0') then
+		if RESET = '0' then
 			dataShift := DATA_WIDTH;
 			SDTO <= '0';
 		elsif falling_edge(BCLK) then
@@ -88,8 +74,10 @@ Transmit:process(RESET,BCLK)
 					dataShift := DATA_WIDTH;
 					SDTO <= '0';
 					
-					if LRCK_CHANGED = '1' then
+					if lastLRCK /= LRCK then
+						lastLRCK <= LRCK;
 						sDone <= '0';
+						
 						-- Send first bit
 						dataShift := dataShift - 1;
 						
@@ -104,9 +92,11 @@ Transmit:process(RESET,BCLK)
 					end if;
 				end case;
 		end if;
-	end process;
-	
-DetectDone: process(CLK,RESET)
+end process;
+
+
+sendDonePulse:
+process(CLK,RESET)
 	begin
 		if RESET = '0' then
 			lastDone <= '0';
@@ -117,7 +107,7 @@ DetectDone: process(CLK,RESET)
 				DONE <= '0';
 			end if;
 		end if;
-	end process;
+end process;
 	
 end Behavioral;
 

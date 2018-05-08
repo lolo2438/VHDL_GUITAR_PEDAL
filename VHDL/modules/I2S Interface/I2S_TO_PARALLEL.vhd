@@ -43,11 +43,13 @@ Signal lastDataReady : STD_LOGIC := '0';
 
 begin
 
--- RECEIVE
-Receive:process(RESET,BCLK)
+-- To optimise: remove Rdy state
+
+Receive:
+process(RESET,BCLK)
 	variable dataShift : integer range 0 to DATA_WIDTH := DATA_WIDTH;
 	begin
-		if (RESET = '0') then
+		if RESET = '0' then
 			dataShift := DATA_WIDTH;
 			shiftRegIn <= (others => '0');
 			dataReady <= '0';
@@ -85,20 +87,24 @@ Receive:process(RESET,BCLK)
 					end if;
 			end case;
 		end if;
-	end process;
+end process;
 	
-DetectDataRdy: process(CLK,RESET)
+sendDataRdyPulse:
+process(CLK,RESET)
 	begin
 		if RESET = '0' then
 			lastDataReady <= '0';
+			
 		elsif rising_edge(CLK) then
+		
 			if dataReady = '1' and lastDataReady = '0' then
 				DATA_READY <= '1';
 			else
 				DATA_READY <= '0';
 			end if;
+			
 		end if;
-	end process;
+end process;
 	
 end Behavioral;
 

@@ -8,9 +8,6 @@
 <msg type="warning" file="HDLCompiler" num="89" delta="old" >"F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\Effect Chain\Tremolo\Tremolo.vhd" Line 43: &lt;<arg fmt="%s" index="1">diviseur</arg>&gt; remains a black-box since it has no binding entity.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\LCD\LCD_Controller.vhd" Line 120: Assignment to <arg fmt="%s" index="1">dataready</arg> ignored, since the identifier is never used
-</msg>
-
 <msg type="warning" file="HDLCompiler" num="634" delta="old" >"F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\LCD\LCD_Controller.vhd" Line 56: Net &lt;<arg fmt="%s" index="1">lcdScreen[2][0][7]</arg>&gt; does not have a driver.
 </msg>
 
@@ -20,13 +17,13 @@
 <msg type="warning" file="HDLCompiler" num="634" delta="old" >"F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd" Line 74: Net &lt;<arg fmt="%s" index="1">newTxData</arg>&gt; does not have a driver.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd</arg>&quot; line <arg fmt="%s" index="2">148</arg>: Output port &lt;<arg fmt="%s" index="3">rx_data</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">avr_interface</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd</arg>&quot; line <arg fmt="%s" index="2">148</arg>: Output port &lt;<arg fmt="%s" index="3">rx_data</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">avr_interface</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd</arg>&quot; line <arg fmt="%s" index="2">148</arg>: Output port &lt;<arg fmt="%s" index="3">tx_busy</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">avr_interface</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd</arg>&quot; line <arg fmt="%s" index="2">148</arg>: Output port &lt;<arg fmt="%s" index="3">tx_busy</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">avr_interface</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd</arg>&quot; line <arg fmt="%s" index="2">148</arg>: Output port &lt;<arg fmt="%s" index="3">new_rx_data</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">avr_interface</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">F:\Laurent\Documents\GitHub\VHDL_GUITAR_PEDAL\VHDL\modules\TOP\TOP.vhd</arg>&quot; line <arg fmt="%s" index="2">148</arg>: Output port &lt;<arg fmt="%s" index="3">new_rx_data</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">avr_interface</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
 <msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">txData</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.

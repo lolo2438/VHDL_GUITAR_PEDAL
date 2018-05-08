@@ -81,13 +81,14 @@ signal E : STD_LOGIC := '1';
 signal lastE : STD_LOGIC := '0';
 signal compteur : UNSIGNED(10 downto 0) := (others => '0');
 signal enableE : STD_LOGIC := '0';	
-signal dataReady : STD_LOGIC := '0';
---
+
+-- ADC SIGNALS FOR ADC BARS
 signal sADC0 : unsigned(9 downto 0);
 signal sADC1 : unsigned(9 downto 0);
 signal sADC4 : unsigned(9 downto 0);
 
 begin
+
 -- Signal asignment 
 GLCD_E <= E;
 sADC0 <= unsigned(ADC0);
@@ -135,7 +136,7 @@ process(RESET,CLK)
 						reset_compteur := reset_compteur + 1;
 						GLCD_RST <= '0';								-- Reset
 						GLCD_CS <= noSide;							-- Init to no side
-						GLCD_DATA <= x"00";				   -- Set data to nothing
+						GLCD_DATA <= x"00";				  			-- Set data to nothing
 						enableE <= '0';								-- Disable E
 						GLCD_RS <= glcdSendCmd;						-- Set lcd to send cmd
 						GLCD_RW <= glcdWrite;						-- Set to write
@@ -150,45 +151,39 @@ process(RESET,CLK)
 					end if;
 				
 				when sendDisplayOn =>
-					if E = '1' and lastE = '0' then --and dataReady = '0' then				-- Rising edge => Setup values
+					if E = '1' and lastE = '0' then				-- Rising edge => Setup values
 						lastE <= E;
 						GLCD_RS <= glcdSendCmd;
 						GLCD_CS <= noSide;							-- Init to no side
 						GLCD_DATA <= setDisplayOn; 				-- Display on command
-						dataReady <= '1';
-						
-					elsif E = '0' and lastE = '1' then -- and dataReady = '1' then			-- Falling edge => LCD is reading the data 
+							
+					elsif E = '0' and lastE = '1' then			-- Falling edge => LCD is reading the data 
 						lastE <= E;
 						glcdControlerState <= refreshAddressLeft;
-						dataReady <= '0';
 						
 					end if;
 				
 				when refreshAddressLeft =>
-					if E = '1' and lastE = '0' then -- and dataReady = '0' then		-- Rising edge => Setup values
+					if E = '1' and lastE = '0' then 				-- Rising edge => Setup values
 						GLCD_CS <= leftSide;
 						lastE <= E;
 						GLCD_RS <= glcdSendCmd;
 						GLCD_DATA <= glcdSetAddress0;
-						dataReady <= '1';
 						
-					elsif E = '0' and lastE = '1' then -- and dataReady = '1' then			-- Falling edge => LCD is reading the data 
+					elsif E = '0' and lastE = '1' then 			-- Falling edge => LCD is reading the data 
 						lastE <= E;
 						glcdControlerState <= writeDataLeft;
-						dataReady <= '0';
 					end if;
 				
 				when writeDataLeft =>
-					if E = '1' and lastE = '0' then -- and dataReady = '0' then				-- Rising edge => Setup values
+					if E = '1' and lastE = '0' then 				-- Rising edge => Setup values
 						GLCD_CS <= leftSide;
 						GLCD_RS <= glcdSendData;
 						lastE <= E;
 						GLCD_DATA <= lcdScreen(page)(address);
-						dataReady <= '1';
 						
-					elsif E = '0' and lastE = '1' then -- and dataReady = '1' then			-- Falling edge => LCD is reading the data
+					elsif E = '0' and lastE = '1' then 			-- Falling edge => LCD is reading the data
 						lastE <= E;
-						dataReady <= '0';
 						
 						if address = 63 then
 							glcdControlerState <= refreshAddressRight;
@@ -200,29 +195,26 @@ process(RESET,CLK)
 					end if;
 				
 				when refreshAddressRight =>
-					if E = '1' and lastE = '0' then -- and dataReady = '0' then				-- Rising edge => Setup values
+					if E = '1' and lastE = '0' then 				-- Rising edge => Setup values
 						GLCD_CS <= rightSide;
 						lastE <= E;
 						GLCD_RS <= glcdSendCmd;
 						GLCD_DATA <= glcdSetAddress0;
-						dataReady <= '1';
 						
-					elsif E = '0' and lastE = '1' then -- and dataReady = '1' then						-- Falling edge => LCD is reading the data 
+					elsif E = '0' and lastE = '1' then 			-- Falling edge => LCD is reading the data 
 						lastE <= E;
 						glcdControlerState <= writeDataRight;
-						dataReady <= '0';
 					end if;
 				
 				when writeDataRight =>
-					if E = '1' and lastE = '0' then -- and dataReady = '0' then							-- Rising edge => Setup values
+					if E = '1' and lastE = '0' then				-- Rising edge => Setup values
 						lastE <= E;
 						GLCD_RS <= glcdSendData;
 						GLCD_CS <= rightSide;
 						GLCD_DATA <= lcdScreen(Page)(address);
 
-					elsif E = '0' and lastE = '1' then -- and dataReady = '1' then						-- Falling edge => LCD is reading the data
+					elsif E = '0' and lastE = '1' then 			-- Falling edge => LCD is reading the data
 						lastE <= E;
-						dataReady <= '0';
 						
 						if address = 127 then
 							glcdControlerState <= changePage;
@@ -233,12 +225,11 @@ process(RESET,CLK)
 					end if;
 					
 				when changePage =>
-					if E = '1' and lastE = '0' then -- and dataReady = '0' then							-- Rising edge => Setup values
+					if E = '1' and lastE = '0' then 				-- Rising edge => Setup values
 						GLCD_CS <= noSide;
 						lastE <= E;
 						GLCD_RS <= glcdSendCmd;
-						dataReady <= '1';
-						
+
 						if page = 7 then
 							page := 0;
 							GLCD_DATA <= glcdSetPage & std_logic_vector(to_unsigned(page,3));
@@ -249,10 +240,9 @@ process(RESET,CLK)
 						
 						address := 0;
 						
-					elsif E = '0' and lastE = '1' then -- and dataReady = '1' then						-- Falling edge => lcd is reading
+					elsif E = '0' and lastE = '1' then			-- Falling edge => lcd is reading
 						lastE <= E;
 						glcdControlerState <= sendDisplayOn;
-						dataReady <= '0';
 						
 					end if;
 			end case;

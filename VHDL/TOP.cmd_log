@@ -5,3 +5,4 @@ par -w -intstyle ise -ol high -mt off TOP_map.ncd TOP.ncd TOP.pcf
 trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml TOP.twx TOP.ncd -o TOP.twr TOP.pcf 
 bitgen -intstyle ise -f TOP.ut TOP.ncd 
 xst -intstyle ise -ifn "F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/TOP.xst" -ofn "F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/TOP.syr" 
+xst -intstyle ise -ifn "F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/TOP.xst" -ofn "F:/Laurent/Documents/GitHub/VHDL_GUITAR_PEDAL/VHDL/TOP.syr" 

@@ -12,18 +12,18 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity Button_Processing is
     Port ( CLK : in  STD_LOGIC;							-- FPGA CLOCK
 			  
-           NEXT_EFFECT_IN : in  STD_LOGIC;			-- NEXT EFFECT IN
-           NEXT_EFFECT_OUT : out  STD_LOGIC;			-- NEXT EFFECT OUT
+           NEXT_EFFECT_IN : in  STD_LOGIC;
+           NEXT_EFFECT_OUT : out  STD_LOGIC;
            
 			  PEDAL_IN : in STD_LOGIC;
 			  PEDAL_OUT : out STD_LOGIC;
 			  
 			  LOCK : out STD_LOGIC;
 			  
-           LAST_EFFECT_IN : in  STD_LOGIC;			-- LAST EFFECT IN
-           LAST_EFFECT_OUT : out  STD_LOGIC;			-- LAST EFFECT OUT
+           LAST_EFFECT_IN : in  STD_LOGIC;
+           LAST_EFFECT_OUT : out  STD_LOGIC;
 			  
-			  RESET : in STD_LOGIC							-- RESET SIGNAL
+			  RESET : in STD_LOGIC
 			 );
 			 
 end Button_Processing;
@@ -47,9 +47,9 @@ PEDAL_OUT <= arPedal;
 
 lockDetection: entity work.PedalControl(Behavioral)
 Port map (
-			  CLK => CLK,				-- System clock
-           PEDAL_IN => arPedal,	-- Pedal input
-			  LOCK => LOCK,			-- Lock Module
+			  CLK => CLK,
+           PEDAL_IN => arPedal,
+			  LOCK => LOCK,
 			  RESET => RESET
 			 );
 
