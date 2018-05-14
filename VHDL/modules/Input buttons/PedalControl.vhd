@@ -5,7 +5,7 @@
 --	Description: This module analyses
 --					 the input of the pedal
 --					 button and acts accordingly.
--- 1 press => Activate/deactivate, 2 press => lock.
+-- 2 press => lock.
 --------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -54,7 +54,7 @@ PedalAnalyze : process(CLK,RESET)
 				when Analyzing =>
 					
 					-- If we push the pedal button again -> lock the module
-					if PEDAL_IN /= lastPedal then
+					if lastPedal /= PEDAL_IN then
 						lastPedal <= PEDAL_IN;
 						LOCK <= '1';
 						machinePedal <= Waiting;
@@ -71,4 +71,3 @@ PedalAnalyze : process(CLK,RESET)
 	end process;
 
 end Behavioral;
-
