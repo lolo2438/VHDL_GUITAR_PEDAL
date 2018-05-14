@@ -91,9 +91,6 @@ signal locked : STD_LOGIC := '0';
 
 begin
 
--- à réparer
--- rate minimum = 2x rate maximum 
-
 rateOut <= std_logic_vector(sRate);
 waveOut <= std_logic_vector(sWave);
 depthOut <= std_logic_vector(sDepth);
@@ -244,7 +241,7 @@ process(WCLK,RESET)
 			
 		elsif rising_edge(WCLK) then
 				if direction = '0' then  			-- Going up	
-					if genWave >= x"400" then			-- if it went above 1024							-----************** POSSIBLE FIX TO RATE FUCKING UP: (genWave >= x"400" + slope) or 3FF to see												
+					if genWave >= x"400" then			-- if it went above 1024													
 						direction <= '1';	
 						genWave <= x"400";
 						tempWave <= x"001";
